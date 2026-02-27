@@ -1,0 +1,130 @@
+name: Microsoft Windows 10 APIs
+description: Collection of APIs and developer resources for building applications on the Windows 10 platform
+image: https://www.microsoft.com/favicon.ico
+created: 2024-01-01 00:00:00+00:00
+modified: 2024-01-01 00:00:00+00:00
+specificationVersion: '0.18'
+url: https://developer.microsoft.com/en-us/windows/
+tags:
+- Windows
+- Operating System
+- Desktop
+- UWP
+- Win32
+apis:
+- name: Windows Runtime (WinRT) API
+  description: Modern API for building Universal Windows Platform (UWP) applications
+  image: https://www.microsoft.com/favicon.ico
+  humanURL: https://docs.microsoft.com/en-us/windows/uwp/
+  baseURL: https://api.windows.com
+  tags:
+  - UWP
+  - WinRT
+  - Universal Apps
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/uwp/api/
+  - type: GettingStarted
+    url: https://docs.microsoft.com/en-us/windows/uwp/get-started/
+  - type: Samples
+    url: https://github.com/Microsoft/Windows-universal-samples
+- name: Win32 API
+  description: Core Windows API for building traditional desktop applications
+  image: https://www.microsoft.com/favicon.ico
+  humanURL: https://docs.microsoft.com/en-us/windows/win32/
+  baseURL: https://api.windows.com
+  tags:
+  - Win32
+  - Desktop
+  - Native
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/windows/win32/apiindex/windows-api-list
+  - type: Reference
+    url: https://docs.microsoft.com/en-us/windows/win32/api/
+  - type: Samples
+    url: https://github.com/microsoft/Windows-classic-samples
+- name: Windows Notifications API
+  description: API for sending and managing notifications in Windows 10
+  image: https://www.microsoft.com/favicon.ico
+  humanURL: https://docs.microsoft.com/en-us/windows/uwp/design/shell/tiles-and-notifications/
+  baseURL: https://api.windows.com
+  tags:
+  - Notifications
+  - Toast
+  - Tiles
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/windows/uwp/design/shell/tiles-and-notifications/adaptive-interactive-toasts
+  - type: Code Samples
+    url: https://github.com/WindowsNotifications/quickstart-sending-local-toast-win10
+- name: Windows ML API
+  description: API for integrating machine learning models into Windows applications
+  image: https://www.microsoft.com/favicon.ico
+  humanURL: https://docs.microsoft.com/en-us/windows/ai/windows-ml/
+  baseURL: https://api.windows.com
+  tags:
+  - Machine Learning
+  - AI
+  - ONNX
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/windows/ai/windows-ml/api-reference
+  - type: Tutorials
+    url: https://docs.microsoft.com/en-us/windows/ai/windows-ml/tutorials
+  - type: Samples
+    url: https://github.com/Microsoft/Windows-Machine-Learning
+- name: Windows Storage API
+  description: API for file system access and storage operations
+  image: https://www.microsoft.com/favicon.ico
+  humanURL: https://docs.microsoft.com/en-us/windows/uwp/files/
+  baseURL: https://api.windows.com
+  tags:
+  - Storage
+  - Files
+  - FileSystem
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/uwp/api/windows.storage
+  - type: BestPractices
+    url: https://docs.microsoft.com/en-us/windows/uwp/files/best-practices-for-writing-to-files
+- name: Windows Cortana API
+  description: API for integrating voice commands and Cortana into applications
+  image: https://www.microsoft.com/favicon.ico
+  humanURL: https://docs.microsoft.com/en-us/cortana/
+  baseURL: https://api.windows.com
+  tags:
+  - Voice
+  - Cortana
+  - Voice Commands
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/cortana/voice-commands/vcd
+  - type: Guidelines
+    url: https://docs.microsoft.com/en-us/cortana/voice-commands/voicecommand-design-guidelines
+- name: Windows Ink API
+  description: API for pen and stylus input in Windows applications
+  image: https://www.microsoft.com/favicon.ico
+  humanURL: https://docs.microsoft.com/en-us/windows/uwp/design/input/pen-and-stylus-interactions
+  baseURL: https://api.windows.com
+  tags:
+  - Ink
+  - Pen
+  - Stylus
+  - Input
+  properties:
+  - type: Documentation
+    url: https://docs.microsoft.com/en-us/uwp/api/windows.ui.input.inking
+  - type: Samples
+    url: https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/SimpleInk
+maintainers:
+- name: Microsoft Corporation
+  email: developer@microsoft.com
+  url: https://developer.microsoft.com
+include:
+- name: Windows Dev Center
+  url: https://developer.microsoft.com/en-us/windows/
+- name: Windows SDK
+  url: https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk/
+- name: Visual Studio
+  url: https://visualstudio.microsoft.com/
