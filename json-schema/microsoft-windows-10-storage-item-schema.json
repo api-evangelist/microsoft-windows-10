@@ -1,0 +1,252 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://developer.microsoft.com/schemas/windows-10/storage-item.json",
+  "title": "Windows 10 Storage Item",
+  "description": "Schema for Windows 10 storage items including files (StorageFile) and folders (StorageFolder) as defined by the Windows.Storage namespace. Covers file properties, folder hierarchies, application data, and library management.",
+  "type": "object",
+  "properties": {
+    "itemType": {
+      "type": "string",
+      "enum": ["File", "Folder"],
+      "description": "Whether this is a file or folder (StorageItemTypes)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Item name including extension for files"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "User-friendly display name without extension"
+    },
+    "path": {
+      "type": "string",
+      "description": "Full file system path"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time the item was created"
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Date and time the item was last modified"
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["Normal", "ReadOnly", "Directory", "Archive", "Temporary", "LocallyIncomplete"]
+      },
+      "description": "File attributes (FileAttributes flags)"
+    },
+    "fileProperties": {
+      "$ref": "#/$defs/FileProperties"
+    },
+    "folderProperties": {
+      "$ref": "#/$defs/FolderProperties"
+    },
+    "provider": {
+      "$ref": "#/$defs/StorageProvider"
+    },
+    "thumbnail": {
+      "$ref": "#/$defs/Thumbnail"
+    }
+  },
+  "required": ["itemType", "name", "path"],
+  "$defs": {
+    "FileProperties": {
+      "type": "object",
+      "description": "Properties specific to files (StorageFile class)",
+      "properties": {
+        "fileType": {
+          "type": "string",
+          "description": "File extension (e.g., .jpg, .docx)"
+        },
+        "contentType": {
+          "type": "string",
+          "description": "MIME content type"
+        },
+        "size": {
+          "type": "integer",
+          "format": "int64",
+          "minimum": 0,
+          "description": "File size in bytes"
+        },
+        "isAvailable": {
+          "type": "boolean",
+          "description": "Whether the file content is available locally (IStorageFilePropertiesWithAvailability)"
+        },
+        "basicProperties": {
+          "type": "object",
+          "properties": {
+            "dateModified": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "itemDate": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "size": {
+              "type": "integer",
+              "format": "int64"
+            }
+          }
+        },
+        "imageProperties": {
+          "type": "object",
+          "description": "Image-specific properties (for image files)",
+          "properties": {
+            "width": {
+              "type": "integer"
+            },
+            "height": {
+              "type": "integer"
+            },
+            "cameraModel": {
+              "type": "string"
+            },
+            "cameraManufacturer": {
+              "type": "string"
+            },
+            "dateTaken": {
+              "type": "string",
+              "format": "date-time"
+            },
+            "orientation": {
+              "type": "string",
+              "enum": ["Normal", "FlipHorizontal", "Rotate180", "FlipVertical", "Transpose", "Rotate270", "Transverse", "Rotate90", "Unspecified"]
+            },
+            "latitude": {
+              "type": "number",
+              "format": "double"
+            },
+            "longitude": {
+              "type": "number",
+              "format": "double"
+            }
+          }
+        },
+        "musicProperties": {
+          "type": "object",
+          "description": "Music-specific properties (for audio files)",
+          "properties": {
+            "artist": {
+              "type": "string"
+            },
+            "album": {
+              "type": "string"
+            },
+            "albumArtist": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            },
+            "trackNumber": {
+              "type": "integer"
+            },
+            "genre": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "duration": {
+              "type": "string",
+              "description": "Duration in ISO 8601 format"
+            },
+            "bitrate": {
+              "type": "integer"
+            },
+            "year": {
+              "type": "integer"
+            }
+          }
+        },
+        "videoProperties": {
+          "type": "object",
+          "description": "Video-specific properties (for video files)",
+          "properties": {
+            "title": {
+              "type": "string"
+            },
+            "width": {
+              "type": "integer"
+            },
+            "height": {
+              "type": "integer"
+            },
+            "duration": {
+              "type": "string"
+            },
+            "bitrate": {
+              "type": "integer"
+            },
+            "directors": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "year": {
+              "type": "integer"
+            }
+          }
+        }
+      }
+    },
+    "FolderProperties": {
+      "type": "object",
+      "description": "Properties specific to folders (StorageFolder class)",
+      "properties": {
+        "fileCount": {
+          "type": "integer",
+          "description": "Number of files in the folder"
+        },
+        "folderCount": {
+          "type": "integer",
+          "description": "Number of subfolders"
+        },
+        "totalSize": {
+          "type": "integer",
+          "format": "int64",
+          "description": "Total size of all contents in bytes"
+        }
+      }
+    },
+    "StorageProvider": {
+      "type": "object",
+      "description": "Information about the storage provider (StorageProvider class)",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Provider identifier"
+        },
+        "displayName": {
+          "type": "string",
+          "description": "Provider display name (e.g., This PC, OneDrive)"
+        }
+      }
+    },
+    "Thumbnail": {
+      "type": "object",
+      "description": "Thumbnail for the storage item",
+      "properties": {
+        "originalWidth": {
+          "type": "integer"
+        },
+        "originalHeight": {
+          "type": "integer"
+        },
+        "returnedSmallerCachedSize": {
+          "type": "boolean"
+        },
+        "contentType": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

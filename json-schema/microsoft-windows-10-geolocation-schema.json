@@ -1,0 +1,306 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://developer.microsoft.com/schemas/windows-10/geolocation.json",
+  "title": "Windows 10 Geolocation",
+  "description": "Schema for Windows 10 geolocation data as defined by the Windows.Devices.Geolocation namespace. Covers Geoposition, Geocoordinate, Geocircle, GeoboundingBox, Geovisit, and Geofence data models.",
+  "type": "object",
+  "properties": {
+    "coordinate": {
+      "$ref": "#/$defs/Geocoordinate"
+    },
+    "civicAddress": {
+      "$ref": "#/$defs/CivicAddress"
+    },
+    "venueData": {
+      "$ref": "#/$defs/VenueData"
+    }
+  },
+  "required": ["coordinate"],
+  "$defs": {
+    "Geocoordinate": {
+      "type": "object",
+      "description": "Geographic coordinate data as returned by the Geocoordinate class",
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "format": "double",
+          "minimum": -90,
+          "maximum": 90,
+          "description": "Latitude in decimal degrees (WGS 84)"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double",
+          "minimum": -180,
+          "maximum": 180,
+          "description": "Longitude in decimal degrees (WGS 84)"
+        },
+        "altitude": {
+          "type": ["number", "null"],
+          "format": "double",
+          "description": "Altitude in meters above the reference ellipsoid"
+        },
+        "accuracy": {
+          "type": "number",
+          "format": "double",
+          "minimum": 0,
+          "description": "Horizontal accuracy radius in meters"
+        },
+        "altitudeAccuracy": {
+          "type": ["number", "null"],
+          "format": "double",
+          "minimum": 0,
+          "description": "Vertical accuracy in meters"
+        },
+        "heading": {
+          "type": ["number", "null"],
+          "format": "double",
+          "minimum": 0,
+          "maximum": 360,
+          "description": "Heading in degrees relative to true north"
+        },
+        "speed": {
+          "type": ["number", "null"],
+          "format": "double",
+          "minimum": 0,
+          "description": "Speed in meters per second"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time the location was determined"
+        },
+        "point": {
+          "$ref": "#/$defs/Geopoint"
+        },
+        "positionSource": {
+          "type": "string",
+          "enum": ["Cellular", "Satellite", "WiFi", "IPAddress", "Unknown", "Default", "Obfuscated"],
+          "description": "The source used to determine the position (PositionSource)"
+        },
+        "positionSourceTimestamp": {
+          "type": ["string", "null"],
+          "format": "date-time",
+          "description": "Timestamp from the position source"
+        },
+        "satelliteData": {
+          "$ref": "#/$defs/SatelliteData"
+        }
+      },
+      "required": ["latitude", "longitude", "accuracy", "timestamp"]
+    },
+    "Geopoint": {
+      "type": "object",
+      "description": "A geographic point (Geopoint class)",
+      "properties": {
+        "position": {
+          "$ref": "#/$defs/BasicGeoposition"
+        },
+        "altitudeReferenceSystem": {
+          "type": "string",
+          "enum": ["Unspecified", "Terrain", "Ellipsoid", "Geoid", "Surface"],
+          "description": "Altitude reference system"
+        },
+        "spatialReferenceId": {
+          "type": "integer",
+          "description": "Spatial reference identifier (SRID), typically 4326 for WGS 84"
+        }
+      },
+      "required": ["position"]
+    },
+    "BasicGeoposition": {
+      "type": "object",
+      "description": "Basic geographic position (BasicGeoposition struct)",
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "altitude": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "required": ["latitude", "longitude", "altitude"]
+    },
+    "SatelliteData": {
+      "type": "object",
+      "description": "Satellite-specific data (GeocoordinateSatelliteData class)",
+      "properties": {
+        "horizontalDilutionOfPrecision": {
+          "type": ["number", "null"],
+          "format": "double",
+          "description": "HDOP value"
+        },
+        "verticalDilutionOfPrecision": {
+          "type": ["number", "null"],
+          "format": "double",
+          "description": "VDOP value"
+        },
+        "geometricDilutionOfPrecision": {
+          "type": ["number", "null"],
+          "format": "double",
+          "description": "GDOP value"
+        }
+      }
+    },
+    "CivicAddress": {
+      "type": "object",
+      "description": "Civic address information",
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "VenueData": {
+      "type": "object",
+      "description": "Venue data (VenueData class)",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "level": {
+          "type": "string"
+        }
+      }
+    },
+    "Geocircle": {
+      "type": "object",
+      "description": "A geographic circle (Geocircle class)",
+      "properties": {
+        "center": {
+          "$ref": "#/$defs/BasicGeoposition"
+        },
+        "radius": {
+          "type": "number",
+          "format": "double",
+          "minimum": 0,
+          "description": "Radius in meters"
+        },
+        "altitudeReferenceSystem": {
+          "type": "string",
+          "enum": ["Unspecified", "Terrain", "Ellipsoid", "Geoid", "Surface"]
+        },
+        "geoshapeType": {
+          "const": "Geocircle"
+        }
+      },
+      "required": ["center", "radius"]
+    },
+    "GeoboundingBox": {
+      "type": "object",
+      "description": "A geographic bounding box (GeoboundingBox class)",
+      "properties": {
+        "northwestCorner": {
+          "$ref": "#/$defs/BasicGeoposition"
+        },
+        "southeastCorner": {
+          "$ref": "#/$defs/BasicGeoposition"
+        },
+        "altitudeReferenceSystem": {
+          "type": "string",
+          "enum": ["Unspecified", "Terrain", "Ellipsoid", "Geoid", "Surface"]
+        },
+        "geoshapeType": {
+          "const": "GeoboundingBox"
+        }
+      },
+      "required": ["northwestCorner", "southeastCorner"]
+    },
+    "Geopath": {
+      "type": "object",
+      "description": "An ordered series of geographic points (Geopath class)",
+      "properties": {
+        "positions": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/BasicGeoposition"
+          },
+          "description": "Ordered list of positions"
+        },
+        "altitudeReferenceSystem": {
+          "type": "string",
+          "enum": ["Unspecified", "Terrain", "Ellipsoid", "Geoid", "Surface"]
+        },
+        "geoshapeType": {
+          "const": "Geopath"
+        }
+      },
+      "required": ["positions"]
+    },
+    "Geofence": {
+      "type": "object",
+      "description": "A geographic fence for location monitoring",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier"
+        },
+        "geoshape": {
+          "$ref": "#/$defs/Geocircle"
+        },
+        "monitoredStates": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": ["Entered", "Exited", "Removed"]
+          }
+        },
+        "singleUse": {
+          "type": "boolean",
+          "default": false
+        },
+        "dwellTime": {
+          "type": "string",
+          "description": "ISO 8601 duration"
+        },
+        "startTime": {
+          "type": "string",
+          "format": "date-time"
+        },
+        "duration": {
+          "type": "string",
+          "description": "ISO 8601 duration"
+        }
+      },
+      "required": ["id", "geoshape"]
+    },
+    "Geovisit": {
+      "type": "object",
+      "description": "A visit record (Geovisit class)",
+      "properties": {
+        "position": {
+          "$ref": "#/$defs/Geocoordinate"
+        },
+        "stateChange": {
+          "type": "string",
+          "enum": ["Arrived", "Departed", "TrackingLost"],
+          "description": "The type of visit state change (VisitStateChange)"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["stateChange", "timestamp"]
+    }
+  }
+}

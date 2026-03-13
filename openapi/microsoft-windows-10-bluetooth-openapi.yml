@@ -1,0 +1,480 @@
+openapi: 3.1.0
+info:
+  title: Windows Bluetooth API
+  description: >-
+    API for Bluetooth communication in Windows applications, based on the
+    Windows.Devices.Bluetooth namespace. Supports Bluetooth Classic (RFCOMM)
+    for stream-based communication and Bluetooth Low Energy (GATT) for
+    attribute-based communication with BLE peripherals. Key classes include
+    BluetoothDevice, BluetoothLEDevice, RfcommDeviceService, GattDeviceService,
+    GattCharacteristic, and BluetoothLEAdvertisementWatcher.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/uwp/devices-sensors/bluetooth
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+externalDocs:
+  description: Windows Bluetooth API Reference
+  url: https://learn.microsoft.com/en-us/windows/win32/api/_bluetooth/
+servers:
+  - url: https://api.windows.com
+    description: Windows Platform API
+paths:
+  /bluetooth/devices:
+    get:
+      operationId: listBluetoothDevices
+      summary: List paired Bluetooth devices
+      description: >-
+        Enumerates paired Bluetooth devices using DeviceInformation.FindAllAsync
+        with the BluetoothDevice or BluetoothLEDevice selector. Returns device
+        information including name, address, connection status, and services.
+      tags:
+        - Devices
+      parameters:
+        - name: type
+          in: query
+          required: false
+          description: Filter by Bluetooth type
+          schema:
+            type: string
+            enum:
+              - Classic
+              - LowEnergy
+              - All
+            default: All
+      responses:
+        '200':
+          description: Successful retrieval of Bluetooth devices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BluetoothDevice'
+  /bluetooth/devices/{deviceId}:
+    get:
+      operationId: getBluetoothDevice
+      summary: Get Bluetooth device details
+      description: >-
+        Retrieves detailed information about a Bluetooth device using
+        BluetoothDevice.FromIdAsync or BluetoothLEDevice.FromIdAsync.
+        Includes connection status, paired status, and available services.
+      tags:
+        - Devices
+      parameters:
+        - name: deviceId
+          in: path
+          required: true
+          description: Bluetooth device identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of device details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BluetoothDeviceDetail'
+        '404':
+          description: Device not found
+  /bluetooth/le/scan:
+    post:
+      operationId: startBLEScan
+      summary: Start BLE advertisement scanning
+      description: >-
+        Starts scanning for BLE advertisements using
+        BluetoothLEAdvertisementWatcher. Discovers nearby BLE devices that
+        are broadcasting advertisement packets. Supports filtering by
+        service UUID, manufacturer data, and signal strength.
+      tags:
+        - BLE Scanning
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BLEScanRequest'
+      responses:
+        '200':
+          description: Scan started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BLEScanSession'
+  /bluetooth/le/devices/{deviceId}/services:
+    get:
+      operationId: listGattServices
+      summary: List GATT services
+      description: >-
+        Retrieves the list of GATT services on a BLE device using
+        BluetoothLEDevice.GetGattServicesAsync. Each service contains
+        characteristics and descriptors that define the device's capabilities.
+      tags:
+        - GATT Services
+      parameters:
+        - name: deviceId
+          in: path
+          required: true
+          description: BLE device identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of GATT services
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GattService'
+        '404':
+          description: Device not found
+  /bluetooth/le/devices/{deviceId}/services/{serviceId}/characteristics:
+    get:
+      operationId: listGattCharacteristics
+      summary: List GATT characteristics
+      description: >-
+        Retrieves the characteristics of a GATT service using
+        GattDeviceService.GetCharacteristicsAsync. Characteristics contain
+        the actual data values and support read, write, notify, and indicate
+        operations.
+      tags:
+        - GATT Characteristics
+      parameters:
+        - name: deviceId
+          in: path
+          required: true
+          description: BLE device identifier
+          schema:
+            type: string
+        - name: serviceId
+          in: path
+          required: true
+          description: GATT service UUID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of characteristics
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GattCharacteristic'
+        '404':
+          description: Service not found
+  /bluetooth/le/devices/{deviceId}/services/{serviceId}/characteristics/{characteristicId}/value:
+    get:
+      operationId: readGattCharacteristic
+      summary: Read a GATT characteristic value
+      description: >-
+        Reads the value of a GATT characteristic using
+        GattCharacteristic.ReadValueAsync. Returns the raw byte data
+        and the communication status.
+      tags:
+        - GATT Operations
+      parameters:
+        - name: deviceId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: serviceId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: characteristicId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: cacheMode
+          in: query
+          required: false
+          schema:
+            type: string
+            enum:
+              - Cached
+              - Uncached
+            default: Uncached
+      responses:
+        '200':
+          description: Characteristic value read
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GattReadResult'
+        '404':
+          description: Characteristic not found
+    put:
+      operationId: writeGattCharacteristic
+      summary: Write a GATT characteristic value
+      description: >-
+        Writes a value to a GATT characteristic using
+        GattCharacteristic.WriteValueAsync or WriteValueWithResultAsync.
+        Supports WriteWithResponse and WriteWithoutResponse options.
+      tags:
+        - GATT Operations
+      parameters:
+        - name: deviceId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: serviceId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: characteristicId
+          in: path
+          required: true
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GattWriteRequest'
+      responses:
+        '200':
+          description: Value written successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GattWriteResult'
+        '404':
+          description: Characteristic not found
+  /bluetooth/rfcomm/connections:
+    post:
+      operationId: createRfcommConnection
+      summary: Create an RFCOMM connection
+      description: >-
+        Establishes a Bluetooth Classic RFCOMM connection to a device using
+        RfcommDeviceService. RFCOMM provides a stream-based connection similar
+        to TCP sockets for serial port emulation.
+      tags:
+        - RFCOMM
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RfcommConnectionRequest'
+      responses:
+        '201':
+          description: RFCOMM connection established
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RfcommConnection'
+        '400':
+          description: Connection failed
+components:
+  schemas:
+    BluetoothDevice:
+      type: object
+      description: A Bluetooth device
+      properties:
+        id:
+          type: string
+          description: Device identifier
+        name:
+          type: string
+          description: Device display name
+        bluetoothAddress:
+          type: string
+          description: Bluetooth MAC address
+        type:
+          type: string
+          enum:
+            - Classic
+            - LowEnergy
+        connectionStatus:
+          type: string
+          enum:
+            - Connected
+            - Disconnected
+        isPaired:
+          type: boolean
+      required:
+        - id
+        - name
+    BluetoothDeviceDetail:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        bluetoothAddress:
+          type: string
+        type:
+          type: string
+        connectionStatus:
+          type: string
+        isPaired:
+          type: boolean
+        classOfDevice:
+          type: object
+          properties:
+            majorClass:
+              type: string
+            minorClass:
+              type: string
+          description: Bluetooth Class of Device (for Classic)
+        appearance:
+          type: object
+          properties:
+            category:
+              type: string
+            subCategory:
+              type: string
+          description: BLE Appearance (for Low Energy)
+        serviceUuids:
+          type: array
+          items:
+            type: string
+          description: Advertised service UUIDs
+    BLEScanRequest:
+      type: object
+      properties:
+        scanningMode:
+          type: string
+          enum:
+            - Passive
+            - Active
+          default: Active
+        serviceUuidFilter:
+          type: array
+          items:
+            type: string
+          description: Filter by service UUIDs
+        signalStrengthFilter:
+          type: object
+          properties:
+            inRangeThresholdInDBm:
+              type: integer
+            outOfRangeThresholdInDBm:
+              type: integer
+    BLEScanSession:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+            - Started
+            - Stopped
+            - Aborted
+    GattService:
+      type: object
+      description: A GATT service on a BLE device
+      properties:
+        uuid:
+          type: string
+          description: Service UUID
+        name:
+          type: string
+          description: Standard service name (if known)
+        characteristicCount:
+          type: integer
+    GattCharacteristic:
+      type: object
+      description: A GATT characteristic
+      properties:
+        uuid:
+          type: string
+          description: Characteristic UUID
+        name:
+          type: string
+          description: Standard characteristic name (if known)
+        properties:
+          type: array
+          items:
+            type: string
+            enum:
+              - Read
+              - Write
+              - WriteWithoutResponse
+              - Notify
+              - Indicate
+              - Broadcast
+              - SignedWrite
+              - ExtendedProperties
+          description: Supported operations
+        protectionLevel:
+          type: string
+          enum:
+            - Plain
+            - AuthenticationRequired
+            - EncryptionRequired
+            - EncryptionAndAuthenticationRequired
+    GattReadResult:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - Success
+            - Unreachable
+            - ProtocolError
+            - InvalidHandle
+            - AccessDenied
+        value:
+          type: string
+          format: byte
+          description: Base64-encoded characteristic value
+    GattWriteRequest:
+      type: object
+      properties:
+        value:
+          type: string
+          format: byte
+          description: Base64-encoded value to write
+        writeOption:
+          type: string
+          enum:
+            - WriteWithResponse
+            - WriteWithoutResponse
+          default: WriteWithResponse
+      required:
+        - value
+    GattWriteResult:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - Success
+            - Unreachable
+            - ProtocolError
+    RfcommConnectionRequest:
+      type: object
+      properties:
+        deviceId:
+          type: string
+          description: Bluetooth device ID
+        serviceId:
+          type: string
+          description: RFCOMM service UUID (e.g., SerialPort)
+      required:
+        - deviceId
+        - serviceId
+    RfcommConnection:
+      type: object
+      properties:
+        id:
+          type: string
+        deviceId:
+          type: string
+        serviceId:
+          type: string
+        maxMessageSize:
+          type: integer

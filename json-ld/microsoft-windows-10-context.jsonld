@@ -1,0 +1,353 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "microsoft": "https://developer.microsoft.com/schemas/windows-10/",
+    "winrt": "https://learn.microsoft.com/en-us/uwp/api/",
+    "win32": "https://learn.microsoft.com/en-us/windows/win32/api/",
+    "dcterms": "http://purl.org/dc/terms/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+    "ssn": "http://www.w3.org/ns/ssn/",
+    "sosa": "http://www.w3.org/ns/sosa/",
+    "geo": "http://www.w3.org/2003/01/geo/wgs84_pos#",
+    "qudt": "http://qudt.org/schema/qudt/",
+
+    "WindowsAPI": {
+      "@id": "schema:SoftwareApplication",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "version": "schema:version",
+        "url": "schema:url",
+        "documentation": "schema:documentation",
+        "provider": "schema:provider",
+        "platform": "schema:operatingSystem"
+      }
+    },
+
+    "WinRTNamespace": {
+      "@id": "microsoft:WinRTNamespace",
+      "@context": {
+        "name": "schema:name",
+        "description": "schema:description",
+        "classes": "microsoft:containsClass",
+        "interfaces": "microsoft:containsInterface",
+        "enums": "microsoft:containsEnum"
+      }
+    },
+
+    "WinRTClass": {
+      "@id": "microsoft:WinRTClass",
+      "@context": {
+        "name": "schema:name",
+        "namespace": "microsoft:namespace",
+        "description": "schema:description",
+        "methods": "microsoft:hasMethod",
+        "properties": "microsoft:hasProperty",
+        "events": "microsoft:hasEvent"
+      }
+    },
+
+    "Notification": {
+      "@id": "microsoft:Notification",
+      "@context": {
+        "notificationType": "microsoft:notificationType",
+        "tag": "schema:identifier",
+        "group": "microsoft:notificationGroup",
+        "expirationTime": {
+          "@id": "schema:expires",
+          "@type": "xsd:dateTime"
+        },
+        "priority": "microsoft:priority",
+        "visual": "microsoft:notificationVisual",
+        "actions": "microsoft:notificationActions",
+        "audio": "microsoft:notificationAudio"
+      }
+    },
+
+    "ToastNotification": {
+      "@id": "microsoft:ToastNotification",
+      "@context": {
+        "content": "schema:text",
+        "suppressPopup": "microsoft:suppressPopup",
+        "notificationMirroring": "microsoft:notificationMirroring"
+      }
+    },
+
+    "TileNotification": {
+      "@id": "microsoft:TileNotification",
+      "@context": {
+        "template": "microsoft:tileTemplate"
+      }
+    },
+
+    "BadgeNotification": {
+      "@id": "microsoft:BadgeNotification",
+      "@context": {
+        "value": "schema:value",
+        "type": "microsoft:badgeType"
+      }
+    },
+
+    "StorageFile": {
+      "@id": "schema:DigitalDocument",
+      "@context": {
+        "name": "schema:name",
+        "path": "schema:url",
+        "fileType": "schema:fileFormat",
+        "contentType": "schema:encodingFormat",
+        "size": "schema:contentSize",
+        "dateCreated": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "dateModified": {
+          "@id": "schema:dateModified",
+          "@type": "xsd:dateTime"
+        },
+        "isAvailable": "microsoft:isAvailable"
+      }
+    },
+
+    "StorageFolder": {
+      "@id": "schema:Collection",
+      "@context": {
+        "name": "schema:name",
+        "path": "schema:url",
+        "dateCreated": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        }
+      }
+    },
+
+    "Geoposition": {
+      "@id": "schema:GeoCoordinates",
+      "@context": {
+        "latitude": {
+          "@id": "geo:lat",
+          "@type": "xsd:double"
+        },
+        "longitude": {
+          "@id": "geo:long",
+          "@type": "xsd:double"
+        },
+        "altitude": {
+          "@id": "geo:alt",
+          "@type": "xsd:double"
+        },
+        "accuracy": {
+          "@id": "microsoft:accuracy",
+          "@type": "xsd:double"
+        },
+        "heading": "schema:heading",
+        "speed": "schema:speed",
+        "timestamp": {
+          "@id": "schema:dateCreated",
+          "@type": "xsd:dateTime"
+        },
+        "positionSource": "microsoft:positionSource"
+      }
+    },
+
+    "Geocircle": {
+      "@id": "schema:GeoCircle",
+      "@context": {
+        "center": "schema:geo",
+        "radius": {
+          "@id": "schema:geoRadius",
+          "@type": "xsd:double"
+        }
+      }
+    },
+
+    "GeoboundingBox": {
+      "@id": "schema:GeoShape",
+      "@context": {
+        "northwestCorner": "microsoft:northwestCorner",
+        "southeastCorner": "microsoft:southeastCorner"
+      }
+    },
+
+    "Geofence": {
+      "@id": "microsoft:Geofence",
+      "@context": {
+        "id": "schema:identifier",
+        "geoshape": "schema:geo",
+        "monitoredStates": "microsoft:monitoredStates",
+        "dwellTime": "microsoft:dwellTime"
+      }
+    },
+
+    "SensorReading": {
+      "@id": "sosa:Observation",
+      "@context": {
+        "sensorType": {
+          "@id": "sosa:madeBySensor",
+          "@type": "@vocab"
+        },
+        "timestamp": {
+          "@id": "sosa:resultTime",
+          "@type": "xsd:dateTime"
+        },
+        "reading": "sosa:hasResult"
+      }
+    },
+
+    "AccelerometerReading": {
+      "@id": "microsoft:AccelerometerReading",
+      "@context": {
+        "accelerationX": {
+          "@id": "microsoft:accelerationX",
+          "@type": "xsd:double"
+        },
+        "accelerationY": {
+          "@id": "microsoft:accelerationY",
+          "@type": "xsd:double"
+        },
+        "accelerationZ": {
+          "@id": "microsoft:accelerationZ",
+          "@type": "xsd:double"
+        }
+      }
+    },
+
+    "CompassReading": {
+      "@id": "microsoft:CompassReading",
+      "@context": {
+        "headingMagneticNorth": {
+          "@id": "microsoft:headingMagneticNorth",
+          "@type": "xsd:double"
+        },
+        "headingTrueNorth": {
+          "@id": "microsoft:headingTrueNorth",
+          "@type": "xsd:double"
+        }
+      }
+    },
+
+    "LearningModel": {
+      "@id": "schema:SoftwareSourceCode",
+      "@context": {
+        "name": "schema:name",
+        "author": "schema:author",
+        "domain": "microsoft:domain",
+        "description": "schema:description",
+        "version": "schema:version",
+        "inputFeatures": "microsoft:inputFeatures",
+        "outputFeatures": "microsoft:outputFeatures"
+      }
+    },
+
+    "BluetoothDevice": {
+      "@id": "schema:Product",
+      "@context": {
+        "id": "schema:identifier",
+        "name": "schema:name",
+        "bluetoothAddress": "microsoft:bluetoothAddress",
+        "type": "microsoft:bluetoothType",
+        "connectionStatus": "microsoft:connectionStatus",
+        "isPaired": "microsoft:isPaired"
+      }
+    },
+
+    "GattService": {
+      "@id": "microsoft:GattService",
+      "@context": {
+        "uuid": "schema:identifier",
+        "name": "schema:name",
+        "characteristics": "microsoft:hasCharacteristic"
+      }
+    },
+
+    "GattCharacteristic": {
+      "@id": "microsoft:GattCharacteristic",
+      "@context": {
+        "uuid": "schema:identifier",
+        "name": "schema:name",
+        "characteristicProperties": "microsoft:characteristicProperties"
+      }
+    },
+
+    "MediaCapture": {
+      "@id": "schema:MediaObject",
+      "@context": {
+        "encodingFormat": "schema:encodingFormat",
+        "width": "schema:width",
+        "height": "schema:height",
+        "duration": "schema:duration",
+        "contentSize": "schema:contentSize"
+      }
+    },
+
+    "InkStroke": {
+      "@id": "microsoft:InkStroke",
+      "@context": {
+        "id": "schema:identifier",
+        "points": "microsoft:inkPoints",
+        "drawingAttributes": "microsoft:drawingAttributes"
+      }
+    },
+
+    "VoiceCommand": {
+      "@id": "microsoft:VoiceCommand",
+      "@context": {
+        "name": "schema:name",
+        "example": "schema:exampleOfWork",
+        "listenFor": "microsoft:listenFor",
+        "feedback": "microsoft:feedback"
+      }
+    },
+
+    "BackgroundTask": {
+      "@id": "microsoft:BackgroundTask",
+      "@context": {
+        "id": "schema:identifier",
+        "name": "schema:name",
+        "triggerType": "microsoft:triggerType",
+        "entryPoint": "microsoft:entryPoint",
+        "conditions": "microsoft:conditions"
+      }
+    },
+
+    "GraphicsAdapter": {
+      "@id": "microsoft:GraphicsAdapter",
+      "@context": {
+        "id": "schema:identifier",
+        "description": "schema:description",
+        "dedicatedVideoMemory": "microsoft:dedicatedVideoMemory",
+        "maxFeatureLevel": "microsoft:maxFeatureLevel"
+      }
+    },
+
+    "KeyCredential": {
+      "@id": "microsoft:KeyCredential",
+      "@context": {
+        "accountId": "schema:identifier",
+        "publicKey": "microsoft:publicKey",
+        "status": "microsoft:credentialStatus"
+      }
+    },
+
+    "CompositionVisual": {
+      "@id": "microsoft:CompositionVisual",
+      "@context": {
+        "id": "schema:identifier",
+        "type": "microsoft:visualType",
+        "offset": "microsoft:offset",
+        "size": "microsoft:size",
+        "opacity": "microsoft:opacity"
+      }
+    },
+
+    "WinUIControl": {
+      "@id": "microsoft:WinUIControl",
+      "@context": {
+        "name": "schema:name",
+        "namespace": "microsoft:namespace",
+        "category": "schema:category",
+        "description": "schema:description"
+      }
+    }
+  }
+}

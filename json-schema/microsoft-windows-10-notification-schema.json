@@ -1,0 +1,321 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://developer.microsoft.com/schemas/windows-10/notification.json",
+  "title": "Windows 10 Notification",
+  "description": "Schema for Windows 10 toast, tile, and badge notifications as defined by the Windows.UI.Notifications namespace. Covers ToastNotification, TileNotification, BadgeNotification, and ScheduledToastNotification data models.",
+  "type": "object",
+  "properties": {
+    "notificationType": {
+      "type": "string",
+      "enum": ["toast", "tile", "badge", "tileFlyout"],
+      "description": "The type of notification"
+    },
+    "tag": {
+      "type": "string",
+      "maxLength": 16,
+      "description": "Tag identifier for the notification, used for updating and removing specific notifications"
+    },
+    "group": {
+      "type": "string",
+      "maxLength": 16,
+      "description": "Group identifier for organizing related notifications"
+    },
+    "expirationTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time when the notification expires and is removed from the action center"
+    },
+    "suppressPopup": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether to suppress the popup toast and send directly to the action center"
+    },
+    "priority": {
+      "type": "string",
+      "enum": ["Default", "High"],
+      "default": "Default",
+      "description": "Notification priority level (ToastNotificationPriority)"
+    },
+    "notificationMirroring": {
+      "type": "string",
+      "enum": ["Allowed", "Disabled"],
+      "default": "Allowed",
+      "description": "Whether the notification can be mirrored to other devices"
+    },
+    "visual": {
+      "$ref": "#/$defs/NotificationVisual"
+    },
+    "actions": {
+      "$ref": "#/$defs/NotificationActions"
+    },
+    "audio": {
+      "$ref": "#/$defs/NotificationAudio"
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "NotificationData for data binding with key-value pairs"
+    },
+    "schedule": {
+      "$ref": "#/$defs/NotificationSchedule"
+    }
+  },
+  "required": ["notificationType", "visual"],
+  "$defs": {
+    "NotificationVisual": {
+      "type": "object",
+      "description": "Visual content of the notification (NotificationVisual class)",
+      "properties": {
+        "bindings": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/NotificationBinding"
+          },
+          "description": "One or more binding elements defining the notification content"
+        }
+      },
+      "required": ["bindings"]
+    },
+    "NotificationBinding": {
+      "type": "object",
+      "description": "A binding element defining notification content for a specific template",
+      "properties": {
+        "template": {
+          "type": "string",
+          "description": "Template type (ToastGeneric, TileSmall, TileMedium, TileWide, TileLarge)",
+          "examples": ["ToastGeneric", "TileMedium", "TileWide"]
+        },
+        "texts": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AdaptiveText"
+          },
+          "description": "Text elements in the binding"
+        },
+        "images": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/AdaptiveImage"
+          },
+          "description": "Image elements in the binding"
+        },
+        "attributionText": {
+          "type": "string",
+          "description": "Attribution text displayed at the bottom of the notification"
+        },
+        "displayTimestamp": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Custom timestamp to display instead of the notification delivery time"
+        }
+      },
+      "required": ["template"]
+    },
+    "AdaptiveText": {
+      "type": "object",
+      "description": "Text content element (AdaptiveNotificationText class)",
+      "properties": {
+        "content": {
+          "type": "string",
+          "description": "The text content"
+        },
+        "hintStyle": {
+          "type": "string",
+          "enum": ["caption", "captionSubtle", "body", "bodySubtle", "base", "baseSubtle", "subtitle", "subtitleSubtle", "title", "titleSubtle", "titleNumeral", "subheader", "subheaderSubtle", "subheaderNumeral", "header", "headerSubtle", "headerNumeral"],
+          "description": "Text style hint"
+        },
+        "hintMaxLines": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Maximum number of lines for this text element"
+        },
+        "hintWrap": {
+          "type": "boolean",
+          "description": "Whether text wrapping is enabled"
+        },
+        "hintAlign": {
+          "type": "string",
+          "enum": ["auto", "left", "center", "right"],
+          "description": "Text alignment"
+        },
+        "language": {
+          "type": "string",
+          "description": "BCP-47 language tag"
+        }
+      },
+      "required": ["content"]
+    },
+    "AdaptiveImage": {
+      "type": "object",
+      "description": "Image content element for notifications",
+      "properties": {
+        "src": {
+          "type": "string",
+          "format": "uri",
+          "description": "Image source URI (ms-appx:///,  ms-appdata:///local/, or http/https)"
+        },
+        "placement": {
+          "type": "string",
+          "enum": ["inline", "appLogoOverride", "hero"],
+          "default": "inline",
+          "description": "Image placement in the notification"
+        },
+        "hintCrop": {
+          "type": "string",
+          "enum": ["none", "circle"],
+          "default": "none",
+          "description": "Cropping applied to the image"
+        },
+        "alt": {
+          "type": "string",
+          "description": "Alternative text for accessibility"
+        },
+        "addImageQuery": {
+          "type": "boolean",
+          "description": "Whether to append image query parameters for scale/contrast"
+        }
+      },
+      "required": ["src"]
+    },
+    "NotificationActions": {
+      "type": "object",
+      "description": "Interactive actions in a toast notification",
+      "properties": {
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/NotificationInput"
+          },
+          "maxItems": 5,
+          "description": "Input fields (up to 5)"
+        },
+        "buttons": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/NotificationButton"
+          },
+          "maxItems": 5,
+          "description": "Action buttons (up to 5)"
+        }
+      }
+    },
+    "NotificationInput": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Input identifier used to retrieve the value"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["text", "selection"],
+          "description": "Input type"
+        },
+        "placeHolderContent": {
+          "type": "string",
+          "description": "Placeholder text for text inputs"
+        },
+        "title": {
+          "type": "string",
+          "description": "Label displayed above the input"
+        },
+        "defaultInput": {
+          "type": "string",
+          "description": "Default value"
+        },
+        "selections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "content": {
+                "type": "string"
+              }
+            },
+            "required": ["id", "content"]
+          },
+          "description": "Selection options (for type=selection)"
+        }
+      },
+      "required": ["id", "type"]
+    },
+    "NotificationButton": {
+      "type": "object",
+      "properties": {
+        "content": {
+          "type": "string",
+          "description": "Button label text"
+        },
+        "arguments": {
+          "type": "string",
+          "description": "Arguments passed to the app when the button is clicked"
+        },
+        "activationType": {
+          "type": "string",
+          "enum": ["foreground", "background", "protocol", "system"],
+          "default": "foreground",
+          "description": "How the app is activated when the button is clicked"
+        },
+        "imageUri": {
+          "type": "string",
+          "format": "uri",
+          "description": "Icon image for the button"
+        },
+        "inputId": {
+          "type": "string",
+          "description": "ID of the input field next to this button"
+        }
+      },
+      "required": ["content", "arguments"]
+    },
+    "NotificationAudio": {
+      "type": "object",
+      "description": "Audio settings for a toast notification",
+      "properties": {
+        "src": {
+          "type": "string",
+          "description": "Audio file URI (ms-winsoundevent: or ms-appx:/// or ms-appdata:///)",
+          "examples": ["ms-winsoundevent:Notification.Default", "ms-winsoundevent:Notification.Mail"]
+        },
+        "loop": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the audio should loop"
+        },
+        "silent": {
+          "type": "boolean",
+          "default": false,
+          "description": "Whether the notification should be silent"
+        }
+      }
+    },
+    "NotificationSchedule": {
+      "type": "object",
+      "description": "Scheduling information for scheduled toast notifications",
+      "properties": {
+        "deliveryTime": {
+          "type": "string",
+          "format": "date-time",
+          "description": "The time to deliver the notification"
+        },
+        "snoozeInterval": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "Snooze interval in minutes"
+        },
+        "maximumSnoozeCount": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5,
+          "description": "Maximum number of snoozes allowed"
+        }
+      },
+      "required": ["deliveryTime"]
+    }
+  }
+}

@@ -1,0 +1,319 @@
+openapi: 3.1.0
+info:
+  title: Windows Hello Authentication API
+  description: >-
+    Biometric and PIN-based authentication API that replaces passwords with
+    strong two-factor authentication. Based on the Windows.Security.Credentials
+    namespace, Windows Hello supports facial recognition, fingerprint scanning,
+    and PIN-based user verification for secure sign-in. Key classes include
+    KeyCredentialManager, KeyCredentialRetrievalResult, and UserConsentVerifier.
+    Implements the FIDO2/WebAuthn standards for passwordless authentication.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/develop/security/windows-hello
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+externalDocs:
+  description: Windows Hello Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/develop/security/windows-hello
+servers:
+  - url: https://api.windows.com
+    description: Windows Platform API
+paths:
+  /hello/availability:
+    get:
+      operationId: checkHelloAvailability
+      summary: Check Windows Hello availability
+      description: >-
+        Checks whether Windows Hello is available on the device using
+        KeyCredentialManager.IsSupportedAsync. Returns whether the device
+        supports biometric or PIN-based authentication through Windows Hello.
+      tags:
+        - Availability
+      responses:
+        '200':
+          description: Availability status retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HelloAvailability'
+  /hello/credentials:
+    post:
+      operationId: createKeyCredential
+      summary: Create a Windows Hello key credential
+      description: >-
+        Creates a new key credential for Windows Hello authentication using
+        KeyCredentialManager.RequestCreateAsync. Generates a public/private
+        key pair where the private key is stored securely on the device (in
+        TPM if available) and the public key is returned for server registration.
+      tags:
+        - Credentials
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCredentialRequest'
+      responses:
+        '201':
+          description: Key credential created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeyCredential'
+        '400':
+          description: Invalid request
+        '403':
+          description: User cancelled the consent prompt
+  /hello/credentials/{accountId}:
+    get:
+      operationId: openKeyCredential
+      summary: Open an existing key credential
+      description: >-
+        Opens an existing Windows Hello key credential using
+        KeyCredentialManager.OpenAsync. Returns the credential if it exists,
+        allowing the application to use it for signing operations.
+      tags:
+        - Credentials
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          description: The account identifier for the credential
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Credential opened successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/KeyCredential'
+        '404':
+          description: Credential not found
+    delete:
+      operationId: deleteKeyCredential
+      summary: Delete a key credential
+      description: >-
+        Deletes a Windows Hello key credential using
+        KeyCredentialManager.DeleteAsync. Removes the key pair from the device.
+      tags:
+        - Credentials
+      parameters:
+        - name: accountId
+          in: path
+          required: true
+          description: The account identifier for the credential
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Credential deleted
+        '404':
+          description: Credential not found
+  /hello/sign:
+    post:
+      operationId: signWithCredential
+      summary: Sign data with a Windows Hello credential
+      description: >-
+        Signs a challenge buffer using the Windows Hello credential's private key
+        via KeyCredential.RequestSignAsync. The user is prompted for biometric
+        or PIN verification before the signing operation proceeds. Returns the
+        signed data for server-side verification.
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignRequest'
+      responses:
+        '200':
+          description: Data signed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignResult'
+        '403':
+          description: User cancelled the consent prompt
+        '404':
+          description: Credential not found
+  /hello/verify-user:
+    post:
+      operationId: verifyUserConsent
+      summary: Verify user identity
+      description: >-
+        Prompts the user to verify their identity using Windows Hello biometrics
+        or PIN via UserConsentVerifier.RequestVerificationAsync. Returns whether
+        the verification succeeded. This can be used for step-up authentication
+        before sensitive operations.
+      tags:
+        - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyUserRequest'
+      responses:
+        '200':
+          description: Verification result returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyUserResult'
+  /hello/attestation:
+    get:
+      operationId: getKeyAttestation
+      summary: Get key attestation
+      description: >-
+        Retrieves attestation information for a Windows Hello key credential
+        using KeyCredential.GetAttestationAsync. Returns a KeyCredentialAttestationResult
+        with an attestation buffer and certificate chain that can be sent to a
+        server to verify the key was generated in a secure environment (TPM).
+      tags:
+        - Attestation
+      parameters:
+        - name: accountId
+          in: query
+          required: true
+          description: Account identifier for the credential
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Attestation retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttestationResult'
+        '404':
+          description: Credential not found
+components:
+  schemas:
+    HelloAvailability:
+      type: object
+      properties:
+        isSupported:
+          type: boolean
+          description: Whether Windows Hello is supported on this device
+        availableMethods:
+          type: array
+          items:
+            type: string
+            enum:
+              - Face
+              - Fingerprint
+              - PIN
+          description: Available authentication methods
+    CreateCredentialRequest:
+      type: object
+      properties:
+        accountId:
+          type: string
+          description: Unique account identifier
+        keyCreationOption:
+          type: string
+          enum:
+            - ReplaceExisting
+            - FailIfExists
+          default: ReplaceExisting
+      required:
+        - accountId
+    KeyCredential:
+      type: object
+      description: A Windows Hello key credential
+      properties:
+        accountId:
+          type: string
+          description: Account identifier
+        publicKey:
+          type: string
+          format: byte
+          description: Base64-encoded public key (COSE format)
+        status:
+          type: string
+          enum:
+            - Success
+            - UserCanceled
+            - NotFound
+            - UserPrefersPassword
+            - CredentialAlreadyExists
+          description: Credential operation status
+        keyName:
+          type: string
+          description: Key name
+      required:
+        - accountId
+        - status
+    SignRequest:
+      type: object
+      properties:
+        accountId:
+          type: string
+          description: Account identifier for the credential
+        challenge:
+          type: string
+          format: byte
+          description: Base64-encoded challenge buffer to sign
+      required:
+        - accountId
+        - challenge
+    SignResult:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - Success
+            - UserCanceled
+            - NotFound
+            - UserPrefersPassword
+          description: Sign operation status
+        signature:
+          type: string
+          format: byte
+          description: Base64-encoded signed data
+    VerifyUserRequest:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Message to display in the verification prompt
+      required:
+        - message
+    VerifyUserResult:
+      type: object
+      properties:
+        result:
+          type: string
+          enum:
+            - Verified
+            - DeviceNotPresent
+            - NotConfiguredForUser
+            - DisabledByPolicy
+            - DeviceBusy
+            - RetriesExhausted
+            - Canceled
+          description: Verification result
+    AttestationResult:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - Success
+            - TemporaryFailure
+            - NotSupported
+          description: Attestation result status
+        attestationBuffer:
+          type: string
+          format: byte
+          description: Base64-encoded attestation data
+        certificateChainBuffer:
+          type: string
+          format: byte
+          description: Base64-encoded certificate chain

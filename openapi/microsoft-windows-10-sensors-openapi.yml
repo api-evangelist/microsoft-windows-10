@@ -1,0 +1,519 @@
+openapi: 3.1.0
+info:
+  title: Windows Sensors API
+  description: >-
+    API for accessing device sensor data, based on the Windows.Devices.Sensors
+    namespace. Provides a unified interface for reading sensor values and
+    responding to sensor events for accelerometer, gyrometer, compass,
+    inclinometer, light sensor, barometer, altimeter, magnetometer,
+    orientation sensor, pedometer, proximity sensor, activity sensor, and
+    human presence sensor. Sensors must be PC-integrated to be accessible.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/win32/sensorsapi/introduction-to-the-sensor-and-location-platform-in-windows
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+externalDocs:
+  description: Windows.Devices.Sensors API Reference
+  url: https://learn.microsoft.com/en-us/uwp/api/windows.devices.sensors
+servers:
+  - url: https://api.windows.com
+    description: Windows Platform API
+paths:
+  /sensors:
+    get:
+      operationId: listAvailableSensors
+      summary: List available sensors
+      description: >-
+        Retrieves the list of available sensors on the device. Each sensor type
+        uses a GetDefault() static method to check availability. Supported types
+        include Accelerometer, Gyrometer, Compass, Inclinometer, LightSensor,
+        Barometer, Altimeter, Magnetometer, OrientationSensor, Pedometer,
+        ProximitySensor, ActivitySensor, HumanPresenceSensor, and HingeAngleSensor.
+      tags:
+        - Sensors
+      responses:
+        '200':
+          description: Successful retrieval of available sensors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SensorInfo'
+  /sensors/accelerometer/reading:
+    get:
+      operationId: getAccelerometerReading
+      summary: Get accelerometer reading
+      description: >-
+        Retrieves the current accelerometer reading using
+        Accelerometer.GetCurrentReading. Returns G-force values along the
+        x, y, and z axes. The sensor coordinate system is fixed to the device.
+      tags:
+        - Accelerometer
+      responses:
+        '200':
+          description: Successful reading
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccelerometerReading'
+        '404':
+          description: Accelerometer not available
+  /sensors/gyrometer/reading:
+    get:
+      operationId: getGyrometerReading
+      summary: Get gyrometer reading
+      description: >-
+        Retrieves the current gyrometer reading using Gyrometer.GetCurrentReading.
+        Returns angular velocity in degrees per second along the x, y, and z axes.
+      tags:
+        - Gyrometer
+      responses:
+        '200':
+          description: Successful reading
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GyrometerReading'
+        '404':
+          description: Gyrometer not available
+  /sensors/compass/reading:
+    get:
+      operationId: getCompassReading
+      summary: Get compass reading
+      description: >-
+        Retrieves the current compass reading using Compass.GetCurrentReading.
+        Returns heading in degrees relative to magnetic north and optionally
+        true north (if the device has a GPS receiver).
+      tags:
+        - Compass
+      responses:
+        '200':
+          description: Successful reading
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompassReading'
+        '404':
+          description: Compass not available
+  /sensors/inclinometer/reading:
+    get:
+      operationId: getInclinometerReading
+      summary: Get inclinometer reading
+      description: >-
+        Retrieves the current inclinometer reading using
+        Inclinometer.GetCurrentReading. Returns pitch, roll, and yaw values
+        in degrees corresponding to rotation around the x, y, and z axes.
+      tags:
+        - Inclinometer
+      responses:
+        '200':
+          description: Successful reading
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InclinometerReading'
+        '404':
+          description: Inclinometer not available
+  /sensors/light/reading:
+    get:
+      operationId: getLightSensorReading
+      summary: Get light sensor reading
+      description: >-
+        Retrieves the current ambient light sensor reading using
+        LightSensor.GetCurrentReading. Returns illuminance in lux and
+        optionally chromaticity coordinates.
+      tags:
+        - Light Sensor
+      responses:
+        '200':
+          description: Successful reading
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LightSensorReading'
+        '404':
+          description: Light sensor not available
+  /sensors/barometer/reading:
+    get:
+      operationId: getBarometerReading
+      summary: Get barometer reading
+      description: >-
+        Retrieves the current barometer reading using Barometer.GetCurrentReading.
+        Returns atmospheric pressure in hectopascals (hPa).
+      tags:
+        - Barometer
+      responses:
+        '200':
+          description: Successful reading
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BarometerReading'
+        '404':
+          description: Barometer not available
+  /sensors/orientation/reading:
+    get:
+      operationId: getOrientationReading
+      summary: Get orientation sensor reading
+      description: >-
+        Retrieves the current orientation sensor reading using
+        OrientationSensor.GetCurrentReading. Returns a rotation matrix
+        and quaternion representing the device's spatial orientation.
+        The orientation sensor fuses data from accelerometer, compass,
+        and gyrometer for smooth results.
+      tags:
+        - Orientation
+      responses:
+        '200':
+          description: Successful reading
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrientationReading'
+        '404':
+          description: Orientation sensor not available
+  /sensors/pedometer/reading:
+    get:
+      operationId: getPedometerReading
+      summary: Get pedometer reading
+      description: >-
+        Retrieves the current pedometer reading using Pedometer.GetCurrentReadings.
+        Returns step counts categorized by step kind (walking, running, unknown).
+      tags:
+        - Pedometer
+      responses:
+        '200':
+          description: Successful reading
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PedometerReading'
+        '404':
+          description: Pedometer not available
+  /sensors/proximity/reading:
+    get:
+      operationId: getProximityReading
+      summary: Get proximity sensor reading
+      description: >-
+        Retrieves the current proximity sensor reading using
+        ProximitySensor.GetCurrentReading. Returns whether an object is
+        detected and optionally the distance in millimeters.
+      tags:
+        - Proximity
+      responses:
+        '200':
+          description: Successful reading
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProximityReading'
+        '404':
+          description: Proximity sensor not available
+  /sensors/human-presence/reading:
+    get:
+      operationId: getHumanPresenceReading
+      summary: Get human presence sensor reading
+      description: >-
+        Retrieves the current human presence sensor reading using
+        HumanPresenceSensor.GetCurrentReading. Detects whether a user is
+        present, absent, or engaged, with optional head position and
+        orientation data.
+      tags:
+        - Human Presence
+      responses:
+        '200':
+          description: Successful reading
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HumanPresenceReading'
+        '404':
+          description: Human presence sensor not available
+components:
+  schemas:
+    SensorInfo:
+      type: object
+      description: Information about an available sensor
+      properties:
+        type:
+          type: string
+          enum:
+            - Accelerometer
+            - Gyrometer
+            - Compass
+            - Inclinometer
+            - LightSensor
+            - Barometer
+            - Altimeter
+            - Magnetometer
+            - OrientationSensor
+            - SimpleOrientationSensor
+            - Pedometer
+            - ProximitySensor
+            - ActivitySensor
+            - HumanPresenceSensor
+            - HingeAngleSensor
+        deviceId:
+          type: string
+          description: Sensor device identifier
+        minimumReportInterval:
+          type: integer
+          description: Minimum report interval in milliseconds
+        reportInterval:
+          type: integer
+          description: Current report interval in milliseconds
+      required:
+        - type
+    AccelerometerReading:
+      type: object
+      description: Accelerometer reading data
+      properties:
+        accelerationX:
+          type: number
+          format: double
+          description: G-force along X axis
+        accelerationY:
+          type: number
+          format: double
+          description: G-force along Y axis
+        accelerationZ:
+          type: number
+          format: double
+          description: G-force along Z axis
+        timestamp:
+          type: string
+          format: date-time
+    GyrometerReading:
+      type: object
+      description: Gyrometer reading data
+      properties:
+        angularVelocityX:
+          type: number
+          format: double
+          description: Angular velocity around X axis (deg/s)
+        angularVelocityY:
+          type: number
+          format: double
+          description: Angular velocity around Y axis (deg/s)
+        angularVelocityZ:
+          type: number
+          format: double
+          description: Angular velocity around Z axis (deg/s)
+        timestamp:
+          type: string
+          format: date-time
+    CompassReading:
+      type: object
+      description: Compass reading data
+      properties:
+        headingMagneticNorth:
+          type: number
+          format: double
+          description: Heading in degrees relative to magnetic north
+        headingTrueNorth:
+          type: number
+          format: double
+          description: Heading in degrees relative to true north (nullable)
+        headingAccuracy:
+          type: string
+          enum:
+            - Unknown
+            - Unreliable
+            - Approximate
+            - High
+          description: Magnetometer accuracy
+        timestamp:
+          type: string
+          format: date-time
+    InclinometerReading:
+      type: object
+      description: Inclinometer reading data
+      properties:
+        pitchDegrees:
+          type: number
+          format: double
+          description: Pitch rotation around X axis
+        rollDegrees:
+          type: number
+          format: double
+          description: Roll rotation around Y axis
+        yawDegrees:
+          type: number
+          format: double
+          description: Yaw rotation around Z axis
+        yawAccuracy:
+          type: string
+          enum:
+            - Unknown
+            - Unreliable
+            - Approximate
+            - High
+        timestamp:
+          type: string
+          format: date-time
+    LightSensorReading:
+      type: object
+      description: Ambient light sensor reading
+      properties:
+        illuminanceInLux:
+          type: number
+          format: float
+          description: Ambient light level in lux
+        chromaticity:
+          type: object
+          properties:
+            x:
+              type: number
+              format: float
+            'y':
+              type: number
+              format: float
+          description: CIE xyY chromaticity coordinates
+        timestamp:
+          type: string
+          format: date-time
+    BarometerReading:
+      type: object
+      description: Barometer reading data
+      properties:
+        stationPressureInHectopascals:
+          type: number
+          format: double
+          description: Atmospheric pressure in hPa
+        timestamp:
+          type: string
+          format: date-time
+    OrientationReading:
+      type: object
+      description: Orientation sensor reading data
+      properties:
+        quaternion:
+          type: object
+          properties:
+            w:
+              type: number
+              format: float
+            x:
+              type: number
+              format: float
+            'y':
+              type: number
+              format: float
+            z:
+              type: number
+              format: float
+          description: Orientation as a quaternion
+        rotationMatrix:
+          type: object
+          properties:
+            m11:
+              type: number
+              format: float
+            m12:
+              type: number
+              format: float
+            m13:
+              type: number
+              format: float
+            m21:
+              type: number
+              format: float
+            m22:
+              type: number
+              format: float
+            m23:
+              type: number
+              format: float
+            m31:
+              type: number
+              format: float
+            m32:
+              type: number
+              format: float
+            m33:
+              type: number
+              format: float
+          description: 3x3 rotation matrix
+        timestamp:
+          type: string
+          format: date-time
+    PedometerReading:
+      type: object
+      description: Pedometer reading data
+      properties:
+        cumulativeSteps:
+          type: integer
+          description: Total step count
+        stepKind:
+          type: string
+          enum:
+            - Unknown
+            - Walking
+            - Running
+          description: Type of step
+        cumulativeStepsDuration:
+          type: string
+          description: Duration of steps
+        timestamp:
+          type: string
+          format: date-time
+    ProximityReading:
+      type: object
+      description: Proximity sensor reading data
+      properties:
+        isDetected:
+          type: boolean
+          description: Whether an object is detected
+        distanceInMillimeters:
+          type: integer
+          description: Distance to detected object (nullable)
+        timestamp:
+          type: string
+          format: date-time
+    HumanPresenceReading:
+      type: object
+      description: Human presence sensor reading
+      properties:
+        presence:
+          type: string
+          enum:
+            - Unknown
+            - Present
+            - NotPresent
+        engagement:
+          type: string
+          enum:
+            - Unknown
+            - Engaged
+            - Unengaged
+        distanceInMillimeters:
+          type: integer
+          description: Estimated distance to user
+        headPosition:
+          type: object
+          properties:
+            azimuthInDegrees:
+              type: number
+              format: float
+            altitudeInDegrees:
+              type: number
+              format: float
+        headOrientation:
+          type: object
+          properties:
+            pitchInDegrees:
+              type: number
+              format: float
+            rollInDegrees:
+              type: number
+              format: float
+            yawInDegrees:
+              type: number
+              format: float
+        timestamp:
+          type: string
+          format: date-time

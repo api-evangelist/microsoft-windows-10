@@ -1,0 +1,292 @@
+openapi: 3.1.0
+info:
+  title: WinUI API
+  description: >-
+    Modern native UI framework for building Windows desktop applications with
+    the Fluent Design System. Based on the Microsoft.UI.Xaml namespace, WinUI
+    provides XAML-based controls, high-performance rendering, and supports both
+    C# and C++ development. Key areas include controls (NavigationView, TreeView,
+    InfoBar, ProgressRing), layout (Grid, StackPanel, RelativePanel), styling
+    (themes, brushes, animations), and input handling.
+  version: 2.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/winui/winui2/
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+externalDocs:
+  description: WinUI API Reference
+  url: https://learn.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.controls
+servers:
+  - url: https://api.windows.com
+    description: Windows Platform API
+paths:
+  /winui/controls:
+    get:
+      operationId: listWinUIControls
+      summary: List WinUI controls
+      description: >-
+        Retrieves the catalog of available WinUI XAML controls organized by
+        category. Includes basic input controls (Button, TextBox, CheckBox),
+        collections (ListView, GridView, TreeView), navigation (NavigationView,
+        TabView, Pivot), status (ProgressBar, ProgressRing, InfoBar), and
+        media controls (MediaPlayerElement, Image).
+      tags:
+        - Controls
+      parameters:
+        - name: category
+          in: query
+          required: false
+          description: Filter controls by category
+          schema:
+            type: string
+            enum:
+              - BasicInput
+              - Collections
+              - DateAndTime
+              - Dialogs
+              - Layout
+              - Media
+              - Menus
+              - Navigation
+              - Scrolling
+              - StatusAndInfo
+              - Text
+      responses:
+        '200':
+          description: Successful retrieval of controls
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WinUIControl'
+  /winui/controls/{controlName}:
+    get:
+      operationId: getWinUIControl
+      summary: Get control details
+      description: >-
+        Retrieves detailed information about a specific WinUI control including
+        its properties, events, methods, XAML usage examples, and Fluent Design
+        System guidelines.
+      tags:
+        - Controls
+      parameters:
+        - name: controlName
+          in: path
+          required: true
+          description: Control name (e.g., NavigationView, InfoBar, TreeView)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of control details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WinUIControlDetail'
+        '404':
+          description: Control not found
+  /winui/themes:
+    get:
+      operationId: listThemes
+      summary: List available themes
+      description: >-
+        Retrieves the list of available application themes. WinUI supports
+        Light, Dark, and HighContrast themes with automatic system theme
+        detection via Application.RequestedTheme.
+      tags:
+        - Themes
+      responses:
+        '200':
+          description: Successful retrieval of themes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Theme'
+  /winui/styles:
+    get:
+      operationId: listStyles
+      summary: List built-in styles
+      description: >-
+        Retrieves the catalog of built-in WinUI styles and resources including
+        Fluent Design System brushes, typography, corner radius, spacing,
+        and animation definitions from generic.xaml.
+      tags:
+        - Styles
+      parameters:
+        - name: resourceType
+          in: query
+          required: false
+          description: Filter by resource type
+          schema:
+            type: string
+            enum:
+              - Brushes
+              - Typography
+              - CornerRadius
+              - Spacing
+              - Animations
+      responses:
+        '200':
+          description: Successful retrieval of styles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StyleResource'
+  /winui/icons:
+    get:
+      operationId: listIcons
+      summary: List Fluent Design icons
+      description: >-
+        Retrieves the catalog of available Segoe Fluent Icons for use with
+        SymbolIcon and FontIcon controls. Includes icon name, unicode code
+        point, and preview information.
+      tags:
+        - Icons
+      parameters:
+        - name: search
+          in: query
+          required: false
+          description: Search icons by name
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of icons
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FluentIcon'
+components:
+  schemas:
+    WinUIControl:
+      type: object
+      description: A WinUI XAML control
+      properties:
+        name:
+          type: string
+          description: Control class name
+          example: NavigationView
+        namespace:
+          type: string
+          description: Full namespace
+          example: Microsoft.UI.Xaml.Controls
+        category:
+          type: string
+          description: Control category
+        description:
+          type: string
+          description: Brief description
+        isNewInWinUI:
+          type: boolean
+          description: Whether this control is new or updated in WinUI
+      required:
+        - name
+        - namespace
+    WinUIControlDetail:
+      type: object
+      description: Detailed control information
+      properties:
+        name:
+          type: string
+        namespace:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        baseClass:
+          type: string
+          description: Parent class in the inheritance hierarchy
+        properties:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+              defaultValue:
+                type: string
+              description:
+                type: string
+              isDependencyProperty:
+                type: boolean
+        events:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              eventArgsType:
+                type: string
+              description:
+                type: string
+        xamlUsage:
+          type: string
+          description: Example XAML markup
+        guidelines:
+          type: string
+          description: Fluent Design usage guidelines
+    Theme:
+      type: object
+      properties:
+        name:
+          type: string
+          enum:
+            - Light
+            - Dark
+            - HighContrast
+        description:
+          type: string
+        systemColors:
+          type: object
+          additionalProperties:
+            type: string
+          description: Key system colors for this theme
+    StyleResource:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Resource key name
+        type:
+          type: string
+          description: Resource type (Brush, Double, CornerRadius, etc.)
+        value:
+          type: string
+          description: Default value
+        themeVariants:
+          type: object
+          properties:
+            light:
+              type: string
+            dark:
+              type: string
+            highContrast:
+              type: string
+    FluentIcon:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Icon name
+        symbol:
+          type: string
+          description: Symbol enum value (for SymbolIcon)
+        unicodePoint:
+          type: string
+          description: Unicode code point for FontIcon
+          example: E700
+        description:
+          type: string

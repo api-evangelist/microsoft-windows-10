@@ -1,0 +1,338 @@
+openapi: 3.1.0
+info:
+  title: Win32 API
+  description: >-
+    Core Windows API for building traditional desktop applications using C and C++.
+    Win32 provides direct access to system-level functionality including window
+    management, graphics, networking, and hardware. This specification models
+    the major Win32 API categories including User Interface, System Services,
+    Graphics, Networking, Security, and Devices.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/win32/
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+externalDocs:
+  description: Win32 API Reference
+  url: https://learn.microsoft.com/en-us/windows/win32/api/
+servers:
+  - url: https://api.windows.com
+    description: Windows Platform API
+paths:
+  /win32/api-categories:
+    get:
+      operationId: listWin32ApiCategories
+      summary: List Win32 API categories
+      description: >-
+        Retrieves the list of major Win32 API categories including User Interface,
+        Windows Environment (Shell), User Input and Messaging, Data Access and
+        Storage, Diagnostics, Graphics and Multimedia, Devices, System Services,
+        Security and Identity, Networking and Internet, and System Administration.
+      tags:
+        - API Categories
+      responses:
+        '200':
+          description: Successful retrieval of API categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ApiCategory'
+        '401':
+          description: Unauthorized
+  /win32/api-categories/{categoryId}/functions:
+    get:
+      operationId: listCategoryFunctions
+      summary: List functions in a category
+      description: >-
+        Retrieves the list of Win32 API functions within a specified category.
+        Each function includes its DLL, parameters, return type, and minimum
+        supported version information.
+      tags:
+        - Functions
+      parameters:
+        - name: categoryId
+          in: path
+          required: true
+          description: The API category identifier
+          schema:
+            type: string
+        - name: dll
+          in: query
+          required: false
+          description: Filter by DLL name (e.g., kernel32.dll, user32.dll)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of functions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Win32Function'
+        '404':
+          description: Category not found
+  /win32/functions/{functionName}:
+    get:
+      operationId: getWin32FunctionDetails
+      summary: Get Win32 function details
+      description: >-
+        Retrieves detailed information about a specific Win32 function including
+        its syntax, parameters, return value, remarks, requirements (minimum
+        supported client/server, header, library, DLL), and related functions.
+      tags:
+        - Functions
+      parameters:
+        - name: functionName
+          in: path
+          required: true
+          description: The function name (e.g., CreateWindowExW, SendMessage)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of function details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Win32FunctionDetail'
+        '404':
+          description: Function not found
+  /win32/structures/{structureName}:
+    get:
+      operationId: getWin32Structure
+      summary: Get Win32 structure definition
+      description: >-
+        Retrieves the definition of a Win32 data structure, including its
+        fields, sizes, alignment requirements, and associated API functions.
+      tags:
+        - Structures
+      parameters:
+        - name: structureName
+          in: path
+          required: true
+          description: The structure name (e.g., WNDCLASSEXW, MSG, RECT)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of structure definition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Win32Structure'
+        '404':
+          description: Structure not found
+  /win32/messages:
+    get:
+      operationId: listWindowMessages
+      summary: List window messages
+      description: >-
+        Retrieves the list of Win32 window messages (WM_*) used for inter-window
+        communication. Includes system-defined messages for window management,
+        user input, and application-defined messages.
+      tags:
+        - Messages
+      parameters:
+        - name: prefix
+          in: query
+          required: false
+          description: Filter messages by prefix (e.g., WM_, BM_, CB_)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of messages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WindowMessage'
+components:
+  schemas:
+    ApiCategory:
+      type: object
+      description: A major Win32 API category
+      properties:
+        id:
+          type: string
+          description: Category identifier
+        name:
+          type: string
+          description: Category name
+          example: User Interface
+        description:
+          type: string
+          description: Category description
+        subcategories:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              description:
+                type: string
+              referenceUrl:
+                type: string
+                format: uri
+        functionCount:
+          type: integer
+          description: Number of functions in this category
+      required:
+        - id
+        - name
+    Win32Function:
+      type: object
+      description: A Win32 API function
+      properties:
+        name:
+          type: string
+          description: Function name
+          example: CreateWindowExW
+        dll:
+          type: string
+          description: DLL that exports the function
+          example: user32.dll
+        header:
+          type: string
+          description: Header file declaring the function
+          example: winuser.h
+        category:
+          type: string
+          description: API category
+        description:
+          type: string
+          description: Brief description of the function
+        minClientVersion:
+          type: string
+          description: Minimum supported client version
+          example: Windows 10
+      required:
+        - name
+        - dll
+    Win32FunctionDetail:
+      type: object
+      description: Detailed Win32 function information
+      properties:
+        name:
+          type: string
+          description: Function name
+        syntax:
+          type: string
+          description: Function signature in C/C++
+        parameters:
+          type: array
+          items:
+            $ref: '#/components/schemas/FunctionParameter'
+        returnValue:
+          type: object
+          properties:
+            type:
+              type: string
+            description:
+              type: string
+        remarks:
+          type: string
+          description: Additional notes and usage guidance
+        requirements:
+          $ref: '#/components/schemas/FunctionRequirements'
+        relatedFunctions:
+          type: array
+          items:
+            type: string
+      required:
+        - name
+        - syntax
+    FunctionParameter:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        direction:
+          type: string
+          enum:
+            - in
+            - out
+            - inout
+        description:
+          type: string
+        optional:
+          type: boolean
+    FunctionRequirements:
+      type: object
+      properties:
+        minimumSupportedClient:
+          type: string
+          example: Windows 10 [desktop apps only]
+        minimumSupportedServer:
+          type: string
+          example: Windows Server 2016
+        header:
+          type: string
+          example: winuser.h
+        library:
+          type: string
+          example: User32.lib
+        dll:
+          type: string
+          example: User32.dll
+    Win32Structure:
+      type: object
+      description: A Win32 data structure
+      properties:
+        name:
+          type: string
+          description: Structure name
+        fields:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+              description:
+                type: string
+        sizeInBytes:
+          type: integer
+          description: Size of the structure in bytes
+        header:
+          type: string
+          description: Header file defining the structure
+      required:
+        - name
+        - fields
+    WindowMessage:
+      type: object
+      description: A Win32 window message
+      properties:
+        name:
+          type: string
+          description: Message constant name
+          example: WM_CREATE
+        value:
+          type: string
+          description: Numeric value of the message
+          example: "0x0001"
+        description:
+          type: string
+          description: Description of when the message is sent
+        wParam:
+          type: string
+          description: Meaning of the wParam parameter
+        lParam:
+          type: string
+          description: Meaning of the lParam parameter
+      required:
+        - name
+        - value

@@ -1,0 +1,295 @@
+openapi: 3.1.0
+info:
+  title: Windows Runtime (WinRT) API
+  description: >-
+    Modern API surface for building Universal Windows Platform (UWP) applications
+    that run across all Windows 10 device families. WinRT provides a type system,
+    APIs, and runtime environment for building apps using C#, C++, Visual Basic,
+    and JavaScript. This specification models the key WinRT namespaces and their
+    primary classes as a RESTful interface for documentation purposes.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://developer.microsoft.com/en-us/windows/
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+externalDocs:
+  description: Windows Runtime API Reference
+  url: https://learn.microsoft.com/en-us/uwp/api/
+servers:
+  - url: https://api.windows.com
+    description: Windows Platform API
+paths:
+  /winrt/namespaces:
+    get:
+      operationId: listWinRTNamespaces
+      summary: List WinRT namespaces
+      description: >-
+        Retrieves the list of available Windows Runtime namespaces, including
+        Windows.UI, Windows.Storage, Windows.Devices, Windows.Media,
+        Windows.Networking, Windows.Security, and Windows.AI. Each namespace
+        contains classes, interfaces, enums, and delegates.
+      tags:
+        - Namespaces
+      responses:
+        '200':
+          description: Successful retrieval of WinRT namespaces
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WinRTNamespace'
+        '401':
+          description: Unauthorized
+  /winrt/namespaces/{namespaceName}/classes:
+    get:
+      operationId: listNamespaceClasses
+      summary: List classes in a namespace
+      description: >-
+        Retrieves the list of classes available within a specified WinRT
+        namespace. Classes include their properties, methods, events, and
+        constructors as documented in the WinRT type system.
+      tags:
+        - Classes
+      parameters:
+        - name: namespaceName
+          in: path
+          required: true
+          description: The fully qualified WinRT namespace name (e.g., Windows.UI.Notifications)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of classes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WinRTClass'
+        '404':
+          description: Namespace not found
+  /winrt/namespaces/{namespaceName}/classes/{className}:
+    get:
+      operationId: getClassDetails
+      summary: Get class details
+      description: >-
+        Retrieves detailed information about a specific WinRT class, including
+        its properties, methods, events, interfaces implemented, and inheritance
+        hierarchy.
+      tags:
+        - Classes
+      parameters:
+        - name: namespaceName
+          in: path
+          required: true
+          description: The fully qualified WinRT namespace name
+          schema:
+            type: string
+        - name: className
+          in: path
+          required: true
+          description: The class name
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of class details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WinRTClassDetail'
+        '404':
+          description: Class not found
+  /winrt/activation:
+    post:
+      operationId: activateRuntimeClass
+      summary: Activate a runtime class
+      description: >-
+        Activates (instantiates) a WinRT runtime class by its activation factory.
+        The Windows Runtime uses activation factories to create instances of
+        runtime classes. This is the core mechanism by which UWP apps create
+        objects.
+      tags:
+        - Activation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivationRequest'
+      responses:
+        '200':
+          description: Runtime class activated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivationResult'
+        '400':
+          description: Invalid activation request
+        '404':
+          description: Runtime class not found
+components:
+  schemas:
+    WinRTNamespace:
+      type: object
+      description: A Windows Runtime namespace containing types and APIs
+      properties:
+        name:
+          type: string
+          description: Fully qualified namespace name
+          example: Windows.UI.Notifications
+        description:
+          type: string
+          description: Description of the namespace purpose
+        classCount:
+          type: integer
+          description: Number of classes in the namespace
+        interfaceCount:
+          type: integer
+          description: Number of interfaces in the namespace
+        enumCount:
+          type: integer
+          description: Number of enumerations in the namespace
+        delegateCount:
+          type: integer
+          description: Number of delegates in the namespace
+        minSupportedVersion:
+          type: string
+          description: Minimum supported Windows version
+          example: "10.0.10240.0"
+      required:
+        - name
+    WinRTClass:
+      type: object
+      description: A WinRT runtime class
+      properties:
+        name:
+          type: string
+          description: Class name
+        namespace:
+          type: string
+          description: Fully qualified namespace
+        description:
+          type: string
+          description: Class description
+        isSealed:
+          type: boolean
+          description: Whether the class is sealed
+        isStatic:
+          type: boolean
+          description: Whether the class is static (no instances)
+        threading:
+          type: string
+          enum:
+            - STA
+            - MTA
+            - Both
+          description: Threading model
+      required:
+        - name
+        - namespace
+    WinRTClassDetail:
+      type: object
+      description: Detailed information about a WinRT class
+      properties:
+        name:
+          type: string
+          description: Class name
+        namespace:
+          type: string
+          description: Fully qualified namespace
+        description:
+          type: string
+          description: Detailed class description
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassProperty'
+        methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassMethod'
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassEvent'
+        interfaces:
+          type: array
+          items:
+            type: string
+          description: List of implemented interface names
+      required:
+        - name
+        - namespace
+    ClassProperty:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        isReadOnly:
+          type: boolean
+        description:
+          type: string
+    ClassMethod:
+      type: object
+      properties:
+        name:
+          type: string
+        returnType:
+          type: string
+        parameters:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+        isStatic:
+          type: boolean
+        description:
+          type: string
+    ClassEvent:
+      type: object
+      properties:
+        name:
+          type: string
+        eventArgsType:
+          type: string
+        description:
+          type: string
+    ActivationRequest:
+      type: object
+      properties:
+        runtimeClassName:
+          type: string
+          description: Fully qualified runtime class name to activate
+          example: Windows.UI.Notifications.ToastNotification
+        constructorArgs:
+          type: array
+          items:
+            type: object
+          description: Arguments to pass to the constructor
+      required:
+        - runtimeClassName
+    ActivationResult:
+      type: object
+      properties:
+        instanceId:
+          type: string
+          description: Unique identifier for the activated instance
+        runtimeClassName:
+          type: string
+          description: The runtime class that was activated
+        status:
+          type: string
+          enum:
+            - activated
+            - failed
+          description: Activation result status

@@ -1,0 +1,561 @@
+openapi: 3.1.0
+info:
+  title: Windows Notifications API
+  description: >-
+    API for sending and managing toast notifications, tile notifications, and
+    badge updates in Windows 10 applications. Based on the Windows.UI.Notifications
+    namespace, this API supports adaptive and interactive notifications with
+    custom layouts, actions, and scheduling. Key classes include ToastNotificationManager,
+    TileUpdateManager, BadgeUpdateManager, and their associated notification types.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/uwp/design/shell/tiles-and-notifications/
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+externalDocs:
+  description: Windows.UI.Notifications API Reference
+  url: https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications
+servers:
+  - url: https://api.windows.com
+    description: Windows Platform API
+paths:
+  /notifications/toast:
+    post:
+      operationId: createToastNotification
+      summary: Create a toast notification
+      description: >-
+        Creates and displays a toast notification using the ToastNotificationManager.
+        Toast notifications are pop-up UI elements that appear in the lower right
+        of the screen and can contain text, images, and interactive elements such
+        as buttons and text input fields. The notification content is defined
+        using adaptive notification XML templates.
+      tags:
+        - Toast Notifications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ToastNotificationRequest'
+      responses:
+        '201':
+          description: Toast notification created and displayed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToastNotification'
+        '400':
+          description: Invalid notification content
+    get:
+      operationId: listToastNotifications
+      summary: List active toast notifications
+      description: >-
+        Retrieves the list of currently active toast notifications for the
+        application. Uses the ToastNotificationHistory class to access
+        notification history and manage displayed notifications.
+      tags:
+        - Toast Notifications
+      responses:
+        '200':
+          description: Successful retrieval of active toast notifications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ToastNotification'
+  /notifications/toast/{notificationTag}:
+    get:
+      operationId: getToastNotification
+      summary: Get a toast notification by tag
+      description: >-
+        Retrieves a specific toast notification identified by its tag. Tags
+        are used as unique identifiers for notifications, enabling updates
+        and removal of individual notifications.
+      tags:
+        - Toast Notifications
+      parameters:
+        - name: notificationTag
+          in: path
+          required: true
+          description: The notification tag identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of the toast notification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToastNotification'
+        '404':
+          description: Notification not found
+    delete:
+      operationId: removeToastNotification
+      summary: Remove a toast notification
+      description: >-
+        Removes a specific toast notification from the notification center
+        using the ToastNotificationHistory.Remove method. The notification
+        is identified by its tag.
+      tags:
+        - Toast Notifications
+      parameters:
+        - name: notificationTag
+          in: path
+          required: true
+          description: The notification tag identifier
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Notification removed successfully
+        '404':
+          description: Notification not found
+  /notifications/toast/scheduled:
+    post:
+      operationId: scheduleToastNotification
+      summary: Schedule a toast notification
+      description: >-
+        Schedules a toast notification for future delivery using the
+        ScheduledToastNotification class. The notification will be displayed
+        at the specified delivery time and can optionally recur at a specified
+        interval.
+      tags:
+        - Scheduled Notifications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScheduledToastNotificationRequest'
+      responses:
+        '201':
+          description: Scheduled notification created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduledToastNotification'
+        '400':
+          description: Invalid schedule request
+    get:
+      operationId: listScheduledToastNotifications
+      summary: List scheduled toast notifications
+      description: >-
+        Retrieves the list of scheduled toast notifications pending delivery.
+        Uses the ToastNotifier.GetScheduledToastNotifications method.
+      tags:
+        - Scheduled Notifications
+      responses:
+        '200':
+          description: Successful retrieval of scheduled notifications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ScheduledToastNotification'
+  /notifications/tile:
+    post:
+      operationId: updateTileNotification
+      summary: Update a tile notification
+      description: >-
+        Updates the content of a Start menu tile using the TileUpdateManager
+        and TileUpdater classes. Tile notifications can display text, images,
+        and badges using predefined or adaptive templates.
+      tags:
+        - Tile Notifications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TileNotificationRequest'
+      responses:
+        '200':
+          description: Tile updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TileNotification'
+        '400':
+          description: Invalid tile content
+  /notifications/badge:
+    post:
+      operationId: updateBadgeNotification
+      summary: Update a badge notification
+      description: >-
+        Updates the badge overlay on a tile using the BadgeUpdateManager and
+        BadgeUpdater classes. Badges can display a number (1-99) or a status
+        glyph on the tile corner.
+      tags:
+        - Badge Notifications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BadgeNotificationRequest'
+      responses:
+        '200':
+          description: Badge updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadgeNotification'
+        '400':
+          description: Invalid badge content
+  /notifications/collections:
+    get:
+      operationId: listToastCollections
+      summary: List toast notification collections
+      description: >-
+        Retrieves the list of toast notification collections for the application.
+        Collections group related notifications using the ToastCollection and
+        ToastCollectionManager classes.
+      tags:
+        - Collections
+      responses:
+        '200':
+          description: Successful retrieval of notification collections
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ToastCollection'
+    post:
+      operationId: createToastCollection
+      summary: Create a toast notification collection
+      description: >-
+        Creates a new toast notification collection for grouping related
+        notifications. Uses the ToastCollectionManager.SaveToastCollectionAsync method.
+      tags:
+        - Collections
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ToastCollectionRequest'
+      responses:
+        '201':
+          description: Collection created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToastCollection'
+        '400':
+          description: Invalid collection request
+components:
+  schemas:
+    ToastNotificationRequest:
+      type: object
+      description: Request to create a toast notification
+      properties:
+        content:
+          $ref: '#/components/schemas/ToastContent'
+        tag:
+          type: string
+          description: Tag identifier for the notification (max 16 characters)
+        group:
+          type: string
+          description: Group identifier for the notification (max 16 characters)
+        expirationTime:
+          type: string
+          format: date-time
+          description: Time when the notification expires
+        suppressPopup:
+          type: boolean
+          description: Whether to suppress the popup and send directly to action center
+        priority:
+          type: string
+          enum:
+            - Default
+            - High
+          description: Notification priority level
+        notificationMirroring:
+          type: string
+          enum:
+            - Allowed
+            - Disabled
+          description: Whether to allow mirroring to other devices
+      required:
+        - content
+    ToastContent:
+      type: object
+      description: The visual and interactive content of a toast notification
+      properties:
+        visual:
+          type: object
+          properties:
+            binding:
+              type: object
+              properties:
+                template:
+                  type: string
+                  description: Template type (e.g., ToastGeneric)
+                  example: ToastGeneric
+                texts:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      content:
+                        type: string
+                      hintStyle:
+                        type: string
+                  description: Text elements in the notification
+                images:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      src:
+                        type: string
+                        format: uri
+                      placement:
+                        type: string
+                        enum:
+                          - inline
+                          - appLogoOverride
+                          - hero
+                      hintCrop:
+                        type: string
+                        enum:
+                          - none
+                          - circle
+                  description: Image elements in the notification
+                attributionText:
+                  type: string
+                  description: Attribution text shown at the bottom
+        actions:
+          type: object
+          properties:
+            inputs:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  type:
+                    type: string
+                    enum:
+                      - text
+                      - selection
+                  placeHolderContent:
+                    type: string
+              description: Interactive input fields
+            buttons:
+              type: array
+              items:
+                type: object
+                properties:
+                  content:
+                    type: string
+                  arguments:
+                    type: string
+                  activationType:
+                    type: string
+                    enum:
+                      - foreground
+                      - background
+                      - protocol
+                      - system
+              description: Action buttons
+        audio:
+          type: object
+          properties:
+            src:
+              type: string
+              description: Audio source URI
+            loop:
+              type: boolean
+              description: Whether the audio loops
+            silent:
+              type: boolean
+              description: Whether the notification is silent
+    ToastNotification:
+      type: object
+      description: A toast notification as defined by the ToastNotification class
+      properties:
+        tag:
+          type: string
+          description: Tag identifier
+        group:
+          type: string
+          description: Group identifier
+        content:
+          $ref: '#/components/schemas/ToastContent'
+        expirationTime:
+          type: string
+          format: date-time
+        suppressPopup:
+          type: boolean
+        priority:
+          type: string
+          enum:
+            - Default
+            - High
+        data:
+          type: object
+          description: NotificationData for data binding
+          additionalProperties:
+            type: string
+    ScheduledToastNotificationRequest:
+      type: object
+      description: Request to schedule a toast notification
+      properties:
+        content:
+          $ref: '#/components/schemas/ToastContent'
+        deliveryTime:
+          type: string
+          format: date-time
+          description: The time to deliver the notification
+        snoozeInterval:
+          type: string
+          description: ISO 8601 duration for snooze interval
+        maximumSnoozeCount:
+          type: integer
+          description: Maximum number of times the notification can be snoozed
+          maximum: 5
+        tag:
+          type: string
+          description: Tag identifier
+        group:
+          type: string
+          description: Group identifier
+      required:
+        - content
+        - deliveryTime
+    ScheduledToastNotification:
+      type: object
+      description: A scheduled toast notification
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        content:
+          $ref: '#/components/schemas/ToastContent'
+        deliveryTime:
+          type: string
+          format: date-time
+        snoozeInterval:
+          type: string
+        maximumSnoozeCount:
+          type: integer
+        tag:
+          type: string
+        group:
+          type: string
+    TileNotificationRequest:
+      type: object
+      description: Request to update a tile notification
+      properties:
+        template:
+          type: string
+          description: Tile template type
+          enum:
+            - TileSmall
+            - TileMedium
+            - TileWide
+            - TileLarge
+        texts:
+          type: array
+          items:
+            type: string
+          description: Text content for the tile
+        images:
+          type: array
+          items:
+            type: object
+            properties:
+              src:
+                type: string
+                format: uri
+              alt:
+                type: string
+          description: Image content for the tile
+        tag:
+          type: string
+          description: Tag for the notification
+        expirationTime:
+          type: string
+          format: date-time
+      required:
+        - template
+    TileNotification:
+      type: object
+      description: A tile notification as defined by the TileNotification class
+      properties:
+        tag:
+          type: string
+        expirationTime:
+          type: string
+          format: date-time
+        template:
+          type: string
+    BadgeNotificationRequest:
+      type: object
+      description: Request to update a badge
+      properties:
+        type:
+          type: string
+          enum:
+            - numeric
+            - glyph
+          description: Badge type
+        value:
+          type: string
+          description: >-
+            Badge value. For numeric, a number 1-99. For glyph, one of the
+            predefined status glyphs (none, activity, alarm, alert, attention,
+            available, away, busy, error, newMessage, paused, playing, unavailable).
+      required:
+        - type
+        - value
+    BadgeNotification:
+      type: object
+      description: A badge notification as defined by the BadgeNotification class
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+        expirationTime:
+          type: string
+          format: date-time
+    ToastCollection:
+      type: object
+      description: A collection of related toast notifications
+      properties:
+        id:
+          type: string
+          description: Collection identifier
+        displayName:
+          type: string
+          description: Display name for the collection
+        launchArgs:
+          type: string
+          description: Launch arguments when collection is activated
+        icon:
+          type: string
+          format: uri
+          description: Icon URI for the collection
+    ToastCollectionRequest:
+      type: object
+      properties:
+        id:
+          type: string
+        displayName:
+          type: string
+        launchArgs:
+          type: string
+        icon:
+          type: string
+          format: uri
+      required:
+        - id
+        - displayName

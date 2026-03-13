@@ -1,0 +1,373 @@
+openapi: 3.1.0
+info:
+  title: Windows Media Capture API
+  description: >-
+    API for capturing photos, audio, and video from camera and microphone devices
+    in Windows applications. Based on the Windows.Media.Capture namespace, it
+    provides classes for previewing (CaptureElement), recording (MediaCapture),
+    and processing media streams with configurable encoding settings
+    (MediaEncodingProfile). Supports photo capture, video recording, audio
+    recording, and advanced scenarios like HDR and variable photo sequences.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/develop/audio-video-camera
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+externalDocs:
+  description: Windows.Media.Capture API Reference
+  url: https://learn.microsoft.com/en-us/uwp/api/windows.media.capture
+servers:
+  - url: https://api.windows.com
+    description: Windows Platform API
+paths:
+  /media/capture/devices:
+    get:
+      operationId: listCaptureDevices
+      summary: List media capture devices
+      description: >-
+        Enumerates available media capture devices (cameras and microphones)
+        using DeviceInformation.FindAllAsync with the appropriate device class
+        filter. Returns device information including ID, name, location, and
+        capabilities.
+      tags:
+        - Devices
+      parameters:
+        - name: deviceClass
+          in: query
+          required: false
+          description: Filter by device class
+          schema:
+            type: string
+            enum:
+              - VideoCapture
+              - AudioCapture
+              - AudioRender
+      responses:
+        '200':
+          description: Successful retrieval of capture devices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CaptureDevice'
+  /media/capture/sessions:
+    post:
+      operationId: initializeMediaCapture
+      summary: Initialize a media capture session
+      description: >-
+        Initializes a MediaCapture session with specified settings using
+        MediaCapture.InitializeAsync. The MediaCaptureInitializationSettings
+        specify the video and audio device, streaming category, and sharing mode.
+      tags:
+        - Sessions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InitializeCaptureRequest'
+      responses:
+        '201':
+          description: Capture session initialized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaptureSession'
+        '400':
+          description: Invalid initialization settings
+        '403':
+          description: Camera/microphone access denied
+  /media/capture/sessions/{sessionId}/photo:
+    post:
+      operationId: capturePhoto
+      summary: Capture a photo
+      description: >-
+        Captures a photo using MediaCapture.CapturePhotoToStorageFileAsync or
+        CapturePhotoToStreamAsync. The photo is encoded using the specified
+        ImageEncodingProperties (JPEG, PNG, BMP, or TIFF).
+      tags:
+        - Photo Capture
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          description: Capture session identifier
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PhotoCaptureRequest'
+      responses:
+        '200':
+          description: Photo captured successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CapturedPhoto'
+        '404':
+          description: Session not found
+  /media/capture/sessions/{sessionId}/video/start:
+    post:
+      operationId: startVideoRecording
+      summary: Start video recording
+      description: >-
+        Starts video recording using MediaCapture.StartRecordToStorageFileAsync
+        or StartRecordToStreamAsync. The video is encoded using the specified
+        MediaEncodingProfile (MP4, WMV, or AVI with configurable resolution,
+        bitrate, and frame rate).
+      tags:
+        - Video Recording
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          description: Capture session identifier
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VideoRecordingRequest'
+      responses:
+        '200':
+          description: Video recording started
+        '404':
+          description: Session not found
+  /media/capture/sessions/{sessionId}/video/stop:
+    post:
+      operationId: stopVideoRecording
+      summary: Stop video recording
+      description: >-
+        Stops an active video recording using MediaCapture.StopRecordAsync.
+        Finalizes the output file or stream and returns information about
+        the recorded media.
+      tags:
+        - Video Recording
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          description: Capture session identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Video recording stopped
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecordedMedia'
+        '404':
+          description: Session not found
+  /media/capture/sessions/{sessionId}/preview/start:
+    post:
+      operationId: startPreview
+      summary: Start camera preview
+      description: >-
+        Starts the camera preview stream using MediaCapture.StartPreviewAsync.
+        The preview stream is displayed in a CaptureElement XAML control.
+      tags:
+        - Preview
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          description: Capture session identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Preview started
+        '404':
+          description: Session not found
+  /media/capture/sessions/{sessionId}/preview/stop:
+    post:
+      operationId: stopPreview
+      summary: Stop camera preview
+      description: >-
+        Stops the camera preview stream using MediaCapture.StopPreviewAsync.
+      tags:
+        - Preview
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          description: Capture session identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Preview stopped
+        '404':
+          description: Session not found
+components:
+  schemas:
+    CaptureDevice:
+      type: object
+      description: A media capture device
+      properties:
+        id:
+          type: string
+          description: Device identifier
+        name:
+          type: string
+          description: Device display name
+        deviceClass:
+          type: string
+          enum:
+            - VideoCapture
+            - AudioCapture
+            - AudioRender
+        enclosureLocation:
+          type: object
+          properties:
+            panel:
+              type: string
+              enum:
+                - Front
+                - Back
+                - Top
+                - Bottom
+                - Left
+                - Right
+                - Unknown
+          description: Physical location on the device
+        isEnabled:
+          type: boolean
+        isDefault:
+          type: boolean
+      required:
+        - id
+        - name
+    InitializeCaptureRequest:
+      type: object
+      properties:
+        videoDeviceId:
+          type: string
+          description: Video capture device ID
+        audioDeviceId:
+          type: string
+          description: Audio capture device ID
+        streamingCaptureMode:
+          type: string
+          enum:
+            - AudioAndVideo
+            - Audio
+            - Video
+          default: AudioAndVideo
+        sharingMode:
+          type: string
+          enum:
+            - ExclusiveControl
+            - SharedReadOnly
+          default: ExclusiveControl
+        photoCaptureSource:
+          type: string
+          enum:
+            - Auto
+            - VideoPreview
+            - Photo
+          default: Auto
+    CaptureSession:
+      type: object
+      description: An initialized media capture session
+      properties:
+        id:
+          type: string
+          description: Session identifier
+        state:
+          type: string
+          enum:
+            - Initialized
+            - Previewing
+            - Recording
+            - Paused
+        videoDeviceId:
+          type: string
+        audioDeviceId:
+          type: string
+    PhotoCaptureRequest:
+      type: object
+      properties:
+        encodingFormat:
+          type: string
+          enum:
+            - Jpeg
+            - Png
+            - Bmp
+            - Tiff
+          default: Jpeg
+        outputPath:
+          type: string
+          description: File path for the captured photo
+      required:
+        - outputPath
+    CapturedPhoto:
+      type: object
+      properties:
+        filePath:
+          type: string
+          description: Path to the captured photo file
+        width:
+          type: integer
+          description: Photo width in pixels
+        height:
+          type: integer
+          description: Photo height in pixels
+        encodingFormat:
+          type: string
+        sizeInBytes:
+          type: integer
+          format: int64
+    VideoRecordingRequest:
+      type: object
+      properties:
+        encodingProfile:
+          type: string
+          enum:
+            - Mp4
+            - Wmv
+            - Avi
+          default: Mp4
+        quality:
+          type: string
+          enum:
+            - Auto
+            - HD1080p
+            - HD720p
+            - Wvga
+            - Ntsc
+            - Pal
+            - Vga
+            - Qvga
+          default: Auto
+        outputPath:
+          type: string
+          description: File path for the recorded video
+      required:
+        - outputPath
+    RecordedMedia:
+      type: object
+      properties:
+        filePath:
+          type: string
+        durationInSeconds:
+          type: number
+          format: double
+        width:
+          type: integer
+        height:
+          type: integer
+        encodingProfile:
+          type: string
+        sizeInBytes:
+          type: integer
+          format: int64

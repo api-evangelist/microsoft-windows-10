@@ -1,0 +1,312 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://developer.microsoft.com/schemas/windows-10/bluetooth-device.json",
+  "title": "Windows 10 Bluetooth Device",
+  "description": "Schema for Windows 10 Bluetooth device data including Classic and Low Energy (BLE) devices as defined by the Windows.Devices.Bluetooth namespace. Covers BluetoothDevice, BluetoothLEDevice, GATT services and characteristics, RFCOMM services, and BLE advertisements.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Device identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Device display name"
+    },
+    "bluetoothAddress": {
+      "type": "string",
+      "pattern": "^([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}$",
+      "description": "Bluetooth MAC address in XX:XX:XX:XX:XX:XX format"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["Classic", "LowEnergy", "Dual"],
+      "description": "Bluetooth device type"
+    },
+    "connectionStatus": {
+      "type": "string",
+      "enum": ["Connected", "Disconnected"],
+      "description": "Current connection status (BluetoothConnectionStatus)"
+    },
+    "isPaired": {
+      "type": "boolean",
+      "description": "Whether the device is paired"
+    },
+    "classOfDevice": {
+      "$ref": "#/$defs/ClassOfDevice"
+    },
+    "appearance": {
+      "$ref": "#/$defs/BluetoothLEAppearance"
+    },
+    "services": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/GattService"
+      },
+      "description": "GATT services (for BLE devices)"
+    },
+    "rfcommServices": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/RfcommService"
+      },
+      "description": "RFCOMM services (for Classic devices)"
+    }
+  },
+  "required": ["id", "name", "type"],
+  "$defs": {
+    "ClassOfDevice": {
+      "type": "object",
+      "description": "Bluetooth Class of Device (for Classic devices)",
+      "properties": {
+        "majorClass": {
+          "type": "string",
+          "enum": [
+            "Miscellaneous", "Computer", "Phone", "NetworkAccessPoint",
+            "AudioVideo", "Peripheral", "Imaging", "Wearable", "Toy",
+            "Health", "Uncategorized"
+          ],
+          "description": "Major device class"
+        },
+        "minorClass": {
+          "type": "string",
+          "description": "Minor device class"
+        },
+        "serviceCapabilities": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "LimitedDiscoverableMode", "PositioningService", "NetworkingService",
+              "RenderingService", "CapturingService", "ObjectTransferService",
+              "AudioService", "TelephonyService", "InformationService"
+            ]
+          },
+          "description": "Service capability flags"
+        },
+        "rawValue": {
+          "type": "integer",
+          "description": "Raw Class of Device value"
+        }
+      }
+    },
+    "BluetoothLEAppearance": {
+      "type": "object",
+      "description": "BLE device appearance (BluetoothLEAppearance class)",
+      "properties": {
+        "category": {
+          "type": "integer",
+          "description": "Appearance category value"
+        },
+        "subCategory": {
+          "type": "integer",
+          "description": "Appearance sub-category value"
+        },
+        "rawValue": {
+          "type": "integer",
+          "description": "Raw appearance value"
+        }
+      }
+    },
+    "GattService": {
+      "type": "object",
+      "description": "A GATT service on a BLE device (GattDeviceService class)",
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Service UUID"
+        },
+        "attributeHandle": {
+          "type": "integer",
+          "description": "GATT attribute handle"
+        },
+        "name": {
+          "type": "string",
+          "description": "Standard service name (if recognized)"
+        },
+        "characteristics": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/GattCharacteristic"
+          }
+        },
+        "parentServices": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": "UUIDs of parent services (for included services)"
+        }
+      },
+      "required": ["uuid"]
+    },
+    "GattCharacteristic": {
+      "type": "object",
+      "description": "A GATT characteristic (GattCharacteristic class)",
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "format": "uuid",
+          "description": "Characteristic UUID"
+        },
+        "attributeHandle": {
+          "type": "integer",
+          "description": "GATT attribute handle"
+        },
+        "name": {
+          "type": "string",
+          "description": "Standard characteristic name (if recognized)"
+        },
+        "characteristicProperties": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "enum": [
+              "None", "Broadcast", "Read", "WriteWithoutResponse", "Write",
+              "Notify", "Indicate", "AuthenticatedSignedWrites",
+              "ExtendedProperties", "ReliableWrites", "WritableAuxiliaries"
+            ]
+          },
+          "description": "Supported operations (GattCharacteristicProperties flags)"
+        },
+        "protectionLevel": {
+          "type": "string",
+          "enum": ["Plain", "AuthenticationRequired", "EncryptionRequired", "EncryptionAndAuthenticationRequired"],
+          "description": "Required protection level (GattProtectionLevel)"
+        },
+        "descriptors": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/GattDescriptor"
+          }
+        },
+        "userDescription": {
+          "type": "string",
+          "description": "User-friendly description from the Characteristic User Description descriptor"
+        },
+        "presentationFormats": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/GattPresentationFormat"
+          }
+        }
+      },
+      "required": ["uuid", "characteristicProperties"]
+    },
+    "GattDescriptor": {
+      "type": "object",
+      "description": "A GATT descriptor (GattDescriptor class)",
+      "properties": {
+        "uuid": {
+          "type": "string",
+          "format": "uuid"
+        },
+        "attributeHandle": {
+          "type": "integer"
+        }
+      },
+      "required": ["uuid"]
+    },
+    "GattPresentationFormat": {
+      "type": "object",
+      "description": "Presentation format for a GATT characteristic",
+      "properties": {
+        "formatType": {
+          "type": "integer",
+          "description": "Format type byte"
+        },
+        "exponent": {
+          "type": "integer"
+        },
+        "unit": {
+          "type": "integer",
+          "description": "Unit UUID (16-bit)"
+        },
+        "namespace": {
+          "type": "integer"
+        },
+        "description": {
+          "type": "integer"
+        }
+      }
+    },
+    "RfcommService": {
+      "type": "object",
+      "description": "An RFCOMM service (RfcommDeviceService class)",
+      "properties": {
+        "serviceId": {
+          "type": "string",
+          "description": "RFCOMM service UUID"
+        },
+        "connectionHostName": {
+          "type": "string"
+        },
+        "connectionServiceName": {
+          "type": "string"
+        },
+        "maxProtocolDataUnit": {
+          "type": "integer",
+          "description": "Maximum PDU size"
+        }
+      },
+      "required": ["serviceId"]
+    },
+    "BLEAdvertisement": {
+      "type": "object",
+      "description": "A BLE advertisement received by BluetoothLEAdvertisementWatcher",
+      "properties": {
+        "bluetoothAddress": {
+          "type": "string",
+          "description": "Advertiser Bluetooth address"
+        },
+        "advertisementType": {
+          "type": "string",
+          "enum": [
+            "ConnectableUndirected", "ConnectableDirected",
+            "ScannableUndirected", "NonConnectableUndirected", "ScanResponse"
+          ],
+          "description": "Advertisement type"
+        },
+        "rawSignalStrengthInDBm": {
+          "type": "integer",
+          "description": "RSSI in dBm"
+        },
+        "localName": {
+          "type": "string",
+          "description": "Device local name from advertisement"
+        },
+        "serviceUuids": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "description": "Advertised service UUIDs"
+        },
+        "manufacturerData": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "companyId": {
+                "type": "integer"
+              },
+              "data": {
+                "type": "string",
+                "format": "byte"
+              }
+            }
+          },
+          "description": "Manufacturer-specific data sections"
+        },
+        "timestamp": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["bluetoothAddress"]
+    }
+  }
+}

@@ -1,0 +1,426 @@
+openapi: 3.1.0
+info:
+  title: Windows Networking API
+  description: >-
+    API for network communication in Windows applications, based on the
+    Windows.Networking.Sockets and Windows.Web.Http namespaces. Provides
+    support for TCP/UDP sockets (StreamSocket, DatagramSocket), WebSockets
+    (MessageWebSocket, StreamWebSocket), HTTP clients (HttpClient), and
+    background transfers (BackgroundDownloader, BackgroundUploader).
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/uwp/networking/
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+externalDocs:
+  description: Windows Networking API Reference
+  url: https://learn.microsoft.com/en-us/uwp/api/windows.networking.sockets
+servers:
+  - url: https://api.windows.com
+    description: Windows Platform API
+paths:
+  /networking/sockets/tcp:
+    post:
+      operationId: createTcpSocket
+      summary: Create a TCP stream socket
+      description: >-
+        Creates a StreamSocket for TCP communication. StreamSocket provides
+        reliable, ordered, and error-checked delivery of data between two
+        endpoints. Supports TLS/SSL for secure connections via
+        StreamSocket.UpgradeToSslAsync.
+      tags:
+        - TCP Sockets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTcpSocketRequest'
+      responses:
+        '201':
+          description: TCP socket created and connected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StreamSocket'
+        '400':
+          description: Invalid socket configuration
+  /networking/sockets/udp:
+    post:
+      operationId: createUdpSocket
+      summary: Create a UDP datagram socket
+      description: >-
+        Creates a DatagramSocket for UDP communication. DatagramSocket provides
+        connectionless, unreliable datagrams for low-latency communication.
+        Supports multicast group membership via JoinMulticastGroup.
+      tags:
+        - UDP Sockets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUdpSocketRequest'
+      responses:
+        '201':
+          description: UDP socket created and bound
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DatagramSocket'
+        '400':
+          description: Invalid socket configuration
+  /networking/websockets:
+    post:
+      operationId: createWebSocket
+      summary: Create a WebSocket connection
+      description: >-
+        Creates a MessageWebSocket or StreamWebSocket for real-time bidirectional
+        communication. MessageWebSocket handles discrete messages while
+        StreamWebSocket provides continuous stream-based communication.
+      tags:
+        - WebSockets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWebSocketRequest'
+      responses:
+        '201':
+          description: WebSocket connection established
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebSocket'
+        '400':
+          description: Invalid WebSocket configuration
+  /networking/http/requests:
+    post:
+      operationId: sendHttpRequest
+      summary: Send an HTTP request
+      description: >-
+        Sends an HTTP request using the Windows.Web.Http.HttpClient class.
+        Supports GET, POST, PUT, PATCH, DELETE methods with configurable
+        headers, content types, and authentication. Includes built-in
+        cookie management and automatic decompression.
+      tags:
+        - HTTP Client
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HttpRequest'
+      responses:
+        '200':
+          description: HTTP response received
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponse'
+        '400':
+          description: Invalid request
+  /networking/background-transfers/downloads:
+    post:
+      operationId: createBackgroundDownload
+      summary: Create a background download
+      description: >-
+        Creates a background download operation using BackgroundDownloader.
+        Background transfers continue even when the app is suspended and
+        support progress tracking, pause/resume, and cost-aware transfers.
+      tags:
+        - Background Transfers
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BackgroundDownloadRequest'
+      responses:
+        '201':
+          description: Background download created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackgroundTransferOperation'
+        '400':
+          description: Invalid download request
+    get:
+      operationId: listBackgroundDownloads
+      summary: List background downloads
+      description: >-
+        Retrieves the list of active and pending background download operations
+        using BackgroundDownloader.GetCurrentDownloadsAsync.
+      tags:
+        - Background Transfers
+      responses:
+        '200':
+          description: Successful retrieval of downloads
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BackgroundTransferOperation'
+  /networking/connectivity:
+    get:
+      operationId: getNetworkConnectivity
+      summary: Get network connectivity information
+      description: >-
+        Retrieves current network connectivity information using
+        NetworkInformation.GetInternetConnectionProfile and
+        NetworkInformation.GetConnectionProfiles. Returns details about
+        connection type, signal strength, data plan status, and cost.
+      tags:
+        - Connectivity
+      responses:
+        '200':
+          description: Successful retrieval of connectivity info
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NetworkConnectivity'
+components:
+  schemas:
+    CreateTcpSocketRequest:
+      type: object
+      properties:
+        remoteHostName:
+          type: string
+          description: Remote host name or IP address
+        remoteServiceName:
+          type: string
+          description: Remote port or service name
+        protectionLevel:
+          type: string
+          enum:
+            - PlainSocket
+            - Ssl
+            - SslAllowNullEncryption
+          default: PlainSocket
+        noDelay:
+          type: boolean
+          description: Disable Nagle algorithm
+          default: false
+        keepAlive:
+          type: boolean
+          default: true
+      required:
+        - remoteHostName
+        - remoteServiceName
+    StreamSocket:
+      type: object
+      description: A TCP stream socket (StreamSocket class)
+      properties:
+        id:
+          type: string
+        localAddress:
+          type: string
+        localPort:
+          type: string
+        remoteAddress:
+          type: string
+        remotePort:
+          type: string
+        protectionLevel:
+          type: string
+    CreateUdpSocketRequest:
+      type: object
+      properties:
+        localServiceName:
+          type: string
+          description: Local port to bind to
+        multicastGroup:
+          type: string
+          description: Multicast group address to join
+    DatagramSocket:
+      type: object
+      description: A UDP datagram socket (DatagramSocket class)
+      properties:
+        id:
+          type: string
+        localAddress:
+          type: string
+        localPort:
+          type: string
+    CreateWebSocketRequest:
+      type: object
+      properties:
+        uri:
+          type: string
+          format: uri
+          description: WebSocket server URI (ws:// or wss://)
+        type:
+          type: string
+          enum:
+            - Message
+            - Stream
+          description: MessageWebSocket or StreamWebSocket
+          default: Message
+        messageType:
+          type: string
+          enum:
+            - Binary
+            - Utf8
+          description: Message type (for MessageWebSocket)
+          default: Utf8
+        protocols:
+          type: array
+          items:
+            type: string
+          description: Sub-protocols to request
+      required:
+        - uri
+    WebSocket:
+      type: object
+      description: A WebSocket connection
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+          format: uri
+        type:
+          type: string
+        state:
+          type: string
+          enum:
+            - Connecting
+            - Connected
+            - Closing
+            - Closed
+    HttpRequest:
+      type: object
+      properties:
+        method:
+          type: string
+          enum:
+            - GET
+            - POST
+            - PUT
+            - PATCH
+            - DELETE
+            - HEAD
+            - OPTIONS
+        uri:
+          type: string
+          format: uri
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+        content:
+          type: string
+          description: Request body content
+        contentType:
+          type: string
+          description: Content-Type header value
+      required:
+        - method
+        - uri
+    HttpResponse:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+        reasonPhrase:
+          type: string
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+        content:
+          type: string
+        isSuccessStatusCode:
+          type: boolean
+    BackgroundDownloadRequest:
+      type: object
+      properties:
+        uri:
+          type: string
+          format: uri
+          description: Source URI
+        destinationFile:
+          type: string
+          description: Destination file path
+        costPolicy:
+          type: string
+          enum:
+            - Default
+            - UnrestrictedOnly
+            - Always
+          default: Default
+        priority:
+          type: string
+          enum:
+            - Default
+            - High
+            - Low
+          default: Default
+      required:
+        - uri
+        - destinationFile
+    BackgroundTransferOperation:
+      type: object
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+          format: uri
+        destinationFile:
+          type: string
+        status:
+          type: string
+          enum:
+            - Idle
+            - Running
+            - PausedByApplication
+            - PausedCostedNetwork
+            - PausedNoNetwork
+            - Completed
+            - Canceled
+            - Error
+        progress:
+          type: object
+          properties:
+            bytesReceived:
+              type: integer
+              format: int64
+            totalBytesToReceive:
+              type: integer
+              format: int64
+    NetworkConnectivity:
+      type: object
+      properties:
+        isConnected:
+          type: boolean
+        connectionType:
+          type: string
+          enum:
+            - Ethernet
+            - WiFi
+            - Cellular
+            - None
+        signalStrength:
+          type: integer
+          description: Signal strength in bars (0-5)
+        networkCostType:
+          type: string
+          enum:
+            - Unknown
+            - Unrestricted
+            - Fixed
+            - Variable
+        dataPlanStatus:
+          type: object
+          properties:
+            dataLimitInMegabytes:
+              type: integer
+            megabytesUsed:
+              type: number
+            maxTransferSizeInMegabytes:
+              type: integer

@@ -1,0 +1,307 @@
+openapi: 3.1.0
+info:
+  title: Windows Cortana API
+  description: >-
+    API for integrating voice commands and Cortana digital assistant capabilities
+    into Windows applications. Enables voice-activated interactions through
+    Voice Command Definitions (VCD) that specify commands, phrases, and feedback.
+    Applications register VCD files to define custom voice commands that
+    Cortana recognizes and routes to the appropriate app handler.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/cortana/
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+externalDocs:
+  description: Cortana Voice Commands Documentation
+  url: https://learn.microsoft.com/en-us/cortana/voice-commands/vcd
+servers:
+  - url: https://api.windows.com
+    description: Windows Platform API
+paths:
+  /cortana/voice-commands:
+    get:
+      operationId: listVoiceCommandDefinitions
+      summary: List voice command definitions
+      description: >-
+        Retrieves the list of installed Voice Command Definition (VCD) sets.
+        Each VCD set defines a group of voice commands that Cortana can recognize
+        for a specific application, including command names, phrases, and
+        feedback text.
+      tags:
+        - Voice Commands
+      responses:
+        '200':
+          description: Successful retrieval of voice command definitions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VoiceCommandDefinition'
+    post:
+      operationId: installVoiceCommandDefinition
+      summary: Install a voice command definition
+      description: >-
+        Installs a VCD file using VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync.
+        The VCD file is an XML document that defines the commands, example phrases,
+        and phrase lists that Cortana will recognize for the application.
+      tags:
+        - Voice Commands
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstallVCDRequest'
+      responses:
+        '201':
+          description: VCD installed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoiceCommandDefinition'
+        '400':
+          description: Invalid VCD file
+  /cortana/voice-commands/{commandSetName}:
+    get:
+      operationId: getVoiceCommandSet
+      summary: Get a voice command set
+      description: >-
+        Retrieves a specific voice command set by name. The command set contains
+        the language, name, and all defined commands including their phrases
+        and phrase lists.
+      tags:
+        - Voice Commands
+      parameters:
+        - name: commandSetName
+          in: path
+          required: true
+          description: The name of the voice command set
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of the voice command set
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoiceCommandSet'
+        '404':
+          description: Command set not found
+  /cortana/voice-commands/{commandSetName}/phrase-lists/{phraseListName}:
+    put:
+      operationId: updatePhraseList
+      summary: Update a phrase list
+      description: >-
+        Updates a phrase list within a voice command set using
+        VoiceCommandDefinition.SetPhraseListAsync. Phrase lists are dynamic
+        vocabularies that can be updated at runtime without reinstalling the
+        VCD file.
+      tags:
+        - Phrase Lists
+      parameters:
+        - name: commandSetName
+          in: path
+          required: true
+          description: The name of the voice command set
+          schema:
+            type: string
+        - name: phraseListName
+          in: path
+          required: true
+          description: The name of the phrase list to update
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePhraseListRequest'
+      responses:
+        '200':
+          description: Phrase list updated successfully
+        '404':
+          description: Command set or phrase list not found
+  /cortana/service-connections:
+    post:
+      operationId: createCortanaServiceConnection
+      summary: Create a Cortana app service connection
+      description: >-
+        Establishes a connection to the Cortana app service for handling voice
+        commands in the background. Uses VoiceCommandServiceConnection to receive
+        voice commands, display progress, and return results to Cortana.
+      tags:
+        - Service Connections
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceConnectionRequest'
+      responses:
+        '201':
+          description: Service connection established
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceConnection'
+        '400':
+          description: Invalid connection request
+  /cortana/responses:
+    post:
+      operationId: sendCortanaResponse
+      summary: Send a response to Cortana
+      description: >-
+        Sends a VoiceCommandResponse back to Cortana containing content tiles,
+        a message, and an app launch argument. Uses VoiceCommandResponse.CreateResponse
+        to format the response for display in the Cortana canvas.
+      tags:
+        - Responses
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoiceCommandResponseRequest'
+      responses:
+        '200':
+          description: Response sent to Cortana
+        '400':
+          description: Invalid response format
+components:
+  schemas:
+    VoiceCommandDefinition:
+      type: object
+      description: A Voice Command Definition set
+      properties:
+        name:
+          type: string
+          description: Name of the VCD set
+        language:
+          type: string
+          description: Language code (e.g., en-us)
+        commandCount:
+          type: integer
+          description: Number of defined commands
+      required:
+        - name
+        - language
+    VoiceCommandSet:
+      type: object
+      description: A set of voice commands with their definitions
+      properties:
+        name:
+          type: string
+          description: Command set name
+        language:
+          type: string
+          description: Language code
+        commands:
+          type: array
+          items:
+            $ref: '#/components/schemas/VoiceCommand'
+        phraseLists:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhraseList'
+    VoiceCommand:
+      type: object
+      description: A voice command definition
+      properties:
+        name:
+          type: string
+          description: Command name
+        example:
+          type: string
+          description: Example phrase for the command
+        listenFor:
+          type: array
+          items:
+            type: string
+          description: Phrases that trigger this command
+        feedback:
+          type: string
+          description: Text Cortana displays while processing
+        navigateTo:
+          type: string
+          description: Page to navigate to in the app
+    PhraseList:
+      type: object
+      description: A dynamic phrase list
+      properties:
+        name:
+          type: string
+          description: Phrase list name
+        items:
+          type: array
+          items:
+            type: string
+          description: Current phrases in the list
+    InstallVCDRequest:
+      type: object
+      properties:
+        vcdFilePath:
+          type: string
+          description: Path to the VCD XML file
+      required:
+        - vcdFilePath
+    UpdatePhraseListRequest:
+      type: object
+      properties:
+        phrases:
+          type: array
+          items:
+            type: string
+          description: Updated list of phrases
+      required:
+        - phrases
+    ServiceConnectionRequest:
+      type: object
+      properties:
+        triggerDetails:
+          type: object
+          description: AppServiceTriggerDetails from the background task
+    ServiceConnection:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Connection identifier
+        language:
+          type: string
+          description: Language of the voice command
+        voiceCommandName:
+          type: string
+          description: Name of the recognized voice command
+    VoiceCommandResponseRequest:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Message to display in Cortana
+        contentTiles:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+              textLine1:
+                type: string
+              textLine2:
+                type: string
+              textLine3:
+                type: string
+              imageUri:
+                type: string
+                format: uri
+          description: Content tiles to display
+        appLaunchArgument:
+          type: string
+          description: Argument passed when user taps to launch app
+      required:
+        - message

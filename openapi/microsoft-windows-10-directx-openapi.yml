@@ -1,0 +1,446 @@
+openapi: 3.1.0
+info:
+  title: DirectX Graphics API
+  description: >-
+    Low-level graphics API for building high-performance 2D and 3D rendering in
+    Windows applications. Includes Direct3D 12 for 3D graphics with explicit GPU
+    control, Direct2D for hardware-accelerated 2D graphics, and DirectWrite for
+    high-quality text rendering. This specification models the key DirectX
+    resource management and rendering pipeline operations.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/win32/directx
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+externalDocs:
+  description: DirectX Graphics Reference
+  url: https://learn.microsoft.com/en-us/windows/win32/directx
+servers:
+  - url: https://api.windows.com
+    description: Windows Platform API
+paths:
+  /directx/devices:
+    get:
+      operationId: listDirectXDevices
+      summary: List DirectX graphics devices
+      description: >-
+        Enumerates available DirectX graphics adapters using DXGI (DirectX
+        Graphics Infrastructure). Returns information about each adapter
+        including vendor, device ID, dedicated video memory, shared system
+        memory, and feature level support.
+      tags:
+        - Devices
+      responses:
+        '200':
+          description: Successful retrieval of graphics devices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GraphicsAdapter'
+  /directx/devices/{adapterId}:
+    get:
+      operationId: getDirectXDevice
+      summary: Get graphics device details
+      description: >-
+        Retrieves detailed information about a specific graphics adapter
+        including supported feature levels, output displays, and hardware
+        capabilities such as shader model support, ray tracing tier, and
+        mesh shader support.
+      tags:
+        - Devices
+      parameters:
+        - name: adapterId
+          in: path
+          required: true
+          description: DXGI adapter identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of adapter details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GraphicsAdapterDetail'
+        '404':
+          description: Adapter not found
+  /directx/resources:
+    post:
+      operationId: createDirectXResource
+      summary: Create a DirectX resource
+      description: >-
+        Creates a GPU resource such as a buffer, texture, or render target
+        using ID3D12Device.CreateCommittedResource or similar methods.
+        Resources are allocated in GPU heaps and can be used for vertex
+        buffers, index buffers, constant buffers, textures, and render targets.
+      tags:
+        - Resources
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateResourceRequest'
+      responses:
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DirectXResource'
+        '400':
+          description: Invalid resource description
+  /directx/command-queues:
+    post:
+      operationId: createCommandQueue
+      summary: Create a command queue
+      description: >-
+        Creates a Direct3D 12 command queue (ID3D12CommandQueue) for submitting
+        command lists to the GPU. Command queues can be of type Direct, Compute,
+        or Copy, determining which GPU operations they support.
+      tags:
+        - Command Queues
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCommandQueueRequest'
+      responses:
+        '201':
+          description: Command queue created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CommandQueue'
+        '400':
+          description: Invalid queue configuration
+  /directx/pipeline-states:
+    post:
+      operationId: createPipelineState
+      summary: Create a graphics pipeline state
+      description: >-
+        Creates a graphics pipeline state object (ID3D12PipelineState) that
+        defines the complete rendering pipeline configuration including
+        vertex shader, pixel shader, input layout, rasterizer state, blend
+        state, depth stencil state, and render target formats.
+      tags:
+        - Pipeline
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePipelineStateRequest'
+      responses:
+        '201':
+          description: Pipeline state created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineState'
+        '400':
+          description: Invalid pipeline configuration
+  /directx/swap-chains:
+    post:
+      operationId: createSwapChain
+      summary: Create a swap chain
+      description: >-
+        Creates a DXGI swap chain (IDXGISwapChain) for presenting rendered
+        frames to a window or output. The swap chain manages the back buffer(s)
+        and handles presentation including v-sync and frame latency.
+      tags:
+        - Presentation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSwapChainRequest'
+      responses:
+        '201':
+          description: Swap chain created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SwapChain'
+        '400':
+          description: Invalid swap chain configuration
+components:
+  schemas:
+    GraphicsAdapter:
+      type: object
+      description: A DXGI graphics adapter
+      properties:
+        id:
+          type: string
+          description: Adapter LUID
+        description:
+          type: string
+          description: Adapter description string
+        vendorId:
+          type: integer
+          description: Hardware vendor identifier
+        deviceId:
+          type: integer
+          description: Hardware device identifier
+        dedicatedVideoMemory:
+          type: integer
+          format: int64
+          description: Dedicated video memory in bytes
+        sharedSystemMemory:
+          type: integer
+          format: int64
+          description: Shared system memory in bytes
+        isSoftwareAdapter:
+          type: boolean
+          description: Whether this is a software (WARP) adapter
+      required:
+        - id
+        - description
+    GraphicsAdapterDetail:
+      type: object
+      description: Detailed graphics adapter information
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        vendorId:
+          type: integer
+        deviceId:
+          type: integer
+        dedicatedVideoMemory:
+          type: integer
+          format: int64
+        sharedSystemMemory:
+          type: integer
+          format: int64
+        maxFeatureLevel:
+          type: string
+          enum:
+            - "11_0"
+            - "11_1"
+            - "12_0"
+            - "12_1"
+            - "12_2"
+          description: Maximum supported Direct3D feature level
+        shaderModel:
+          type: string
+          description: Maximum supported shader model
+        rayTracingTier:
+          type: string
+          enum:
+            - NotSupported
+            - Tier1_0
+            - Tier1_1
+          description: DirectX ray tracing support tier
+        meshShaderTier:
+          type: string
+          enum:
+            - NotSupported
+            - Tier1
+          description: Mesh shader support tier
+        outputs:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              resolution:
+                type: string
+              refreshRate:
+                type: number
+          description: Connected display outputs
+    DirectXResource:
+      type: object
+      description: A GPU resource
+      properties:
+        id:
+          type: string
+        resourceType:
+          type: string
+          enum:
+            - Buffer
+            - Texture1D
+            - Texture2D
+            - Texture3D
+        dimension:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+        depthOrArraySize:
+          type: integer
+        format:
+          type: string
+        heapType:
+          type: string
+          enum:
+            - Default
+            - Upload
+            - Readback
+    CreateResourceRequest:
+      type: object
+      properties:
+        resourceType:
+          type: string
+          enum:
+            - Buffer
+            - Texture1D
+            - Texture2D
+            - Texture3D
+        width:
+          type: integer
+          description: Width in pixels or bytes (for buffers)
+        height:
+          type: integer
+          description: Height in pixels (for textures)
+        depthOrArraySize:
+          type: integer
+          default: 1
+        format:
+          type: string
+          description: DXGI format (e.g., R8G8B8A8_UNORM)
+        heapType:
+          type: string
+          enum:
+            - Default
+            - Upload
+            - Readback
+          default: Default
+        flags:
+          type: array
+          items:
+            type: string
+            enum:
+              - AllowRenderTarget
+              - AllowDepthStencil
+              - AllowUnorderedAccess
+              - DenyShaderResource
+      required:
+        - resourceType
+        - width
+    CreateCommandQueueRequest:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - Direct
+            - Compute
+            - Copy
+          description: Command queue type
+        priority:
+          type: string
+          enum:
+            - Normal
+            - High
+            - GlobalRealtime
+          default: Normal
+      required:
+        - type
+    CommandQueue:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        priority:
+          type: string
+    CreatePipelineStateRequest:
+      type: object
+      properties:
+        vertexShader:
+          type: string
+          description: Compiled vertex shader bytecode reference
+        pixelShader:
+          type: string
+          description: Compiled pixel shader bytecode reference
+        inputLayout:
+          type: array
+          items:
+            type: object
+            properties:
+              semanticName:
+                type: string
+              format:
+                type: string
+              inputSlot:
+                type: integer
+        primitiveTopology:
+          type: string
+          enum:
+            - PointList
+            - LineList
+            - LineStrip
+            - TriangleList
+            - TriangleStrip
+          default: TriangleList
+        renderTargetCount:
+          type: integer
+          default: 1
+        renderTargetFormats:
+          type: array
+          items:
+            type: string
+        depthStencilFormat:
+          type: string
+      required:
+        - vertexShader
+        - pixelShader
+    PipelineState:
+      type: object
+      properties:
+        id:
+          type: string
+        isValid:
+          type: boolean
+    CreateSwapChainRequest:
+      type: object
+      properties:
+        width:
+          type: integer
+        height:
+          type: integer
+        format:
+          type: string
+          description: Back buffer format
+          default: R8G8B8A8_UNORM
+        bufferCount:
+          type: integer
+          default: 2
+        swapEffect:
+          type: string
+          enum:
+            - Discard
+            - Sequential
+            - FlipSequential
+            - FlipDiscard
+          default: FlipDiscard
+        isWindowed:
+          type: boolean
+          default: true
+      required:
+        - width
+        - height
+    SwapChain:
+      type: object
+      properties:
+        id:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+        format:
+          type: string
+        bufferCount:
+          type: integer

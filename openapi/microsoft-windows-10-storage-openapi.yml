@@ -1,0 +1,553 @@
+openapi: 3.1.0
+info:
+  title: Windows Storage API
+  description: >-
+    API for file system access, storage management, and data operations in Windows
+    applications. Based on the Windows.Storage namespace, this API provides classes
+    for reading, writing, and managing files (StorageFile) and folders (StorageFolder)
+    with appropriate access permissions. Also includes ApplicationData for settings
+    and app data management, KnownFolders for library access, and StorageLibrary
+    for library management with change tracking.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/uwp/files/
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+externalDocs:
+  description: Windows.Storage API Reference
+  url: https://learn.microsoft.com/en-us/uwp/api/windows.storage
+servers:
+  - url: https://api.windows.com
+    description: Windows Platform API
+paths:
+  /storage/files:
+    get:
+      operationId: listStorageFiles
+      summary: List storage files
+      description: >-
+        Retrieves files from a specified storage location. Uses StorageFolder.GetFilesAsync
+        to enumerate files with optional query options for filtering by type,
+        date, size, and other properties.
+      tags:
+        - Files
+      parameters:
+        - name: folderId
+          in: query
+          required: false
+          description: Known folder identifier (Documents, Pictures, Music, Videos)
+          schema:
+            type: string
+            enum:
+              - Documents
+              - Pictures
+              - Music
+              - Videos
+              - Downloads
+              - LocalAppData
+              - RoamingAppData
+              - TempState
+        - name: fileType
+          in: query
+          required: false
+          description: Filter by file extension (e.g., .jpg, .mp3)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of files
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StorageFile'
+        '403':
+          description: Access denied to the specified location
+  /storage/files/{fileId}:
+    get:
+      operationId: getStorageFile
+      summary: Get file details
+      description: >-
+        Retrieves detailed information about a specific file using StorageFile
+        properties including name, path, size, date created, date modified,
+        content type, file attributes, and storage provider information.
+      tags:
+        - Files
+      parameters:
+        - name: fileId
+          in: path
+          required: true
+          description: Unique file identifier or path
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of file details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageFileDetail'
+        '404':
+          description: File not found
+    delete:
+      operationId: deleteStorageFile
+      summary: Delete a file
+      description: >-
+        Deletes a file using StorageFile.DeleteAsync. Supports permanent deletion
+        or moving to the Recycle Bin as specified by the StorageDeleteOption.
+      tags:
+        - Files
+      parameters:
+        - name: fileId
+          in: path
+          required: true
+          description: Unique file identifier
+          schema:
+            type: string
+        - name: option
+          in: query
+          required: false
+          description: Delete option
+          schema:
+            type: string
+            enum:
+              - Default
+              - PermanentDelete
+      responses:
+        '204':
+          description: File deleted successfully
+        '404':
+          description: File not found
+        '403':
+          description: Access denied
+  /storage/files/{fileId}/content:
+    get:
+      operationId: readFileContent
+      summary: Read file content
+      description: >-
+        Reads the content of a file using FileIO helper methods. Supports
+        reading as text (FileIO.ReadTextAsync), binary (FileIO.ReadBufferAsync),
+        or line-by-line (FileIO.ReadLinesAsync).
+      tags:
+        - File Operations
+      parameters:
+        - name: fileId
+          in: path
+          required: true
+          description: Unique file identifier
+          schema:
+            type: string
+        - name: readMode
+          in: query
+          required: false
+          description: How to read the file content
+          schema:
+            type: string
+            enum:
+              - text
+              - buffer
+              - lines
+            default: text
+      responses:
+        '200':
+          description: Successful read of file content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileContent'
+        '404':
+          description: File not found
+    put:
+      operationId: writeFileContent
+      summary: Write file content
+      description: >-
+        Writes content to a file using FileIO helper methods. Supports writing
+        text (FileIO.WriteTextAsync), binary (FileIO.WriteBytesAsync), or
+        lines (FileIO.WriteLinesAsync).
+      tags:
+        - File Operations
+      parameters:
+        - name: fileId
+          in: path
+          required: true
+          description: Unique file identifier
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WriteFileRequest'
+      responses:
+        '200':
+          description: File content written successfully
+        '404':
+          description: File not found
+        '403':
+          description: Access denied
+  /storage/folders:
+    get:
+      operationId: listStorageFolders
+      summary: List storage folders
+      description: >-
+        Retrieves the list of subfolders in a specified location using
+        StorageFolder.GetFoldersAsync. Includes folder metadata such as name,
+        path, date created, and item counts.
+      tags:
+        - Folders
+      parameters:
+        - name: parentFolderId
+          in: query
+          required: false
+          description: Parent folder identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of folders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StorageFolder'
+    post:
+      operationId: createStorageFolder
+      summary: Create a folder
+      description: >-
+        Creates a new folder using StorageFolder.CreateFolderAsync. Supports
+        collision options to handle existing folders with the same name.
+      tags:
+        - Folders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateFolderRequest'
+      responses:
+        '201':
+          description: Folder created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageFolder'
+        '409':
+          description: Folder already exists
+  /storage/app-data/settings:
+    get:
+      operationId: getAppSettings
+      summary: Get application settings
+      description: >-
+        Retrieves application settings from the ApplicationData.LocalSettings
+        or RoamingSettings containers. Settings are stored as key-value pairs
+        in ApplicationDataContainer objects.
+      tags:
+        - App Data
+      parameters:
+        - name: locality
+          in: query
+          required: false
+          description: Settings locality
+          schema:
+            type: string
+            enum:
+              - Local
+              - Roaming
+            default: Local
+        - name: containerName
+          in: query
+          required: false
+          description: Settings container name
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of settings
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+    put:
+      operationId: updateAppSettings
+      summary: Update application settings
+      description: >-
+        Updates application settings in the specified ApplicationDataContainer.
+        Supports simple values and composite values (ApplicationDataCompositeValue)
+        for atomic serialization.
+      tags:
+        - App Data
+      parameters:
+        - name: locality
+          in: query
+          required: false
+          description: Settings locality
+          schema:
+            type: string
+            enum:
+              - Local
+              - Roaming
+            default: Local
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+      responses:
+        '200':
+          description: Settings updated successfully
+  /storage/libraries:
+    get:
+      operationId: listStorageLibraries
+      summary: List storage libraries
+      description: >-
+        Retrieves the list of storage libraries (Documents, Music, Pictures,
+        Videos) using StorageLibrary.GetLibraryAsync. Each library contains
+        a list of included folders and supports change tracking.
+      tags:
+        - Libraries
+      responses:
+        '200':
+          description: Successful retrieval of libraries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StorageLibrary'
+  /storage/libraries/{libraryId}/changes:
+    get:
+      operationId: getLibraryChanges
+      summary: Get library changes
+      description: >-
+        Retrieves change records for a storage library using
+        StorageLibraryChangeTracker and StorageLibraryChangeReader. Returns
+        a list of changes including file/folder creation, modification,
+        deletion, and moves.
+      tags:
+        - Change Tracking
+      parameters:
+        - name: libraryId
+          in: path
+          required: true
+          description: Library identifier (Documents, Music, Pictures, Videos)
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of library changes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StorageLibraryChange'
+components:
+  schemas:
+    StorageFile:
+      type: object
+      description: A storage file (StorageFile class)
+      properties:
+        name:
+          type: string
+          description: File name with extension
+        path:
+          type: string
+          description: Full file path
+        displayName:
+          type: string
+          description: File name without extension
+        fileType:
+          type: string
+          description: File extension
+        contentType:
+          type: string
+          description: MIME content type
+        dateCreated:
+          type: string
+          format: date-time
+        isAvailable:
+          type: boolean
+          description: Whether the file content is available locally
+      required:
+        - name
+        - path
+    StorageFileDetail:
+      type: object
+      description: Detailed file information
+      properties:
+        name:
+          type: string
+        path:
+          type: string
+        displayName:
+          type: string
+        fileType:
+          type: string
+        contentType:
+          type: string
+        dateCreated:
+          type: string
+          format: date-time
+        dateModified:
+          type: string
+          format: date-time
+        size:
+          type: integer
+          format: int64
+          description: File size in bytes
+        attributes:
+          type: array
+          items:
+            type: string
+            enum:
+              - Normal
+              - ReadOnly
+              - Directory
+              - Archive
+              - Temporary
+              - LocallyIncomplete
+          description: FileAttributes flags
+        provider:
+          type: object
+          properties:
+            id:
+              type: string
+            displayName:
+              type: string
+          description: StorageProvider information
+    FileContent:
+      type: object
+      properties:
+        text:
+          type: string
+          description: Text content (when readMode is text)
+        lines:
+          type: array
+          items:
+            type: string
+          description: Lines of text (when readMode is lines)
+        buffer:
+          type: string
+          format: byte
+          description: Base64-encoded binary content (when readMode is buffer)
+        encoding:
+          type: string
+          description: Text encoding used
+          example: UTF-8
+    WriteFileRequest:
+      type: object
+      properties:
+        content:
+          type: string
+          description: Text content to write
+        encoding:
+          type: string
+          description: Text encoding
+          default: UTF-8
+        writeMode:
+          type: string
+          enum:
+            - text
+            - bytes
+            - lines
+          default: text
+      required:
+        - content
+    StorageFolder:
+      type: object
+      description: A storage folder (StorageFolder class)
+      properties:
+        name:
+          type: string
+          description: Folder name
+        path:
+          type: string
+          description: Full folder path
+        dateCreated:
+          type: string
+          format: date-time
+        attributes:
+          type: array
+          items:
+            type: string
+      required:
+        - name
+        - path
+    CreateFolderRequest:
+      type: object
+      properties:
+        parentPath:
+          type: string
+          description: Path of the parent folder
+        name:
+          type: string
+          description: Name for the new folder
+        collisionOption:
+          type: string
+          enum:
+            - GenerateUniqueName
+            - ReplaceExisting
+            - FailIfExists
+            - OpenIfExists
+          description: How to handle name collisions (CreationCollisionOption)
+          default: FailIfExists
+      required:
+        - name
+    StorageLibrary:
+      type: object
+      description: A storage library (StorageLibrary class)
+      properties:
+        id:
+          type: string
+          description: Library identifier
+          enum:
+            - Documents
+            - Music
+            - Pictures
+            - Videos
+        folders:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageFolder'
+          description: Folders included in the library
+        saveFolder:
+          $ref: '#/components/schemas/StorageFolder'
+    StorageLibraryChange:
+      type: object
+      description: A change to a library item (StorageLibraryChange class)
+      properties:
+        changeType:
+          type: string
+          enum:
+            - Created
+            - Deleted
+            - MovedOrRenamed
+            - ContentsChanged
+            - MovedOutOfLibrary
+            - MovedIntoLibrary
+            - ContentsReplaced
+            - IndexingStatusChanged
+            - EncryptionChanged
+            - ChangeTrackingLost
+          description: Type of change (StorageLibraryChangeType)
+        path:
+          type: string
+          description: Path of the changed item
+        previousPath:
+          type: string
+          description: Previous path (for moves/renames)
+        isOfType:
+          type: string
+          enum:
+            - File
+            - Folder
+          description: Whether the changed item is a file or folder

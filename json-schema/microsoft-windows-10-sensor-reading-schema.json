@@ -1,0 +1,368 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://developer.microsoft.com/schemas/windows-10/sensor-reading.json",
+  "title": "Windows 10 Sensor Reading",
+  "description": "Schema for Windows 10 sensor readings as defined by the Windows.Devices.Sensors namespace. Covers accelerometer, gyrometer, compass, inclinometer, light sensor, barometer, orientation, pedometer, proximity, and human presence sensor data.",
+  "type": "object",
+  "properties": {
+    "sensorType": {
+      "type": "string",
+      "enum": [
+        "Accelerometer",
+        "Gyrometer",
+        "Compass",
+        "Inclinometer",
+        "LightSensor",
+        "Barometer",
+        "Altimeter",
+        "Magnetometer",
+        "OrientationSensor",
+        "SimpleOrientationSensor",
+        "Pedometer",
+        "ProximitySensor",
+        "ActivitySensor",
+        "HumanPresenceSensor",
+        "HingeAngleSensor"
+      ],
+      "description": "The type of sensor"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the reading"
+    },
+    "reading": {
+      "oneOf": [
+        { "$ref": "#/$defs/AccelerometerReading" },
+        { "$ref": "#/$defs/GyrometerReading" },
+        { "$ref": "#/$defs/CompassReading" },
+        { "$ref": "#/$defs/InclinometerReading" },
+        { "$ref": "#/$defs/LightSensorReading" },
+        { "$ref": "#/$defs/BarometerReading" },
+        { "$ref": "#/$defs/AltimeterReading" },
+        { "$ref": "#/$defs/MagnetometerReading" },
+        { "$ref": "#/$defs/OrientationReading" },
+        { "$ref": "#/$defs/PedometerReading" },
+        { "$ref": "#/$defs/ProximityReading" },
+        { "$ref": "#/$defs/HumanPresenceReading" },
+        { "$ref": "#/$defs/HingeAngleReading" }
+      ],
+      "description": "The sensor reading data"
+    }
+  },
+  "required": ["sensorType", "timestamp", "reading"],
+  "$defs": {
+    "AccelerometerReading": {
+      "type": "object",
+      "description": "Accelerometer reading (AccelerometerReading class)",
+      "properties": {
+        "accelerationX": {
+          "type": "number",
+          "format": "double",
+          "description": "G-force along the X axis"
+        },
+        "accelerationY": {
+          "type": "number",
+          "format": "double",
+          "description": "G-force along the Y axis"
+        },
+        "accelerationZ": {
+          "type": "number",
+          "format": "double",
+          "description": "G-force along the Z axis"
+        }
+      },
+      "required": ["accelerationX", "accelerationY", "accelerationZ"]
+    },
+    "GyrometerReading": {
+      "type": "object",
+      "description": "Gyrometer reading (GyrometerReading class)",
+      "properties": {
+        "angularVelocityX": {
+          "type": "number",
+          "format": "double",
+          "description": "Angular velocity around the X axis in degrees per second"
+        },
+        "angularVelocityY": {
+          "type": "number",
+          "format": "double",
+          "description": "Angular velocity around the Y axis in degrees per second"
+        },
+        "angularVelocityZ": {
+          "type": "number",
+          "format": "double",
+          "description": "Angular velocity around the Z axis in degrees per second"
+        }
+      },
+      "required": ["angularVelocityX", "angularVelocityY", "angularVelocityZ"]
+    },
+    "CompassReading": {
+      "type": "object",
+      "description": "Compass reading (CompassReading class)",
+      "properties": {
+        "headingMagneticNorth": {
+          "type": "number",
+          "format": "double",
+          "minimum": 0,
+          "maximum": 360,
+          "description": "Heading in degrees relative to magnetic north"
+        },
+        "headingTrueNorth": {
+          "type": ["number", "null"],
+          "format": "double",
+          "minimum": 0,
+          "maximum": 360,
+          "description": "Heading in degrees relative to true north"
+        },
+        "headingAccuracy": {
+          "type": "string",
+          "enum": ["Unknown", "Unreliable", "Approximate", "High"],
+          "description": "Magnetometer accuracy (MagnetometerAccuracy)"
+        }
+      },
+      "required": ["headingMagneticNorth"]
+    },
+    "InclinometerReading": {
+      "type": "object",
+      "description": "Inclinometer reading (InclinometerReading class)",
+      "properties": {
+        "pitchDegrees": {
+          "type": "number",
+          "format": "double",
+          "description": "Pitch rotation around the X axis in degrees"
+        },
+        "rollDegrees": {
+          "type": "number",
+          "format": "double",
+          "description": "Roll rotation around the Y axis in degrees"
+        },
+        "yawDegrees": {
+          "type": "number",
+          "format": "double",
+          "description": "Yaw rotation around the Z axis in degrees"
+        },
+        "yawAccuracy": {
+          "type": "string",
+          "enum": ["Unknown", "Unreliable", "Approximate", "High"]
+        }
+      },
+      "required": ["pitchDegrees", "rollDegrees", "yawDegrees"]
+    },
+    "LightSensorReading": {
+      "type": "object",
+      "description": "Light sensor reading (LightSensorReading class)",
+      "properties": {
+        "illuminanceInLux": {
+          "type": "number",
+          "format": "float",
+          "minimum": 0,
+          "description": "Ambient light level in lux"
+        },
+        "chromaticity": {
+          "type": "object",
+          "properties": {
+            "x": {
+              "type": "number",
+              "format": "float"
+            },
+            "y": {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          "description": "CIE xyY chromaticity coordinates"
+        }
+      },
+      "required": ["illuminanceInLux"]
+    },
+    "BarometerReading": {
+      "type": "object",
+      "description": "Barometer reading (BarometerReading class)",
+      "properties": {
+        "stationPressureInHectopascals": {
+          "type": "number",
+          "format": "double",
+          "minimum": 0,
+          "description": "Atmospheric pressure in hectopascals (hPa)"
+        }
+      },
+      "required": ["stationPressureInHectopascals"]
+    },
+    "AltimeterReading": {
+      "type": "object",
+      "description": "Altimeter reading (AltimeterReading class)",
+      "properties": {
+        "altitudeChangeInMeters": {
+          "type": "number",
+          "format": "double",
+          "description": "Change in altitude relative to the first reading"
+        }
+      },
+      "required": ["altitudeChangeInMeters"]
+    },
+    "MagnetometerReading": {
+      "type": "object",
+      "description": "Magnetometer reading (MagnetometerReading class)",
+      "properties": {
+        "magneticFieldX": {
+          "type": "number",
+          "format": "float",
+          "description": "Magnetic field strength along X axis in microteslas"
+        },
+        "magneticFieldY": {
+          "type": "number",
+          "format": "float",
+          "description": "Magnetic field strength along Y axis in microteslas"
+        },
+        "magneticFieldZ": {
+          "type": "number",
+          "format": "float",
+          "description": "Magnetic field strength along Z axis in microteslas"
+        },
+        "directionalAccuracy": {
+          "type": "string",
+          "enum": ["Unknown", "Unreliable", "Approximate", "High"]
+        }
+      },
+      "required": ["magneticFieldX", "magneticFieldY", "magneticFieldZ"]
+    },
+    "OrientationReading": {
+      "type": "object",
+      "description": "Orientation sensor reading (OrientationSensorReading class)",
+      "properties": {
+        "quaternion": {
+          "type": "object",
+          "properties": {
+            "w": { "type": "number", "format": "float" },
+            "x": { "type": "number", "format": "float" },
+            "y": { "type": "number", "format": "float" },
+            "z": { "type": "number", "format": "float" }
+          },
+          "required": ["w", "x", "y", "z"],
+          "description": "Orientation as a quaternion (SensorQuaternion)"
+        },
+        "rotationMatrix": {
+          "type": "object",
+          "properties": {
+            "m11": { "type": "number", "format": "float" },
+            "m12": { "type": "number", "format": "float" },
+            "m13": { "type": "number", "format": "float" },
+            "m21": { "type": "number", "format": "float" },
+            "m22": { "type": "number", "format": "float" },
+            "m23": { "type": "number", "format": "float" },
+            "m31": { "type": "number", "format": "float" },
+            "m32": { "type": "number", "format": "float" },
+            "m33": { "type": "number", "format": "float" }
+          },
+          "description": "3x3 rotation matrix (SensorRotationMatrix)"
+        },
+        "yawAccuracy": {
+          "type": "string",
+          "enum": ["Unknown", "Unreliable", "Approximate", "High"]
+        }
+      }
+    },
+    "PedometerReading": {
+      "type": "object",
+      "description": "Pedometer reading (PedometerReading class)",
+      "properties": {
+        "cumulativeSteps": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Total step count since last reset"
+        },
+        "cumulativeStepsDuration": {
+          "type": "string",
+          "description": "Total duration of steps"
+        },
+        "stepKind": {
+          "type": "string",
+          "enum": ["Unknown", "Walking", "Running"],
+          "description": "Type of step (PedometerStepKind)"
+        }
+      },
+      "required": ["cumulativeSteps", "stepKind"]
+    },
+    "ProximityReading": {
+      "type": "object",
+      "description": "Proximity sensor reading (ProximitySensorReading class)",
+      "properties": {
+        "isDetected": {
+          "type": "boolean",
+          "description": "Whether an object is detected near the sensor"
+        },
+        "distanceInMillimeters": {
+          "type": ["integer", "null"],
+          "minimum": 0,
+          "description": "Distance to the detected object"
+        }
+      },
+      "required": ["isDetected"]
+    },
+    "HumanPresenceReading": {
+      "type": "object",
+      "description": "Human presence sensor reading (HumanPresenceSensorReading class)",
+      "properties": {
+        "presence": {
+          "type": "string",
+          "enum": ["Unknown", "Present", "NotPresent"],
+          "description": "Whether a human is present (HumanPresence)"
+        },
+        "engagement": {
+          "type": "string",
+          "enum": ["Unknown", "Engaged", "Unengaged"],
+          "description": "Whether the user is engaged (HumanEngagement)"
+        },
+        "distanceInMillimeters": {
+          "type": ["integer", "null"],
+          "description": "Distance to the user"
+        },
+        "headPosition": {
+          "type": "object",
+          "properties": {
+            "azimuthInDegrees": { "type": "number", "format": "float" },
+            "altitudeInDegrees": { "type": "number", "format": "float" }
+          },
+          "description": "User head position (HeadPosition class)"
+        },
+        "headOrientation": {
+          "type": "object",
+          "properties": {
+            "pitchInDegrees": { "type": "number", "format": "float" },
+            "rollInDegrees": { "type": "number", "format": "float" },
+            "yawInDegrees": { "type": "number", "format": "float" }
+          },
+          "description": "User head orientation (HeadOrientation class)"
+        },
+        "detectedPersons": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "engagement": { "type": "string" },
+              "distanceInMillimeters": { "type": "integer" },
+              "headPosition": { "type": "object" },
+              "headOrientation": { "type": "object" }
+            }
+          },
+          "description": "List of detected persons (DetectedPerson class)"
+        }
+      },
+      "required": ["presence"]
+    },
+    "HingeAngleReading": {
+      "type": "object",
+      "description": "Hinge angle reading for dual-screen devices (HingeAngleReading class)",
+      "properties": {
+        "angleInDegrees": {
+          "type": "number",
+          "format": "double",
+          "minimum": 0,
+          "maximum": 360,
+          "description": "The angle of the hinge in degrees"
+        }
+      },
+      "required": ["angleInDegrees"]
+    }
+  }
+}

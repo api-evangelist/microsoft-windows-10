@@ -1,0 +1,339 @@
+openapi: 3.1.0
+info:
+  title: Windows Background Tasks API
+  description: >-
+    API for running code in the background when an application is suspended or
+    not running. Based on the Windows.ApplicationModel.Background namespace,
+    it supports time-triggered, system-triggered, and maintenance-triggered
+    background tasks. Key classes include BackgroundTaskBuilder,
+    BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and
+    BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+servers:
+  - url: https://api.windows.com
+    description: Windows Platform API
+paths:
+  /background-tasks:
+    get:
+      operationId: listBackgroundTasks
+      summary: List registered background tasks
+      description: >-
+        Retrieves the list of registered background tasks using
+        BackgroundTaskRegistration.AllTasks. Returns all tasks registered
+        by the current application including their name, trigger type,
+        conditions, and last run status.
+      tags:
+        - Tasks
+      responses:
+        '200':
+          description: Successful retrieval of background tasks
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BackgroundTask'
+    post:
+      operationId: registerBackgroundTask
+      summary: Register a background task
+      description: >-
+        Registers a new background task using BackgroundTaskBuilder. The task
+        must specify an entry point (IBackgroundTask implementation), a trigger
+        (SystemTrigger, TimeTrigger, MaintenanceTrigger, etc.), and optional
+        conditions (InternetAvailable, UserPresent, etc.).
+      tags:
+        - Tasks
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RegisterTaskRequest'
+      responses:
+        '201':
+          description: Background task registered
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackgroundTask'
+        '400':
+          description: Invalid task configuration
+        '409':
+          description: Task with same name already registered
+  /background-tasks/{taskId}:
+    get:
+      operationId: getBackgroundTask
+      summary: Get background task details
+      description: >-
+        Retrieves details about a specific registered background task including
+        its trigger type, conditions, progress, and completion history.
+      tags:
+        - Tasks
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          description: Background task registration ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of task details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackgroundTaskDetail'
+        '404':
+          description: Task not found
+    delete:
+      operationId: unregisterBackgroundTask
+      summary: Unregister a background task
+      description: >-
+        Unregisters a background task using BackgroundTaskRegistration.Unregister.
+        Optionally cancels any currently running instance of the task.
+      tags:
+        - Tasks
+      parameters:
+        - name: taskId
+          in: path
+          required: true
+          description: Background task registration ID
+          schema:
+            type: string
+        - name: cancelRunningTask
+          in: query
+          required: false
+          description: Whether to cancel a running instance
+          schema:
+            type: boolean
+            default: true
+      responses:
+        '204':
+          description: Task unregistered
+        '404':
+          description: Task not found
+  /background-tasks/access:
+    get:
+      operationId: getBackgroundAccessStatus
+      summary: Get background access status
+      description: >-
+        Checks the application's background access status using
+        BackgroundExecutionManager.GetAccessStatus. Returns whether the app
+        is allowed to run background tasks, which may be limited by user
+        settings or battery saver mode.
+      tags:
+        - Access
+      responses:
+        '200':
+          description: Access status retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackgroundAccessStatus'
+    post:
+      operationId: requestBackgroundAccess
+      summary: Request background access
+      description: >-
+        Requests permission for background task execution using
+        BackgroundExecutionManager.RequestAccessAsync. May prompt the user
+        to allow background activity.
+      tags:
+        - Access
+      responses:
+        '200':
+          description: Access request result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackgroundAccessStatus'
+  /background-tasks/triggers:
+    get:
+      operationId: listTriggerTypes
+      summary: List available trigger types
+      description: >-
+        Retrieves the list of available background task trigger types
+        including SystemTrigger, TimeTrigger, MaintenanceTrigger,
+        PushNotificationTrigger, LocationTrigger, BluetoothLEAdvertisementWatcherTrigger,
+        DeviceUseTrigger, and ActivitySensorTrigger.
+      tags:
+        - Triggers
+      responses:
+        '200':
+          description: Successful retrieval of trigger types
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TriggerType'
+components:
+  schemas:
+    BackgroundTask:
+      type: object
+      description: A registered background task
+      properties:
+        id:
+          type: string
+          description: Task registration ID
+        name:
+          type: string
+          description: Task name
+        triggerType:
+          type: string
+          description: Type of trigger
+        isActive:
+          type: boolean
+          description: Whether the task is currently active
+      required:
+        - id
+        - name
+    BackgroundTaskDetail:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        entryPoint:
+          type: string
+          description: Fully qualified class name implementing IBackgroundTask
+        trigger:
+          type: object
+          properties:
+            type:
+              type: string
+            parameters:
+              type: object
+              additionalProperties:
+                type: string
+        conditions:
+          type: array
+          items:
+            type: string
+            enum:
+              - InternetAvailable
+              - InternetNotAvailable
+              - SessionConnected
+              - SessionDisconnected
+              - UserPresent
+              - UserNotPresent
+              - FreeNetworkAvailable
+              - BackgroundWorkCostNotHigh
+        progress:
+          type: integer
+          description: Current progress (0-100)
+        lastCompletedTime:
+          type: string
+          format: date-time
+        lastRunResult:
+          type: string
+          description: Result of the last execution
+    RegisterTaskRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Unique task name
+        entryPoint:
+          type: string
+          description: Fully qualified class name implementing IBackgroundTask
+        trigger:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - SystemTrigger
+                - TimeTrigger
+                - MaintenanceTrigger
+                - PushNotificationTrigger
+                - LocationTrigger
+                - BluetoothLEAdvertisementWatcherTrigger
+                - DeviceUseTrigger
+                - ActivitySensorTrigger
+                - GattCharacteristicNotificationTrigger
+                - MediaProcessingTrigger
+              description: Trigger type
+            systemTriggerType:
+              type: string
+              enum:
+                - SmsReceived
+                - UserPresent
+                - UserAway
+                - NetworkStateChange
+                - ControlChannelReset
+                - InternetAvailable
+                - SessionConnected
+                - ServicingComplete
+                - LockScreenApplicationAdded
+                - LockScreenApplicationRemoved
+                - TimeZoneChange
+                - OnlineIdConnectedStateChange
+                - BackgroundWorkCostChange
+                - PowerStateChange
+              description: System trigger type (for SystemTrigger)
+            freshnessTime:
+              type: integer
+              description: Interval in minutes (for TimeTrigger)
+            oneShot:
+              type: boolean
+              description: Whether the trigger fires only once
+          required:
+            - type
+        conditions:
+          type: array
+          items:
+            type: string
+            enum:
+              - InternetAvailable
+              - InternetNotAvailable
+              - SessionConnected
+              - SessionDisconnected
+              - UserPresent
+              - UserNotPresent
+              - FreeNetworkAvailable
+              - BackgroundWorkCostNotHigh
+        isNetworkRequested:
+          type: boolean
+          description: Whether the task requires network access
+          default: false
+      required:
+        - name
+        - entryPoint
+        - trigger
+    BackgroundAccessStatus:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - Unspecified
+            - AllowedSubjectToSystemPolicy
+            - AlwaysAllowed
+            - DeniedBySystemPolicy
+            - DeniedByUser
+          description: Current background access status
+    TriggerType:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Trigger type name
+        description:
+          type: string
+          description: What triggers the background task
+        requiresLockScreen:
+          type: boolean
+          description: Whether the trigger requires lock screen access
+        supportsOneShot:
+          type: boolean
+          description: Whether the trigger supports one-shot mode

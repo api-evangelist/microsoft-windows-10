@@ -1,0 +1,366 @@
+openapi: 3.1.0
+info:
+  title: Windows Ink API
+  description: >-
+    API for pen and stylus input in Windows applications, based on the
+    Windows.UI.Input.Inking namespace. Provides inking surfaces (InkCanvas,
+    InkPresenter), stroke management (InkStroke, InkStrokeBuilder), ink
+    recognition (InkRecognizer, InkAnalyzer), and handwriting analysis.
+    Supports pressure sensitivity, tilt, and barrel button interactions.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/uwp/design/input/pen-and-stylus-interactions
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+externalDocs:
+  description: Windows.UI.Input.Inking API Reference
+  url: https://learn.microsoft.com/en-us/uwp/api/windows.ui.input.inking
+servers:
+  - url: https://api.windows.com
+    description: Windows Platform API
+paths:
+  /ink/strokes:
+    get:
+      operationId: listInkStrokes
+      summary: List ink strokes
+      description: >-
+        Retrieves the list of ink strokes from an InkStrokeContainer. Each
+        InkStroke contains point data, drawing attributes (color, size, pen tip
+        shape), and bounding rectangle information.
+      tags:
+        - Strokes
+      responses:
+        '200':
+          description: Successful retrieval of ink strokes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InkStroke'
+    post:
+      operationId: addInkStroke
+      summary: Add an ink stroke
+      description: >-
+        Adds a new ink stroke to the InkStrokeContainer using InkStrokeBuilder.
+        The stroke is created from a series of ink points with position, pressure,
+        tilt, and timestamp data, combined with InkDrawingAttributes for
+        visual styling.
+      tags:
+        - Strokes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateInkStrokeRequest'
+      responses:
+        '201':
+          description: Ink stroke created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InkStroke'
+        '400':
+          description: Invalid stroke data
+  /ink/strokes/{strokeId}:
+    get:
+      operationId: getInkStroke
+      summary: Get ink stroke details
+      description: >-
+        Retrieves detailed information about a specific ink stroke including
+        its points, drawing attributes, and bounding rectangle.
+      tags:
+        - Strokes
+      parameters:
+        - name: strokeId
+          in: path
+          required: true
+          description: Unique stroke identifier
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of ink stroke
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InkStrokeDetail'
+        '404':
+          description: Stroke not found
+    delete:
+      operationId: deleteInkStroke
+      summary: Delete an ink stroke
+      description: >-
+        Deletes a specific ink stroke from the container using
+        InkStroke.Selected and InkStrokeContainer.DeleteSelected methods.
+      tags:
+        - Strokes
+      parameters:
+        - name: strokeId
+          in: path
+          required: true
+          description: Unique stroke identifier
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Stroke deleted successfully
+        '404':
+          description: Stroke not found
+  /ink/recognize:
+    post:
+      operationId: recognizeInkStrokes
+      summary: Recognize handwriting from ink strokes
+      description: >-
+        Performs handwriting recognition on ink strokes using InkRecognizerContainer.
+        RecognizeAsync. Returns a list of InkRecognitionResult candidates with
+        recognized text alternatives ranked by confidence.
+      tags:
+        - Recognition
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecognitionRequest'
+      responses:
+        '200':
+          description: Recognition results returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InkRecognitionResult'
+        '400':
+          description: No strokes to recognize
+  /ink/recognizers:
+    get:
+      operationId: listInkRecognizers
+      summary: List available ink recognizers
+      description: >-
+        Retrieves the list of installed handwriting recognizers using
+        InkRecognizerContainer.GetRecognizers. Each recognizer supports
+        a specific language and script for handwriting recognition.
+      tags:
+        - Recognition
+      responses:
+        '200':
+          description: Successful retrieval of recognizers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InkRecognizer'
+  /ink/drawing-attributes:
+    get:
+      operationId: getDefaultDrawingAttributes
+      summary: Get default drawing attributes
+      description: >-
+        Retrieves the default InkDrawingAttributes used for new strokes,
+        including color, size, pen tip shape, transparency, and fit-to-curve
+        settings.
+      tags:
+        - Drawing Attributes
+      responses:
+        '200':
+          description: Successful retrieval of drawing attributes
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InkDrawingAttributes'
+    put:
+      operationId: updateDefaultDrawingAttributes
+      summary: Update default drawing attributes
+      description: >-
+        Updates the default InkDrawingAttributes for new strokes. Changes
+        affect all subsequently created strokes.
+      tags:
+        - Drawing Attributes
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InkDrawingAttributes'
+      responses:
+        '200':
+          description: Drawing attributes updated
+components:
+  schemas:
+    InkStroke:
+      type: object
+      description: An ink stroke (InkStroke class)
+      properties:
+        id:
+          type: string
+          description: Unique stroke identifier
+        pointCount:
+          type: integer
+          description: Number of ink points in the stroke
+        boundingRect:
+          $ref: '#/components/schemas/BoundingRect'
+        drawingAttributes:
+          $ref: '#/components/schemas/InkDrawingAttributes'
+      required:
+        - id
+    InkStrokeDetail:
+      type: object
+      description: Detailed ink stroke information
+      properties:
+        id:
+          type: string
+        points:
+          type: array
+          items:
+            $ref: '#/components/schemas/InkPoint'
+        boundingRect:
+          $ref: '#/components/schemas/BoundingRect'
+        drawingAttributes:
+          $ref: '#/components/schemas/InkDrawingAttributes'
+        strokeDuration:
+          type: string
+          description: Duration of the stroke
+    InkPoint:
+      type: object
+      description: A point in an ink stroke (InkPoint class)
+      properties:
+        x:
+          type: number
+          format: float
+          description: X coordinate
+        'y':
+          type: number
+          format: float
+          description: Y coordinate
+        pressure:
+          type: number
+          format: float
+          description: Pressure value (0.0 to 1.0)
+        tiltX:
+          type: number
+          format: float
+          description: Tilt along X axis in degrees
+        tiltY:
+          type: number
+          format: float
+          description: Tilt along Y axis in degrees
+        timestamp:
+          type: integer
+          format: int64
+          description: Timestamp in microseconds
+      required:
+        - x
+        - 'y'
+        - pressure
+    InkDrawingAttributes:
+      type: object
+      description: Visual attributes for ink rendering (InkDrawingAttributes class)
+      properties:
+        color:
+          type: string
+          description: Stroke color in ARGB hex format
+          example: "#FF000000"
+        size:
+          type: object
+          properties:
+            width:
+              type: number
+              format: float
+            height:
+              type: number
+              format: float
+          description: Pen tip size
+        penTip:
+          type: string
+          enum:
+            - Circle
+            - Rectangle
+          description: Pen tip shape
+        drawAsHighlighter:
+          type: boolean
+          description: Whether to render as a highlighter
+        fitToCurve:
+          type: boolean
+          description: Whether to use Bezier curve fitting
+        ignorePressure:
+          type: boolean
+          description: Whether to ignore pressure data
+        ignoreTilt:
+          type: boolean
+          description: Whether to ignore tilt data
+    BoundingRect:
+      type: object
+      properties:
+        x:
+          type: number
+          format: float
+        'y':
+          type: number
+          format: float
+        width:
+          type: number
+          format: float
+        height:
+          type: number
+          format: float
+    CreateInkStrokeRequest:
+      type: object
+      properties:
+        points:
+          type: array
+          items:
+            $ref: '#/components/schemas/InkPoint'
+          description: Ordered list of ink points
+        drawingAttributes:
+          $ref: '#/components/schemas/InkDrawingAttributes'
+      required:
+        - points
+    RecognitionRequest:
+      type: object
+      properties:
+        strokeIds:
+          type: array
+          items:
+            type: string
+          description: IDs of strokes to recognize (empty for all)
+        recognitionTarget:
+          type: string
+          enum:
+            - All
+            - Selected
+            - Recent
+          description: Which strokes to target
+    InkRecognitionResult:
+      type: object
+      description: Handwriting recognition result (InkRecognitionResult class)
+      properties:
+        boundingRect:
+          $ref: '#/components/schemas/BoundingRect'
+        textCandidates:
+          type: array
+          items:
+            type: string
+          description: Recognized text alternatives ranked by confidence
+        selectedTextIndex:
+          type: integer
+          description: Index of the selected candidate
+        strokeIds:
+          type: array
+          items:
+            type: string
+          description: IDs of strokes that produced this result
+    InkRecognizer:
+      type: object
+      description: A handwriting recognizer (InkRecognizer class)
+      properties:
+        id:
+          type: string
+          description: Unique recognizer identifier
+        name:
+          type: string
+          description: Recognizer display name

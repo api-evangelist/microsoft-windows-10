@@ -1,0 +1,205 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://developer.microsoft.com/schemas/windows-10/ml-model.json",
+  "title": "Windows 10 Machine Learning Model",
+  "description": "Schema for Windows ML machine learning models and evaluation results as defined by the Windows.AI.MachineLearning namespace. Covers LearningModel, LearningModelSession, LearningModelBinding, feature descriptors, and evaluation results.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Model name from ONNX metadata"
+    },
+    "author": {
+      "type": "string",
+      "description": "Model author"
+    },
+    "domain": {
+      "type": "string",
+      "description": "Model domain (e.g., image classification, NLP)"
+    },
+    "description": {
+      "type": "string",
+      "description": "Model description"
+    },
+    "version": {
+      "type": "integer",
+      "description": "Model version number"
+    },
+    "inputFeatures": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/FeatureDescriptor"
+      },
+      "description": "Input feature descriptors"
+    },
+    "outputFeatures": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/FeatureDescriptor"
+      },
+      "description": "Output feature descriptors"
+    },
+    "metadata": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Custom metadata key-value pairs from the ONNX model"
+    }
+  },
+  "required": ["name", "inputFeatures", "outputFeatures"],
+  "$defs": {
+    "FeatureDescriptor": {
+      "type": "object",
+      "description": "Describes an input or output feature of a model (ILearningModelFeatureDescriptor)",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Feature name"
+        },
+        "description": {
+          "type": "string",
+          "description": "Feature description"
+        },
+        "kind": {
+          "type": "string",
+          "enum": ["Tensor", "Sequence", "Map", "Image"],
+          "description": "Feature kind (LearningModelFeatureKind)"
+        },
+        "isRequired": {
+          "type": "boolean",
+          "description": "Whether the feature is required for evaluation"
+        },
+        "tensorDescriptor": {
+          "$ref": "#/$defs/TensorFeatureDescriptor"
+        },
+        "imageDescriptor": {
+          "$ref": "#/$defs/ImageFeatureDescriptor"
+        },
+        "mapDescriptor": {
+          "$ref": "#/$defs/MapFeatureDescriptor"
+        },
+        "sequenceDescriptor": {
+          "$ref": "#/$defs/SequenceFeatureDescriptor"
+        }
+      },
+      "required": ["name", "kind"]
+    },
+    "TensorFeatureDescriptor": {
+      "type": "object",
+      "description": "Descriptor for tensor features (TensorFeatureDescriptor class)",
+      "properties": {
+        "tensorKind": {
+          "type": "string",
+          "enum": [
+            "Undefined", "Float", "UInt8", "Int8", "UInt16", "Int16",
+            "Int32", "Int64", "String", "Boolean", "Float16", "Double",
+            "UInt32", "UInt64", "Complex64", "Complex128"
+          ],
+          "description": "Tensor element data type (TensorKind)"
+        },
+        "shape": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          },
+          "description": "Tensor dimensions (-1 for variable dimensions)"
+        }
+      },
+      "required": ["tensorKind", "shape"]
+    },
+    "ImageFeatureDescriptor": {
+      "type": "object",
+      "description": "Descriptor for image features (ImageFeatureDescriptor class)",
+      "properties": {
+        "bitmapAlphaMode": {
+          "type": "string",
+          "enum": ["Premultiplied", "Straight", "Ignore"],
+          "description": "Alpha channel mode"
+        },
+        "bitmapPixelFormat": {
+          "type": "string",
+          "enum": ["Unknown", "Rgba16", "Rgba8", "Gray16", "Gray8", "Bgra8", "Nv12", "P010", "Yuy2"],
+          "description": "Pixel format"
+        },
+        "height": {
+          "type": "integer",
+          "description": "Image height in pixels"
+        },
+        "width": {
+          "type": "integer",
+          "description": "Image width in pixels"
+        }
+      },
+      "required": ["bitmapPixelFormat", "height", "width"]
+    },
+    "MapFeatureDescriptor": {
+      "type": "object",
+      "description": "Descriptor for map features (MapFeatureDescriptor class)",
+      "properties": {
+        "keyKind": {
+          "type": "string",
+          "enum": ["Float", "Int64", "String", "Double"],
+          "description": "Map key data type"
+        },
+        "valueDescriptor": {
+          "$ref": "#/$defs/FeatureDescriptor"
+        }
+      },
+      "required": ["keyKind"]
+    },
+    "SequenceFeatureDescriptor": {
+      "type": "object",
+      "description": "Descriptor for sequence features (SequenceFeatureDescriptor class)",
+      "properties": {
+        "elementDescriptor": {
+          "$ref": "#/$defs/FeatureDescriptor"
+        }
+      }
+    },
+    "EvaluationResult": {
+      "type": "object",
+      "description": "Result of a model evaluation (LearningModelEvaluationResult class)",
+      "properties": {
+        "correlationId": {
+          "type": "string",
+          "description": "Correlation identifier for tracking"
+        },
+        "errorStatus": {
+          "type": "integer",
+          "description": "Error status code (0 for success)"
+        },
+        "succeeded": {
+          "type": "boolean",
+          "description": "Whether evaluation succeeded"
+        },
+        "outputs": {
+          "type": "object",
+          "additionalProperties": true,
+          "description": "Map of output feature names to their values"
+        }
+      },
+      "required": ["succeeded"]
+    },
+    "LearningModelDevice": {
+      "type": "object",
+      "description": "Device used for model evaluation (LearningModelDevice class)",
+      "properties": {
+        "deviceKind": {
+          "type": "string",
+          "enum": ["Default", "Cpu", "DirectX", "DirectXHighPerformance", "DirectXMinPower"],
+          "description": "Device type (LearningModelDeviceKind)"
+        },
+        "adapterId": {
+          "type": "object",
+          "properties": {
+            "highPart": { "type": "integer" },
+            "lowPart": { "type": "integer" }
+          },
+          "description": "GPU adapter identifier (for DirectX devices)"
+        }
+      },
+      "required": ["deviceKind"]
+    }
+  }
+}

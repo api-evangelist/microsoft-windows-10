@@ -1,0 +1,442 @@
+openapi: 3.1.0
+info:
+  title: Windows Geolocation API
+  description: >-
+    API for obtaining geographic location data in Windows applications, based on
+    the Windows.Devices.Geolocation namespace. Provides access to latitude,
+    longitude, altitude, heading, and speed from GNSS, Wi-Fi, cellular networks,
+    and IP address sources. Key classes include Geolocator, Geoposition,
+    Geocoordinate, GeocoordinateSatelliteData, Geocircle, GeoboundingBox,
+    and GeovisitMonitor for visit tracking.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/uwp/maps-and-location/
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+externalDocs:
+  description: Windows.Devices.Geolocation API Reference
+  url: https://learn.microsoft.com/en-us/uwp/api/windows.devices.geolocation
+servers:
+  - url: https://api.windows.com
+    description: Windows Platform API
+paths:
+  /geolocation/access:
+    get:
+      operationId: getGeolocationAccess
+      summary: Check geolocation access status
+      description: >-
+        Checks the application's permission to access location data using
+        Geolocator.RequestAccessAsync. Returns the current GeolocationAccessStatus
+        indicating whether access is allowed, denied, or unspecified.
+      tags:
+        - Access
+      responses:
+        '200':
+          description: Access status retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeolocationAccessStatus'
+    post:
+      operationId: requestGeolocationAccess
+      summary: Request geolocation access
+      description: >-
+        Requests permission to access the device's location using
+        Geolocator.RequestAccessAsync. Prompts the user to grant or deny
+        location access if not previously configured.
+      tags:
+        - Access
+      responses:
+        '200':
+          description: Access request processed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeolocationAccessStatus'
+  /geolocation/position:
+    get:
+      operationId: getCurrentPosition
+      summary: Get current geographic position
+      description: >-
+        Retrieves the current geographic position using Geolocator.GetGeopositionAsync.
+        Returns a Geoposition containing a Geocoordinate with latitude, longitude,
+        altitude, accuracy, heading, speed, and timestamp. Accuracy depends on
+        the position source (GNSS ~10m, Wi-Fi ~30-500m, cellular ~300-3000m,
+        IP ~300-10000m).
+      tags:
+        - Position
+      parameters:
+        - name: desiredAccuracy
+          in: query
+          required: false
+          description: Desired position accuracy level
+          schema:
+            type: string
+            enum:
+              - Default
+              - High
+            default: Default
+        - name: maximumAge
+          in: query
+          required: false
+          description: Maximum age of cached position in seconds
+          schema:
+            type: integer
+        - name: timeout
+          in: query
+          required: false
+          description: Timeout in seconds for obtaining a position
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Position retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Geoposition'
+        '403':
+          description: Location access denied
+        '408':
+          description: Position request timed out
+        '503':
+          description: Location service unavailable
+  /geolocation/tracking:
+    post:
+      operationId: startPositionTracking
+      summary: Start continuous position tracking
+      description: >-
+        Starts continuous position tracking by subscribing to the
+        Geolocator.PositionChanged event. Reports position updates based on
+        the configured movement threshold (in meters) and reporting interval.
+      tags:
+        - Tracking
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrackingRequest'
+      responses:
+        '200':
+          description: Tracking started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackingSession'
+        '403':
+          description: Location access denied
+    delete:
+      operationId: stopPositionTracking
+      summary: Stop position tracking
+      description: >-
+        Stops continuous position tracking by unsubscribing from the
+        Geolocator.PositionChanged event and disposing the Geolocator.
+      tags:
+        - Tracking
+      responses:
+        '204':
+          description: Tracking stopped
+  /geolocation/geofences:
+    get:
+      operationId: listGeofences
+      summary: List active geofences
+      description: >-
+        Retrieves the list of active geofences registered with the
+        GeofenceMonitor. Geofences are geographic areas (circles) that
+        trigger events when the device enters, exits, or dwells in the area.
+      tags:
+        - Geofencing
+      responses:
+        '200':
+          description: Successful retrieval of geofences
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Geofence'
+    post:
+      operationId: createGeofence
+      summary: Create a geofence
+      description: >-
+        Creates a new geofence and adds it to the GeofenceMonitor. The geofence
+        is defined by a Geocircle (center point and radius) and monitored states
+        (entered, exited, removed). Supports dwell time, start time, and duration.
+      tags:
+        - Geofencing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGeofenceRequest'
+      responses:
+        '201':
+          description: Geofence created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Geofence'
+        '400':
+          description: Invalid geofence configuration
+  /geolocation/visits:
+    get:
+      operationId: getRecentVisits
+      summary: Get recent location visits
+      description: >-
+        Retrieves recent visit records using GeovisitMonitor.GetLastReportAsync.
+        Visits represent significant location stays detected by the system,
+        including arrival/departure times and position data.
+      tags:
+        - Visits
+      responses:
+        '200':
+          description: Successful retrieval of visits
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Geovisit'
+components:
+  schemas:
+    GeolocationAccessStatus:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+            - Unspecified
+            - Allowed
+            - Denied
+          description: Current geolocation access status
+    Geoposition:
+      type: object
+      description: A geographic position (Geoposition class)
+      properties:
+        coordinate:
+          $ref: '#/components/schemas/Geocoordinate'
+        civicAddress:
+          type: object
+          properties:
+            city:
+              type: string
+            country:
+              type: string
+            state:
+              type: string
+            postalCode:
+              type: string
+          description: Civic address (if available)
+        venueData:
+          type: object
+          properties:
+            id:
+              type: string
+            level:
+              type: string
+          description: Venue information (if available)
+      required:
+        - coordinate
+    Geocoordinate:
+      type: object
+      description: Geographic coordinate data (Geocoordinate class)
+      properties:
+        latitude:
+          type: number
+          format: double
+          description: Latitude in degrees (-90 to 90)
+        longitude:
+          type: number
+          format: double
+          description: Longitude in degrees (-180 to 180)
+        altitude:
+          type: number
+          format: double
+          description: Altitude in meters (nullable)
+        accuracy:
+          type: number
+          format: double
+          description: Accuracy radius in meters
+        altitudeAccuracy:
+          type: number
+          format: double
+          description: Altitude accuracy in meters (nullable)
+        heading:
+          type: number
+          format: double
+          description: Heading in degrees relative to true north (nullable)
+        speed:
+          type: number
+          format: double
+          description: Speed in meters per second (nullable)
+        timestamp:
+          type: string
+          format: date-time
+          description: Time the position was determined
+        positionSource:
+          type: string
+          enum:
+            - Cellular
+            - Satellite
+            - WiFi
+            - IPAddress
+            - Unknown
+            - Default
+            - Obfuscated
+          description: Source of the position data
+        satelliteData:
+          type: object
+          properties:
+            horizontalDilutionOfPrecision:
+              type: number
+              format: double
+            verticalDilutionOfPrecision:
+              type: number
+              format: double
+            geometricDilutionOfPrecision:
+              type: number
+              format: double
+          description: Satellite data (if source is GNSS)
+      required:
+        - latitude
+        - longitude
+        - accuracy
+        - timestamp
+    TrackingRequest:
+      type: object
+      properties:
+        desiredAccuracy:
+          type: string
+          enum:
+            - Default
+            - High
+          default: Default
+        movementThreshold:
+          type: number
+          format: double
+          description: Minimum movement in meters before reporting
+          default: 0
+        reportInterval:
+          type: integer
+          description: Minimum time between reports in milliseconds
+          default: 1000
+    TrackingSession:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+            - Ready
+            - Initializing
+            - NoData
+            - Disabled
+            - NotInitialized
+            - NotAvailable
+          description: Current Geolocator status (PositionStatus)
+    Geofence:
+      type: object
+      description: A geographic fence
+      properties:
+        id:
+          type: string
+          description: Geofence identifier
+        geoshape:
+          $ref: '#/components/schemas/Geocircle'
+        monitoredStates:
+          type: array
+          items:
+            type: string
+            enum:
+              - Entered
+              - Exited
+              - Removed
+        singleUse:
+          type: boolean
+          description: Whether the geofence is removed after first trigger
+        dwellTime:
+          type: string
+          description: ISO 8601 duration required inside the geofence
+        startTime:
+          type: string
+          format: date-time
+        duration:
+          type: string
+          description: ISO 8601 duration for the geofence lifetime
+    CreateGeofenceRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique geofence identifier
+        latitude:
+          type: number
+          format: double
+          description: Center latitude
+        longitude:
+          type: number
+          format: double
+          description: Center longitude
+        radiusInMeters:
+          type: number
+          format: double
+          description: Geofence radius in meters
+        monitoredStates:
+          type: array
+          items:
+            type: string
+            enum:
+              - Entered
+              - Exited
+              - Removed
+        singleUse:
+          type: boolean
+          default: false
+        dwellTimeInSeconds:
+          type: integer
+          description: Dwell time in seconds
+      required:
+        - id
+        - latitude
+        - longitude
+        - radiusInMeters
+    Geocircle:
+      type: object
+      description: A geographic circle (Geocircle class)
+      properties:
+        center:
+          type: object
+          properties:
+            latitude:
+              type: number
+              format: double
+            longitude:
+              type: number
+              format: double
+            altitude:
+              type: number
+              format: double
+        radiusInMeters:
+          type: number
+          format: double
+    Geovisit:
+      type: object
+      description: A location visit record (Geovisit class)
+      properties:
+        position:
+          $ref: '#/components/schemas/Geoposition'
+        stateChange:
+          type: string
+          enum:
+            - Arrived
+            - Departed
+            - TrackingLost
+          description: Visit state change type
+        timestamp:
+          type: string
+          format: date-time

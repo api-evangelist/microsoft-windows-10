@@ -1,0 +1,399 @@
+openapi: 3.1.0
+info:
+  title: Windows ML API
+  description: >-
+    API for integrating trained machine learning models into Windows applications
+    using the ONNX format. Based on the Windows.AI.MachineLearning namespace,
+    Windows ML evaluates models locally on the device using hardware acceleration
+    with DirectX 12. Key classes include LearningModel, LearningModelSession,
+    LearningModelBinding, and LearningModelEvaluationResult.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/ai/windows-ml/
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+externalDocs:
+  description: Windows ML API Reference
+  url: https://learn.microsoft.com/en-us/windows/ai/windows-ml/api-reference
+servers:
+  - url: https://api.windows.com
+    description: Windows Platform API
+paths:
+  /ml/models:
+    get:
+      operationId: listMLModels
+      summary: List loaded ML models
+      description: >-
+        Retrieves the list of currently loaded machine learning models. Each
+        model is loaded via the LearningModel class from ONNX format files and
+        provides metadata including the model author, name, domain, description,
+        version, and input/output features.
+      tags:
+        - Models
+      responses:
+        '200':
+          description: Successful retrieval of loaded models
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LearningModel'
+    post:
+      operationId: loadMLModel
+      summary: Load a machine learning model
+      description: >-
+        Loads an ONNX machine learning model using LearningModel.LoadFromFilePath
+        or LearningModel.LoadFromStream. The loaded model can then be used to
+        create evaluation sessions. Supports ONNX versions 1.2 and 1.3.
+      tags:
+        - Models
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoadModelRequest'
+      responses:
+        '201':
+          description: Model loaded successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LearningModel'
+        '400':
+          description: Invalid model file or format
+        '415':
+          description: Unsupported model format (must be ONNX)
+  /ml/models/{modelId}:
+    get:
+      operationId: getMLModel
+      summary: Get model details
+      description: >-
+        Retrieves detailed information about a loaded model including its
+        input features (ILearningModelFeatureDescriptor), output features,
+        metadata properties, and device capabilities.
+      tags:
+        - Models
+      parameters:
+        - name: modelId
+          in: path
+          required: true
+          description: Unique identifier for the loaded model
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful retrieval of model details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LearningModelDetail'
+        '404':
+          description: Model not found
+    delete:
+      operationId: unloadMLModel
+      summary: Unload a machine learning model
+      description: >-
+        Unloads a machine learning model by calling LearningModel.Close,
+        releasing all associated resources and terminating any active sessions.
+      tags:
+        - Models
+      parameters:
+        - name: modelId
+          in: path
+          required: true
+          description: Unique identifier for the model
+          schema:
+            type: string
+      responses:
+        '204':
+          description: Model unloaded successfully
+        '404':
+          description: Model not found
+  /ml/sessions:
+    post:
+      operationId: createMLSession
+      summary: Create an evaluation session
+      description: >-
+        Creates a LearningModelSession for evaluating a loaded model. The session
+        binds the model to a LearningModelDevice (CPU, DirectX, or
+        DirectXHighPerformance) for hardware-accelerated inference.
+      tags:
+        - Sessions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSessionRequest'
+      responses:
+        '201':
+          description: Session created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LearningModelSession'
+        '400':
+          description: Invalid session configuration
+        '404':
+          description: Model not found
+  /ml/sessions/{sessionId}/evaluate:
+    post:
+      operationId: evaluateMLModel
+      summary: Evaluate model with input data
+      description: >-
+        Evaluates the model with bound input data using LearningModelSession.Evaluate.
+        Input features are bound via a LearningModelBinding, and results are
+        returned as a LearningModelEvaluationResult containing output tensors,
+        maps, sequences, or images.
+      tags:
+        - Evaluation
+      parameters:
+        - name: sessionId
+          in: path
+          required: true
+          description: Unique identifier for the evaluation session
+          schema:
+            type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EvaluationRequest'
+      responses:
+        '200':
+          description: Evaluation completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationResult'
+        '400':
+          description: Invalid input bindings
+        '404':
+          description: Session not found
+  /ml/devices:
+    get:
+      operationId: listMLDevices
+      summary: List available ML devices
+      description: >-
+        Retrieves the list of available LearningModelDevice options for
+        model evaluation, including CPU, DirectX GPU, and DirectXHighPerformance
+        targets.
+      tags:
+        - Devices
+      responses:
+        '200':
+          description: Successful retrieval of available devices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LearningModelDevice'
+components:
+  schemas:
+    LearningModel:
+      type: object
+      description: A loaded ONNX machine learning model (LearningModel class)
+      properties:
+        id:
+          type: string
+          description: Unique model identifier
+        name:
+          type: string
+          description: Model name from metadata
+        author:
+          type: string
+          description: Model author from metadata
+        domain:
+          type: string
+          description: Model domain from metadata
+        description:
+          type: string
+          description: Model description from metadata
+        version:
+          type: integer
+          description: Model version
+        inputFeatureCount:
+          type: integer
+          description: Number of input features
+        outputFeatureCount:
+          type: integer
+          description: Number of output features
+      required:
+        - id
+        - name
+    LearningModelDetail:
+      type: object
+      description: Detailed model information
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        author:
+          type: string
+        domain:
+          type: string
+        description:
+          type: string
+        version:
+          type: integer
+        inputFeatures:
+          type: array
+          items:
+            $ref: '#/components/schemas/FeatureDescriptor'
+        outputFeatures:
+          type: array
+          items:
+            $ref: '#/components/schemas/FeatureDescriptor'
+        metadata:
+          type: object
+          additionalProperties:
+            type: string
+          description: Key-value metadata from the ONNX model
+    FeatureDescriptor:
+      type: object
+      description: Describes an input or output feature of a model (ILearningModelFeatureDescriptor)
+      properties:
+        name:
+          type: string
+          description: Feature name
+        description:
+          type: string
+          description: Feature description
+        kind:
+          type: string
+          enum:
+            - Tensor
+            - Sequence
+            - Map
+            - Image
+          description: The kind of feature (TensorFeatureDescriptor, ImageFeatureDescriptor, etc.)
+        isRequired:
+          type: boolean
+          description: Whether the feature is required
+        shape:
+          type: array
+          items:
+            type: integer
+          description: Tensor shape dimensions (for tensor features)
+        tensorDataType:
+          type: string
+          enum:
+            - Float
+            - Float16
+            - Double
+            - Int8
+            - UInt8
+            - Int16
+            - UInt16
+            - Int32
+            - UInt32
+            - Int64
+            - UInt64
+            - String
+            - Boolean
+          description: Data type for tensor features
+      required:
+        - name
+        - kind
+    LoadModelRequest:
+      type: object
+      properties:
+        filePath:
+          type: string
+          description: Path to the ONNX model file
+        modelFormat:
+          type: string
+          enum:
+            - ONNX
+          description: Model format (currently only ONNX supported)
+          default: ONNX
+      required:
+        - filePath
+    CreateSessionRequest:
+      type: object
+      properties:
+        modelId:
+          type: string
+          description: ID of the loaded model
+        deviceKind:
+          type: string
+          enum:
+            - Default
+            - Cpu
+            - DirectX
+            - DirectXHighPerformance
+            - DirectXMinPower
+          description: The device to use for evaluation (maps to LearningModelDeviceKind)
+          default: Default
+      required:
+        - modelId
+    LearningModelSession:
+      type: object
+      description: An evaluation session (LearningModelSession class)
+      properties:
+        id:
+          type: string
+          description: Session identifier
+        modelId:
+          type: string
+          description: Associated model identifier
+        device:
+          $ref: '#/components/schemas/LearningModelDevice'
+    EvaluationRequest:
+      type: object
+      description: Input bindings for model evaluation
+      properties:
+        correlationId:
+          type: string
+          description: Correlation ID for tracking the evaluation
+        bindings:
+          type: object
+          additionalProperties:
+            type: object
+          description: Map of feature names to their input values
+      required:
+        - bindings
+    EvaluationResult:
+      type: object
+      description: Result of a model evaluation (LearningModelEvaluationResult)
+      properties:
+        correlationId:
+          type: string
+          description: Correlation ID from the request
+        succeeded:
+          type: boolean
+          description: Whether evaluation succeeded
+        errorStatus:
+          type: integer
+          description: Error code if evaluation failed
+        outputs:
+          type: object
+          additionalProperties:
+            type: object
+          description: Map of output feature names to their values
+    LearningModelDevice:
+      type: object
+      description: A device for model evaluation (LearningModelDevice class)
+      properties:
+        kind:
+          type: string
+          enum:
+            - Default
+            - Cpu
+            - DirectX
+            - DirectXHighPerformance
+            - DirectXMinPower
+          description: Device kind
+        adapterId:
+          type: string
+          description: GPU adapter ID (for DirectX devices)
+        name:
+          type: string
+          description: Device name

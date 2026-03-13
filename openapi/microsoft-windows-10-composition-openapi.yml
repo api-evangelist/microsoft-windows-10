@@ -1,0 +1,379 @@
+openapi: 3.1.0
+info:
+  title: Windows Composition API
+  description: >-
+    The Windows.UI.Composition API provides access to the visual layer between
+    the XAML framework and the DirectX graphics layer. Based on the
+    Windows.UI.Composition namespace, it enables high-performance retained-mode
+    graphics, effects, and animations. Key classes include Compositor,
+    Visual, SpriteVisual, ContainerVisual, CompositionAnimation,
+    CompositionEffectBrush, and CompositionSurfaceBrush.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/uwp/composition/visual-layer
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+externalDocs:
+  description: Windows.UI.Composition API Reference
+  url: https://learn.microsoft.com/en-us/uwp/api/windows.ui.composition
+servers:
+  - url: https://api.windows.com
+    description: Windows Platform API
+paths:
+  /composition/visuals:
+    get:
+      operationId: listVisuals
+      summary: List composition visuals
+      description: >-
+        Retrieves the list of visual objects in the composition tree. Visuals
+        are the base building blocks of the visual layer, representing rectangular
+        areas that can have size, position, opacity, clip, and transform
+        properties. Types include SpriteVisual, ContainerVisual, LayerVisual,
+        ShapeVisual, and RedirectVisual.
+      tags:
+        - Visuals
+      responses:
+        '200':
+          description: Successful retrieval of visuals
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CompositionVisual'
+    post:
+      operationId: createVisual
+      summary: Create a composition visual
+      description: >-
+        Creates a new visual object using the Compositor factory methods such as
+        Compositor.CreateSpriteVisual, CreateContainerVisual, or CreateLayerVisual.
+        The visual must be added to a visual tree to be rendered.
+      tags:
+        - Visuals
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVisualRequest'
+      responses:
+        '201':
+          description: Visual created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompositionVisual'
+        '400':
+          description: Invalid visual configuration
+  /composition/animations:
+    post:
+      operationId: createAnimation
+      summary: Create a composition animation
+      description: >-
+        Creates a composition animation using Compositor factory methods such as
+        CreateScalarKeyFrameAnimation, CreateVector3KeyFrameAnimation,
+        CreateColorKeyFrameAnimation, or CreateExpressionAnimation. Animations
+        drive property changes on visuals over time with easing functions.
+      tags:
+        - Animations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAnimationRequest'
+      responses:
+        '201':
+          description: Animation created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompositionAnimation'
+        '400':
+          description: Invalid animation parameters
+  /composition/effects:
+    post:
+      operationId: createEffect
+      summary: Create a composition effect
+      description: >-
+        Creates a CompositionEffectBrush for applying visual effects such as
+        blur (GaussianBlurEffect), saturation, color adjustments, and compositing.
+        Effects are created via Compositor.CreateEffectFactory and applied to
+        SpriteVisual objects via their Brush property.
+      tags:
+        - Effects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEffectRequest'
+      responses:
+        '201':
+          description: Effect created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompositionEffect'
+        '400':
+          description: Invalid effect configuration
+  /composition/surfaces:
+    post:
+      operationId: createSurface
+      summary: Create a composition surface
+      description: >-
+        Creates a CompositionDrawingSurface or CompositionVirtualDrawingSurface
+        for rendering content onto visuals. Surfaces can be backed by Direct2D,
+        Win2D, or bitmap images using CompositionGraphicsDevice.
+      tags:
+        - Surfaces
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSurfaceRequest'
+      responses:
+        '201':
+          description: Surface created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompositionSurface'
+        '400':
+          description: Invalid surface configuration
+components:
+  schemas:
+    CompositionVisual:
+      type: object
+      description: A composition visual object
+      properties:
+        id:
+          type: string
+          description: Visual identifier
+        type:
+          type: string
+          enum:
+            - SpriteVisual
+            - ContainerVisual
+            - LayerVisual
+            - ShapeVisual
+            - RedirectVisual
+          description: Visual type
+        offset:
+          $ref: '#/components/schemas/Vector3'
+        size:
+          $ref: '#/components/schemas/Vector2'
+        opacity:
+          type: number
+          format: float
+          description: Opacity (0.0 to 1.0)
+        rotationAngleInDegrees:
+          type: number
+          format: float
+        scale:
+          $ref: '#/components/schemas/Vector3'
+        isVisible:
+          type: boolean
+        comment:
+          type: string
+          description: Developer comment for debugging
+      required:
+        - id
+        - type
+    Vector2:
+      type: object
+      properties:
+        x:
+          type: number
+          format: float
+        'y':
+          type: number
+          format: float
+    Vector3:
+      type: object
+      properties:
+        x:
+          type: number
+          format: float
+        'y':
+          type: number
+          format: float
+        z:
+          type: number
+          format: float
+    CreateVisualRequest:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - SpriteVisual
+            - ContainerVisual
+            - LayerVisual
+            - ShapeVisual
+          description: Type of visual to create
+        offset:
+          $ref: '#/components/schemas/Vector3'
+        size:
+          $ref: '#/components/schemas/Vector2'
+        opacity:
+          type: number
+          format: float
+          default: 1.0
+      required:
+        - type
+    CompositionAnimation:
+      type: object
+      description: A composition animation
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+            - ScalarKeyFrame
+            - Vector2KeyFrame
+            - Vector3KeyFrame
+            - ColorKeyFrame
+            - QuaternionKeyFrame
+            - Expression
+          description: Animation type
+        duration:
+          type: string
+          description: ISO 8601 duration
+        iterationBehavior:
+          type: string
+          enum:
+            - Count
+            - Forever
+        targetProperty:
+          type: string
+          description: Property being animated
+    CreateAnimationRequest:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - ScalarKeyFrame
+            - Vector2KeyFrame
+            - Vector3KeyFrame
+            - ColorKeyFrame
+            - QuaternionKeyFrame
+            - Expression
+        duration:
+          type: string
+          description: ISO 8601 duration
+        targetProperty:
+          type: string
+          description: Target property name (e.g., Offset, Opacity, Scale)
+        keyFrames:
+          type: array
+          items:
+            type: object
+            properties:
+              normalizedProgressKey:
+                type: number
+                format: float
+                description: Progress key (0.0 to 1.0)
+              value:
+                type: object
+                description: Value at this key frame
+              easingFunction:
+                type: string
+                enum:
+                  - Linear
+                  - CubicBezier
+                  - StepEasing
+        expression:
+          type: string
+          description: Expression string (for Expression animations)
+      required:
+        - type
+    CompositionEffect:
+      type: object
+      properties:
+        id:
+          type: string
+        effectType:
+          type: string
+          enum:
+            - GaussianBlur
+            - Saturation
+            - Grayscale
+            - Invert
+            - Sepia
+            - TemperatureAndTint
+            - Composite
+          description: Type of effect
+    CreateEffectRequest:
+      type: object
+      properties:
+        effectType:
+          type: string
+          enum:
+            - GaussianBlur
+            - Saturation
+            - Grayscale
+            - Invert
+            - Sepia
+            - TemperatureAndTint
+            - Composite
+        properties:
+          type: object
+          additionalProperties:
+            type: number
+          description: Effect-specific properties (e.g., BlurAmount for GaussianBlur)
+        animatableProperties:
+          type: array
+          items:
+            type: string
+          description: Properties that can be animated
+      required:
+        - effectType
+    CompositionSurface:
+      type: object
+      properties:
+        id:
+          type: string
+        size:
+          $ref: '#/components/schemas/Vector2'
+        pixelFormat:
+          type: string
+          enum:
+            - B8G8R8A8UIntNormalized
+            - R8G8B8A8UIntNormalized
+            - R16G16B16A16Float
+        alphaMode:
+          type: string
+          enum:
+            - Premultiplied
+            - Straight
+            - Ignore
+    CreateSurfaceRequest:
+      type: object
+      properties:
+        width:
+          type: integer
+        height:
+          type: integer
+        pixelFormat:
+          type: string
+          enum:
+            - B8G8R8A8UIntNormalized
+            - R8G8B8A8UIntNormalized
+            - R16G16B16A16Float
+          default: B8G8R8A8UIntNormalized
+        alphaMode:
+          type: string
+          enum:
+            - Premultiplied
+            - Straight
+            - Ignore
+          default: Premultiplied
+      required:
+        - width
+        - height
