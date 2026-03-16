@@ -1,9 +1,11 @@
+aid: microsoft-windows-10
 name: Microsoft Windows 10 APIs
 description: Collection of APIs and developer resources for building applications on the Windows 10 platform, including Universal Windows Platform (UWP), Win32, and Windows Runtime APIs for desktop, mobile, and IoT applications.
-image: https://www.microsoft.com/favicon.ico
-created: 2024-01-01 00:00:00+00:00
-modified: 2026-03-04
-specificationVersion: '0.18'
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+created: '2024-01-01'
+modified: '2026-03-16'
+specificationVersion: '0.19'
 url: https://developer.microsoft.com/en-us/windows/
 tags:
 - Windows
@@ -393,6 +395,5 @@ common:
 - type: JSONSchema
   url: json-schema/microsoft-windows-10-bluetooth-device-schema.json
 maintainers:
-- name: Kin Lane
+- FN: Kin Lane
   email: kin@apievangelist.com
-  url: https://apievangelist.com
