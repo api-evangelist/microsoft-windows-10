@@ -1,5 +1,5 @@
 aid: microsoft-windows-10
-name: Microsoft Windows 10 APIs
+name: Microsoft Windows 10
 description: Collection of APIs and developer resources for building applications on the Windows 10 platform, including Universal Windows Platform (UWP), Win32, and Windows Runtime APIs for desktop, mobile, and IoT applications.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
