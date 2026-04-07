@@ -290,3 +290,8 @@ components:
           example: E700
         description:
           type: string
+tags:
+  - name: Controls
+  - name: Icons
+  - name: Styles
+  - name: Themes

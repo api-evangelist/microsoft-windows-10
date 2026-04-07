@@ -478,3 +478,10 @@ components:
           type: string
         maxMessageSize:
           type: integer
+tags:
+  - name: BLE Scanning
+  - name: Devices
+  - name: GATT Characteristics
+  - name: GATT Operations
+  - name: GATT Services
+  - name: RFCOMM

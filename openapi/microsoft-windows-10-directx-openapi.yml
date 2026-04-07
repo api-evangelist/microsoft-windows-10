@@ -444,3 +444,9 @@ components:
           type: string
         bufferCount:
           type: integer
+tags:
+  - name: Command Queues
+  - name: Devices
+  - name: Pipeline
+  - name: Presentation
+  - name: Resources

@@ -317,3 +317,8 @@ components:
           type: string
           format: byte
           description: Base64-encoded certificate chain
+tags:
+  - name: Attestation
+  - name: Authentication
+  - name: Availability
+  - name: Credentials

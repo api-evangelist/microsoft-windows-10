@@ -397,3 +397,8 @@ components:
         name:
           type: string
           description: Device name
+tags:
+  - name: Devices
+  - name: Evaluation
+  - name: Models
+  - name: Sessions

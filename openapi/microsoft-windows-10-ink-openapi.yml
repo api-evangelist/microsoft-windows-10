@@ -364,3 +364,7 @@ components:
         name:
           type: string
           description: Recognizer display name
+tags:
+  - name: Drawing Attributes
+  - name: Recognition
+  - name: Strokes

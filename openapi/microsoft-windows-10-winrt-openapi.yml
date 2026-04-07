@@ -293,3 +293,7 @@ components:
             - activated
             - failed
           description: Activation result status
+tags:
+  - name: Activation
+  - name: Classes
+  - name: Namespaces

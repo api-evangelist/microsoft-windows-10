@@ -305,3 +305,8 @@ components:
           description: Argument passed when user taps to launch app
       required:
         - message
+tags:
+  - name: Phrase Lists
+  - name: Responses
+  - name: Service Connections
+  - name: Voice Commands

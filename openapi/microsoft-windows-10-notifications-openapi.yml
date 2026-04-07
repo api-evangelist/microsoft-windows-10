@@ -559,3 +559,9 @@ components:
       required:
         - id
         - displayName
+tags:
+  - name: Badge Notifications
+  - name: Collections
+  - name: Scheduled Notifications
+  - name: Tile Notifications
+  - name: Toast Notifications

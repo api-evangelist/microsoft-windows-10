@@ -517,3 +517,15 @@ components:
         timestamp:
           type: string
           format: date-time
+tags:
+  - name: Accelerometer
+  - name: Barometer
+  - name: Compass
+  - name: Gyrometer
+  - name: Human Presence
+  - name: Inclinometer
+  - name: Light Sensor
+  - name: Orientation
+  - name: Pedometer
+  - name: Proximity
+  - name: Sensors

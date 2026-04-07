@@ -336,3 +336,8 @@ components:
       required:
         - name
         - value
+tags:
+  - name: API Categories
+  - name: Functions
+  - name: Messages
+  - name: Structures

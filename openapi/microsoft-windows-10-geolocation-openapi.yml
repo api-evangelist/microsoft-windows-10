@@ -440,3 +440,9 @@ components:
         timestamp:
           type: string
           format: date-time
+tags:
+  - name: Access
+  - name: Geofencing
+  - name: Position
+  - name: Tracking
+  - name: Visits

@@ -337,3 +337,7 @@ components:
         supportsOneShot:
           type: boolean
           description: Whether the trigger supports one-shot mode
+tags:
+  - name: Access
+  - name: Tasks
+  - name: Triggers

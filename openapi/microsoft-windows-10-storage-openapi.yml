@@ -551,3 +551,10 @@ components:
             - File
             - Folder
           description: Whether the changed item is a file or folder
+tags:
+  - name: App Data
+  - name: Change Tracking
+  - name: File Operations
+  - name: Files
+  - name: Folders
+  - name: Libraries

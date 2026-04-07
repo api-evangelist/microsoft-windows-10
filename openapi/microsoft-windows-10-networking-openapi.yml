@@ -424,3 +424,10 @@ components:
               type: number
             maxTransferSizeInMegabytes:
               type: integer
+tags:
+  - name: Background Transfers
+  - name: Connectivity
+  - name: HTTP Client
+  - name: TCP Sockets
+  - name: UDP Sockets
+  - name: WebSockets

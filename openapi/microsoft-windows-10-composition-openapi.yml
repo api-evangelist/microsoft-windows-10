@@ -377,3 +377,8 @@ components:
       required:
         - width
         - height
+tags:
+  - name: Animations
+  - name: Effects
+  - name: Surfaces
+  - name: Visuals

@@ -371,3 +371,9 @@ components:
         sizeInBytes:
           type: integer
           format: int64
+tags:
+  - name: Devices
+  - name: Photo Capture
+  - name: Preview
+  - name: Sessions
+  - name: Video Recording
