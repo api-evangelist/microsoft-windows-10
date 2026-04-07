@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Windows Sensors API
+  title: Microsoft Windows 10 Windows Sensors API
   description: >-
     API for accessing device sensor data, based on the Windows.Devices.Sensors
     namespace. Provides a unified interface for reading sensor values and
@@ -25,7 +25,7 @@ paths:
   /sensors:
     get:
       operationId: listAvailableSensors
-      summary: List available sensors
+      summary: Microsoft Windows 10 List available sensors
       description: >-
         Retrieves the list of available sensors on the device. Each sensor type
         uses a GetDefault() static method to check availability. Supported types
@@ -46,7 +46,7 @@ paths:
   /sensors/accelerometer/reading:
     get:
       operationId: getAccelerometerReading
-      summary: Get accelerometer reading
+      summary: Microsoft Windows 10 Get accelerometer reading
       description: >-
         Retrieves the current accelerometer reading using
         Accelerometer.GetCurrentReading. Returns G-force values along the
@@ -65,7 +65,7 @@ paths:
   /sensors/gyrometer/reading:
     get:
       operationId: getGyrometerReading
-      summary: Get gyrometer reading
+      summary: Microsoft Windows 10 Get gyrometer reading
       description: >-
         Retrieves the current gyrometer reading using Gyrometer.GetCurrentReading.
         Returns angular velocity in degrees per second along the x, y, and z axes.
@@ -83,7 +83,7 @@ paths:
   /sensors/compass/reading:
     get:
       operationId: getCompassReading
-      summary: Get compass reading
+      summary: Microsoft Windows 10 Get compass reading
       description: >-
         Retrieves the current compass reading using Compass.GetCurrentReading.
         Returns heading in degrees relative to magnetic north and optionally
@@ -102,7 +102,7 @@ paths:
   /sensors/inclinometer/reading:
     get:
       operationId: getInclinometerReading
-      summary: Get inclinometer reading
+      summary: Microsoft Windows 10 Get inclinometer reading
       description: >-
         Retrieves the current inclinometer reading using
         Inclinometer.GetCurrentReading. Returns pitch, roll, and yaw values
@@ -121,7 +121,7 @@ paths:
   /sensors/light/reading:
     get:
       operationId: getLightSensorReading
-      summary: Get light sensor reading
+      summary: Microsoft Windows 10 Get light sensor reading
       description: >-
         Retrieves the current ambient light sensor reading using
         LightSensor.GetCurrentReading. Returns illuminance in lux and
@@ -140,7 +140,7 @@ paths:
   /sensors/barometer/reading:
     get:
       operationId: getBarometerReading
-      summary: Get barometer reading
+      summary: Microsoft Windows 10 Get barometer reading
       description: >-
         Retrieves the current barometer reading using Barometer.GetCurrentReading.
         Returns atmospheric pressure in hectopascals (hPa).
@@ -158,7 +158,7 @@ paths:
   /sensors/orientation/reading:
     get:
       operationId: getOrientationReading
-      summary: Get orientation sensor reading
+      summary: Microsoft Windows 10 Get orientation sensor reading
       description: >-
         Retrieves the current orientation sensor reading using
         OrientationSensor.GetCurrentReading. Returns a rotation matrix
@@ -179,7 +179,7 @@ paths:
   /sensors/pedometer/reading:
     get:
       operationId: getPedometerReading
-      summary: Get pedometer reading
+      summary: Microsoft Windows 10 Get pedometer reading
       description: >-
         Retrieves the current pedometer reading using Pedometer.GetCurrentReadings.
         Returns step counts categorized by step kind (walking, running, unknown).
@@ -197,7 +197,7 @@ paths:
   /sensors/proximity/reading:
     get:
       operationId: getProximityReading
-      summary: Get proximity sensor reading
+      summary: Microsoft Windows 10 Get proximity sensor reading
       description: >-
         Retrieves the current proximity sensor reading using
         ProximitySensor.GetCurrentReading. Returns whether an object is
@@ -216,7 +216,7 @@ paths:
   /sensors/human-presence/reading:
     get:
       operationId: getHumanPresenceReading
-      summary: Get human presence sensor reading
+      summary: Microsoft Windows 10 Get human presence sensor reading
       description: >-
         Retrieves the current human presence sensor reading using
         HumanPresenceSensor.GetCurrentReading. Detects whether a user is

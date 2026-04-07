@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Windows Runtime (WinRT) API
+  title: Microsoft Windows 10 Windows Runtime (WinRT) API
   description: >-
     Modern API surface for building Universal Windows Platform (UWP) applications
     that run across all Windows 10 device families. WinRT provides a type system,
@@ -24,7 +24,7 @@ paths:
   /winrt/namespaces:
     get:
       operationId: listWinRTNamespaces
-      summary: List WinRT namespaces
+      summary: Microsoft Windows 10 List WinRT namespaces
       description: >-
         Retrieves the list of available Windows Runtime namespaces, including
         Windows.UI, Windows.Storage, Windows.Devices, Windows.Media,
@@ -46,7 +46,7 @@ paths:
   /winrt/namespaces/{namespaceName}/classes:
     get:
       operationId: listNamespaceClasses
-      summary: List classes in a namespace
+      summary: Microsoft Windows 10 List classes in a namespace
       description: >-
         Retrieves the list of classes available within a specified WinRT
         namespace. Classes include their properties, methods, events, and
@@ -74,7 +74,7 @@ paths:
   /winrt/namespaces/{namespaceName}/classes/{className}:
     get:
       operationId: getClassDetails
-      summary: Get class details
+      summary: Microsoft Windows 10 Get class details
       description: >-
         Retrieves detailed information about a specific WinRT class, including
         its properties, methods, events, interfaces implemented, and inheritance
@@ -106,7 +106,7 @@ paths:
   /winrt/activation:
     post:
       operationId: activateRuntimeClass
-      summary: Activate a runtime class
+      summary: Microsoft Windows 10 Activate a runtime class
       description: >-
         Activates (instantiates) a WinRT runtime class by its activation factory.
         The Windows Runtime uses activation factories to create instances of

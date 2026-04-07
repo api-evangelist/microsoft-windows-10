@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: WinUI API
+  title: Microsoft Windows 10 WinUI API
   description: >-
     Modern native UI framework for building Windows desktop applications with
     the Fluent Design System. Based on the Microsoft.UI.Xaml namespace, WinUI
@@ -25,7 +25,7 @@ paths:
   /winui/controls:
     get:
       operationId: listWinUIControls
-      summary: List WinUI controls
+      summary: Microsoft Windows 10 List WinUI controls
       description: >-
         Retrieves the catalog of available WinUI XAML controls organized by
         category. Includes basic input controls (Button, TextBox, CheckBox),
@@ -65,7 +65,7 @@ paths:
   /winui/controls/{controlName}:
     get:
       operationId: getWinUIControl
-      summary: Get control details
+      summary: Microsoft Windows 10 Get control details
       description: >-
         Retrieves detailed information about a specific WinUI control including
         its properties, events, methods, XAML usage examples, and Fluent Design
@@ -91,7 +91,7 @@ paths:
   /winui/themes:
     get:
       operationId: listThemes
-      summary: List available themes
+      summary: Microsoft Windows 10 List available themes
       description: >-
         Retrieves the list of available application themes. WinUI supports
         Light, Dark, and HighContrast themes with automatic system theme
@@ -110,7 +110,7 @@ paths:
   /winui/styles:
     get:
       operationId: listStyles
-      summary: List built-in styles
+      summary: Microsoft Windows 10 List built-in styles
       description: >-
         Retrieves the catalog of built-in WinUI styles and resources including
         Fluent Design System brushes, typography, corner radius, spacing,
@@ -142,7 +142,7 @@ paths:
   /winui/icons:
     get:
       operationId: listIcons
-      summary: List Fluent Design icons
+      summary: Microsoft Windows 10 List Fluent Design icons
       description: >-
         Retrieves the catalog of available Segoe Fluent Icons for use with
         SymbolIcon and FontIcon controls. Includes icon name, unicode code

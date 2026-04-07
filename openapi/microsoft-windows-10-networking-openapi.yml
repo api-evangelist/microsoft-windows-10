@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Windows Networking API
+  title: Microsoft Windows 10 Windows Networking API
   description: >-
     API for network communication in Windows applications, based on the
     Windows.Networking.Sockets and Windows.Web.Http namespaces. Provides
@@ -24,7 +24,7 @@ paths:
   /networking/sockets/tcp:
     post:
       operationId: createTcpSocket
-      summary: Create a TCP stream socket
+      summary: Microsoft Windows 10 Create a TCP stream socket
       description: >-
         Creates a StreamSocket for TCP communication. StreamSocket provides
         reliable, ordered, and error-checked delivery of data between two
@@ -50,7 +50,7 @@ paths:
   /networking/sockets/udp:
     post:
       operationId: createUdpSocket
-      summary: Create a UDP datagram socket
+      summary: Microsoft Windows 10 Create a UDP datagram socket
       description: >-
         Creates a DatagramSocket for UDP communication. DatagramSocket provides
         connectionless, unreliable datagrams for low-latency communication.
@@ -75,7 +75,7 @@ paths:
   /networking/websockets:
     post:
       operationId: createWebSocket
-      summary: Create a WebSocket connection
+      summary: Microsoft Windows 10 Create a WebSocket connection
       description: >-
         Creates a MessageWebSocket or StreamWebSocket for real-time bidirectional
         communication. MessageWebSocket handles discrete messages while
@@ -100,7 +100,7 @@ paths:
   /networking/http/requests:
     post:
       operationId: sendHttpRequest
-      summary: Send an HTTP request
+      summary: Microsoft Windows 10 Send an HTTP request
       description: >-
         Sends an HTTP request using the Windows.Web.Http.HttpClient class.
         Supports GET, POST, PUT, PATCH, DELETE methods with configurable
@@ -126,7 +126,7 @@ paths:
   /networking/background-transfers/downloads:
     post:
       operationId: createBackgroundDownload
-      summary: Create a background download
+      summary: Microsoft Windows 10 Create a background download
       description: >-
         Creates a background download operation using BackgroundDownloader.
         Background transfers continue even when the app is suspended and
@@ -150,7 +150,7 @@ paths:
           description: Invalid download request
     get:
       operationId: listBackgroundDownloads
-      summary: List background downloads
+      summary: Microsoft Windows 10 List background downloads
       description: >-
         Retrieves the list of active and pending background download operations
         using BackgroundDownloader.GetCurrentDownloadsAsync.
@@ -168,7 +168,7 @@ paths:
   /networking/connectivity:
     get:
       operationId: getNetworkConnectivity
-      summary: Get network connectivity information
+      summary: Microsoft Windows 10 Get network connectivity information
       description: >-
         Retrieves current network connectivity information using
         NetworkInformation.GetInternetConnectionProfile and

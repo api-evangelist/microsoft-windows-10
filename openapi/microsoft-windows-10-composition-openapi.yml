@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Windows Composition API
+  title: Microsoft Windows 10 Windows Composition API
   description: >-
     The Windows.UI.Composition API provides access to the visual layer between
     the XAML framework and the DirectX graphics layer. Based on the
@@ -25,7 +25,7 @@ paths:
   /composition/visuals:
     get:
       operationId: listVisuals
-      summary: List composition visuals
+      summary: Microsoft Windows 10 List composition visuals
       description: >-
         Retrieves the list of visual objects in the composition tree. Visuals
         are the base building blocks of the visual layer, representing rectangular
@@ -45,7 +45,7 @@ paths:
                   $ref: '#/components/schemas/CompositionVisual'
     post:
       operationId: createVisual
-      summary: Create a composition visual
+      summary: Microsoft Windows 10 Create a composition visual
       description: >-
         Creates a new visual object using the Compositor factory methods such as
         Compositor.CreateSpriteVisual, CreateContainerVisual, or CreateLayerVisual.
@@ -70,7 +70,7 @@ paths:
   /composition/animations:
     post:
       operationId: createAnimation
-      summary: Create a composition animation
+      summary: Microsoft Windows 10 Create a composition animation
       description: >-
         Creates a composition animation using Compositor factory methods such as
         CreateScalarKeyFrameAnimation, CreateVector3KeyFrameAnimation,
@@ -96,7 +96,7 @@ paths:
   /composition/effects:
     post:
       operationId: createEffect
-      summary: Create a composition effect
+      summary: Microsoft Windows 10 Create a composition effect
       description: >-
         Creates a CompositionEffectBrush for applying visual effects such as
         blur (GaussianBlurEffect), saturation, color adjustments, and compositing.
@@ -122,7 +122,7 @@ paths:
   /composition/surfaces:
     post:
       operationId: createSurface
-      summary: Create a composition surface
+      summary: Microsoft Windows 10 Create a composition surface
       description: >-
         Creates a CompositionDrawingSurface or CompositionVirtualDrawingSurface
         for rendering content onto visuals. Surfaces can be backed by Direct2D,

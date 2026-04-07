@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: DirectX Graphics API
+  title: Microsoft Windows 10 DirectX Graphics API
   description: >-
     Low-level graphics API for building high-performance 2D and 3D rendering in
     Windows applications. Includes Direct3D 12 for 3D graphics with explicit GPU
@@ -24,7 +24,7 @@ paths:
   /directx/devices:
     get:
       operationId: listDirectXDevices
-      summary: List DirectX graphics devices
+      summary: Microsoft Windows 10 List DirectX graphics devices
       description: >-
         Enumerates available DirectX graphics adapters using DXGI (DirectX
         Graphics Infrastructure). Returns information about each adapter
@@ -44,7 +44,7 @@ paths:
   /directx/devices/{adapterId}:
     get:
       operationId: getDirectXDevice
-      summary: Get graphics device details
+      summary: Microsoft Windows 10 Get graphics device details
       description: >-
         Retrieves detailed information about a specific graphics adapter
         including supported feature levels, output displays, and hardware
@@ -71,7 +71,7 @@ paths:
   /directx/resources:
     post:
       operationId: createDirectXResource
-      summary: Create a DirectX resource
+      summary: Microsoft Windows 10 Create a DirectX resource
       description: >-
         Creates a GPU resource such as a buffer, texture, or render target
         using ID3D12Device.CreateCommittedResource or similar methods.
@@ -97,7 +97,7 @@ paths:
   /directx/command-queues:
     post:
       operationId: createCommandQueue
-      summary: Create a command queue
+      summary: Microsoft Windows 10 Create a command queue
       description: >-
         Creates a Direct3D 12 command queue (ID3D12CommandQueue) for submitting
         command lists to the GPU. Command queues can be of type Direct, Compute,
@@ -122,7 +122,7 @@ paths:
   /directx/pipeline-states:
     post:
       operationId: createPipelineState
-      summary: Create a graphics pipeline state
+      summary: Microsoft Windows 10 Create a graphics pipeline state
       description: >-
         Creates a graphics pipeline state object (ID3D12PipelineState) that
         defines the complete rendering pipeline configuration including
@@ -148,7 +148,7 @@ paths:
   /directx/swap-chains:
     post:
       operationId: createSwapChain
-      summary: Create a swap chain
+      summary: Microsoft Windows 10 Create a swap chain
       description: >-
         Creates a DXGI swap chain (IDXGISwapChain) for presenting rendered
         frames to a window or output. The swap chain manages the back buffer(s)

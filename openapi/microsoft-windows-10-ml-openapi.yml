@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Windows ML API
+  title: Microsoft Windows 10 Windows ML API
   description: >-
     API for integrating trained machine learning models into Windows applications
     using the ONNX format. Based on the Windows.AI.MachineLearning namespace,
@@ -24,7 +24,7 @@ paths:
   /ml/models:
     get:
       operationId: listMLModels
-      summary: List loaded ML models
+      summary: Microsoft Windows 10 List loaded ML models
       description: >-
         Retrieves the list of currently loaded machine learning models. Each
         model is loaded via the LearningModel class from ONNX format files and
@@ -43,7 +43,7 @@ paths:
                   $ref: '#/components/schemas/LearningModel'
     post:
       operationId: loadMLModel
-      summary: Load a machine learning model
+      summary: Microsoft Windows 10 Load a machine learning model
       description: >-
         Loads an ONNX machine learning model using LearningModel.LoadFromFilePath
         or LearningModel.LoadFromStream. The loaded model can then be used to
@@ -70,7 +70,7 @@ paths:
   /ml/models/{modelId}:
     get:
       operationId: getMLModel
-      summary: Get model details
+      summary: Microsoft Windows 10 Get model details
       description: >-
         Retrieves detailed information about a loaded model including its
         input features (ILearningModelFeatureDescriptor), output features,
@@ -95,7 +95,7 @@ paths:
           description: Model not found
     delete:
       operationId: unloadMLModel
-      summary: Unload a machine learning model
+      summary: Microsoft Windows 10 Unload a machine learning model
       description: >-
         Unloads a machine learning model by calling LearningModel.Close,
         releasing all associated resources and terminating any active sessions.
@@ -116,7 +116,7 @@ paths:
   /ml/sessions:
     post:
       operationId: createMLSession
-      summary: Create an evaluation session
+      summary: Microsoft Windows 10 Create an evaluation session
       description: >-
         Creates a LearningModelSession for evaluating a loaded model. The session
         binds the model to a LearningModelDevice (CPU, DirectX, or
@@ -143,7 +143,7 @@ paths:
   /ml/sessions/{sessionId}/evaluate:
     post:
       operationId: evaluateMLModel
-      summary: Evaluate model with input data
+      summary: Microsoft Windows 10 Evaluate model with input data
       description: >-
         Evaluates the model with bound input data using LearningModelSession.Evaluate.
         Input features are bound via a LearningModelBinding, and results are
@@ -178,7 +178,7 @@ paths:
   /ml/devices:
     get:
       operationId: listMLDevices
-      summary: List available ML devices
+      summary: Microsoft Windows 10 List available ML devices
       description: >-
         Retrieves the list of available LearningModelDevice options for
         model evaluation, including CPU, DirectX GPU, and DirectXHighPerformance

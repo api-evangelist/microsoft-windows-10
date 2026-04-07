@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Win32 API
+  title: Microsoft Windows 10 Win32 API
   description: >-
     Core Windows API for building traditional desktop applications using C and C++.
     Win32 provides direct access to system-level functionality including window
@@ -24,7 +24,7 @@ paths:
   /win32/api-categories:
     get:
       operationId: listWin32ApiCategories
-      summary: List Win32 API categories
+      summary: Microsoft Windows 10 List Win32 API categories
       description: >-
         Retrieves the list of major Win32 API categories including User Interface,
         Windows Environment (Shell), User Input and Messaging, Data Access and
@@ -46,7 +46,7 @@ paths:
   /win32/api-categories/{categoryId}/functions:
     get:
       operationId: listCategoryFunctions
-      summary: List functions in a category
+      summary: Microsoft Windows 10 List functions in a category
       description: >-
         Retrieves the list of Win32 API functions within a specified category.
         Each function includes its DLL, parameters, return type, and minimum
@@ -80,7 +80,7 @@ paths:
   /win32/functions/{functionName}:
     get:
       operationId: getWin32FunctionDetails
-      summary: Get Win32 function details
+      summary: Microsoft Windows 10 Get Win32 function details
       description: >-
         Retrieves detailed information about a specific Win32 function including
         its syntax, parameters, return value, remarks, requirements (minimum
@@ -106,7 +106,7 @@ paths:
   /win32/structures/{structureName}:
     get:
       operationId: getWin32Structure
-      summary: Get Win32 structure definition
+      summary: Microsoft Windows 10 Get Win32 structure definition
       description: >-
         Retrieves the definition of a Win32 data structure, including its
         fields, sizes, alignment requirements, and associated API functions.
@@ -131,7 +131,7 @@ paths:
   /win32/messages:
     get:
       operationId: listWindowMessages
-      summary: List window messages
+      summary: Microsoft Windows 10 List window messages
       description: >-
         Retrieves the list of Win32 window messages (WM_*) used for inter-window
         communication. Includes system-defined messages for window management,

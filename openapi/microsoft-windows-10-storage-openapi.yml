@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Windows Storage API
+  title: Microsoft Windows 10 Windows Storage API
   description: >-
     API for file system access, storage management, and data operations in Windows
     applications. Based on the Windows.Storage namespace, this API provides classes
@@ -25,7 +25,7 @@ paths:
   /storage/files:
     get:
       operationId: listStorageFiles
-      summary: List storage files
+      summary: Microsoft Windows 10 List storage files
       description: >-
         Retrieves files from a specified storage location. Uses StorageFolder.GetFilesAsync
         to enumerate files with optional query options for filtering by type,
@@ -68,7 +68,7 @@ paths:
   /storage/files/{fileId}:
     get:
       operationId: getStorageFile
-      summary: Get file details
+      summary: Microsoft Windows 10 Get file details
       description: >-
         Retrieves detailed information about a specific file using StorageFile
         properties including name, path, size, date created, date modified,
@@ -93,7 +93,7 @@ paths:
           description: File not found
     delete:
       operationId: deleteStorageFile
-      summary: Delete a file
+      summary: Microsoft Windows 10 Delete a file
       description: >-
         Deletes a file using StorageFile.DeleteAsync. Supports permanent deletion
         or moving to the Recycle Bin as specified by the StorageDeleteOption.
@@ -125,7 +125,7 @@ paths:
   /storage/files/{fileId}/content:
     get:
       operationId: readFileContent
-      summary: Read file content
+      summary: Microsoft Windows 10 Read file content
       description: >-
         Reads the content of a file using FileIO helper methods. Supports
         reading as text (FileIO.ReadTextAsync), binary (FileIO.ReadBufferAsync),
@@ -161,7 +161,7 @@ paths:
           description: File not found
     put:
       operationId: writeFileContent
-      summary: Write file content
+      summary: Microsoft Windows 10 Write file content
       description: >-
         Writes content to a file using FileIO helper methods. Supports writing
         text (FileIO.WriteTextAsync), binary (FileIO.WriteBytesAsync), or
@@ -191,7 +191,7 @@ paths:
   /storage/folders:
     get:
       operationId: listStorageFolders
-      summary: List storage folders
+      summary: Microsoft Windows 10 List storage folders
       description: >-
         Retrieves the list of subfolders in a specified location using
         StorageFolder.GetFoldersAsync. Includes folder metadata such as name,
@@ -216,7 +216,7 @@ paths:
                   $ref: '#/components/schemas/StorageFolder'
     post:
       operationId: createStorageFolder
-      summary: Create a folder
+      summary: Microsoft Windows 10 Create a folder
       description: >-
         Creates a new folder using StorageFolder.CreateFolderAsync. Supports
         collision options to handle existing folders with the same name.
@@ -240,7 +240,7 @@ paths:
   /storage/app-data/settings:
     get:
       operationId: getAppSettings
-      summary: Get application settings
+      summary: Microsoft Windows 10 Get application settings
       description: >-
         Retrieves application settings from the ApplicationData.LocalSettings
         or RoamingSettings containers. Settings are stored as key-value pairs
@@ -275,7 +275,7 @@ paths:
                   type: string
     put:
       operationId: updateAppSettings
-      summary: Update application settings
+      summary: Microsoft Windows 10 Update application settings
       description: >-
         Updates application settings in the specified ApplicationDataContainer.
         Supports simple values and composite values (ApplicationDataCompositeValue)
@@ -307,7 +307,7 @@ paths:
   /storage/libraries:
     get:
       operationId: listStorageLibraries
-      summary: List storage libraries
+      summary: Microsoft Windows 10 List storage libraries
       description: >-
         Retrieves the list of storage libraries (Documents, Music, Pictures,
         Videos) using StorageLibrary.GetLibraryAsync. Each library contains
@@ -326,7 +326,7 @@ paths:
   /storage/libraries/{libraryId}/changes:
     get:
       operationId: getLibraryChanges
-      summary: Get library changes
+      summary: Microsoft Windows 10 Get library changes
       description: >-
         Retrieves change records for a storage library using
         StorageLibraryChangeTracker and StorageLibraryChangeReader. Returns

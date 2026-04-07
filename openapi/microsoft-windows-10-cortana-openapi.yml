@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Windows Cortana API
+  title: Microsoft Windows 10 Windows Cortana API
   description: >-
     API for integrating voice commands and Cortana digital assistant capabilities
     into Windows applications. Enables voice-activated interactions through
@@ -24,7 +24,7 @@ paths:
   /cortana/voice-commands:
     get:
       operationId: listVoiceCommandDefinitions
-      summary: List voice command definitions
+      summary: Microsoft Windows 10 List voice command definitions
       description: >-
         Retrieves the list of installed Voice Command Definition (VCD) sets.
         Each VCD set defines a group of voice commands that Cortana can recognize
@@ -43,7 +43,7 @@ paths:
                   $ref: '#/components/schemas/VoiceCommandDefinition'
     post:
       operationId: installVoiceCommandDefinition
-      summary: Install a voice command definition
+      summary: Microsoft Windows 10 Install a voice command definition
       description: >-
         Installs a VCD file using VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync.
         The VCD file is an XML document that defines the commands, example phrases,
@@ -68,7 +68,7 @@ paths:
   /cortana/voice-commands/{commandSetName}:
     get:
       operationId: getVoiceCommandSet
-      summary: Get a voice command set
+      summary: Microsoft Windows 10 Get a voice command set
       description: >-
         Retrieves a specific voice command set by name. The command set contains
         the language, name, and all defined commands including their phrases
@@ -94,7 +94,7 @@ paths:
   /cortana/voice-commands/{commandSetName}/phrase-lists/{phraseListName}:
     put:
       operationId: updatePhraseList
-      summary: Update a phrase list
+      summary: Microsoft Windows 10 Update a phrase list
       description: >-
         Updates a phrase list within a voice command set using
         VoiceCommandDefinition.SetPhraseListAsync. Phrase lists are dynamic
@@ -129,7 +129,7 @@ paths:
   /cortana/service-connections:
     post:
       operationId: createCortanaServiceConnection
-      summary: Create a Cortana app service connection
+      summary: Microsoft Windows 10 Create a Cortana app service connection
       description: >-
         Establishes a connection to the Cortana app service for handling voice
         commands in the background. Uses VoiceCommandServiceConnection to receive
@@ -154,7 +154,7 @@ paths:
   /cortana/responses:
     post:
       operationId: sendCortanaResponse
-      summary: Send a response to Cortana
+      summary: Microsoft Windows 10 Send a response to Cortana
       description: >-
         Sends a VoiceCommandResponse back to Cortana containing content tiles,
         a message, and an app launch argument. Uses VoiceCommandResponse.CreateResponse

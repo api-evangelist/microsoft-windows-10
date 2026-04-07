@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Windows Media Capture API
+  title: Microsoft Windows 10 Windows Media Capture API
   description: >-
     API for capturing photos, audio, and video from camera and microphone devices
     in Windows applications. Based on the Windows.Media.Capture namespace, it
@@ -25,7 +25,7 @@ paths:
   /media/capture/devices:
     get:
       operationId: listCaptureDevices
-      summary: List media capture devices
+      summary: Microsoft Windows 10 List media capture devices
       description: >-
         Enumerates available media capture devices (cameras and microphones)
         using DeviceInformation.FindAllAsync with the appropriate device class
@@ -56,7 +56,7 @@ paths:
   /media/capture/sessions:
     post:
       operationId: initializeMediaCapture
-      summary: Initialize a media capture session
+      summary: Microsoft Windows 10 Initialize a media capture session
       description: >-
         Initializes a MediaCapture session with specified settings using
         MediaCapture.InitializeAsync. The MediaCaptureInitializationSettings
@@ -83,7 +83,7 @@ paths:
   /media/capture/sessions/{sessionId}/photo:
     post:
       operationId: capturePhoto
-      summary: Capture a photo
+      summary: Microsoft Windows 10 Capture a photo
       description: >-
         Captures a photo using MediaCapture.CapturePhotoToStorageFileAsync or
         CapturePhotoToStreamAsync. The photo is encoded using the specified
@@ -115,7 +115,7 @@ paths:
   /media/capture/sessions/{sessionId}/video/start:
     post:
       operationId: startVideoRecording
-      summary: Start video recording
+      summary: Microsoft Windows 10 Start video recording
       description: >-
         Starts video recording using MediaCapture.StartRecordToStorageFileAsync
         or StartRecordToStreamAsync. The video is encoded using the specified
@@ -144,7 +144,7 @@ paths:
   /media/capture/sessions/{sessionId}/video/stop:
     post:
       operationId: stopVideoRecording
-      summary: Stop video recording
+      summary: Microsoft Windows 10 Stop video recording
       description: >-
         Stops an active video recording using MediaCapture.StopRecordAsync.
         Finalizes the output file or stream and returns information about
@@ -170,7 +170,7 @@ paths:
   /media/capture/sessions/{sessionId}/preview/start:
     post:
       operationId: startPreview
-      summary: Start camera preview
+      summary: Microsoft Windows 10 Start camera preview
       description: >-
         Starts the camera preview stream using MediaCapture.StartPreviewAsync.
         The preview stream is displayed in a CaptureElement XAML control.
@@ -191,7 +191,7 @@ paths:
   /media/capture/sessions/{sessionId}/preview/stop:
     post:
       operationId: stopPreview
-      summary: Stop camera preview
+      summary: Microsoft Windows 10 Stop camera preview
       description: >-
         Stops the camera preview stream using MediaCapture.StopPreviewAsync.
       tags:

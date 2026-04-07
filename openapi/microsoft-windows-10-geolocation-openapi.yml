@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Windows Geolocation API
+  title: Microsoft Windows 10 Windows Geolocation API
   description: >-
     API for obtaining geographic location data in Windows applications, based on
     the Windows.Devices.Geolocation namespace. Provides access to latitude,
@@ -25,7 +25,7 @@ paths:
   /geolocation/access:
     get:
       operationId: getGeolocationAccess
-      summary: Check geolocation access status
+      summary: Microsoft Windows 10 Check geolocation access status
       description: >-
         Checks the application's permission to access location data using
         Geolocator.RequestAccessAsync. Returns the current GeolocationAccessStatus
@@ -41,7 +41,7 @@ paths:
                 $ref: '#/components/schemas/GeolocationAccessStatus'
     post:
       operationId: requestGeolocationAccess
-      summary: Request geolocation access
+      summary: Microsoft Windows 10 Request geolocation access
       description: >-
         Requests permission to access the device's location using
         Geolocator.RequestAccessAsync. Prompts the user to grant or deny
@@ -58,7 +58,7 @@ paths:
   /geolocation/position:
     get:
       operationId: getCurrentPosition
-      summary: Get current geographic position
+      summary: Microsoft Windows 10 Get current geographic position
       description: >-
         Retrieves the current geographic position using Geolocator.GetGeopositionAsync.
         Returns a Geoposition containing a Geocoordinate with latitude, longitude,
@@ -106,7 +106,7 @@ paths:
   /geolocation/tracking:
     post:
       operationId: startPositionTracking
-      summary: Start continuous position tracking
+      summary: Microsoft Windows 10 Start continuous position tracking
       description: >-
         Starts continuous position tracking by subscribing to the
         Geolocator.PositionChanged event. Reports position updates based on
@@ -130,7 +130,7 @@ paths:
           description: Location access denied
     delete:
       operationId: stopPositionTracking
-      summary: Stop position tracking
+      summary: Microsoft Windows 10 Stop position tracking
       description: >-
         Stops continuous position tracking by unsubscribing from the
         Geolocator.PositionChanged event and disposing the Geolocator.
@@ -142,7 +142,7 @@ paths:
   /geolocation/geofences:
     get:
       operationId: listGeofences
-      summary: List active geofences
+      summary: Microsoft Windows 10 List active geofences
       description: >-
         Retrieves the list of active geofences registered with the
         GeofenceMonitor. Geofences are geographic areas (circles) that
@@ -160,7 +160,7 @@ paths:
                   $ref: '#/components/schemas/Geofence'
     post:
       operationId: createGeofence
-      summary: Create a geofence
+      summary: Microsoft Windows 10 Create a geofence
       description: >-
         Creates a new geofence and adds it to the GeofenceMonitor. The geofence
         is defined by a Geocircle (center point and radius) and monitored states
@@ -185,7 +185,7 @@ paths:
   /geolocation/visits:
     get:
       operationId: getRecentVisits
-      summary: Get recent location visits
+      summary: Microsoft Windows 10 Get recent location visits
       description: >-
         Retrieves recent visit records using GeovisitMonitor.GetLastReportAsync.
         Visits represent significant location stays detected by the system,

@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Windows Background Tasks API
+  title: Microsoft Windows 10 Windows Background Tasks API
   description: >-
     API for running code in the background when an application is suspended or
     not running. Based on the Windows.ApplicationModel.Background namespace,
@@ -25,7 +25,7 @@ paths:
   /background-tasks:
     get:
       operationId: listBackgroundTasks
-      summary: List registered background tasks
+      summary: Microsoft Windows 10 List registered background tasks
       description: >-
         Retrieves the list of registered background tasks using
         BackgroundTaskRegistration.AllTasks. Returns all tasks registered
@@ -44,7 +44,7 @@ paths:
                   $ref: '#/components/schemas/BackgroundTask'
     post:
       operationId: registerBackgroundTask
-      summary: Register a background task
+      summary: Microsoft Windows 10 Register a background task
       description: >-
         Registers a new background task using BackgroundTaskBuilder. The task
         must specify an entry point (IBackgroundTask implementation), a trigger
@@ -72,7 +72,7 @@ paths:
   /background-tasks/{taskId}:
     get:
       operationId: getBackgroundTask
-      summary: Get background task details
+      summary: Microsoft Windows 10 Get background task details
       description: >-
         Retrieves details about a specific registered background task including
         its trigger type, conditions, progress, and completion history.
@@ -96,7 +96,7 @@ paths:
           description: Task not found
     delete:
       operationId: unregisterBackgroundTask
-      summary: Unregister a background task
+      summary: Microsoft Windows 10 Unregister a background task
       description: >-
         Unregisters a background task using BackgroundTaskRegistration.Unregister.
         Optionally cancels any currently running instance of the task.
@@ -124,7 +124,7 @@ paths:
   /background-tasks/access:
     get:
       operationId: getBackgroundAccessStatus
-      summary: Get background access status
+      summary: Microsoft Windows 10 Get background access status
       description: >-
         Checks the application's background access status using
         BackgroundExecutionManager.GetAccessStatus. Returns whether the app
@@ -141,7 +141,7 @@ paths:
                 $ref: '#/components/schemas/BackgroundAccessStatus'
     post:
       operationId: requestBackgroundAccess
-      summary: Request background access
+      summary: Microsoft Windows 10 Request background access
       description: >-
         Requests permission for background task execution using
         BackgroundExecutionManager.RequestAccessAsync. May prompt the user
@@ -158,7 +158,7 @@ paths:
   /background-tasks/triggers:
     get:
       operationId: listTriggerTypes
-      summary: List available trigger types
+      summary: Microsoft Windows 10 List available trigger types
       description: >-
         Retrieves the list of available background task trigger types
         including SystemTrigger, TimeTrigger, MaintenanceTrigger,

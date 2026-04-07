@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Windows Ink API
+  title: Microsoft Windows 10 Windows Ink API
   description: >-
     API for pen and stylus input in Windows applications, based on the
     Windows.UI.Input.Inking namespace. Provides inking surfaces (InkCanvas,
@@ -24,7 +24,7 @@ paths:
   /ink/strokes:
     get:
       operationId: listInkStrokes
-      summary: List ink strokes
+      summary: Microsoft Windows 10 List ink strokes
       description: >-
         Retrieves the list of ink strokes from an InkStrokeContainer. Each
         InkStroke contains point data, drawing attributes (color, size, pen tip
@@ -42,7 +42,7 @@ paths:
                   $ref: '#/components/schemas/InkStroke'
     post:
       operationId: addInkStroke
-      summary: Add an ink stroke
+      summary: Microsoft Windows 10 Add an ink stroke
       description: >-
         Adds a new ink stroke to the InkStrokeContainer using InkStrokeBuilder.
         The stroke is created from a series of ink points with position, pressure,
@@ -68,7 +68,7 @@ paths:
   /ink/strokes/{strokeId}:
     get:
       operationId: getInkStroke
-      summary: Get ink stroke details
+      summary: Microsoft Windows 10 Get ink stroke details
       description: >-
         Retrieves detailed information about a specific ink stroke including
         its points, drawing attributes, and bounding rectangle.
@@ -92,7 +92,7 @@ paths:
           description: Stroke not found
     delete:
       operationId: deleteInkStroke
-      summary: Delete an ink stroke
+      summary: Microsoft Windows 10 Delete an ink stroke
       description: >-
         Deletes a specific ink stroke from the container using
         InkStroke.Selected and InkStrokeContainer.DeleteSelected methods.
@@ -113,7 +113,7 @@ paths:
   /ink/recognize:
     post:
       operationId: recognizeInkStrokes
-      summary: Recognize handwriting from ink strokes
+      summary: Microsoft Windows 10 Recognize handwriting from ink strokes
       description: >-
         Performs handwriting recognition on ink strokes using InkRecognizerContainer.
         RecognizeAsync. Returns a list of InkRecognitionResult candidates with
@@ -140,7 +140,7 @@ paths:
   /ink/recognizers:
     get:
       operationId: listInkRecognizers
-      summary: List available ink recognizers
+      summary: Microsoft Windows 10 List available ink recognizers
       description: >-
         Retrieves the list of installed handwriting recognizers using
         InkRecognizerContainer.GetRecognizers. Each recognizer supports
@@ -159,7 +159,7 @@ paths:
   /ink/drawing-attributes:
     get:
       operationId: getDefaultDrawingAttributes
-      summary: Get default drawing attributes
+      summary: Microsoft Windows 10 Get default drawing attributes
       description: >-
         Retrieves the default InkDrawingAttributes used for new strokes,
         including color, size, pen tip shape, transparency, and fit-to-curve
@@ -175,7 +175,7 @@ paths:
                 $ref: '#/components/schemas/InkDrawingAttributes'
     put:
       operationId: updateDefaultDrawingAttributes
-      summary: Update default drawing attributes
+      summary: Microsoft Windows 10 Update default drawing attributes
       description: >-
         Updates the default InkDrawingAttributes for new strokes. Changes
         affect all subsequently created strokes.

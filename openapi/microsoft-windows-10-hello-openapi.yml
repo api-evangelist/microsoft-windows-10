@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Windows Hello Authentication API
+  title: Microsoft Windows 10 Windows Hello Authentication API
   description: >-
     Biometric and PIN-based authentication API that replaces passwords with
     strong two-factor authentication. Based on the Windows.Security.Credentials
@@ -25,7 +25,7 @@ paths:
   /hello/availability:
     get:
       operationId: checkHelloAvailability
-      summary: Check Windows Hello availability
+      summary: Microsoft Windows 10 Check Windows Hello availability
       description: >-
         Checks whether Windows Hello is available on the device using
         KeyCredentialManager.IsSupportedAsync. Returns whether the device
@@ -42,7 +42,7 @@ paths:
   /hello/credentials:
     post:
       operationId: createKeyCredential
-      summary: Create a Windows Hello key credential
+      summary: Microsoft Windows 10 Create a Windows Hello key credential
       description: >-
         Creates a new key credential for Windows Hello authentication using
         KeyCredentialManager.RequestCreateAsync. Generates a public/private
@@ -70,7 +70,7 @@ paths:
   /hello/credentials/{accountId}:
     get:
       operationId: openKeyCredential
-      summary: Open an existing key credential
+      summary: Microsoft Windows 10 Open an existing key credential
       description: >-
         Opens an existing Windows Hello key credential using
         KeyCredentialManager.OpenAsync. Returns the credential if it exists,
@@ -95,7 +95,7 @@ paths:
           description: Credential not found
     delete:
       operationId: deleteKeyCredential
-      summary: Delete a key credential
+      summary: Microsoft Windows 10 Delete a key credential
       description: >-
         Deletes a Windows Hello key credential using
         KeyCredentialManager.DeleteAsync. Removes the key pair from the device.
@@ -116,7 +116,7 @@ paths:
   /hello/sign:
     post:
       operationId: signWithCredential
-      summary: Sign data with a Windows Hello credential
+      summary: Microsoft Windows 10 Sign data with a Windows Hello credential
       description: >-
         Signs a challenge buffer using the Windows Hello credential's private key
         via KeyCredential.RequestSignAsync. The user is prompted for biometric
@@ -144,7 +144,7 @@ paths:
   /hello/verify-user:
     post:
       operationId: verifyUserConsent
-      summary: Verify user identity
+      summary: Microsoft Windows 10 Verify user identity
       description: >-
         Prompts the user to verify their identity using Windows Hello biometrics
         or PIN via UserConsentVerifier.RequestVerificationAsync. Returns whether
@@ -168,7 +168,7 @@ paths:
   /hello/attestation:
     get:
       operationId: getKeyAttestation
-      summary: Get key attestation
+      summary: Microsoft Windows 10 Get key attestation
       description: >-
         Retrieves attestation information for a Windows Hello key credential
         using KeyCredential.GetAttestationAsync. Returns a KeyCredentialAttestationResult

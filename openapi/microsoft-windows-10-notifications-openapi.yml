@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Windows Notifications API
+  title: Microsoft Windows 10 Windows Notifications API
   description: >-
     API for sending and managing toast notifications, tile notifications, and
     badge updates in Windows 10 applications. Based on the Windows.UI.Notifications
@@ -24,7 +24,7 @@ paths:
   /notifications/toast:
     post:
       operationId: createToastNotification
-      summary: Create a toast notification
+      summary: Microsoft Windows 10 Create a toast notification
       description: >-
         Creates and displays a toast notification using the ToastNotificationManager.
         Toast notifications are pop-up UI elements that appear in the lower right
@@ -50,7 +50,7 @@ paths:
           description: Invalid notification content
     get:
       operationId: listToastNotifications
-      summary: List active toast notifications
+      summary: Microsoft Windows 10 List active toast notifications
       description: >-
         Retrieves the list of currently active toast notifications for the
         application. Uses the ToastNotificationHistory class to access
@@ -69,7 +69,7 @@ paths:
   /notifications/toast/{notificationTag}:
     get:
       operationId: getToastNotification
-      summary: Get a toast notification by tag
+      summary: Microsoft Windows 10 Get a toast notification by tag
       description: >-
         Retrieves a specific toast notification identified by its tag. Tags
         are used as unique identifiers for notifications, enabling updates
@@ -94,7 +94,7 @@ paths:
           description: Notification not found
     delete:
       operationId: removeToastNotification
-      summary: Remove a toast notification
+      summary: Microsoft Windows 10 Remove a toast notification
       description: >-
         Removes a specific toast notification from the notification center
         using the ToastNotificationHistory.Remove method. The notification
@@ -116,7 +116,7 @@ paths:
   /notifications/toast/scheduled:
     post:
       operationId: scheduleToastNotification
-      summary: Schedule a toast notification
+      summary: Microsoft Windows 10 Schedule a toast notification
       description: >-
         Schedules a toast notification for future delivery using the
         ScheduledToastNotification class. The notification will be displayed
@@ -141,7 +141,7 @@ paths:
           description: Invalid schedule request
     get:
       operationId: listScheduledToastNotifications
-      summary: List scheduled toast notifications
+      summary: Microsoft Windows 10 List scheduled toast notifications
       description: >-
         Retrieves the list of scheduled toast notifications pending delivery.
         Uses the ToastNotifier.GetScheduledToastNotifications method.
@@ -159,7 +159,7 @@ paths:
   /notifications/tile:
     post:
       operationId: updateTileNotification
-      summary: Update a tile notification
+      summary: Microsoft Windows 10 Update a tile notification
       description: >-
         Updates the content of a Start menu tile using the TileUpdateManager
         and TileUpdater classes. Tile notifications can display text, images,
@@ -184,7 +184,7 @@ paths:
   /notifications/badge:
     post:
       operationId: updateBadgeNotification
-      summary: Update a badge notification
+      summary: Microsoft Windows 10 Update a badge notification
       description: >-
         Updates the badge overlay on a tile using the BadgeUpdateManager and
         BadgeUpdater classes. Badges can display a number (1-99) or a status
@@ -209,7 +209,7 @@ paths:
   /notifications/collections:
     get:
       operationId: listToastCollections
-      summary: List toast notification collections
+      summary: Microsoft Windows 10 List toast notification collections
       description: >-
         Retrieves the list of toast notification collections for the application.
         Collections group related notifications using the ToastCollection and
@@ -227,7 +227,7 @@ paths:
                   $ref: '#/components/schemas/ToastCollection'
     post:
       operationId: createToastCollection
-      summary: Create a toast notification collection
+      summary: Microsoft Windows 10 Create a toast notification collection
       description: >-
         Creates a new toast notification collection for grouping related
         notifications. Uses the ToastCollectionManager.SaveToastCollectionAsync method.

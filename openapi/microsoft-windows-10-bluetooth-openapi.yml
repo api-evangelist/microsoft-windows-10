@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  title: Windows Bluetooth API
+  title: Microsoft Windows 10 Windows Bluetooth API
   description: >-
     API for Bluetooth communication in Windows applications, based on the
     Windows.Devices.Bluetooth namespace. Supports Bluetooth Classic (RFCOMM)
@@ -25,7 +25,7 @@ paths:
   /bluetooth/devices:
     get:
       operationId: listBluetoothDevices
-      summary: List paired Bluetooth devices
+      summary: Microsoft Windows 10 List paired Bluetooth devices
       description: >-
         Enumerates paired Bluetooth devices using DeviceInformation.FindAllAsync
         with the BluetoothDevice or BluetoothLEDevice selector. Returns device
@@ -56,7 +56,7 @@ paths:
   /bluetooth/devices/{deviceId}:
     get:
       operationId: getBluetoothDevice
-      summary: Get Bluetooth device details
+      summary: Microsoft Windows 10 Get Bluetooth device details
       description: >-
         Retrieves detailed information about a Bluetooth device using
         BluetoothDevice.FromIdAsync or BluetoothLEDevice.FromIdAsync.
@@ -82,7 +82,7 @@ paths:
   /bluetooth/le/scan:
     post:
       operationId: startBLEScan
-      summary: Start BLE advertisement scanning
+      summary: Microsoft Windows 10 Start BLE advertisement scanning
       description: >-
         Starts scanning for BLE advertisements using
         BluetoothLEAdvertisementWatcher. Discovers nearby BLE devices that
@@ -106,7 +106,7 @@ paths:
   /bluetooth/le/devices/{deviceId}/services:
     get:
       operationId: listGattServices
-      summary: List GATT services
+      summary: Microsoft Windows 10 List GATT services
       description: >-
         Retrieves the list of GATT services on a BLE device using
         BluetoothLEDevice.GetGattServicesAsync. Each service contains
@@ -134,7 +134,7 @@ paths:
   /bluetooth/le/devices/{deviceId}/services/{serviceId}/characteristics:
     get:
       operationId: listGattCharacteristics
-      summary: List GATT characteristics
+      summary: Microsoft Windows 10 List GATT characteristics
       description: >-
         Retrieves the characteristics of a GATT service using
         GattDeviceService.GetCharacteristicsAsync. Characteristics contain
@@ -169,7 +169,7 @@ paths:
   /bluetooth/le/devices/{deviceId}/services/{serviceId}/characteristics/{characteristicId}/value:
     get:
       operationId: readGattCharacteristic
-      summary: Read a GATT characteristic value
+      summary: Microsoft Windows 10 Read a GATT characteristic value
       description: >-
         Reads the value of a GATT characteristic using
         GattCharacteristic.ReadValueAsync. Returns the raw byte data
@@ -212,7 +212,7 @@ paths:
           description: Characteristic not found
     put:
       operationId: writeGattCharacteristic
-      summary: Write a GATT characteristic value
+      summary: Microsoft Windows 10 Write a GATT characteristic value
       description: >-
         Writes a value to a GATT characteristic using
         GattCharacteristic.WriteValueAsync or WriteValueWithResultAsync.
@@ -253,7 +253,7 @@ paths:
   /bluetooth/rfcomm/connections:
     post:
       operationId: createRfcommConnection
-      summary: Create an RFCOMM connection
+      summary: Microsoft Windows 10 Create an RFCOMM connection
       description: >-
         Establishes a Bluetooth Classic RFCOMM connection to a device using
         RfcommDeviceService. RFCOMM provides a stream-based connection similar
