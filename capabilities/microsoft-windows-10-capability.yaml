@@ -1,0 +1,278 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Background Tasks API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background
+    namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include
+    BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  tags:
+  - Microsoft
+  - Windows
+  - '10'
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: microsoft-windows-10
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Background Tasks API HTTP API.
+    resources:
+    - name: background-tasks
+      path: /background-tasks
+      operations:
+      - name: listbackgroundtasks
+        method: GET
+        description: Microsoft Windows 10 List registered background tasks
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: registerbackgroundtask
+        method: POST
+        description: Microsoft Windows 10 Register a background task
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: background-tasks-taskid
+      path: /background-tasks/{taskId}
+      operations:
+      - name: getbackgroundtask
+        method: GET
+        description: Microsoft Windows 10 Get background task details
+        inputParameters:
+        - name: taskId
+          in: path
+          type: string
+          required: true
+          description: Background task registration ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: unregisterbackgroundtask
+        method: DELETE
+        description: Microsoft Windows 10 Unregister a background task
+        inputParameters:
+        - name: taskId
+          in: path
+          type: string
+          required: true
+          description: Background task registration ID
+        - name: cancelRunningTask
+          in: query
+          type: boolean
+          description: Whether to cancel a running instance
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: background-tasks-access
+      path: /background-tasks/access
+      operations:
+      - name: getbackgroundaccessstatus
+        method: GET
+        description: Microsoft Windows 10 Get background access status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: requestbackgroundaccess
+        method: POST
+        description: Microsoft Windows 10 Request background access
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: background-tasks-triggers
+      path: /background-tasks/triggers
+      operations:
+      - name: listtriggertypes
+        method: GET
+        description: Microsoft Windows 10 List available trigger types
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: microsoft-windows-10-rest
+    description: REST adapter for Microsoft Windows 10 Windows Background Tasks API.
+    resources:
+    - path: /background-tasks
+      name: listbackgroundtasks
+      operations:
+      - method: GET
+        name: listbackgroundtasks
+        description: Microsoft Windows 10 List registered background tasks
+        call: microsoft-windows-10.listbackgroundtasks
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /background-tasks
+      name: registerbackgroundtask
+      operations:
+      - method: POST
+        name: registerbackgroundtask
+        description: Microsoft Windows 10 Register a background task
+        call: microsoft-windows-10.registerbackgroundtask
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /background-tasks/{taskId}
+      name: getbackgroundtask
+      operations:
+      - method: GET
+        name: getbackgroundtask
+        description: Microsoft Windows 10 Get background task details
+        call: microsoft-windows-10.getbackgroundtask
+        with:
+          taskId: rest.taskId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /background-tasks/{taskId}
+      name: unregisterbackgroundtask
+      operations:
+      - method: DELETE
+        name: unregisterbackgroundtask
+        description: Microsoft Windows 10 Unregister a background task
+        call: microsoft-windows-10.unregisterbackgroundtask
+        with:
+          taskId: rest.taskId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /background-tasks/access
+      name: getbackgroundaccessstatus
+      operations:
+      - method: GET
+        name: getbackgroundaccessstatus
+        description: Microsoft Windows 10 Get background access status
+        call: microsoft-windows-10.getbackgroundaccessstatus
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /background-tasks/access
+      name: requestbackgroundaccess
+      operations:
+      - method: POST
+        name: requestbackgroundaccess
+        description: Microsoft Windows 10 Request background access
+        call: microsoft-windows-10.requestbackgroundaccess
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /background-tasks/triggers
+      name: listtriggertypes
+      operations:
+      - method: GET
+        name: listtriggertypes
+        description: Microsoft Windows 10 List available trigger types
+        call: microsoft-windows-10.listtriggertypes
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: microsoft-windows-10-mcp
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Background Tasks API for AI agent use.
+    tools:
+    - name: listbackgroundtasks
+      description: Microsoft Windows 10 List registered background tasks
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-windows-10.listbackgroundtasks
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: registerbackgroundtask
+      description: Microsoft Windows 10 Register a background task
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-windows-10.registerbackgroundtask
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getbackgroundtask
+      description: Microsoft Windows 10 Get background task details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-windows-10.getbackgroundtask
+      with:
+        taskId: tools.taskId
+      inputParameters:
+      - name: taskId
+        type: string
+        description: Background task registration ID
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: unregisterbackgroundtask
+      description: Microsoft Windows 10 Unregister a background task
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: microsoft-windows-10.unregisterbackgroundtask
+      with:
+        taskId: tools.taskId
+        cancelRunningTask: tools.cancelRunningTask
+      inputParameters:
+      - name: taskId
+        type: string
+        description: Background task registration ID
+        required: true
+      - name: cancelRunningTask
+        type: boolean
+        description: Whether to cancel a running instance
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getbackgroundaccessstatus
+      description: Microsoft Windows 10 Get background access status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-windows-10.getbackgroundaccessstatus
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: requestbackgroundaccess
+      description: Microsoft Windows 10 Request background access
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: microsoft-windows-10.requestbackgroundaccess
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: listtriggertypes
+      description: Microsoft Windows 10 List available trigger types
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: microsoft-windows-10.listtriggertypes
+      outputParameters:
+      - type: object
+        mapping: $.
