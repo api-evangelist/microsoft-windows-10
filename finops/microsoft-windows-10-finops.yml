@@ -1,276 +1,89 @@
 specification: FinOps Framework
 specificationVersion: '1.0'
+schema: https://www.finops.org/framework/
+provider: Microsoft Windows 10
+providerId: microsoft-windows-10
+created: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
+tags:
+  - FinOps
+  - FOCUS
+  - Cost Management
+  - Microsoft
+  - Operating System
+description: 'FOCUS-aligned FinOps for Windows 10: post-EOS the primary spend lever is per-device,
+  per-year Extended Security Updates (ESU) under Volume Licensing, with cumulative pricing that doubles
+  each year (Year 1 $61, Year 2 $122, Year 3 $244). Windows 10 VMs running on Microsoft cloud services
+  receive ESU at no additional charge.'
+sources:
+  - https://learn.microsoft.com/en-us/windows/whats-new/extended-security-updates
 alignedWith:
   framework: FinOps Foundation Framework
   frameworkUrl: https://www.finops.org/framework/
   dataSpec: FOCUS
   dataSpecVersion: '1.3'
   dataSpecUrl: https://focus.finops.org/focus-specification/v1-3/
-provider: Microsoft Windows 10
-providerId: microsoft-windows-10
-publisherName: Microsoft Windows 10
-serviceCategory: API
-created: '2026-05-04'
-modified: '2026-05-04'
-tags:
-  - Desktop
-  - Operating System
-  - UWP
-  - Win32
-  - Windows
-  - FinOps
-  - Cost Management
-  - FOCUS
-description: FinOps framework definition for the Microsoft Windows 10 API surface. Provides a FOCUS-aligned
-  mapping for cost allocation, usage measurement, and unit-economics reporting across the provider's APIs.
-principles:
-  - name: Visibility
-    description: Make API consumption costs visible to engineering, product, and finance teams in near
-      real-time.
-  - name: Allocation
-    description: Tag every chargeable API call with the consuming team, environment, application, and
-      feature so cost can be allocated.
-  - name: Optimization
-    description: Continuously evaluate request patterns, caching, batching, and tier selection to reduce
-      cost per useful unit of work.
-  - name: Accountability
-    description: Establish budget owners and chargeback or showback flows for each consuming team.
-domains:
-  - name: Understand Usage and Cost
-    capabilities:
-      - Data Ingestion
-      - Allocation
-      - Reporting and Analytics
-      - Anomaly Management
-  - name: Quantify Business Value
-    capabilities:
-      - Planning and Estimating
-      - Forecasting
-      - Budgeting
-      - Benchmarking
-      - Unit Economics
-  - name: Optimize Usage and Cost
-    capabilities:
-      - Architecting for Cloud
-      - Rate Optimization
-      - Workload Optimization
-      - Cloud Sustainability
-      - Licensing and SaaS
-  - name: Manage the FinOps Practice
-    capabilities:
-      - FinOps Practice Operations
-      - FinOps Education and Enablement
-      - Invoicing and Chargeback
-      - Onboarding Workloads
-      - Intersecting Disciplines
+publisherName: Microsoft Corporation
+serviceCategory: Operating System / Endpoint
 billingModel:
-  pricingCategory: Usage-Based
-  billingFrequency: Monthly
+  pricingCategory: Subscription
+  billingFrequency: Annual
   billingCurrency: USD
   chargeCategories:
-    - Usage
     - Purchase
     - Tax
-    - Credit
     - Adjustment
-  chargeFrequency: Recurring
+    - Credit
 focusColumns:
   ServiceName: Microsoft Windows 10
-  ServiceCategory: Developer Tools / API
-  ProviderName: Microsoft Windows 10
-  PublisherName: Microsoft Windows 10
-  InvoiceIssuerName: Microsoft Windows 10
-  PricingCategory: Usage-Based
-  PricingUnit: request
+  ServiceCategory: Operating System
+  ProviderName: Microsoft
+  PublisherName: Microsoft Corporation
+  InvoiceIssuerName: Microsoft Corporation
   BillingCurrency: USD
-  ChargeCategory: Usage
+  PricingUnit: device-year
+  ChargeCategory: Purchase
 meters:
-  - name: api_requests
-    description: Count of billable API requests
-    unit: request
+  - name: esu_year_1_devices
+    unit: device-year
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
-      - region
-      - consumer
-  - name: data_egress
-    description: Bytes returned over the network in API responses
-    unit: GB
+      - tenant
+      - device
+  - name: esu_year_2_devices
+    unit: device-year
     aggregation: sum
     dimensions:
-      - api
-      - region
-      - consumer
-  - name: compute_seconds
-    description: Server-side compute consumed by the request, where applicable
-    unit: second
+      - tenant
+      - device
+  - name: esu_year_3_devices
+    unit: device-year
     aggregation: sum
     dimensions:
-      - api
-      - endpoint
-      - tier
-apis:
-  - name: Windows Runtime (WinRT) API
-    baseURL: https://api.windows.com
-    tags:
-      - Universal Apps
-      - UWP
-      - Windows Runtime
-      - WinRT
-    serviceName: Windows Runtime (WinRT) API
-    serviceCategory: API
-  - name: Win32 API
-    baseURL: https://api.windows.com
-    tags:
-      - Desktop
-      - Native
-      - System Programming
-      - Win32
-    serviceName: Win32 API
-    serviceCategory: API
-  - name: Windows Notifications API
-    baseURL: https://api.windows.com
-    tags:
-      - Notifications
-      - Tiles
-      - Toast
-      - User Interface
-    serviceName: Windows Notifications API
-    serviceCategory: API
-  - name: Windows ML API
-    baseURL: https://api.windows.com
-    tags:
-      - Artificial Intelligence
-      - Inference
-      - Machine Learning
-      - ONNX
-    serviceName: Windows ML API
-    serviceCategory: API
-  - name: Windows Storage API
-    baseURL: https://api.windows.com
-    tags:
-      - Data Management
-      - File System
-      - Files
-      - Storage
-    serviceName: Windows Storage API
-    serviceCategory: API
-  - name: Windows Cortana API
-    baseURL: https://api.windows.com
-    tags:
-      - Cortana
-      - Digital Assistant
-      - Voice
-      - Voice Commands
-    serviceName: Windows Cortana API
-    serviceCategory: API
-  - name: Windows Ink API
-    baseURL: https://api.windows.com
-    tags:
-      - Ink
-      - Input
-      - Pen
-      - Stylus
-    serviceName: Windows Ink API
-    serviceCategory: API
-  - name: Windows Composition API
-    baseURL: https://api.windows.com
-    tags:
-      - Animations
-      - Composition
-      - Graphics
-      - Visual Layer
-    serviceName: Windows Composition API
-    serviceCategory: API
-  - name: DirectX Graphics API
-    baseURL: https://api.windows.com
-    tags:
-      - DirectX
-      - Gaming
-      - Graphics
-      - Rendering
-    serviceName: DirectX Graphics API
-    serviceCategory: API
-  - name: Windows Media Capture API
-    baseURL: https://api.windows.com
-    tags:
-      - Audio
-      - Camera
-      - Media
-      - Video Capture
-    serviceName: Windows Media Capture API
-    serviceCategory: API
-  - name: Windows Networking API
-    baseURL: https://api.windows.com
-    tags:
-      - HTTP
-      - Networking
-      - Sockets
-      - WebSockets
-    serviceName: Windows Networking API
-    serviceCategory: API
-  - name: Windows Bluetooth API
-    baseURL: https://api.windows.com
-    tags:
-      - Bluetooth
-      - Devices
-      - IoT
-      - Wireless
-    serviceName: Windows Bluetooth API
-    serviceCategory: API
-  - name: Windows Geolocation API
-    baseURL: https://api.windows.com
-    tags:
-      - Geolocation
-      - GPS
-      - Location
-      - Maps
-    serviceName: Windows Geolocation API
-    serviceCategory: API
-  - name: Windows Sensors API
-    baseURL: https://api.windows.com
-    tags:
-      - Devices
-      - Hardware
-      - IoT
-      - Sensors
-    serviceName: Windows Sensors API
-    serviceCategory: API
-  - name: Windows Hello Authentication API
-    baseURL: https://api.windows.com
-    tags:
-      - Authentication
-      - Biometrics
-      - Identity
-      - Security
-    serviceName: Windows Hello Authentication API
-    serviceCategory: API
-  - name: WinUI API
-    baseURL: https://api.windows.com
-    tags:
-      - Controls
-      - Fluent Design
-      - User Interface
-      - XAML
-    serviceName: WinUI API
-    serviceCategory: API
-  - name: Windows Background Tasks API
-    baseURL: https://api.windows.com
-    tags:
-      - App Lifecycle
-      - Background Tasks
-      - Scheduling
-    serviceName: Windows Background Tasks API
-    serviceCategory: API
-unitEconomics:
-  - name: Cost per 1K Requests
-    metric: billed_cost / (api_requests / 1000)
-    target: TBD
-  - name: Cost per Active Consumer
-    metric: billed_cost / active_consumers
-    target: TBD
+      - tenant
+      - device
+  - name: esu_cloud_entitled_devices
+    unit: device-year
+    aggregation: sum
+    dimensions:
+      - cloud_service
+      - tenant
+principles:
+  - name: Visibility
+    description: Pull ESU enrollment counts from Microsoft 365 admin center Volume Licensing Product
+      Details; cross-reference with Intune device inventory to identify devices still on Windows 10
+      22H2.
+  - name: Allocation
+    description: Tag ESU charges by business unit / OU; allocate cloud-entitled (no-cost) ESU separately
+      from Volume Licensing ESU so the migration value is visible.
+  - name: Optimization
+    description: Migrate eligible devices to Windows 11 to avoid the year-2 ($122) and year-3 ($244)
+      ESU price escalations; move stragglers to Windows 365 / Azure Virtual Desktop where ESU is free;
+      decommission Windows 10 devices on hardware ineligible for Windows 11.
+  - name: Accountability
+    description: Assign an ESU budget owner per business unit; review remaining Windows 10 inventory
+      monthly; require approval for new ESU year purchases.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

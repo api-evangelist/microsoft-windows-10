@@ -4,184 +4,124 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Microsoft Windows 10
 providerId: microsoft-windows-10
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: true
 tags:
-  - Desktop
   - Operating System
-  - UWP
-  - Win32
+  - Desktop
   - Windows
-description: Machine-readable plans and pricing scaffold for this API provider. Conforms to the API Commons
-  Plans schema. Tier limits and prices are scaffold defaults; replace with provider-published values.
+  - Microsoft
+description: Microsoft Windows 10 reached End of Support on 2025-10-14. The Windows 10 platform APIs
+  (Win32, UWP, WinRT) are local to the OS and are not metered or sold as a network API. Commercially,
+  Microsoft now sells Windows 10 access primarily as a per-device Extended Security Updates (ESU)
+  subscription via Volume Licensing, priced at $61/device for Year One, doubling each subsequent year
+  for up to three years (Year 2 = $122, Year 3 = $244). ESU is included at no extra cost for Windows
+  10 VMs running on Windows 365, Azure Virtual Desktop, Azure VMs, and several Azure Stack / VMware
+  Solution offerings.
+sources:
+  - https://learn.microsoft.com/en-us/windows/whats-new/extended-security-updates
+  - https://www.microsoft.com/windows/end-of-support
+notes: Windows 10 platform APIs are device-local (Win32 / UWP / WinRT) and are not exposed as a
+  hosted, metered HTTP API. Commercial pricing reflects Extended Security Updates only.
 plans:
-  - id: microsoft-windows-10-free
-    name: Free
-    type: freemium
-    description: Free entry tier for the Microsoft Windows 10 API surface. Intended for evaluation, prototyping,
-      and low-volume integrations. Real limits and pricing must be reconciled with the provider's published
-      plan documentation.
+  - id: microsoft-windows-10-esu-year-1
+    name: Windows 10 ESU — Year 1 (Commercial)
+    type: subscription
+    description: First-year Extended Security Updates subscription via Microsoft Volume Licensing.
+      Coverage period begins November 2025; minimum 1 license.
     entries:
-      - label: API Requests
-        description: Monthly API request quota across all included endpoints
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 1000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.windows.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the free tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 10
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.windows.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-    elements:
-      - name: Public Documentation
-      - name: Community Support
-      - name: Sandbox Access
-      - name: Windows Runtime (WinRT) API
-      - name: Win32 API
-      - name: Windows Notifications API
-      - name: Windows ML API
-      - name: Windows Storage API
-      - name: Windows Cortana API
-      - name: Windows Ink API
-      - name: Windows Composition API
-  - id: microsoft-windows-10-pro
-    name: Professional
-    type: paid
-    description: Production tier for Microsoft Windows 10. Provides higher quotas, priority support, and
-      access to the broader API portfolio. Pricing placeholder; align with the provider's pricing page.
-    entries:
-      - label: API Requests
-        description: Monthly API request quota
-        name: api_requests
-        type: quota
-        metric: requests
-        limit: 100000
-        timeFrame: month
-        geo: global
-        domains:
-          - https://api.windows.com
-        unit: 1
-        price: TBD
-        userMultiplied: false
-      - label: Rate Limit
-        description: Maximum requests per minute on the professional tier
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 100
-        timeFrame: minute
-        geo: global
-        domains:
-          - https://api.windows.com
-        unit: 1
-        price: '0.00'
-        userMultiplied: false
-      - label: Overage
-        description: Per-request price after monthly quota is exceeded
-        name: overage
-        type: metered
-        metric: requests
+      - label: Per-device subscription
+        name: esu_year1
+        type: subscription
+        metric: device
         limit: -1
-        timeFrame: month
+        timeFrame: year
         geo: global
-        domains:
-          - https://api.windows.com
-        unit: 1000
-        price: TBD
+        unit: 1
+        price: '61.00'
         userMultiplied: false
     elements:
-      - name: All Production Endpoints
-      - name: Email Support
-      - name: SLA Targets
-      - name: Webhook Subscriptions
-      - name: Windows Runtime (WinRT) API
-      - name: Win32 API
-      - name: Windows Notifications API
-      - name: Windows ML API
-      - name: Windows Storage API
-      - name: Windows Cortana API
-      - name: Windows Ink API
-      - name: Windows Composition API
-      - name: DirectX Graphics API
-      - name: Windows Media Capture API
-      - name: Windows Networking API
-      - name: Windows Bluetooth API
-      - name: Windows Geolocation API
-      - name: Windows Sensors API
-      - name: Windows Hello Authentication API
-      - name: WinUI API
-      - name: Windows Background Tasks API
-  - id: microsoft-windows-10-enterprise
-    name: Enterprise
-    type: enterprise
-    description: Custom-negotiated tier for Microsoft Windows 10. Includes dedicated capacity, contractual
-      SLAs, security review, data residency options, and named technical account management.
+      - name: Critical and important security updates
+      - name: Windows 10 22H2 prerequisite
+      - name: Cumulative — must purchase prior years
+  - id: microsoft-windows-10-esu-year-2
+    name: Windows 10 ESU — Year 2 (Commercial)
+    type: subscription
+    description: Second-year Extended Security Updates. Price doubles year-over-year.
     entries:
-      - label: API Requests
-        description: Negotiated request volume; -1 indicates uncapped subject to fair use
-        name: api_requests
-        type: quota
-        metric: requests
+      - label: Per-device subscription
+        name: esu_year2
+        type: subscription
+        metric: device
         limit: -1
-        timeFrame: month
-        geo: configurable
-        domains:
-          - https://api.windows.com
+        timeFrame: year
+        geo: global
         unit: 1
-        price: custom
-        userMultiplied: false
-      - label: Rate Limit
-        description: Negotiated burst and steady-state rate
-        name: rate_limit
-        type: rate
-        metric: requests_per_minute
-        limit: 1000
-        timeFrame: minute
-        geo: configurable
-        domains:
-          - https://api.windows.com
-        unit: 1
-        price: custom
+        price: '122.00'
         userMultiplied: false
     elements:
-      - name: Unlimited / Negotiated Volume
-      - name: 24/7 Dedicated Support
-      - name: Contractual SLA
-      - name: Security & Compliance Review
-      - name: Dedicated Account Manager
-      - name: Custom Data Residency
-      - name: Windows Runtime (WinRT) API
-      - name: Win32 API
-      - name: Windows Notifications API
-      - name: Windows ML API
-      - name: Windows Storage API
-      - name: Windows Cortana API
-      - name: Windows Ink API
-      - name: Windows Composition API
-      - name: DirectX Graphics API
-      - name: Windows Media Capture API
-      - name: Windows Networking API
-      - name: Windows Bluetooth API
-      - name: Windows Geolocation API
-      - name: Windows Sensors API
-      - name: Windows Hello Authentication API
-      - name: WinUI API
-      - name: Windows Background Tasks API
+      - name: Cumulative — Year 1 must also be purchased
+  - id: microsoft-windows-10-esu-year-3
+    name: Windows 10 ESU — Year 3 (Commercial)
+    type: subscription
+    description: Third (and final) year of ESU eligibility for commercial/educational customers.
+    entries:
+      - label: Per-device subscription
+        name: esu_year3
+        type: subscription
+        metric: device
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: '244.00'
+        userMultiplied: false
+    elements:
+      - name: Maximum three years of post-EOS coverage
+      - name: Cumulative — prior years must be purchased
+  - id: microsoft-windows-10-esu-cloud-included
+    name: Windows 10 ESU — Cloud / VM (Included)
+    type: subscription
+    description: ESU is included at no additional cost for Windows 10 virtual machines on Windows 365,
+      Azure Virtual Desktop, Azure VMs, Azure Dedicated Host, Azure VMware Solution, Nutanix Cloud
+      Clusters on Azure, Azure Local, Azure Stack Hub, and Azure Stack Edge. Endpoints connecting to
+      Windows 365 Cloud PCs are also entitled.
+    entries:
+      - label: Cloud-entitled ESU
+        name: esu_cloud
+        type: subscription
+        metric: device
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: included
+        userMultiplied: false
+    elements:
+      - name: Windows 365
+      - name: Azure Virtual Desktop
+      - name: Azure VMs
+      - name: Azure Local / Stack Hub / Stack Edge
+      - name: Azure VMware Solution
+  - id: microsoft-windows-10-esu-consumer
+    name: Windows 10 Consumer ESU
+    type: subscription
+    description: Separate consumer-targeted ESU enrollment for Windows 10 Home customers; pricing and
+      enrollment are managed via the Windows ESU consumer page.
+    entries:
+      - label: Per-device consumer enrollment
+        name: esu_consumer
+        type: subscription
+        metric: device
+        limit: -1
+        timeFrame: year
+        geo: global
+        unit: 1
+        price: see https://www.microsoft.com/windows/extended-security-updates
+        userMultiplied: false
+    elements:
+      - name: Windows 10 Home eligible
+      - name: Critical and important security updates only
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

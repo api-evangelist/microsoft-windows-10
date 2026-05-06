@@ -4,166 +4,43 @@ schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main
 provider: Microsoft Windows 10
 providerId: microsoft-windows-10
 created: '2026-05-04'
-modified: '2026-05-04'
+modified: '2026-05-05'
+reconciled: false
 tags:
-  - Desktop
-  - Operating System
-  - UWP
-  - Win32
-  - Windows
   - Rate Limiting
-  - Quotas
-  - Throttling
-description: Machine-readable rate limit definitions for the Microsoft Windows 10 API surface. Captures
-  per-tier quotas, burst behavior, response signaling, and recovery semantics. Defaults are scaffold values
-  to be replaced with published provider limits.
-headers:
-  limit: X-RateLimit-Limit
-  remaining: X-RateLimit-Remaining
-  reset: X-RateLimit-Reset
-  retryAfter: Retry-After
-  policy: RateLimit-Policy
-responseCodes:
-  throttled: 429
-  quotaExceeded: 429
-  serviceUnavailable: 503
+  - Operating System
+  - Microsoft
+description: Windows 10 platform APIs (Win32, UWP, WinRT) execute in-process on the local device and
+  are not exposed as a hosted, metered HTTP API; there are no per-second / per-minute network rate
+  limits to publish. Network-facing services that ride on Windows 10 (Microsoft Store, Windows Update,
+  Microsoft Graph) are governed by their own throttling models.
+sources:
+  - https://learn.microsoft.com/en-us/windows/win32/api/
+  - https://learn.microsoft.com/en-us/windows/whats-new/extended-security-updates
+notes: Windows 10 itself is a device OS. Per-API rate limits do not apply to local Win32/UWP/WinRT
+  surface area; ride-along network services document throttling separately.
+responseCodes: {}
 limits:
-  - tier: free
-    name: Free Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 10
-    burst: 20
-    timeFrame: minute
-    applies:
-      - Windows Runtime (WinRT) API
-      - Win32 API
-      - Windows Notifications API
-      - Windows ML API
-      - Windows Storage API
-      - Windows Cortana API
-      - Windows Ink API
-      - Windows Composition API
-      - DirectX Graphics API
-      - Windows Media Capture API
-      - Windows Networking API
-      - Windows Bluetooth API
-      - Windows Geolocation API
-      - Windows Sensors API
-      - Windows Hello Authentication API
-      - WinUI API
-      - Windows Background Tasks API
-  - tier: free
-    name: Free Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 1000
-    timeFrame: month
-    applies:
-      - Windows Runtime (WinRT) API
-      - Win32 API
-      - Windows Notifications API
-      - Windows ML API
-      - Windows Storage API
-      - Windows Cortana API
-      - Windows Ink API
-      - Windows Composition API
-      - DirectX Graphics API
-      - Windows Media Capture API
-      - Windows Networking API
-      - Windows Bluetooth API
-      - Windows Geolocation API
-      - Windows Sensors API
-      - Windows Hello Authentication API
-      - WinUI API
-      - Windows Background Tasks API
-  - tier: professional
-    name: Professional Tier Default
-    scope: api-key
-    metric: requests_per_minute
-    limit: 100
-    burst: 200
-    timeFrame: minute
-    applies:
-      - Windows Runtime (WinRT) API
-      - Win32 API
-      - Windows Notifications API
-      - Windows ML API
-      - Windows Storage API
-      - Windows Cortana API
-      - Windows Ink API
-      - Windows Composition API
-      - DirectX Graphics API
-      - Windows Media Capture API
-      - Windows Networking API
-      - Windows Bluetooth API
-      - Windows Geolocation API
-      - Windows Sensors API
-      - Windows Hello Authentication API
-      - WinUI API
-      - Windows Background Tasks API
-  - tier: professional
-    name: Professional Tier Monthly Quota
-    scope: api-key
-    metric: requests_per_month
-    limit: 100000
-    timeFrame: month
-    applies:
-      - Windows Runtime (WinRT) API
-      - Win32 API
-      - Windows Notifications API
-      - Windows ML API
-      - Windows Storage API
-      - Windows Cortana API
-      - Windows Ink API
-      - Windows Composition API
-      - DirectX Graphics API
-      - Windows Media Capture API
-      - Windows Networking API
-      - Windows Bluetooth API
-      - Windows Geolocation API
-      - Windows Sensors API
-      - Windows Hello Authentication API
-      - WinUI API
-      - Windows Background Tasks API
-  - tier: enterprise
-    name: Enterprise Negotiated Limit
-    scope: contract
-    metric: requests_per_minute
-    limit: 1000
-    burst: 5000
-    timeFrame: minute
-    applies:
-      - Windows Runtime (WinRT) API
-      - Win32 API
-      - Windows Notifications API
-      - Windows ML API
-      - Windows Storage API
-      - Windows Cortana API
-      - Windows Ink API
-      - Windows Composition API
-      - DirectX Graphics API
-      - Windows Media Capture API
-      - Windows Networking API
-      - Windows Bluetooth API
-      - Windows Geolocation API
-      - Windows Sensors API
-      - Windows Hello Authentication API
-      - WinUI API
-      - Windows Background Tasks API
+  - name: Local platform APIs (Win32 / UWP / WinRT)
+    scope: device
+    metric: varies
+    limit: 'Local in-process calls; no per-second network rate limit'
+    notes: Subject only to OS / handle / quota constraints on the local device.
+  - name: Microsoft Store for Business / Consumer
+    scope: account
+    metric: varies
+    limit: 'Governed by Microsoft Graph throttling; see Graph throttling guidance'
+  - name: Windows Update for Business / WSUS
+    scope: account
+    metric: varies
+    limit: 'Per-tenant; published by Microsoft endpoint manager / Intune docs'
 policies:
-  - name: Backoff Strategy
-    description: Clients should implement exponential backoff with jitter, honoring the Retry-After header
-      when present.
-  - name: Burst Handling
-    description: Short bursts above the steady-state limit are tolerated up to the documented burst ceiling
-      before throttling engages.
-  - name: Quota Reset
-    description: Monthly quotas reset at the start of each calendar month in UTC. Per-minute and per-second
-      windows reset on a sliding-window basis.
-  - name: Fair Use
-    description: Even on uncapped enterprise tiers, sustained usage that materially impacts shared infrastructure
-      may be subject to fair-use throttling.
+  - name: Honor Retry-After
+    description: For network-facing services consumed from Windows 10 (Microsoft Graph, Store, Update),
+      honor the Retry-After header on 429 responses.
+  - name: Local resource governance
+    description: Win32 / WinRT APIs may return ERROR_TOO_MANY_OPEN_FILES / RPC_S_OUT_OF_RESOURCES /
+      similar local resource errors; design for graceful retry.
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
