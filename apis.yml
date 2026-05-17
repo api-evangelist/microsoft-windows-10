@@ -27,7 +27,7 @@ apis:
     properties:
       - type: Documentation
         url: https://learn.microsoft.com/en-us/uwp/api/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/windows/uwp/get-started/
       - type: Samples
         url: https://github.com/Microsoft/Windows-universal-samples
@@ -54,7 +54,7 @@ apis:
         url: https://learn.microsoft.com/en-us/windows/win32/api/
       - type: Samples
         url: https://github.com/microsoft/Windows-classic-samples
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/windows/win32/desktop-programming
       - type: OpenAPI
         url: openapi/microsoft-windows-10-win32-openapi.yml
@@ -94,7 +94,7 @@ apis:
         url: https://learn.microsoft.com/en-us/windows/ai/windows-ml/tutorials
       - type: Samples
         url: https://github.com/Microsoft/Windows-Machine-Learning
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/windows/ai/windows-ml/get-started
       - type: OpenAPI
         url: openapi/microsoft-windows-10-ml-openapi.yml
@@ -113,7 +113,7 @@ apis:
         url: https://learn.microsoft.com/en-us/uwp/api/windows.storage
       - type: Best Practices
         url: https://learn.microsoft.com/en-us/windows/uwp/files/best-practices-for-writing-to-files
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/windows/uwp/files/
       - type: OpenAPI
         url: openapi/microsoft-windows-10-storage-openapi.yml
@@ -149,7 +149,7 @@ apis:
         url: https://learn.microsoft.com/en-us/uwp/api/windows.ui.input.inking
       - type: Samples
         url: https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/SimpleInk
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/windows/uwp/design/input/pen-and-stylus-interactions
       - type: OpenAPI
         url: openapi/microsoft-windows-10-ink-openapi.yml
@@ -170,7 +170,7 @@ apis:
         url: https://learn.microsoft.com/en-us/uwp/api/windows.ui.composition
       - type: Samples
         url: https://github.com/microsoft/Windows.UI.Composition-Win32-Samples
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/windows/uwp/composition/using-the-visual-layer-with-xaml
       - type: OpenAPI
         url: openapi/microsoft-windows-10-composition-openapi.yml
@@ -187,7 +187,7 @@ apis:
     properties:
       - type: Documentation
         url: https://learn.microsoft.com/en-us/windows/win32/directx
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/windows/win32/getting-started-with-directx-graphics
       - type: Samples
         url: https://github.com/microsoft/DirectX-Graphics-Samples
@@ -210,7 +210,7 @@ apis:
         url: https://learn.microsoft.com/en-us/windows/apps/develop/audio-video-camera
       - type: Reference
         url: https://learn.microsoft.com/en-us/uwp/api/windows.media.capture
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/windows/win32/medfound/audio-video-capture-in-media-foundation
       - type: OpenAPI
         url: openapi/microsoft-windows-10-media-capture-openapi.yml
@@ -248,7 +248,7 @@ apis:
         url: https://learn.microsoft.com/en-us/windows/uwp/devices-sensors/bluetooth-dev-faq
       - type: Reference
         url: https://learn.microsoft.com/en-us/windows/win32/api/_bluetooth/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/windows/win32/bluetooth/bluetooth-programming-with-windows-sockets
       - type: OpenAPI
         url: openapi/microsoft-windows-10-bluetooth-openapi.yml
@@ -301,7 +301,7 @@ apis:
     properties:
       - type: Documentation
         url: https://learn.microsoft.com/en-us/windows/apps/develop/security/windows-hello
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/windows/apps/develop/security/windows-hello-auth-service
       - type: Reference
         url: https://learn.microsoft.com/en-us/windows/security/identity-protection/hello-for-business/webauthn-apis
@@ -322,7 +322,7 @@ apis:
         url: https://learn.microsoft.com/en-us/windows/apps/winui/winui2/
       - type: Reference
         url: https://learn.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.controls
-      - type: Getting Started
+      - type: GettingStarted
         url: https://learn.microsoft.com/en-us/windows/apps/winui/winui2/getting-started
       - type: Samples
         url: https://github.com/microsoft/microsoft-ui-xaml
@@ -349,21 +349,21 @@ common:
     url: https://developer.microsoft.com/en-us/windows/
   - type: Documentation
     url: https://learn.microsoft.com/en-us/windows/apps/
-  - type: Getting Started
+  - type: GettingStarted
     url: https://learn.microsoft.com/en-us/windows/apps/get-started/
   - type: Authentication
     url: https://learn.microsoft.com/en-us/windows/apps/develop/security/windows-hello
   - type: Blog
     url: https://blogs.windows.com/windowsdeveloper/
-  - type: Status
+  - type: StatusPage
     url: https://status.cloud.microsoft/
   - type: Support
     url: https://developer.microsoft.com/en-us/windows/support
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://www.microsoft.com/en-us/legal/terms-of-use
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://www.microsoft.com/en-us/privacy/privacystatement
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/microsoft
   - type: Community
     url: https://developer.microsoft.com/en-us/windows/community/
@@ -371,15 +371,15 @@ common:
     url: https://www.microsoft.com
   - type: Login
     url: https://login.microsoftonline.com/
-  - type: Sign Up
+  - type: SignUp
     url: https://developer.microsoft.com/en-us/
   - type: SDKs
     url: https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk/
-  - type: Change Log
+  - type: ChangeLog
     url: https://learn.microsoft.com/en-us/windows/apps/whats-new/whats-new-for-developers
   - type: Reference
     url: https://learn.microsoft.com/en-us/windows/apps/api-reference/
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/microsoft-windows-10-context.jsonld
   - type: JSONSchema
     url: json-schema/microsoft-windows-10-notification-schema.json
