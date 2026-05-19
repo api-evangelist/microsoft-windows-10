@@ -1,0 +1,78 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Composition API — Animations
+  description: 'Microsoft Windows 10 Windows Composition API — Animations. 1 operations. Lead operation: Microsoft Windows
+    10 Create a composition animation. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - Animations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: composition-animations
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Composition API — Animations business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: composition-animations
+      path: /composition/animations
+      operations:
+      - name: createanimation
+        method: POST
+        description: Microsoft Windows 10 Create a composition animation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: composition-animations-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows Composition API — Animations. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/composition/animations
+      name: composition-animations
+      description: REST surface for composition-animations.
+      operations:
+      - method: POST
+        name: createanimation
+        description: Microsoft Windows 10 Create a composition animation
+        call: composition-animations.createanimation
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: composition-animations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Composition API — Animations. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-create-composition
+      description: Microsoft Windows 10 Create a composition animation
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: composition-animations.createanimation
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

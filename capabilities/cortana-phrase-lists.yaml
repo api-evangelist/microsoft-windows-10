@@ -1,0 +1,91 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Cortana API — Phrase Lists
+  description: 'Microsoft Windows 10 Windows Cortana API — Phrase Lists. 1 operations. Lead operation: Microsoft Windows 10
+    Update a phrase list. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - Phrase Lists
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cortana-phrase-lists
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Cortana API — Phrase Lists business capability. Self-contained, no shared references.
+    resources:
+    - name: cortana-voice-commands-commandSetName-phrase-lists-phraseListName
+      path: /cortana/voice-commands/{commandSetName}/phrase-lists/{phraseListName}
+      operations:
+      - name: updatephraselist
+        method: PUT
+        description: Microsoft Windows 10 Update a phrase list
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: commandSetName
+          in: path
+          type: string
+          description: The name of the voice command set
+          required: true
+        - name: phraseListName
+          in: path
+          type: string
+          description: The name of the phrase list to update
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: cortana-phrase-lists-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows Cortana API — Phrase Lists. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/cortana/voice-commands/{commandsetname}/phrase-lists/{phraselistname}
+      name: cortana-voice-commands-commandsetname-phrase-lists-phraselistname
+      description: REST surface for cortana-voice-commands-commandSetName-phrase-lists-phraseListName.
+      operations:
+      - method: PUT
+        name: updatephraselist
+        description: Microsoft Windows 10 Update a phrase list
+        call: cortana-phrase-lists.updatephraselist
+        with:
+          commandSetName: rest.commandSetName
+          phraseListName: rest.phraseListName
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cortana-phrase-lists-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Cortana API — Phrase Lists. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-update-phrase
+      description: Microsoft Windows 10 Update a phrase list
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: cortana-phrase-lists.updatephraselist
+      with:
+        commandSetName: tools.commandSetName
+        phraseListName: tools.phraseListName
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

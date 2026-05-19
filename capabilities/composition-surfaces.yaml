@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Composition API — Surfaces
+  description: 'Microsoft Windows 10 Windows Composition API — Surfaces. 1 operations. Lead operation: Microsoft Windows 10
+    Create a composition surface. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - Surfaces
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: composition-surfaces
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Composition API — Surfaces business capability. Self-contained, no shared references.
+    resources:
+    - name: composition-surfaces
+      path: /composition/surfaces
+      operations:
+      - name: createsurface
+        method: POST
+        description: Microsoft Windows 10 Create a composition surface
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: composition-surfaces-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows Composition API — Surfaces. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/composition/surfaces
+      name: composition-surfaces
+      description: REST surface for composition-surfaces.
+      operations:
+      - method: POST
+        name: createsurface
+        description: Microsoft Windows 10 Create a composition surface
+        call: composition-surfaces.createsurface
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: composition-surfaces-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Composition API — Surfaces. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-create-composition
+      description: Microsoft Windows 10 Create a composition surface
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: composition-surfaces.createsurface
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

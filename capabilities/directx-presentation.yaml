@@ -1,0 +1,77 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 DirectX Graphics API — Presentation
+  description: 'Microsoft Windows 10 DirectX Graphics API — Presentation. 1 operations. Lead operation: Microsoft Windows
+    10 Create a swap chain. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - Presentation
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: directx-presentation
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 DirectX Graphics API — Presentation business capability. Self-contained, no shared references.
+    resources:
+    - name: directx-swap-chains
+      path: /directx/swap-chains
+      operations:
+      - name: createswapchain
+        method: POST
+        description: Microsoft Windows 10 Create a swap chain
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: directx-presentation-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 DirectX Graphics API — Presentation. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/directx/swap-chains
+      name: directx-swap-chains
+      description: REST surface for directx-swap-chains.
+      operations:
+      - method: POST
+        name: createswapchain
+        description: Microsoft Windows 10 Create a swap chain
+        call: directx-presentation.createswapchain
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: directx-presentation-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 DirectX Graphics API — Presentation. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-create-swap
+      description: Microsoft Windows 10 Create a swap chain
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: directx-presentation.createswapchain
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

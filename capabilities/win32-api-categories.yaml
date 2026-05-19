@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Win32 API — API Categories
+  description: 'Microsoft Windows 10 Win32 API — API Categories. 1 operations. Lead operation: Microsoft Windows 10 List Win32
+    API categories. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - API Categories
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: win32-api-categories
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Win32 API — API Categories business capability. Self-contained, no shared references.
+    resources:
+    - name: win32-api-categories
+      path: /win32/api-categories
+      operations:
+      - name: listwin32apicategories
+        method: GET
+        description: Microsoft Windows 10 List Win32 API categories
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: win32-api-categories-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Win32 API — API Categories. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/win32/api-categories
+      name: win32-api-categories
+      description: REST surface for win32-api-categories.
+      operations:
+      - method: GET
+        name: listwin32apicategories
+        description: Microsoft Windows 10 List Win32 API categories
+        call: win32-api-categories.listwin32apicategories
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: win32-api-categories-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Win32 API — API Categories. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-list-win32
+      description: Microsoft Windows 10 List Win32 API categories
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: win32-api-categories.listwin32apicategories
+      outputParameters:
+      - type: object
+        mapping: $.

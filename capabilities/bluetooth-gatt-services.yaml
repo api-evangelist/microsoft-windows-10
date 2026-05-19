@@ -1,0 +1,78 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Bluetooth API — GATT Services
+  description: 'Microsoft Windows 10 Windows Bluetooth API — GATT Services. 1 operations. Lead operation: Microsoft Windows
+    10 List GATT services. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - GATT Services
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: bluetooth-gatt-services
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Bluetooth API — GATT Services business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: bluetooth-le-devices-deviceId-services
+      path: /bluetooth/le/devices/{deviceId}/services
+      operations:
+      - name: listgattservices
+        method: GET
+        description: Microsoft Windows 10 List GATT services
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: deviceId
+          in: path
+          type: string
+          description: BLE device identifier
+          required: true
+  exposes:
+  - type: rest
+    namespace: bluetooth-gatt-services-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows Bluetooth API — GATT Services. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/bluetooth/le/devices/{deviceid}/services
+      name: bluetooth-le-devices-deviceid-services
+      description: REST surface for bluetooth-le-devices-deviceId-services.
+      operations:
+      - method: GET
+        name: listgattservices
+        description: Microsoft Windows 10 List GATT services
+        call: bluetooth-gatt-services.listgattservices
+        with:
+          deviceId: rest.deviceId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: bluetooth-gatt-services-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Bluetooth API — GATT Services. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-list-gatt
+      description: Microsoft Windows 10 List GATT services
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bluetooth-gatt-services.listgattservices
+      with:
+        deviceId: tools.deviceId
+      outputParameters:
+      - type: object
+        mapping: $.

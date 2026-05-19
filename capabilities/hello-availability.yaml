@@ -1,0 +1,69 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Hello Authentication API — Availability
+  description: 'Microsoft Windows 10 Windows Hello Authentication API — Availability. 1 operations. Lead operation: Microsoft
+    Windows 10 Check Windows Hello availability. Self-contained Naftiko capability covering one Microsoft Windows 10 business
+    surface.'
+  tags:
+  - Microsoft Windows 10
+  - Availability
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: hello-availability
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Hello Authentication API — Availability business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: hello-availability
+      path: /hello/availability
+      operations:
+      - name: checkhelloavailability
+        method: GET
+        description: Microsoft Windows 10 Check Windows Hello availability
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: hello-availability-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows Hello Authentication API — Availability. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/hello/availability
+      name: hello-availability
+      description: REST surface for hello-availability.
+      operations:
+      - method: GET
+        name: checkhelloavailability
+        description: Microsoft Windows 10 Check Windows Hello availability
+        call: hello-availability.checkhelloavailability
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: hello-availability-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Hello Authentication API — Availability. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-check-windows
+      description: Microsoft Windows 10 Check Windows Hello availability
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: hello-availability.checkhelloavailability
+      outputParameters:
+      - type: object
+        mapping: $.

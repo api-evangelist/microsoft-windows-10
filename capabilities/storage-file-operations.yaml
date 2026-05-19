@@ -1,0 +1,126 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Storage API — File Operations
+  description: 'Microsoft Windows 10 Windows Storage API — File Operations. 2 operations. Lead operation: Microsoft Windows
+    10 Read file content. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - File Operations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: storage-file-operations
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Storage API — File Operations business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: storage-files-fileId-content
+      path: /storage/files/{fileId}/content
+      operations:
+      - name: readfilecontent
+        method: GET
+        description: Microsoft Windows 10 Read file content
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fileId
+          in: path
+          type: string
+          description: Unique file identifier
+          required: true
+        - name: readMode
+          in: query
+          type: string
+          description: How to read the file content
+      - name: writefilecontent
+        method: PUT
+        description: Microsoft Windows 10 Write file content
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: fileId
+          in: path
+          type: string
+          description: Unique file identifier
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: storage-file-operations-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows Storage API — File Operations. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/storage/files/{fileid}/content
+      name: storage-files-fileid-content
+      description: REST surface for storage-files-fileId-content.
+      operations:
+      - method: GET
+        name: readfilecontent
+        description: Microsoft Windows 10 Read file content
+        call: storage-file-operations.readfilecontent
+        with:
+          fileId: rest.fileId
+          readMode: rest.readMode
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: writefilecontent
+        description: Microsoft Windows 10 Write file content
+        call: storage-file-operations.writefilecontent
+        with:
+          fileId: rest.fileId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: storage-file-operations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Storage API — File Operations. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-read-file
+      description: Microsoft Windows 10 Read file content
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: storage-file-operations.readfilecontent
+      with:
+        fileId: tools.fileId
+        readMode: tools.readMode
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-windows-10-write-file
+      description: Microsoft Windows 10 Write file content
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: storage-file-operations.writefilecontent
+      with:
+        fileId: tools.fileId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,179 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Ink API — Strokes
+  description: 'Microsoft Windows 10 Windows Ink API — Strokes. 4 operations. Lead operation: Microsoft Windows 10 List ink
+    strokes. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - Strokes
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ink-strokes
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Ink API — Strokes business capability. Self-contained, no shared references.
+    resources:
+    - name: ink-strokes
+      path: /ink/strokes
+      operations:
+      - name: listinkstrokes
+        method: GET
+        description: Microsoft Windows 10 List ink strokes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: addinkstroke
+        method: POST
+        description: Microsoft Windows 10 Add an ink stroke
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ink-strokes-strokeId
+      path: /ink/strokes/{strokeId}
+      operations:
+      - name: getinkstroke
+        method: GET
+        description: Microsoft Windows 10 Get ink stroke details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: strokeId
+          in: path
+          type: string
+          description: Unique stroke identifier
+          required: true
+      - name: deleteinkstroke
+        method: DELETE
+        description: Microsoft Windows 10 Delete an ink stroke
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: strokeId
+          in: path
+          type: string
+          description: Unique stroke identifier
+          required: true
+  exposes:
+  - type: rest
+    namespace: ink-strokes-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows Ink API — Strokes. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/ink/strokes
+      name: ink-strokes
+      description: REST surface for ink-strokes.
+      operations:
+      - method: GET
+        name: listinkstrokes
+        description: Microsoft Windows 10 List ink strokes
+        call: ink-strokes.listinkstrokes
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: addinkstroke
+        description: Microsoft Windows 10 Add an ink stroke
+        call: ink-strokes.addinkstroke
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ink/strokes/{strokeid}
+      name: ink-strokes-strokeid
+      description: REST surface for ink-strokes-strokeId.
+      operations:
+      - method: GET
+        name: getinkstroke
+        description: Microsoft Windows 10 Get ink stroke details
+        call: ink-strokes.getinkstroke
+        with:
+          strokeId: rest.strokeId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteinkstroke
+        description: Microsoft Windows 10 Delete an ink stroke
+        call: ink-strokes.deleteinkstroke
+        with:
+          strokeId: rest.strokeId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ink-strokes-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Ink API — Strokes. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-list-ink
+      description: Microsoft Windows 10 List ink strokes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ink-strokes.listinkstrokes
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-windows-10-add-ink
+      description: Microsoft Windows 10 Add an ink stroke
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ink-strokes.addinkstroke
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-windows-10-get-ink
+      description: Microsoft Windows 10 Get ink stroke details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ink-strokes.getinkstroke
+      with:
+        strokeId: tools.strokeId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-windows-10-delete-ink
+      description: Microsoft Windows 10 Delete an ink stroke
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ink-strokes.deleteinkstroke
+      with:
+        strokeId: tools.strokeId
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,69 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Networking API — Connectivity
+  description: 'Microsoft Windows 10 Windows Networking API — Connectivity. 1 operations. Lead operation: Microsoft Windows
+    10 Get network connectivity information. Self-contained Naftiko capability covering one Microsoft Windows 10 business
+    surface.'
+  tags:
+  - Microsoft Windows 10
+  - Connectivity
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: networking-connectivity
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Networking API — Connectivity business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: networking-connectivity
+      path: /networking/connectivity
+      operations:
+      - name: getnetworkconnectivity
+        method: GET
+        description: Microsoft Windows 10 Get network connectivity information
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: networking-connectivity-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows Networking API — Connectivity. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/networking/connectivity
+      name: networking-connectivity
+      description: REST surface for networking-connectivity.
+      operations:
+      - method: GET
+        name: getnetworkconnectivity
+        description: Microsoft Windows 10 Get network connectivity information
+        call: networking-connectivity.getnetworkconnectivity
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: networking-connectivity-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Networking API — Connectivity. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-get-network
+      description: Microsoft Windows 10 Get network connectivity information
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: networking-connectivity.getnetworkconnectivity
+      outputParameters:
+      - type: object
+        mapping: $.

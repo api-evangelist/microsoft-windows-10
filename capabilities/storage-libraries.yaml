@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Storage API — Libraries
+  description: 'Microsoft Windows 10 Windows Storage API — Libraries. 1 operations. Lead operation: Microsoft Windows 10 List
+    storage libraries. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - Libraries
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: storage-libraries
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Storage API — Libraries business capability. Self-contained, no shared references.
+    resources:
+    - name: storage-libraries
+      path: /storage/libraries
+      operations:
+      - name: liststoragelibraries
+        method: GET
+        description: Microsoft Windows 10 List storage libraries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: storage-libraries-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows Storage API — Libraries. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/storage/libraries
+      name: storage-libraries
+      description: REST surface for storage-libraries.
+      operations:
+      - method: GET
+        name: liststoragelibraries
+        description: Microsoft Windows 10 List storage libraries
+        call: storage-libraries.liststoragelibraries
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: storage-libraries-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Storage API — Libraries. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-list-storage
+      description: Microsoft Windows 10 List storage libraries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: storage-libraries.liststoragelibraries
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,79 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Cortana API — Service Connections
+  description: 'Microsoft Windows 10 Windows Cortana API — Service Connections. 1 operations. Lead operation: Microsoft Windows
+    10 Create a Cortana app service connection. Self-contained Naftiko capability covering one Microsoft Windows 10 business
+    surface.'
+  tags:
+  - Microsoft Windows 10
+  - Service Connections
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: cortana-service-connections
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Cortana API — Service Connections business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: cortana-service-connections
+      path: /cortana/service-connections
+      operations:
+      - name: createcortanaserviceconnection
+        method: POST
+        description: Microsoft Windows 10 Create a Cortana app service connection
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: cortana-service-connections-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows Cortana API — Service Connections. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/cortana/service-connections
+      name: cortana-service-connections
+      description: REST surface for cortana-service-connections.
+      operations:
+      - method: POST
+        name: createcortanaserviceconnection
+        description: Microsoft Windows 10 Create a Cortana app service connection
+        call: cortana-service-connections.createcortanaserviceconnection
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: cortana-service-connections-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Cortana API — Service Connections. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-create-cortana
+      description: Microsoft Windows 10 Create a Cortana app service connection
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: cortana-service-connections.createcortanaserviceconnection
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

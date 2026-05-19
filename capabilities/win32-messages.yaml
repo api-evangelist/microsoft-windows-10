@@ -1,0 +1,76 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Win32 API — Messages
+  description: 'Microsoft Windows 10 Win32 API — Messages. 1 operations. Lead operation: Microsoft Windows 10 List window
+    messages. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - Messages
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: win32-messages
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Win32 API — Messages business capability. Self-contained, no shared references.
+    resources:
+    - name: win32-messages
+      path: /win32/messages
+      operations:
+      - name: listwindowmessages
+        method: GET
+        description: Microsoft Windows 10 List window messages
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: prefix
+          in: query
+          type: string
+          description: Filter messages by prefix (e.g., WM_, BM_, CB_)
+  exposes:
+  - type: rest
+    namespace: win32-messages-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Win32 API — Messages. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/win32/messages
+      name: win32-messages
+      description: REST surface for win32-messages.
+      operations:
+      - method: GET
+        name: listwindowmessages
+        description: Microsoft Windows 10 List window messages
+        call: win32-messages.listwindowmessages
+        with:
+          prefix: rest.prefix
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: win32-messages-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Win32 API — Messages. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-list-window
+      description: Microsoft Windows 10 List window messages
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: win32-messages.listwindowmessages
+      with:
+        prefix: tools.prefix
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,123 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Storage API — App Data
+  description: 'Microsoft Windows 10 Windows Storage API — App Data. 2 operations. Lead operation: Microsoft Windows 10 Get
+    application settings. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - App Data
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: storage-app-data
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Storage API — App Data business capability. Self-contained, no shared references.
+    resources:
+    - name: storage-app-data-settings
+      path: /storage/app-data/settings
+      operations:
+      - name: getappsettings
+        method: GET
+        description: Microsoft Windows 10 Get application settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: locality
+          in: query
+          type: string
+          description: Settings locality
+        - name: containerName
+          in: query
+          type: string
+          description: Settings container name
+      - name: updateappsettings
+        method: PUT
+        description: Microsoft Windows 10 Update application settings
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: locality
+          in: query
+          type: string
+          description: Settings locality
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: storage-app-data-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows Storage API — App Data. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/storage/app-data/settings
+      name: storage-app-data-settings
+      description: REST surface for storage-app-data-settings.
+      operations:
+      - method: GET
+        name: getappsettings
+        description: Microsoft Windows 10 Get application settings
+        call: storage-app-data.getappsettings
+        with:
+          locality: rest.locality
+          containerName: rest.containerName
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: updateappsettings
+        description: Microsoft Windows 10 Update application settings
+        call: storage-app-data.updateappsettings
+        with:
+          locality: rest.locality
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: storage-app-data-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Storage API — App Data. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-get-application
+      description: Microsoft Windows 10 Get application settings
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: storage-app-data.getappsettings
+      with:
+        locality: tools.locality
+        containerName: tools.containerName
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-windows-10-update-application
+      description: Microsoft Windows 10 Update application settings
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: storage-app-data.updateappsettings
+      with:
+        locality: tools.locality
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

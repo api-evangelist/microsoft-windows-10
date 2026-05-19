@@ -1,0 +1,179 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows ML API — Models
+  description: 'Microsoft Windows 10 Windows ML API — Models. 4 operations. Lead operation: Microsoft Windows 10 List loaded
+    ML models. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - Models
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: ml-models
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows ML API — Models business capability. Self-contained, no shared references.
+    resources:
+    - name: ml-models
+      path: /ml/models
+      operations:
+      - name: listmlmodels
+        method: GET
+        description: Microsoft Windows 10 List loaded ML models
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: loadmlmodel
+        method: POST
+        description: Microsoft Windows 10 Load a machine learning model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: ml-models-modelId
+      path: /ml/models/{modelId}
+      operations:
+      - name: getmlmodel
+        method: GET
+        description: Microsoft Windows 10 Get model details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: modelId
+          in: path
+          type: string
+          description: Unique identifier for the loaded model
+          required: true
+      - name: unloadmlmodel
+        method: DELETE
+        description: Microsoft Windows 10 Unload a machine learning model
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: modelId
+          in: path
+          type: string
+          description: Unique identifier for the model
+          required: true
+  exposes:
+  - type: rest
+    namespace: ml-models-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows ML API — Models. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/ml/models
+      name: ml-models
+      description: REST surface for ml-models.
+      operations:
+      - method: GET
+        name: listmlmodels
+        description: Microsoft Windows 10 List loaded ML models
+        call: ml-models.listmlmodels
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: loadmlmodel
+        description: Microsoft Windows 10 Load a machine learning model
+        call: ml-models.loadmlmodel
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/ml/models/{modelid}
+      name: ml-models-modelid
+      description: REST surface for ml-models-modelId.
+      operations:
+      - method: GET
+        name: getmlmodel
+        description: Microsoft Windows 10 Get model details
+        call: ml-models.getmlmodel
+        with:
+          modelId: rest.modelId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: unloadmlmodel
+        description: Microsoft Windows 10 Unload a machine learning model
+        call: ml-models.unloadmlmodel
+        with:
+          modelId: rest.modelId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: ml-models-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows ML API — Models. One tool per consumed operation, routed inline
+      through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-list-loaded
+      description: Microsoft Windows 10 List loaded ML models
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ml-models.listmlmodels
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-windows-10-load-machine
+      description: Microsoft Windows 10 Load a machine learning model
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: ml-models.loadmlmodel
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-windows-10-get-model
+      description: Microsoft Windows 10 Get model details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: ml-models.getmlmodel
+      with:
+        modelId: tools.modelId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-windows-10-unload-machine
+      description: Microsoft Windows 10 Unload a machine learning model
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: ml-models.unloadmlmodel
+      with:
+        modelId: tools.modelId
+      outputParameters:
+      - type: object
+        mapping: $.

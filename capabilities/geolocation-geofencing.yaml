@@ -1,0 +1,103 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Geolocation API — Geofencing
+  description: 'Microsoft Windows 10 Windows Geolocation API — Geofencing. 2 operations. Lead operation: Microsoft Windows
+    10 List active geofences. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - Geofencing
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: geolocation-geofencing
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Geolocation API — Geofencing business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: geolocation-geofences
+      path: /geolocation/geofences
+      operations:
+      - name: listgeofences
+        method: GET
+        description: Microsoft Windows 10 List active geofences
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: creategeofence
+        method: POST
+        description: Microsoft Windows 10 Create a geofence
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: geolocation-geofencing-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows Geolocation API — Geofencing. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/geolocation/geofences
+      name: geolocation-geofences
+      description: REST surface for geolocation-geofences.
+      operations:
+      - method: GET
+        name: listgeofences
+        description: Microsoft Windows 10 List active geofences
+        call: geolocation-geofencing.listgeofences
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: creategeofence
+        description: Microsoft Windows 10 Create a geofence
+        call: geolocation-geofencing.creategeofence
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: geolocation-geofencing-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Geolocation API — Geofencing. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-list-active
+      description: Microsoft Windows 10 List active geofences
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: geolocation-geofencing.listgeofences
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-windows-10-create-geofence
+      description: Microsoft Windows 10 Create a geofence
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: geolocation-geofencing.creategeofence
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

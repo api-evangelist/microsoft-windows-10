@@ -1,0 +1,78 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 DirectX Graphics API — Command Queues
+  description: 'Microsoft Windows 10 DirectX Graphics API — Command Queues. 1 operations. Lead operation: Microsoft Windows
+    10 Create a command queue. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - Command Queues
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: directx-command-queues
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 DirectX Graphics API — Command Queues business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: directx-command-queues
+      path: /directx/command-queues
+      operations:
+      - name: createcommandqueue
+        method: POST
+        description: Microsoft Windows 10 Create a command queue
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: directx-command-queues-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 DirectX Graphics API — Command Queues. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/directx/command-queues
+      name: directx-command-queues
+      description: REST surface for directx-command-queues.
+      operations:
+      - method: POST
+        name: createcommandqueue
+        description: Microsoft Windows 10 Create a command queue
+        call: directx-command-queues.createcommandqueue
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: directx-command-queues-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 DirectX Graphics API — Command Queues. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-create-command
+      description: Microsoft Windows 10 Create a command queue
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: directx-command-queues.createcommandqueue
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,147 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Bluetooth API — GATT Operations
+  description: 'Microsoft Windows 10 Windows Bluetooth API — GATT Operations. 2 operations. Lead operation: Microsoft Windows
+    10 Read a GATT characteristic value. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - GATT Operations
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: bluetooth-gatt-operations
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Bluetooth API — GATT Operations business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: bluetooth-le-devices-deviceId-services-serviceId-characteristics-characteristicI
+      path: /bluetooth/le/devices/{deviceId}/services/{serviceId}/characteristics/{characteristicId}/value
+      operations:
+      - name: readgattcharacteristic
+        method: GET
+        description: Microsoft Windows 10 Read a GATT characteristic value
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: deviceId
+          in: path
+          type: string
+          required: true
+        - name: serviceId
+          in: path
+          type: string
+          required: true
+        - name: characteristicId
+          in: path
+          type: string
+          required: true
+        - name: cacheMode
+          in: query
+          type: string
+      - name: writegattcharacteristic
+        method: PUT
+        description: Microsoft Windows 10 Write a GATT characteristic value
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: deviceId
+          in: path
+          type: string
+          required: true
+        - name: serviceId
+          in: path
+          type: string
+          required: true
+        - name: characteristicId
+          in: path
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: bluetooth-gatt-operations-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows Bluetooth API — GATT Operations. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/bluetooth/le/devices/{deviceid}/services/{serviceid}/characteristics/{characteristicid}/value
+      name: bluetooth-le-devices-deviceid-services-serviceid-characteristics-characteristici
+      description: REST surface for bluetooth-le-devices-deviceId-services-serviceId-characteristics-characteristicI.
+      operations:
+      - method: GET
+        name: readgattcharacteristic
+        description: Microsoft Windows 10 Read a GATT characteristic value
+        call: bluetooth-gatt-operations.readgattcharacteristic
+        with:
+          deviceId: rest.deviceId
+          serviceId: rest.serviceId
+          characteristicId: rest.characteristicId
+          cacheMode: rest.cacheMode
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PUT
+        name: writegattcharacteristic
+        description: Microsoft Windows 10 Write a GATT characteristic value
+        call: bluetooth-gatt-operations.writegattcharacteristic
+        with:
+          deviceId: rest.deviceId
+          serviceId: rest.serviceId
+          characteristicId: rest.characteristicId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: bluetooth-gatt-operations-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Bluetooth API — GATT Operations. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-read-gatt
+      description: Microsoft Windows 10 Read a GATT characteristic value
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bluetooth-gatt-operations.readgattcharacteristic
+      with:
+        deviceId: tools.deviceId
+        serviceId: tools.serviceId
+        characteristicId: tools.characteristicId
+        cacheMode: tools.cacheMode
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-windows-10-write-gatt
+      description: Microsoft Windows 10 Write a GATT characteristic value
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: bluetooth-gatt-operations.writegattcharacteristic
+      with:
+        deviceId: tools.deviceId
+        serviceId: tools.serviceId
+        characteristicId: tools.characteristicId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

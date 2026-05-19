@@ -1,0 +1,118 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Bluetooth API — Devices
+  description: 'Microsoft Windows 10 Windows Bluetooth API — Devices. 2 operations. Lead operation: Microsoft Windows 10 List
+    paired Bluetooth devices. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - Devices
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: bluetooth-devices
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Bluetooth API — Devices business capability. Self-contained, no shared references.
+    resources:
+    - name: bluetooth-devices
+      path: /bluetooth/devices
+      operations:
+      - name: listbluetoothdevices
+        method: GET
+        description: Microsoft Windows 10 List paired Bluetooth devices
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: type
+          in: query
+          type: string
+          description: Filter by Bluetooth type
+    - name: bluetooth-devices-deviceId
+      path: /bluetooth/devices/{deviceId}
+      operations:
+      - name: getbluetoothdevice
+        method: GET
+        description: Microsoft Windows 10 Get Bluetooth device details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: deviceId
+          in: path
+          type: string
+          description: Bluetooth device identifier
+          required: true
+  exposes:
+  - type: rest
+    namespace: bluetooth-devices-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows Bluetooth API — Devices. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/bluetooth/devices
+      name: bluetooth-devices
+      description: REST surface for bluetooth-devices.
+      operations:
+      - method: GET
+        name: listbluetoothdevices
+        description: Microsoft Windows 10 List paired Bluetooth devices
+        call: bluetooth-devices.listbluetoothdevices
+        with:
+          type: rest.type
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/bluetooth/devices/{deviceid}
+      name: bluetooth-devices-deviceid
+      description: REST surface for bluetooth-devices-deviceId.
+      operations:
+      - method: GET
+        name: getbluetoothdevice
+        description: Microsoft Windows 10 Get Bluetooth device details
+        call: bluetooth-devices.getbluetoothdevice
+        with:
+          deviceId: rest.deviceId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: bluetooth-devices-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Bluetooth API — Devices. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-list-paired
+      description: Microsoft Windows 10 List paired Bluetooth devices
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bluetooth-devices.listbluetoothdevices
+      with:
+        type: tools.type
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-windows-10-get-bluetooth
+      description: Microsoft Windows 10 Get Bluetooth device details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: bluetooth-devices.getbluetoothdevice
+      with:
+        deviceId: tools.deviceId
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,78 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Networking API — HTTP Client
+  description: 'Microsoft Windows 10 Windows Networking API — HTTP Client. 1 operations. Lead operation: Microsoft Windows
+    10 Send an HTTP request. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - HTTP Client
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: networking-http-client
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Networking API — HTTP Client business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: networking-http-requests
+      path: /networking/http/requests
+      operations:
+      - name: sendhttprequest
+        method: POST
+        description: Microsoft Windows 10 Send an HTTP request
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: networking-http-client-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows Networking API — HTTP Client. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/networking/http/requests
+      name: networking-http-requests
+      description: REST surface for networking-http-requests.
+      operations:
+      - method: POST
+        name: sendhttprequest
+        description: Microsoft Windows 10 Send an HTTP request
+        call: networking-http-client.sendhttprequest
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: networking-http-client-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Networking API — HTTP Client. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-send-http
+      description: Microsoft Windows 10 Send an HTTP request
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: networking-http-client.sendhttprequest
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.

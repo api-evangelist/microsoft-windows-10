@@ -1,0 +1,78 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Hello Authentication API — Attestation
+  description: 'Microsoft Windows 10 Windows Hello Authentication API — Attestation. 1 operations. Lead operation: Microsoft
+    Windows 10 Get key attestation. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - Attestation
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: hello-attestation
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Hello Authentication API — Attestation business capability. Self-contained,
+      no shared references.
+    resources:
+    - name: hello-attestation
+      path: /hello/attestation
+      operations:
+      - name: getkeyattestation
+        method: GET
+        description: Microsoft Windows 10 Get key attestation
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: accountId
+          in: query
+          type: string
+          description: Account identifier for the credential
+          required: true
+  exposes:
+  - type: rest
+    namespace: hello-attestation-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows Hello Authentication API — Attestation. One Spectral-compliant
+      resource per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/hello/attestation
+      name: hello-attestation
+      description: REST surface for hello-attestation.
+      operations:
+      - method: GET
+        name: getkeyattestation
+        description: Microsoft Windows 10 Get key attestation
+        call: hello-attestation.getkeyattestation
+        with:
+          accountId: rest.accountId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: hello-attestation-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Hello Authentication API — Attestation. One tool per consumed
+      operation, routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-get-key
+      description: Microsoft Windows 10 Get key attestation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: hello-attestation.getkeyattestation
+      with:
+        accountId: tools.accountId
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,92 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Geolocation API — Access
+  description: 'Microsoft Windows 10 Windows Geolocation API — Access. 2 operations. Lead operation: Microsoft Windows 10
+    Check geolocation access status. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - Access
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: geolocation-access
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Geolocation API — Access business capability. Self-contained, no shared references.
+    resources:
+    - name: geolocation-access
+      path: /geolocation/access
+      operations:
+      - name: getgeolocationaccess
+        method: GET
+        description: Microsoft Windows 10 Check geolocation access status
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: requestgeolocationaccess
+        method: POST
+        description: Microsoft Windows 10 Request geolocation access
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: geolocation-access-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows Geolocation API — Access. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/geolocation/access
+      name: geolocation-access
+      description: REST surface for geolocation-access.
+      operations:
+      - method: GET
+        name: getgeolocationaccess
+        description: Microsoft Windows 10 Check geolocation access status
+        call: geolocation-access.getgeolocationaccess
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: requestgeolocationaccess
+        description: Microsoft Windows 10 Request geolocation access
+        call: geolocation-access.requestgeolocationaccess
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: geolocation-access-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Geolocation API — Access. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-check-geolocation
+      description: Microsoft Windows 10 Check geolocation access status
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: geolocation-access.getgeolocationaccess
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-windows-10-request-geolocation
+      description: Microsoft Windows 10 Request geolocation access
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: geolocation-access.requestgeolocationaccess
+      outputParameters:
+      - type: object
+        mapping: $.

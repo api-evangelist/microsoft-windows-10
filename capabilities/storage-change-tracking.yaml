@@ -1,0 +1,78 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Storage API — Change Tracking
+  description: 'Microsoft Windows 10 Windows Storage API — Change Tracking. 1 operations. Lead operation: Microsoft Windows
+    10 Get library changes. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - Change Tracking
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: storage-change-tracking
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Storage API — Change Tracking business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: storage-libraries-libraryId-changes
+      path: /storage/libraries/{libraryId}/changes
+      operations:
+      - name: getlibrarychanges
+        method: GET
+        description: Microsoft Windows 10 Get library changes
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: libraryId
+          in: path
+          type: string
+          description: Library identifier (Documents, Music, Pictures, Videos)
+          required: true
+  exposes:
+  - type: rest
+    namespace: storage-change-tracking-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows Storage API — Change Tracking. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/storage/libraries/{libraryid}/changes
+      name: storage-libraries-libraryid-changes
+      description: REST surface for storage-libraries-libraryId-changes.
+      operations:
+      - method: GET
+        name: getlibrarychanges
+        description: Microsoft Windows 10 Get library changes
+        call: storage-change-tracking.getlibrarychanges
+        with:
+          libraryId: rest.libraryId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: storage-change-tracking-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Storage API — Change Tracking. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-get-library
+      description: Microsoft Windows 10 Get library changes
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: storage-change-tracking.getlibrarychanges
+      with:
+        libraryId: tools.libraryId
+      outputParameters:
+      - type: object
+        mapping: $.

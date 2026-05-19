@@ -1,0 +1,68 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Sensors API — Human Presence
+  description: 'Microsoft Windows 10 Windows Sensors API — Human Presence. 1 operations. Lead operation: Microsoft Windows
+    10 Get human presence sensor reading. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - Human Presence
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sensors-human-presence
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Sensors API — Human Presence business capability. Self-contained, no shared
+      references.
+    resources:
+    - name: sensors-human-presence-reading
+      path: /sensors/human-presence/reading
+      operations:
+      - name: gethumanpresencereading
+        method: GET
+        description: Microsoft Windows 10 Get human presence sensor reading
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: sensors-human-presence-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows Sensors API — Human Presence. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/sensors/human-presence/reading
+      name: sensors-human-presence-reading
+      description: REST surface for sensors-human-presence-reading.
+      operations:
+      - method: GET
+        name: gethumanpresencereading
+        description: Microsoft Windows 10 Get human presence sensor reading
+        call: sensors-human-presence.gethumanpresencereading
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sensors-human-presence-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Sensors API — Human Presence. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-get-human
+      description: Microsoft Windows 10 Get human presence sensor reading
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sensors-human-presence.gethumanpresencereading
+      outputParameters:
+      - type: object
+        mapping: $.

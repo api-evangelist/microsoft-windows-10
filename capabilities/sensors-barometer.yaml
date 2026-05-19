@@ -1,0 +1,67 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Sensors API — Barometer
+  description: 'Microsoft Windows 10 Windows Sensors API — Barometer. 1 operations. Lead operation: Microsoft Windows 10 Get
+    barometer reading. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - Barometer
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: sensors-barometer
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Sensors API — Barometer business capability. Self-contained, no shared references.
+    resources:
+    - name: sensors-barometer-reading
+      path: /sensors/barometer/reading
+      operations:
+      - name: getbarometerreading
+        method: GET
+        description: Microsoft Windows 10 Get barometer reading
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    namespace: sensors-barometer-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows Sensors API — Barometer. One Spectral-compliant resource per
+      consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/sensors/barometer/reading
+      name: sensors-barometer-reading
+      description: REST surface for sensors-barometer-reading.
+      operations:
+      - method: GET
+        name: getbarometerreading
+        description: Microsoft Windows 10 Get barometer reading
+        call: sensors-barometer.getbarometerreading
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: sensors-barometer-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Sensors API — Barometer. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-get-barometer
+      description: Microsoft Windows 10 Get barometer reading
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: sensors-barometer.getbarometerreading
+      outputParameters:
+      - type: object
+        mapping: $.

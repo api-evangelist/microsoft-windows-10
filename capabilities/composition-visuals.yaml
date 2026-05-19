@@ -1,0 +1,102 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Microsoft Windows 10 Windows Composition API — Visuals
+  description: 'Microsoft Windows 10 Windows Composition API — Visuals. 2 operations. Lead operation: Microsoft Windows 10
+    List composition visuals. Self-contained Naftiko capability covering one Microsoft Windows 10 business surface.'
+  tags:
+  - Microsoft Windows 10
+  - Visuals
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MICROSOFT_WINDOWS_10_API_KEY: MICROSOFT_WINDOWS_10_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: composition-visuals
+    baseUri: https://api.windows.com
+    description: Microsoft Windows 10 Windows Composition API — Visuals business capability. Self-contained, no shared references.
+    resources:
+    - name: composition-visuals
+      path: /composition/visuals
+      operations:
+      - name: listvisuals
+        method: GET
+        description: Microsoft Windows 10 List composition visuals
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createvisual
+        method: POST
+        description: Microsoft Windows 10 Create a composition visual
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+  exposes:
+  - type: rest
+    namespace: composition-visuals-rest
+    port: 8080
+    description: REST adapter for Microsoft Windows 10 Windows Composition API — Visuals. One Spectral-compliant resource
+      per consumed operation, prefixed with /v1.
+    resources:
+    - path: /v1/composition/visuals
+      name: composition-visuals
+      description: REST surface for composition-visuals.
+      operations:
+      - method: GET
+        name: listvisuals
+        description: Microsoft Windows 10 List composition visuals
+        call: composition-visuals.listvisuals
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createvisual
+        description: Microsoft Windows 10 Create a composition visual
+        call: composition-visuals.createvisual
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: composition-visuals-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Microsoft Windows 10 Windows Composition API — Visuals. One tool per consumed operation,
+      routed inline through this capability's consumes block.
+    tools:
+    - name: microsoft-windows-10-list-composition
+      description: Microsoft Windows 10 List composition visuals
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: composition-visuals.listvisuals
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: microsoft-windows-10-create-composition
+      description: Microsoft Windows 10 Create a composition visual
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: composition-visuals.createvisual
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
