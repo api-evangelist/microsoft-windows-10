@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GraphicsAdapter",
+  "title": "GraphicsAdapter",
+  "type": "object",
+  "description": "A DXGI graphics adapter",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Adapter LUID"
+    },
+    "description": {
+      "type": "string",
+      "description": "Adapter description string"
+    },
+    "vendorId": {
+      "type": "integer",
+      "description": "Hardware vendor identifier"
+    },
+    "deviceId": {
+      "type": "integer",
+      "description": "Hardware device identifier"
+    },
+    "dedicatedVideoMemory": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Dedicated video memory in bytes"
+    },
+    "sharedSystemMemory": {
+      "type": "integer",
+      "format": "int64",
+      "description": "Shared system memory in bytes"
+    },
+    "isSoftwareAdapter": {
+      "type": "boolean",
+      "description": "Whether this is a software (WARP) adapter"
+    }
+  },
+  "required": [
+    "id",
+    "description"
+  ]
+}

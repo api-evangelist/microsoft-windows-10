@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VoiceCommand",
+  "title": "VoiceCommand",
+  "type": "object",
+  "description": "A voice command definition",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Command name"
+    },
+    "example": {
+      "type": "string",
+      "description": "Example phrase for the command"
+    },
+    "listenFor": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Phrases that trigger this command"
+    },
+    "feedback": {
+      "type": "string",
+      "description": "Text Cortana displays while processing"
+    },
+    "navigateTo": {
+      "type": "string",
+      "description": "Page to navigate to in the app"
+    }
+  }
+}

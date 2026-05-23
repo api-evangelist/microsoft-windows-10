@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Geovisit",
+  "title": "Geovisit",
+  "type": "object",
+  "description": "A location visit record (Geovisit class)",
+  "properties": {
+    "position": {
+      "$ref": "#/components/schemas/Geoposition"
+    },
+    "stateChange": {
+      "type": "string",
+      "enum": [
+        "Arrived",
+        "Departed",
+        "TrackingLost"
+      ],
+      "description": "Visit state change type"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ToastContent",
+  "title": "ToastContent",
+  "type": "object",
+  "description": "The visual and interactive content of a toast notification",
+  "properties": {
+    "visual": {
+      "type": "object",
+      "properties": {
+        "binding": {
+          "type": "object",
+          "properties": {
+            "template": {
+              "type": "string",
+              "description": "Template type (e.g., ToastGeneric)",
+              "example": "ToastGeneric"
+            },
+            "texts": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "content": {
+                    "type": "string"
+                  },
+                  "hintStyle": {
+                    "type": "string"
+                  }
+                }
+              },
+              "description": "Text elements in the notification"
+            },
+            "images": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "src": {
+                    "type": "string",
+                    "format": "uri"
+                  },
+                  "placement": {
+                    "type": "string",
+                    "enum": [
+                      "inline",
+                      "appLogoOverride",
+                      "hero"
+                    ]
+                  },
+                  "hintCrop": {
+                    "type": "string",
+                    "enum": [
+                      "none",
+                      "circle"
+                    ]
+                  }
+                }
+              },
+              "description": "Image elements in the notification"
+            },
+            "attributionText": {
+              "type": "string",
+              "description": "Attribution text shown at the bottom"
+            }
+          }
+        }
+      }
+    },
+    "actions": {
+      "type": "object",
+      "properties": {
+        "inputs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "text",
+                  "selection"
+                ]
+              },
+              "placeHolderContent": {
+                "type": "string"
+              }
+            }
+          },
+          "description": "Interactive input fields"
+        },
+        "buttons": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "content": {
+                "type": "string"
+              },
+              "arguments": {
+                "type": "string"
+              },
+              "activationType": {
+                "type": "string",
+                "enum": [
+                  "foreground",
+                  "background",
+                  "protocol",
+                  "system"
+                ]
+              }
+            }
+          },
+          "description": "Action buttons"
+        }
+      }
+    },
+    "audio": {
+      "type": "object",
+      "properties": {
+        "src": {
+          "type": "string",
+          "description": "Audio source URI"
+        },
+        "loop": {
+          "type": "boolean",
+          "description": "Whether the audio loops"
+        },
+        "silent": {
+          "type": "boolean",
+          "description": "Whether the notification is silent"
+        }
+      }
+    }
+  }
+}

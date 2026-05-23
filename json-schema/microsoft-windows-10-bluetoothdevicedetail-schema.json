@@ -1,0 +1,57 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BluetoothDeviceDetail",
+  "title": "BluetoothDeviceDetail",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "name": {
+      "type": "string"
+    },
+    "bluetoothAddress": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "connectionStatus": {
+      "type": "string"
+    },
+    "isPaired": {
+      "type": "boolean"
+    },
+    "classOfDevice": {
+      "type": "object",
+      "properties": {
+        "majorClass": {
+          "type": "string"
+        },
+        "minorClass": {
+          "type": "string"
+        }
+      },
+      "description": "Bluetooth Class of Device (for Classic)"
+    },
+    "appearance": {
+      "type": "object",
+      "properties": {
+        "category": {
+          "type": "string"
+        },
+        "subCategory": {
+          "type": "string"
+        }
+      },
+      "description": "BLE Appearance (for Low Energy)"
+    },
+    "serviceUuids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Advertised service UUIDs"
+    }
+  }
+}

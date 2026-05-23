@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EvaluationRequest",
+  "title": "EvaluationRequest",
+  "type": "object",
+  "description": "Input bindings for model evaluation",
+  "properties": {
+    "correlationId": {
+      "type": "string",
+      "description": "Correlation ID for tracking the evaluation"
+    },
+    "bindings": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object"
+      },
+      "description": "Map of feature names to their input values"
+    }
+  },
+  "required": [
+    "bindings"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LoadModelRequest",
+  "title": "LoadModelRequest",
+  "type": "object",
+  "properties": {
+    "filePath": {
+      "type": "string",
+      "description": "Path to the ONNX model file"
+    },
+    "modelFormat": {
+      "type": "string",
+      "enum": [
+        "ONNX"
+      ],
+      "description": "Model format (currently only ONNX supported)",
+      "default": "ONNX"
+    }
+  },
+  "required": [
+    "filePath"
+  ]
+}

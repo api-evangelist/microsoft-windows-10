@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FunctionRequirements",
+  "title": "FunctionRequirements",
+  "type": "object",
+  "properties": {
+    "minimumSupportedClient": {
+      "type": "string",
+      "example": "Windows 10 [desktop apps only]"
+    },
+    "minimumSupportedServer": {
+      "type": "string",
+      "example": "Windows Server 2016"
+    },
+    "header": {
+      "type": "string",
+      "example": "winuser.h"
+    },
+    "library": {
+      "type": "string",
+      "example": "User32.lib"
+    },
+    "dll": {
+      "type": "string",
+      "example": "User32.dll"
+    }
+  }
+}

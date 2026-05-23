@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BarometerReading",
+  "title": "BarometerReading",
+  "type": "object",
+  "description": "Barometer reading data",
+  "properties": {
+    "stationPressureInHectopascals": {
+      "type": "number",
+      "format": "double",
+      "description": "Atmospheric pressure in hPa"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

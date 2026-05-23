@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WinRTClassDetail",
+  "title": "WinRTClassDetail",
+  "type": "object",
+  "description": "Detailed information about a WinRT class",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Class name"
+    },
+    "namespace": {
+      "type": "string",
+      "description": "Fully qualified namespace"
+    },
+    "description": {
+      "type": "string",
+      "description": "Detailed class description"
+    },
+    "properties": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ClassProperty"
+      }
+    },
+    "methods": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ClassMethod"
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/ClassEvent"
+      }
+    },
+    "interfaces": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of implemented interface names"
+    }
+  },
+  "required": [
+    "name",
+    "namespace"
+  ]
+}

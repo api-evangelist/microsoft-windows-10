@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StorageFile",
+  "title": "StorageFile",
+  "type": "object",
+  "description": "A storage file (StorageFile class)",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "File name with extension"
+    },
+    "path": {
+      "type": "string",
+      "description": "Full file path"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "File name without extension"
+    },
+    "fileType": {
+      "type": "string",
+      "description": "File extension"
+    },
+    "contentType": {
+      "type": "string",
+      "description": "MIME content type"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "isAvailable": {
+      "type": "boolean",
+      "description": "Whether the file content is available locally"
+    }
+  },
+  "required": [
+    "name",
+    "path"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecordedMedia",
+  "title": "RecordedMedia",
+  "type": "object",
+  "properties": {
+    "filePath": {
+      "type": "string"
+    },
+    "durationInSeconds": {
+      "type": "number",
+      "format": "double"
+    },
+    "width": {
+      "type": "integer"
+    },
+    "height": {
+      "type": "integer"
+    },
+    "encodingProfile": {
+      "type": "string"
+    },
+    "sizeInBytes": {
+      "type": "integer",
+      "format": "int64"
+    }
+  }
+}

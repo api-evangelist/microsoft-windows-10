@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WebSocket",
+  "title": "WebSocket",
+  "type": "object",
+  "description": "A WebSocket connection",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "uri": {
+      "type": "string",
+      "format": "uri"
+    },
+    "type": {
+      "type": "string"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "Connecting",
+        "Connected",
+        "Closing",
+        "Closed"
+      ]
+    }
+  }
+}

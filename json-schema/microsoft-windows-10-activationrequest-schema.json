@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ActivationRequest",
+  "title": "ActivationRequest",
+  "type": "object",
+  "properties": {
+    "runtimeClassName": {
+      "type": "string",
+      "description": "Fully qualified runtime class name to activate",
+      "example": "Windows.UI.Notifications.ToastNotification"
+    },
+    "constructorArgs": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "description": "Arguments to pass to the constructor"
+    }
+  },
+  "required": [
+    "runtimeClassName"
+  ]
+}

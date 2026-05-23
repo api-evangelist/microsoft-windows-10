@@ -1,0 +1,94 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RegisterTaskRequest",
+  "title": "RegisterTaskRequest",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Unique task name"
+    },
+    "entryPoint": {
+      "type": "string",
+      "description": "Fully qualified class name implementing IBackgroundTask"
+    },
+    "trigger": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "enum": [
+            "SystemTrigger",
+            "TimeTrigger",
+            "MaintenanceTrigger",
+            "PushNotificationTrigger",
+            "LocationTrigger",
+            "BluetoothLEAdvertisementWatcherTrigger",
+            "DeviceUseTrigger",
+            "ActivitySensorTrigger",
+            "GattCharacteristicNotificationTrigger",
+            "MediaProcessingTrigger"
+          ],
+          "description": "Trigger type"
+        },
+        "systemTriggerType": {
+          "type": "string",
+          "enum": [
+            "SmsReceived",
+            "UserPresent",
+            "UserAway",
+            "NetworkStateChange",
+            "ControlChannelReset",
+            "InternetAvailable",
+            "SessionConnected",
+            "ServicingComplete",
+            "LockScreenApplicationAdded",
+            "LockScreenApplicationRemoved",
+            "TimeZoneChange",
+            "OnlineIdConnectedStateChange",
+            "BackgroundWorkCostChange",
+            "PowerStateChange"
+          ],
+          "description": "System trigger type (for SystemTrigger)"
+        },
+        "freshnessTime": {
+          "type": "integer",
+          "description": "Interval in minutes (for TimeTrigger)"
+        },
+        "oneShot": {
+          "type": "boolean",
+          "description": "Whether the trigger fires only once"
+        }
+      },
+      "required": [
+        "type"
+      ]
+    },
+    "conditions": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "InternetAvailable",
+          "InternetNotAvailable",
+          "SessionConnected",
+          "SessionDisconnected",
+          "UserPresent",
+          "UserNotPresent",
+          "FreeNetworkAvailable",
+          "BackgroundWorkCostNotHigh"
+        ]
+      }
+    },
+    "isNetworkRequested": {
+      "type": "boolean",
+      "description": "Whether the task requires network access",
+      "default": false
+    }
+  },
+  "required": [
+    "name",
+    "entryPoint",
+    "trigger"
+  ]
+}

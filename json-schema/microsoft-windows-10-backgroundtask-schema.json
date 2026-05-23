@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BackgroundTask",
+  "title": "BackgroundTask",
+  "type": "object",
+  "description": "A registered background task",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Task registration ID"
+    },
+    "name": {
+      "type": "string",
+      "description": "Task name"
+    },
+    "triggerType": {
+      "type": "string",
+      "description": "Type of trigger"
+    },
+    "isActive": {
+      "type": "boolean",
+      "description": "Whether the task is currently active"
+    }
+  },
+  "required": [
+    "id",
+    "name"
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BadgeNotificationRequest",
+  "title": "BadgeNotificationRequest",
+  "type": "object",
+  "description": "Request to update a badge",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "numeric",
+        "glyph"
+      ],
+      "description": "Badge type"
+    },
+    "value": {
+      "type": "string",
+      "description": "Badge value. For numeric, a number 1-99. For glyph, one of the predefined status glyphs (none, activity, alarm, alert, attention, available, away, busy, error, newMessage, paused, playing, unavailable)."
+    }
+  },
+  "required": [
+    "type",
+    "value"
+  ]
+}

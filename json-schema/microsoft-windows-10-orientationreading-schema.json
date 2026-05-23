@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/OrientationReading",
+  "title": "OrientationReading",
+  "type": "object",
+  "description": "Orientation sensor reading data",
+  "properties": {
+    "quaternion": {
+      "type": "object",
+      "properties": {
+        "w": {
+          "type": "number",
+          "format": "float"
+        },
+        "x": {
+          "type": "number",
+          "format": "float"
+        },
+        "y": {
+          "type": "number",
+          "format": "float"
+        },
+        "z": {
+          "type": "number",
+          "format": "float"
+        }
+      },
+      "description": "Orientation as a quaternion"
+    },
+    "rotationMatrix": {
+      "type": "object",
+      "properties": {
+        "m11": {
+          "type": "number",
+          "format": "float"
+        },
+        "m12": {
+          "type": "number",
+          "format": "float"
+        },
+        "m13": {
+          "type": "number",
+          "format": "float"
+        },
+        "m21": {
+          "type": "number",
+          "format": "float"
+        },
+        "m22": {
+          "type": "number",
+          "format": "float"
+        },
+        "m23": {
+          "type": "number",
+          "format": "float"
+        },
+        "m31": {
+          "type": "number",
+          "format": "float"
+        },
+        "m32": {
+          "type": "number",
+          "format": "float"
+        },
+        "m33": {
+          "type": "number",
+          "format": "float"
+        }
+      },
+      "description": "3x3 rotation matrix"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateGeofenceRequest",
+  "title": "CreateGeofenceRequest",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique geofence identifier"
+    },
+    "latitude": {
+      "type": "number",
+      "format": "double",
+      "description": "Center latitude"
+    },
+    "longitude": {
+      "type": "number",
+      "format": "double",
+      "description": "Center longitude"
+    },
+    "radiusInMeters": {
+      "type": "number",
+      "format": "double",
+      "description": "Geofence radius in meters"
+    },
+    "monitoredStates": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Entered",
+          "Exited",
+          "Removed"
+        ]
+      }
+    },
+    "singleUse": {
+      "type": "boolean",
+      "default": false
+    },
+    "dwellTimeInSeconds": {
+      "type": "integer",
+      "description": "Dwell time in seconds"
+    }
+  },
+  "required": [
+    "id",
+    "latitude",
+    "longitude",
+    "radiusInMeters"
+  ]
+}

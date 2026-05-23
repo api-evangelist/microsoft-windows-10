@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WindowMessage",
+  "title": "WindowMessage",
+  "type": "object",
+  "description": "A Win32 window message",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Message constant name",
+      "example": "WM_CREATE"
+    },
+    "value": {
+      "type": "string",
+      "description": "Numeric value of the message",
+      "example": "0x0001"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of when the message is sent"
+    },
+    "wParam": {
+      "type": "string",
+      "description": "Meaning of the wParam parameter"
+    },
+    "lParam": {
+      "type": "string",
+      "description": "Meaning of the lParam parameter"
+    }
+  },
+  "required": [
+    "name",
+    "value"
+  ]
+}

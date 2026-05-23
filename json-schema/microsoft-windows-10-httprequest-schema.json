@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HttpRequest",
+  "title": "HttpRequest",
+  "type": "object",
+  "properties": {
+    "method": {
+      "type": "string",
+      "enum": [
+        "GET",
+        "POST",
+        "PUT",
+        "PATCH",
+        "DELETE",
+        "HEAD",
+        "OPTIONS"
+      ]
+    },
+    "uri": {
+      "type": "string",
+      "format": "uri"
+    },
+    "headers": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "content": {
+      "type": "string",
+      "description": "Request body content"
+    },
+    "contentType": {
+      "type": "string",
+      "description": "Content-Type header value"
+    }
+  },
+  "required": [
+    "method",
+    "uri"
+  ]
+}

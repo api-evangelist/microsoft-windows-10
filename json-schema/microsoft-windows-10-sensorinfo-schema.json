@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SensorInfo",
+  "title": "SensorInfo",
+  "type": "object",
+  "description": "Information about an available sensor",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "Accelerometer",
+        "Gyrometer",
+        "Compass",
+        "Inclinometer",
+        "LightSensor",
+        "Barometer",
+        "Altimeter",
+        "Magnetometer",
+        "OrientationSensor",
+        "SimpleOrientationSensor",
+        "Pedometer",
+        "ProximitySensor",
+        "ActivitySensor",
+        "HumanPresenceSensor",
+        "HingeAngleSensor"
+      ]
+    },
+    "deviceId": {
+      "type": "string",
+      "description": "Sensor device identifier"
+    },
+    "minimumReportInterval": {
+      "type": "integer",
+      "description": "Minimum report interval in milliseconds"
+    },
+    "reportInterval": {
+      "type": "integer",
+      "description": "Current report interval in milliseconds"
+    }
+  },
+  "required": [
+    "type"
+  ]
+}

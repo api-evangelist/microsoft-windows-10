@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BadgeNotification",
+  "title": "BadgeNotification",
+  "type": "object",
+  "description": "A badge notification as defined by the BadgeNotification class",
+  "properties": {
+    "type": {
+      "type": "string"
+    },
+    "value": {
+      "type": "string"
+    },
+    "expirationTime": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

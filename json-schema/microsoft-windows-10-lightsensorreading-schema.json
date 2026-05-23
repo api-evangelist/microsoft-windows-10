@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LightSensorReading",
+  "title": "LightSensorReading",
+  "type": "object",
+  "description": "Ambient light sensor reading",
+  "properties": {
+    "illuminanceInLux": {
+      "type": "number",
+      "format": "float",
+      "description": "Ambient light level in lux"
+    },
+    "chromaticity": {
+      "type": "object",
+      "properties": {
+        "x": {
+          "type": "number",
+          "format": "float"
+        },
+        "y": {
+          "type": "number",
+          "format": "float"
+        }
+      },
+      "description": "CIE xyY chromaticity coordinates"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

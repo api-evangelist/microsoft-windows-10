@@ -1,0 +1,64 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StorageFileDetail",
+  "title": "StorageFileDetail",
+  "type": "object",
+  "description": "Detailed file information",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "path": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "fileType": {
+      "type": "string"
+    },
+    "contentType": {
+      "type": "string"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "dateModified": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "size": {
+      "type": "integer",
+      "format": "int64",
+      "description": "File size in bytes"
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Normal",
+          "ReadOnly",
+          "Directory",
+          "Archive",
+          "Temporary",
+          "LocallyIncomplete"
+        ]
+      },
+      "description": "FileAttributes flags"
+    },
+    "provider": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        }
+      },
+      "description": "StorageProvider information"
+    }
+  }
+}

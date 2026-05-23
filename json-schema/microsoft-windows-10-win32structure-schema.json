@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Win32Structure",
+  "title": "Win32Structure",
+  "type": "object",
+  "description": "A Win32 data structure",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Structure name"
+    },
+    "fields": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "sizeInBytes": {
+      "type": "integer",
+      "description": "Size of the structure in bytes"
+    },
+    "header": {
+      "type": "string",
+      "description": "Header file defining the structure"
+    }
+  },
+  "required": [
+    "name",
+    "fields"
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TileNotificationRequest",
+  "title": "TileNotificationRequest",
+  "type": "object",
+  "description": "Request to update a tile notification",
+  "properties": {
+    "template": {
+      "type": "string",
+      "description": "Tile template type",
+      "enum": [
+        "TileSmall",
+        "TileMedium",
+        "TileWide",
+        "TileLarge"
+      ]
+    },
+    "texts": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Text content for the tile"
+    },
+    "images": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "src": {
+            "type": "string",
+            "format": "uri"
+          },
+          "alt": {
+            "type": "string"
+          }
+        }
+      },
+      "description": "Image content for the tile"
+    },
+    "tag": {
+      "type": "string",
+      "description": "Tag for the notification"
+    },
+    "expirationTime": {
+      "type": "string",
+      "format": "date-time"
+    }
+  },
+  "required": [
+    "template"
+  ]
+}

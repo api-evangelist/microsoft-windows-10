@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Geoposition",
+  "title": "Geoposition",
+  "type": "object",
+  "description": "A geographic position (Geoposition class)",
+  "properties": {
+    "coordinate": {
+      "$ref": "#/components/schemas/Geocoordinate"
+    },
+    "civicAddress": {
+      "type": "object",
+      "properties": {
+        "city": {
+          "type": "string"
+        },
+        "country": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "postalCode": {
+          "type": "string"
+        }
+      },
+      "description": "Civic address (if available)"
+    },
+    "venueData": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "level": {
+          "type": "string"
+        }
+      },
+      "description": "Venue information (if available)"
+    }
+  },
+  "required": [
+    "coordinate"
+  ]
+}

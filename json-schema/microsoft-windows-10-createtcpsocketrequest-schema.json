@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateTcpSocketRequest",
+  "title": "CreateTcpSocketRequest",
+  "type": "object",
+  "properties": {
+    "remoteHostName": {
+      "type": "string",
+      "description": "Remote host name or IP address"
+    },
+    "remoteServiceName": {
+      "type": "string",
+      "description": "Remote port or service name"
+    },
+    "protectionLevel": {
+      "type": "string",
+      "enum": [
+        "PlainSocket",
+        "Ssl",
+        "SslAllowNullEncryption"
+      ],
+      "default": "PlainSocket"
+    },
+    "noDelay": {
+      "type": "boolean",
+      "description": "Disable Nagle algorithm",
+      "default": false
+    },
+    "keepAlive": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "remoteHostName",
+    "remoteServiceName"
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WinRTNamespace",
+  "title": "WinRTNamespace",
+  "type": "object",
+  "description": "A Windows Runtime namespace containing types and APIs",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Fully qualified namespace name",
+      "example": "Windows.UI.Notifications"
+    },
+    "description": {
+      "type": "string",
+      "description": "Description of the namespace purpose"
+    },
+    "classCount": {
+      "type": "integer",
+      "description": "Number of classes in the namespace"
+    },
+    "interfaceCount": {
+      "type": "integer",
+      "description": "Number of interfaces in the namespace"
+    },
+    "enumCount": {
+      "type": "integer",
+      "description": "Number of enumerations in the namespace"
+    },
+    "delegateCount": {
+      "type": "integer",
+      "description": "Number of delegates in the namespace"
+    },
+    "minSupportedVersion": {
+      "type": "string",
+      "description": "Minimum supported Windows version",
+      "example": "10.0.10240.0"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StorageLibrary",
+  "title": "StorageLibrary",
+  "type": "object",
+  "description": "A storage library (StorageLibrary class)",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Library identifier",
+      "enum": [
+        "Documents",
+        "Music",
+        "Pictures",
+        "Videos"
+      ]
+    },
+    "folders": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/StorageFolder"
+      },
+      "description": "Folders included in the library"
+    },
+    "saveFolder": {
+      "$ref": "#/components/schemas/StorageFolder"
+    }
+  }
+}

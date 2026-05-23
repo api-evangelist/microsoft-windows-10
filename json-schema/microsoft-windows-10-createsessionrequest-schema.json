@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateSessionRequest",
+  "title": "CreateSessionRequest",
+  "type": "object",
+  "properties": {
+    "modelId": {
+      "type": "string",
+      "description": "ID of the loaded model"
+    },
+    "deviceKind": {
+      "type": "string",
+      "enum": [
+        "Default",
+        "Cpu",
+        "DirectX",
+        "DirectXHighPerformance",
+        "DirectXMinPower"
+      ],
+      "description": "The device to use for evaluation (maps to LearningModelDeviceKind)",
+      "default": "Default"
+    }
+  },
+  "required": [
+    "modelId"
+  ]
+}

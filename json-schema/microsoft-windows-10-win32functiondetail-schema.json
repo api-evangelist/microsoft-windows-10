@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Win32FunctionDetail",
+  "title": "Win32FunctionDetail",
+  "type": "object",
+  "description": "Detailed Win32 function information",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Function name"
+    },
+    "syntax": {
+      "type": "string",
+      "description": "Function signature in C/C++"
+    },
+    "parameters": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/FunctionParameter"
+      }
+    },
+    "returnValue": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        }
+      }
+    },
+    "remarks": {
+      "type": "string",
+      "description": "Additional notes and usage guidance"
+    },
+    "requirements": {
+      "$ref": "#/components/schemas/FunctionRequirements"
+    },
+    "relatedFunctions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "name",
+    "syntax"
+  ]
+}

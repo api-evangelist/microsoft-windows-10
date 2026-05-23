@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GattCharacteristic",
+  "title": "GattCharacteristic",
+  "type": "object",
+  "description": "A GATT characteristic",
+  "properties": {
+    "uuid": {
+      "type": "string",
+      "description": "Characteristic UUID"
+    },
+    "name": {
+      "type": "string",
+      "description": "Standard characteristic name (if known)"
+    },
+    "properties": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Read",
+          "Write",
+          "WriteWithoutResponse",
+          "Notify",
+          "Indicate",
+          "Broadcast",
+          "SignedWrite",
+          "ExtendedProperties"
+        ]
+      },
+      "description": "Supported operations"
+    },
+    "protectionLevel": {
+      "type": "string",
+      "enum": [
+        "Plain",
+        "AuthenticationRequired",
+        "EncryptionRequired",
+        "EncryptionAndAuthenticationRequired"
+      ]
+    }
+  }
+}

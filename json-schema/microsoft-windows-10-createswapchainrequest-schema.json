@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateSwapChainRequest",
+  "title": "CreateSwapChainRequest",
+  "type": "object",
+  "properties": {
+    "width": {
+      "type": "integer"
+    },
+    "height": {
+      "type": "integer"
+    },
+    "format": {
+      "type": "string",
+      "description": "Back buffer format",
+      "default": "R8G8B8A8_UNORM"
+    },
+    "bufferCount": {
+      "type": "integer",
+      "default": 2
+    },
+    "swapEffect": {
+      "type": "string",
+      "enum": [
+        "Discard",
+        "Sequential",
+        "FlipSequential",
+        "FlipDiscard"
+      ],
+      "default": "FlipDiscard"
+    },
+    "isWindowed": {
+      "type": "boolean",
+      "default": true
+    }
+  },
+  "required": [
+    "width",
+    "height"
+  ]
+}

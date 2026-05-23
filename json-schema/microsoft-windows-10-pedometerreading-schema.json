@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/PedometerReading",
+  "title": "PedometerReading",
+  "type": "object",
+  "description": "Pedometer reading data",
+  "properties": {
+    "cumulativeSteps": {
+      "type": "integer",
+      "description": "Total step count"
+    },
+    "stepKind": {
+      "type": "string",
+      "enum": [
+        "Unknown",
+        "Walking",
+        "Running"
+      ],
+      "description": "Type of step"
+    },
+    "cumulativeStepsDuration": {
+      "type": "string",
+      "description": "Duration of steps"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

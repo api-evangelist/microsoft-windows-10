@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TileNotification",
+  "title": "TileNotification",
+  "type": "object",
+  "description": "A tile notification as defined by the TileNotification class",
+  "properties": {
+    "tag": {
+      "type": "string"
+    },
+    "expirationTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "template": {
+      "type": "string"
+    }
+  }
+}

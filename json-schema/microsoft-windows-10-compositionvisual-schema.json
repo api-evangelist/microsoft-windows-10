@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CompositionVisual",
+  "title": "CompositionVisual",
+  "type": "object",
+  "description": "A composition visual object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Visual identifier"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "SpriteVisual",
+        "ContainerVisual",
+        "LayerVisual",
+        "ShapeVisual",
+        "RedirectVisual"
+      ],
+      "description": "Visual type"
+    },
+    "offset": {
+      "$ref": "#/components/schemas/Vector3"
+    },
+    "size": {
+      "$ref": "#/components/schemas/Vector2"
+    },
+    "opacity": {
+      "type": "number",
+      "format": "float",
+      "description": "Opacity (0.0 to 1.0)"
+    },
+    "rotationAngleInDegrees": {
+      "type": "number",
+      "format": "float"
+    },
+    "scale": {
+      "$ref": "#/components/schemas/Vector3"
+    },
+    "isVisible": {
+      "type": "boolean"
+    },
+    "comment": {
+      "type": "string",
+      "description": "Developer comment for debugging"
+    }
+  },
+  "required": [
+    "id",
+    "type"
+  ]
+}

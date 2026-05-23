@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InkDrawingAttributes",
+  "title": "InkDrawingAttributes",
+  "type": "object",
+  "description": "Visual attributes for ink rendering (InkDrawingAttributes class)",
+  "properties": {
+    "color": {
+      "type": "string",
+      "description": "Stroke color in ARGB hex format",
+      "example": "#FF000000"
+    },
+    "size": {
+      "type": "object",
+      "properties": {
+        "width": {
+          "type": "number",
+          "format": "float"
+        },
+        "height": {
+          "type": "number",
+          "format": "float"
+        }
+      },
+      "description": "Pen tip size"
+    },
+    "penTip": {
+      "type": "string",
+      "enum": [
+        "Circle",
+        "Rectangle"
+      ],
+      "description": "Pen tip shape"
+    },
+    "drawAsHighlighter": {
+      "type": "boolean",
+      "description": "Whether to render as a highlighter"
+    },
+    "fitToCurve": {
+      "type": "boolean",
+      "description": "Whether to use Bezier curve fitting"
+    },
+    "ignorePressure": {
+      "type": "boolean",
+      "description": "Whether to ignore pressure data"
+    },
+    "ignoreTilt": {
+      "type": "boolean",
+      "description": "Whether to ignore tilt data"
+    }
+  }
+}

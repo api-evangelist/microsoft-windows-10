@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RfcommConnectionRequest",
+  "title": "RfcommConnectionRequest",
+  "type": "object",
+  "properties": {
+    "deviceId": {
+      "type": "string",
+      "description": "Bluetooth device ID"
+    },
+    "serviceId": {
+      "type": "string",
+      "description": "RFCOMM service UUID (e.g., SerialPort)"
+    }
+  },
+  "required": [
+    "deviceId",
+    "serviceId"
+  ]
+}

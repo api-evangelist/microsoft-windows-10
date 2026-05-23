@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/RecognitionRequest",
+  "title": "RecognitionRequest",
+  "type": "object",
+  "properties": {
+    "strokeIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "IDs of strokes to recognize (empty for all)"
+    },
+    "recognitionTarget": {
+      "type": "string",
+      "enum": [
+        "All",
+        "Selected",
+        "Recent"
+      ],
+      "description": "Which strokes to target"
+    }
+  }
+}

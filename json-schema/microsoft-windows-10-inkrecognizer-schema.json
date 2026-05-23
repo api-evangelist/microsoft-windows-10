@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InkRecognizer",
+  "title": "InkRecognizer",
+  "type": "object",
+  "description": "A handwriting recognizer (InkRecognizer class)",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique recognizer identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Recognizer display name"
+    }
+  }
+}

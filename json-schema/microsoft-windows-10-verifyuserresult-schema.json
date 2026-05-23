@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VerifyUserResult",
+  "title": "VerifyUserResult",
+  "type": "object",
+  "properties": {
+    "result": {
+      "type": "string",
+      "enum": [
+        "Verified",
+        "DeviceNotPresent",
+        "NotConfiguredForUser",
+        "DisabledByPolicy",
+        "DeviceBusy",
+        "RetriesExhausted",
+        "Canceled"
+      ],
+      "description": "Verification result"
+    }
+  }
+}

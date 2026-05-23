@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HelloAvailability",
+  "title": "HelloAvailability",
+  "type": "object",
+  "properties": {
+    "isSupported": {
+      "type": "boolean",
+      "description": "Whether Windows Hello is supported on this device"
+    },
+    "availableMethods": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Face",
+          "Fingerprint",
+          "PIN"
+        ]
+      },
+      "description": "Available authentication methods"
+    }
+  }
+}

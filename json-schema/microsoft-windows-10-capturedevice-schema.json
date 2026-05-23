@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CaptureDevice",
+  "title": "CaptureDevice",
+  "type": "object",
+  "description": "A media capture device",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Device identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Device display name"
+    },
+    "deviceClass": {
+      "type": "string",
+      "enum": [
+        "VideoCapture",
+        "AudioCapture",
+        "AudioRender"
+      ]
+    },
+    "enclosureLocation": {
+      "type": "object",
+      "properties": {
+        "panel": {
+          "type": "string",
+          "enum": [
+            "Front",
+            "Back",
+            "Top",
+            "Bottom",
+            "Left",
+            "Right",
+            "Unknown"
+          ]
+        }
+      },
+      "description": "Physical location on the device"
+    },
+    "isEnabled": {
+      "type": "boolean"
+    },
+    "isDefault": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "id",
+    "name"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Geofence",
+  "title": "Geofence",
+  "type": "object",
+  "description": "A geographic fence",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Geofence identifier"
+    },
+    "geoshape": {
+      "$ref": "#/components/schemas/Geocircle"
+    },
+    "monitoredStates": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "Entered",
+          "Exited",
+          "Removed"
+        ]
+      }
+    },
+    "singleUse": {
+      "type": "boolean",
+      "description": "Whether the geofence is removed after first trigger"
+    },
+    "dwellTime": {
+      "type": "string",
+      "description": "ISO 8601 duration required inside the geofence"
+    },
+    "startTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "duration": {
+      "type": "string",
+      "description": "ISO 8601 duration for the geofence lifetime"
+    }
+  }
+}

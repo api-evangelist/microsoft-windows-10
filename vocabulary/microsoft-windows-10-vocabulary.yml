@@ -1,0 +1,10 @@
+name: Microsoft Windows 10 Domain Vocabulary
+provider: Microsoft Windows 10
+providerId: microsoft-windows-10
+description: Tag-derived vocabulary for the Microsoft Windows 10 API surface; sourced from openapi/ tags.
+terms:
+- term: Badge Notifications
+- term: Collections
+- term: Scheduled Notifications
+- term: Tile Notifications
+- term: Toast Notifications

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SwapChain",
+  "title": "SwapChain",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "width": {
+      "type": "integer"
+    },
+    "height": {
+      "type": "integer"
+    },
+    "format": {
+      "type": "string"
+    },
+    "bufferCount": {
+      "type": "integer"
+    }
+  }
+}

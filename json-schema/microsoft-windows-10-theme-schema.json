@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Theme",
+  "title": "Theme",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "enum": [
+        "Light",
+        "Dark",
+        "HighContrast"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "systemColors": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Key system colors for this theme"
+    }
+  }
+}

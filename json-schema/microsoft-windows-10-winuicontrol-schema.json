@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WinUIControl",
+  "title": "WinUIControl",
+  "type": "object",
+  "description": "A WinUI XAML control",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Control class name",
+      "example": "NavigationView"
+    },
+    "namespace": {
+      "type": "string",
+      "description": "Full namespace",
+      "example": "Microsoft.UI.Xaml.Controls"
+    },
+    "category": {
+      "type": "string",
+      "description": "Control category"
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief description"
+    },
+    "isNewInWinUI": {
+      "type": "boolean",
+      "description": "Whether this control is new or updated in WinUI"
+    }
+  },
+  "required": [
+    "name",
+    "namespace"
+  ]
+}

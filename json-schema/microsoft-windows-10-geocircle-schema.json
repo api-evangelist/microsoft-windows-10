@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Geocircle",
+  "title": "Geocircle",
+  "type": "object",
+  "description": "A geographic circle (Geocircle class)",
+  "properties": {
+    "center": {
+      "type": "object",
+      "properties": {
+        "latitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "longitude": {
+          "type": "number",
+          "format": "double"
+        },
+        "altitude": {
+          "type": "number",
+          "format": "double"
+        }
+      }
+    },
+    "radiusInMeters": {
+      "type": "number",
+      "format": "double"
+    }
+  }
+}

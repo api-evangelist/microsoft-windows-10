@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ProximityReading",
+  "title": "ProximityReading",
+  "type": "object",
+  "description": "Proximity sensor reading data",
+  "properties": {
+    "isDetected": {
+      "type": "boolean",
+      "description": "Whether an object is detected"
+    },
+    "distanceInMillimeters": {
+      "type": "integer",
+      "description": "Distance to detected object (nullable)"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

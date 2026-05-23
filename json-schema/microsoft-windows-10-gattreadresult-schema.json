@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GattReadResult",
+  "title": "GattReadResult",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "Success",
+        "Unreachable",
+        "ProtocolError",
+        "InvalidHandle",
+        "AccessDenied"
+      ]
+    },
+    "value": {
+      "type": "string",
+      "format": "byte",
+      "description": "Base64-encoded characteristic value"
+    }
+  }
+}

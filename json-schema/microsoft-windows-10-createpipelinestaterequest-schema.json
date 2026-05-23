@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreatePipelineStateRequest",
+  "title": "CreatePipelineStateRequest",
+  "type": "object",
+  "properties": {
+    "vertexShader": {
+      "type": "string",
+      "description": "Compiled vertex shader bytecode reference"
+    },
+    "pixelShader": {
+      "type": "string",
+      "description": "Compiled pixel shader bytecode reference"
+    },
+    "inputLayout": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "semanticName": {
+            "type": "string"
+          },
+          "format": {
+            "type": "string"
+          },
+          "inputSlot": {
+            "type": "integer"
+          }
+        }
+      }
+    },
+    "primitiveTopology": {
+      "type": "string",
+      "enum": [
+        "PointList",
+        "LineList",
+        "LineStrip",
+        "TriangleList",
+        "TriangleStrip"
+      ],
+      "default": "TriangleList"
+    },
+    "renderTargetCount": {
+      "type": "integer",
+      "default": 1
+    },
+    "renderTargetFormats": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "depthStencilFormat": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "vertexShader",
+    "pixelShader"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CompositionSurface",
+  "title": "CompositionSurface",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "size": {
+      "$ref": "#/components/schemas/Vector2"
+    },
+    "pixelFormat": {
+      "type": "string",
+      "enum": [
+        "B8G8R8A8UIntNormalized",
+        "R8G8B8A8UIntNormalized",
+        "R16G16B16A16Float"
+      ]
+    },
+    "alphaMode": {
+      "type": "string",
+      "enum": [
+        "Premultiplied",
+        "Straight",
+        "Ignore"
+      ]
+    }
+  }
+}

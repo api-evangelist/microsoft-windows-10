@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GeolocationAccessStatus",
+  "title": "GeolocationAccessStatus",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "Unspecified",
+        "Allowed",
+        "Denied"
+      ],
+      "description": "Current geolocation access status"
+    }
+  }
+}

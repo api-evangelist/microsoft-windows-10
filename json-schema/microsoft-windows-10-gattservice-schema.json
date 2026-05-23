@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GattService",
+  "title": "GattService",
+  "type": "object",
+  "description": "A GATT service on a BLE device",
+  "properties": {
+    "uuid": {
+      "type": "string",
+      "description": "Service UUID"
+    },
+    "name": {
+      "type": "string",
+      "description": "Standard service name (if known)"
+    },
+    "characteristicCount": {
+      "type": "integer"
+    }
+  }
+}

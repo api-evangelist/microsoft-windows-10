@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateWebSocketRequest",
+  "title": "CreateWebSocketRequest",
+  "type": "object",
+  "properties": {
+    "uri": {
+      "type": "string",
+      "format": "uri",
+      "description": "WebSocket server URI (ws:// or wss://)"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Message",
+        "Stream"
+      ],
+      "description": "MessageWebSocket or StreamWebSocket",
+      "default": "Message"
+    },
+    "messageType": {
+      "type": "string",
+      "enum": [
+        "Binary",
+        "Utf8"
+      ],
+      "description": "Message type (for MessageWebSocket)",
+      "default": "Utf8"
+    },
+    "protocols": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Sub-protocols to request"
+    }
+  },
+  "required": [
+    "uri"
+  ]
+}

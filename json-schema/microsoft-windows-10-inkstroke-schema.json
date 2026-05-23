@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InkStroke",
+  "title": "InkStroke",
+  "type": "object",
+  "description": "An ink stroke (InkStroke class)",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique stroke identifier"
+    },
+    "pointCount": {
+      "type": "integer",
+      "description": "Number of ink points in the stroke"
+    },
+    "boundingRect": {
+      "$ref": "#/components/schemas/BoundingRect"
+    },
+    "drawingAttributes": {
+      "$ref": "#/components/schemas/InkDrawingAttributes"
+    }
+  },
+  "required": [
+    "id"
+  ]
+}

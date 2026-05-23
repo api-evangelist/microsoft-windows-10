@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ClassProperty",
+  "title": "ClassProperty",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "isReadOnly": {
+      "type": "boolean"
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}

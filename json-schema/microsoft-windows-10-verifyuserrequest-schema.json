@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VerifyUserRequest",
+  "title": "VerifyUserRequest",
+  "type": "object",
+  "properties": {
+    "message": {
+      "type": "string",
+      "description": "Message to display in the verification prompt"
+    }
+  },
+  "required": [
+    "message"
+  ]
+}

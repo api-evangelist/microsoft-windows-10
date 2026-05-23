@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Win32Function",
+  "title": "Win32Function",
+  "type": "object",
+  "description": "A Win32 API function",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Function name",
+      "example": "CreateWindowExW"
+    },
+    "dll": {
+      "type": "string",
+      "description": "DLL that exports the function",
+      "example": "user32.dll"
+    },
+    "header": {
+      "type": "string",
+      "description": "Header file declaring the function",
+      "example": "winuser.h"
+    },
+    "category": {
+      "type": "string",
+      "description": "API category"
+    },
+    "description": {
+      "type": "string",
+      "description": "Brief description of the function"
+    },
+    "minClientVersion": {
+      "type": "string",
+      "description": "Minimum supported client version",
+      "example": "Windows 10"
+    }
+  },
+  "required": [
+    "name",
+    "dll"
+  ]
+}

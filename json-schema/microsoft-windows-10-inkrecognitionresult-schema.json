@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InkRecognitionResult",
+  "title": "InkRecognitionResult",
+  "type": "object",
+  "description": "Handwriting recognition result (InkRecognitionResult class)",
+  "properties": {
+    "boundingRect": {
+      "$ref": "#/components/schemas/BoundingRect"
+    },
+    "textCandidates": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Recognized text alternatives ranked by confidence"
+    },
+    "selectedTextIndex": {
+      "type": "integer",
+      "description": "Index of the selected candidate"
+    },
+    "strokeIds": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "IDs of strokes that produced this result"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VoiceCommandSet",
+  "title": "VoiceCommandSet",
+  "type": "object",
+  "description": "A set of voice commands with their definitions",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Command set name"
+    },
+    "language": {
+      "type": "string",
+      "description": "Language code"
+    },
+    "commands": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/VoiceCommand"
+      }
+    },
+    "phraseLists": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/PhraseList"
+      }
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FileContent",
+  "title": "FileContent",
+  "type": "object",
+  "properties": {
+    "text": {
+      "type": "string",
+      "description": "Text content (when readMode is text)"
+    },
+    "lines": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Lines of text (when readMode is lines)"
+    },
+    "buffer": {
+      "type": "string",
+      "format": "byte",
+      "description": "Base64-encoded binary content (when readMode is buffer)"
+    },
+    "encoding": {
+      "type": "string",
+      "description": "Text encoding used",
+      "example": "UTF-8"
+    }
+  }
+}

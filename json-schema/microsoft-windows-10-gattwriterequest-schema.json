@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GattWriteRequest",
+  "title": "GattWriteRequest",
+  "type": "object",
+  "properties": {
+    "value": {
+      "type": "string",
+      "format": "byte",
+      "description": "Base64-encoded value to write"
+    },
+    "writeOption": {
+      "type": "string",
+      "enum": [
+        "WriteWithResponse",
+        "WriteWithoutResponse"
+      ],
+      "default": "WriteWithResponse"
+    }
+  },
+  "required": [
+    "value"
+  ]
+}

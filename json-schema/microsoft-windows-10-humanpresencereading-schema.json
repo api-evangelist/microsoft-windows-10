@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/HumanPresenceReading",
+  "title": "HumanPresenceReading",
+  "type": "object",
+  "description": "Human presence sensor reading",
+  "properties": {
+    "presence": {
+      "type": "string",
+      "enum": [
+        "Unknown",
+        "Present",
+        "NotPresent"
+      ]
+    },
+    "engagement": {
+      "type": "string",
+      "enum": [
+        "Unknown",
+        "Engaged",
+        "Unengaged"
+      ]
+    },
+    "distanceInMillimeters": {
+      "type": "integer",
+      "description": "Estimated distance to user"
+    },
+    "headPosition": {
+      "type": "object",
+      "properties": {
+        "azimuthInDegrees": {
+          "type": "number",
+          "format": "float"
+        },
+        "altitudeInDegrees": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "headOrientation": {
+      "type": "object",
+      "properties": {
+        "pitchInDegrees": {
+          "type": "number",
+          "format": "float"
+        },
+        "rollInDegrees": {
+          "type": "number",
+          "format": "float"
+        },
+        "yawInDegrees": {
+          "type": "number",
+          "format": "float"
+        }
+      }
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

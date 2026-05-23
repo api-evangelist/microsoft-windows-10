@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InstallVCDRequest",
+  "title": "InstallVCDRequest",
+  "type": "object",
+  "properties": {
+    "vcdFilePath": {
+      "type": "string",
+      "description": "Path to the VCD XML file"
+    }
+  },
+  "required": [
+    "vcdFilePath"
+  ]
+}

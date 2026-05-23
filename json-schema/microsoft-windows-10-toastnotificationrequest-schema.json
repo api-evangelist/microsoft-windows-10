@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ToastNotificationRequest",
+  "title": "ToastNotificationRequest",
+  "type": "object",
+  "description": "Request to create a toast notification",
+  "properties": {
+    "content": {
+      "$ref": "#/components/schemas/ToastContent"
+    },
+    "tag": {
+      "type": "string",
+      "description": "Tag identifier for the notification (max 16 characters)"
+    },
+    "group": {
+      "type": "string",
+      "description": "Group identifier for the notification (max 16 characters)"
+    },
+    "expirationTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Time when the notification expires"
+    },
+    "suppressPopup": {
+      "type": "boolean",
+      "description": "Whether to suppress the popup and send directly to action center"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "Default",
+        "High"
+      ],
+      "description": "Notification priority level"
+    },
+    "notificationMirroring": {
+      "type": "string",
+      "enum": [
+        "Allowed",
+        "Disabled"
+      ],
+      "description": "Whether to allow mirroring to other devices"
+    }
+  },
+  "required": [
+    "content"
+  ]
+}

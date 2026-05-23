@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VoiceCommandDefinition",
+  "title": "VoiceCommandDefinition",
+  "type": "object",
+  "description": "A Voice Command Definition set",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Name of the VCD set"
+    },
+    "language": {
+      "type": "string",
+      "description": "Language code (e.g., en-us)"
+    },
+    "commandCount": {
+      "type": "integer",
+      "description": "Number of defined commands"
+    }
+  },
+  "required": [
+    "name",
+    "language"
+  ]
+}

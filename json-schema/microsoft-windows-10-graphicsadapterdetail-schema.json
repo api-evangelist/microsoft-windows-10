@@ -1,0 +1,79 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/GraphicsAdapterDetail",
+  "title": "GraphicsAdapterDetail",
+  "type": "object",
+  "description": "Detailed graphics adapter information",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "vendorId": {
+      "type": "integer"
+    },
+    "deviceId": {
+      "type": "integer"
+    },
+    "dedicatedVideoMemory": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "sharedSystemMemory": {
+      "type": "integer",
+      "format": "int64"
+    },
+    "maxFeatureLevel": {
+      "type": "string",
+      "enum": [
+        "11_0",
+        "11_1",
+        "12_0",
+        "12_1",
+        "12_2"
+      ],
+      "description": "Maximum supported Direct3D feature level"
+    },
+    "shaderModel": {
+      "type": "string",
+      "description": "Maximum supported shader model"
+    },
+    "rayTracingTier": {
+      "type": "string",
+      "enum": [
+        "NotSupported",
+        "Tier1_0",
+        "Tier1_1"
+      ],
+      "description": "DirectX ray tracing support tier"
+    },
+    "meshShaderTier": {
+      "type": "string",
+      "enum": [
+        "NotSupported",
+        "Tier1"
+      ],
+      "description": "Mesh shader support tier"
+    },
+    "outputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "resolution": {
+            "type": "string"
+          },
+          "refreshRate": {
+            "type": "number"
+          }
+        }
+      },
+      "description": "Connected display outputs"
+    }
+  }
+}

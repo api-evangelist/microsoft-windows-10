@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TrackingRequest",
+  "title": "TrackingRequest",
+  "type": "object",
+  "properties": {
+    "desiredAccuracy": {
+      "type": "string",
+      "enum": [
+        "Default",
+        "High"
+      ],
+      "default": "Default"
+    },
+    "movementThreshold": {
+      "type": "number",
+      "format": "double",
+      "description": "Minimum movement in meters before reporting",
+      "default": 0
+    },
+    "reportInterval": {
+      "type": "integer",
+      "description": "Minimum time between reports in milliseconds",
+      "default": 1000
+    }
+  }
+}

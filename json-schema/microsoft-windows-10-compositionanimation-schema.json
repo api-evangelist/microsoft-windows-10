@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CompositionAnimation",
+  "title": "CompositionAnimation",
+  "type": "object",
+  "description": "A composition animation",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "ScalarKeyFrame",
+        "Vector2KeyFrame",
+        "Vector3KeyFrame",
+        "ColorKeyFrame",
+        "QuaternionKeyFrame",
+        "Expression"
+      ],
+      "description": "Animation type"
+    },
+    "duration": {
+      "type": "string",
+      "description": "ISO 8601 duration"
+    },
+    "iterationBehavior": {
+      "type": "string",
+      "enum": [
+        "Count",
+        "Forever"
+      ]
+    },
+    "targetProperty": {
+      "type": "string",
+      "description": "Property being animated"
+    }
+  }
+}

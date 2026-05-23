@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ToastNotification",
+  "title": "ToastNotification",
+  "type": "object",
+  "description": "A toast notification as defined by the ToastNotification class",
+  "properties": {
+    "tag": {
+      "type": "string",
+      "description": "Tag identifier"
+    },
+    "group": {
+      "type": "string",
+      "description": "Group identifier"
+    },
+    "content": {
+      "$ref": "#/components/schemas/ToastContent"
+    },
+    "expirationTime": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "suppressPopup": {
+      "type": "boolean"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "Default",
+        "High"
+      ]
+    },
+    "data": {
+      "type": "object",
+      "description": "NotificationData for data binding",
+      "additionalProperties": {
+        "type": "string"
+      }
+    }
+  }
+}

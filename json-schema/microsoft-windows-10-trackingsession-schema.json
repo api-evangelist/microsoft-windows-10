@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/TrackingSession",
+  "title": "TrackingSession",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Ready",
+        "Initializing",
+        "NoData",
+        "Disabled",
+        "NotInitialized",
+        "NotAvailable"
+      ],
+      "description": "Current Geolocator status (PositionStatus)"
+    }
+  }
+}

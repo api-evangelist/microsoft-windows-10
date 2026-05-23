@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/NetworkConnectivity",
+  "title": "NetworkConnectivity",
+  "type": "object",
+  "properties": {
+    "isConnected": {
+      "type": "boolean"
+    },
+    "connectionType": {
+      "type": "string",
+      "enum": [
+        "Ethernet",
+        "WiFi",
+        "Cellular",
+        "None"
+      ]
+    },
+    "signalStrength": {
+      "type": "integer",
+      "description": "Signal strength in bars (0-5)"
+    },
+    "networkCostType": {
+      "type": "string",
+      "enum": [
+        "Unknown",
+        "Unrestricted",
+        "Fixed",
+        "Variable"
+      ]
+    },
+    "dataPlanStatus": {
+      "type": "object",
+      "properties": {
+        "dataLimitInMegabytes": {
+          "type": "integer"
+        },
+        "megabytesUsed": {
+          "type": "number"
+        },
+        "maxTransferSizeInMegabytes": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

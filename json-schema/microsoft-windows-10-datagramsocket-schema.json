@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DatagramSocket",
+  "title": "DatagramSocket",
+  "type": "object",
+  "description": "A UDP datagram socket (DatagramSocket class)",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "localAddress": {
+      "type": "string"
+    },
+    "localPort": {
+      "type": "string"
+    }
+  }
+}

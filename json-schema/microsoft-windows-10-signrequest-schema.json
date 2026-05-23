@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SignRequest",
+  "title": "SignRequest",
+  "type": "object",
+  "properties": {
+    "accountId": {
+      "type": "string",
+      "description": "Account identifier for the credential"
+    },
+    "challenge": {
+      "type": "string",
+      "format": "byte",
+      "description": "Base64-encoded challenge buffer to sign"
+    }
+  },
+  "required": [
+    "accountId",
+    "challenge"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateUdpSocketRequest",
+  "title": "CreateUdpSocketRequest",
+  "type": "object",
+  "properties": {
+    "localServiceName": {
+      "type": "string",
+      "description": "Local port to bind to"
+    },
+    "multicastGroup": {
+      "type": "string",
+      "description": "Multicast group address to join"
+    }
+  }
+}

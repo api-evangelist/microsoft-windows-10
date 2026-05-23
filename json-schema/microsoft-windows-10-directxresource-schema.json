@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/DirectXResource",
+  "title": "DirectXResource",
+  "type": "object",
+  "description": "A GPU resource",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "resourceType": {
+      "type": "string",
+      "enum": [
+        "Buffer",
+        "Texture1D",
+        "Texture2D",
+        "Texture3D"
+      ]
+    },
+    "dimension": {
+      "type": "string"
+    },
+    "width": {
+      "type": "integer"
+    },
+    "height": {
+      "type": "integer"
+    },
+    "depthOrArraySize": {
+      "type": "integer"
+    },
+    "format": {
+      "type": "string"
+    },
+    "heapType": {
+      "type": "string",
+      "enum": [
+        "Default",
+        "Upload",
+        "Readback"
+      ]
+    }
+  }
+}

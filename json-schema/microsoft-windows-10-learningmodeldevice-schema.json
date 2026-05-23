@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LearningModelDevice",
+  "title": "LearningModelDevice",
+  "type": "object",
+  "description": "A device for model evaluation (LearningModelDevice class)",
+  "properties": {
+    "kind": {
+      "type": "string",
+      "enum": [
+        "Default",
+        "Cpu",
+        "DirectX",
+        "DirectXHighPerformance",
+        "DirectXMinPower"
+      ],
+      "description": "Device kind"
+    },
+    "adapterId": {
+      "type": "string",
+      "description": "GPU adapter ID (for DirectX devices)"
+    },
+    "name": {
+      "type": "string",
+      "description": "Device name"
+    }
+  }
+}

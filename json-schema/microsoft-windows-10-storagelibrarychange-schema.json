@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StorageLibraryChange",
+  "title": "StorageLibraryChange",
+  "type": "object",
+  "description": "A change to a library item (StorageLibraryChange class)",
+  "properties": {
+    "changeType": {
+      "type": "string",
+      "enum": [
+        "Created",
+        "Deleted",
+        "MovedOrRenamed",
+        "ContentsChanged",
+        "MovedOutOfLibrary",
+        "MovedIntoLibrary",
+        "ContentsReplaced",
+        "IndexingStatusChanged",
+        "EncryptionChanged",
+        "ChangeTrackingLost"
+      ],
+      "description": "Type of change (StorageLibraryChangeType)"
+    },
+    "path": {
+      "type": "string",
+      "description": "Path of the changed item"
+    },
+    "previousPath": {
+      "type": "string",
+      "description": "Previous path (for moves/renames)"
+    },
+    "isOfType": {
+      "type": "string",
+      "enum": [
+        "File",
+        "Folder"
+      ],
+      "description": "Whether the changed item is a file or folder"
+    }
+  }
+}

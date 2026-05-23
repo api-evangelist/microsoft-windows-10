@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InkStrokeDetail",
+  "title": "InkStrokeDetail",
+  "type": "object",
+  "description": "Detailed ink stroke information",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "points": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/InkPoint"
+      }
+    },
+    "boundingRect": {
+      "$ref": "#/components/schemas/BoundingRect"
+    },
+    "drawingAttributes": {
+      "$ref": "#/components/schemas/InkDrawingAttributes"
+    },
+    "strokeDuration": {
+      "type": "string",
+      "description": "Duration of the stroke"
+    }
+  }
+}

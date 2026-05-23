@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateCommandQueueRequest",
+  "title": "CreateCommandQueueRequest",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "Direct",
+        "Compute",
+        "Copy"
+      ],
+      "description": "Command queue type"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "Normal",
+        "High",
+        "GlobalRealtime"
+      ],
+      "default": "Normal"
+    }
+  },
+  "required": [
+    "type"
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ScheduledToastNotificationRequest",
+  "title": "ScheduledToastNotificationRequest",
+  "type": "object",
+  "description": "Request to schedule a toast notification",
+  "properties": {
+    "content": {
+      "$ref": "#/components/schemas/ToastContent"
+    },
+    "deliveryTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "The time to deliver the notification"
+    },
+    "snoozeInterval": {
+      "type": "string",
+      "description": "ISO 8601 duration for snooze interval"
+    },
+    "maximumSnoozeCount": {
+      "type": "integer",
+      "description": "Maximum number of times the notification can be snoozed",
+      "maximum": 5
+    },
+    "tag": {
+      "type": "string",
+      "description": "Tag identifier"
+    },
+    "group": {
+      "type": "string",
+      "description": "Group identifier"
+    }
+  },
+  "required": [
+    "content",
+    "deliveryTime"
+  ]
+}

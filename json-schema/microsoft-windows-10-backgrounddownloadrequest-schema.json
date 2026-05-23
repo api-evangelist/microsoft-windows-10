@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BackgroundDownloadRequest",
+  "title": "BackgroundDownloadRequest",
+  "type": "object",
+  "properties": {
+    "uri": {
+      "type": "string",
+      "format": "uri",
+      "description": "Source URI"
+    },
+    "destinationFile": {
+      "type": "string",
+      "description": "Destination file path"
+    },
+    "costPolicy": {
+      "type": "string",
+      "enum": [
+        "Default",
+        "UnrestrictedOnly",
+        "Always"
+      ],
+      "default": "Default"
+    },
+    "priority": {
+      "type": "string",
+      "enum": [
+        "Default",
+        "High",
+        "Low"
+      ],
+      "default": "Default"
+    }
+  },
+  "required": [
+    "uri",
+    "destinationFile"
+  ]
+}

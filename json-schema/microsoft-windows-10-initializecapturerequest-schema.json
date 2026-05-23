@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/InitializeCaptureRequest",
+  "title": "InitializeCaptureRequest",
+  "type": "object",
+  "properties": {
+    "videoDeviceId": {
+      "type": "string",
+      "description": "Video capture device ID"
+    },
+    "audioDeviceId": {
+      "type": "string",
+      "description": "Audio capture device ID"
+    },
+    "streamingCaptureMode": {
+      "type": "string",
+      "enum": [
+        "AudioAndVideo",
+        "Audio",
+        "Video"
+      ],
+      "default": "AudioAndVideo"
+    },
+    "sharingMode": {
+      "type": "string",
+      "enum": [
+        "ExclusiveControl",
+        "SharedReadOnly"
+      ],
+      "default": "ExclusiveControl"
+    },
+    "photoCaptureSource": {
+      "type": "string",
+      "enum": [
+        "Auto",
+        "VideoPreview",
+        "Photo"
+      ],
+      "default": "Auto"
+    }
+  }
+}

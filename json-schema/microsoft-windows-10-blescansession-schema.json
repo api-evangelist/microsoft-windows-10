@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BLEScanSession",
+  "title": "BLEScanSession",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Started",
+        "Stopped",
+        "Aborted"
+      ]
+    }
+  }
+}

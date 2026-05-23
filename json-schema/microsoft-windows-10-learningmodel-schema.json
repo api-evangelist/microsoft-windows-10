@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LearningModel",
+  "title": "LearningModel",
+  "type": "object",
+  "description": "A loaded ONNX machine learning model (LearningModel class)",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique model identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Model name from metadata"
+    },
+    "author": {
+      "type": "string",
+      "description": "Model author from metadata"
+    },
+    "domain": {
+      "type": "string",
+      "description": "Model domain from metadata"
+    },
+    "description": {
+      "type": "string",
+      "description": "Model description from metadata"
+    },
+    "version": {
+      "type": "integer",
+      "description": "Model version"
+    },
+    "inputFeatureCount": {
+      "type": "integer",
+      "description": "Number of input features"
+    },
+    "outputFeatureCount": {
+      "type": "integer",
+      "description": "Number of output features"
+    }
+  },
+  "required": [
+    "id",
+    "name"
+  ]
+}

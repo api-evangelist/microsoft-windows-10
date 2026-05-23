@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WinUIControlDetail",
+  "title": "WinUIControlDetail",
+  "type": "object",
+  "description": "Detailed control information",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "namespace": {
+      "type": "string"
+    },
+    "description": {
+      "type": "string"
+    },
+    "category": {
+      "type": "string"
+    },
+    "baseClass": {
+      "type": "string",
+      "description": "Parent class in the inheritance hierarchy"
+    },
+    "properties": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "type": {
+            "type": "string"
+          },
+          "defaultValue": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          },
+          "isDependencyProperty": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "events": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "eventArgsType": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "xamlUsage": {
+      "type": "string",
+      "description": "Example XAML markup"
+    },
+    "guidelines": {
+      "type": "string",
+      "description": "Fluent Design usage guidelines"
+    }
+  }
+}

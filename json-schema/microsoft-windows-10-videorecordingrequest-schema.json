@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/VideoRecordingRequest",
+  "title": "VideoRecordingRequest",
+  "type": "object",
+  "properties": {
+    "encodingProfile": {
+      "type": "string",
+      "enum": [
+        "Mp4",
+        "Wmv",
+        "Avi"
+      ],
+      "default": "Mp4"
+    },
+    "quality": {
+      "type": "string",
+      "enum": [
+        "Auto",
+        "HD1080p",
+        "HD720p",
+        "Wvga",
+        "Ntsc",
+        "Pal",
+        "Vga",
+        "Qvga"
+      ],
+      "default": "Auto"
+    },
+    "outputPath": {
+      "type": "string",
+      "description": "File path for the recorded video"
+    }
+  },
+  "required": [
+    "outputPath"
+  ]
+}

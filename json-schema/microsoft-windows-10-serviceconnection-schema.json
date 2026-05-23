@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ServiceConnection",
+  "title": "ServiceConnection",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Connection identifier"
+    },
+    "language": {
+      "type": "string",
+      "description": "Language of the voice command"
+    },
+    "voiceCommandName": {
+      "type": "string",
+      "description": "Name of the recognized voice command"
+    }
+  }
+}

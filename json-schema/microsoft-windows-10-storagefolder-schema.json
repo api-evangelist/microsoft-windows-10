@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/StorageFolder",
+  "title": "StorageFolder",
+  "type": "object",
+  "description": "A storage folder (StorageFolder class)",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Folder name"
+    },
+    "path": {
+      "type": "string",
+      "description": "Full folder path"
+    },
+    "dateCreated": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "attributes": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  },
+  "required": [
+    "name",
+    "path"
+  ]
+}

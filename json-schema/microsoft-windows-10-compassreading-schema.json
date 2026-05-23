@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CompassReading",
+  "title": "CompassReading",
+  "type": "object",
+  "description": "Compass reading data",
+  "properties": {
+    "headingMagneticNorth": {
+      "type": "number",
+      "format": "double",
+      "description": "Heading in degrees relative to magnetic north"
+    },
+    "headingTrueNorth": {
+      "type": "number",
+      "format": "double",
+      "description": "Heading in degrees relative to true north (nullable)"
+    },
+    "headingAccuracy": {
+      "type": "string",
+      "enum": [
+        "Unknown",
+        "Unreliable",
+        "Approximate",
+        "High"
+      ],
+      "description": "Magnetometer accuracy"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

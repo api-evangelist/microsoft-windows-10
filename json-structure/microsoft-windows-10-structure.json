@@ -1,0 +1,181 @@
+{
+  "provider": "Microsoft Windows 10",
+  "providerId": "microsoft-windows-10",
+  "kind": "json-structure",
+  "description": "Structural overview of the Microsoft Windows 10 API surface; extracted from openapi/.",
+  "schemaCount": 11,
+  "operationCount": 10,
+  "schemas": [
+    {
+      "name": "ToastNotificationRequest",
+      "type": "object",
+      "propertyCount": 7,
+      "required": [
+        "content"
+      ]
+    },
+    {
+      "name": "ToastContent",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ToastNotification",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "ScheduledToastNotificationRequest",
+      "type": "object",
+      "propertyCount": 6,
+      "required": [
+        "content",
+        "deliveryTime"
+      ]
+    },
+    {
+      "name": "ScheduledToastNotification",
+      "type": "object",
+      "propertyCount": 7,
+      "required": []
+    },
+    {
+      "name": "TileNotificationRequest",
+      "type": "object",
+      "propertyCount": 5,
+      "required": [
+        "template"
+      ]
+    },
+    {
+      "name": "TileNotification",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "BadgeNotificationRequest",
+      "type": "object",
+      "propertyCount": 2,
+      "required": [
+        "type",
+        "value"
+      ]
+    },
+    {
+      "name": "BadgeNotification",
+      "type": "object",
+      "propertyCount": 3,
+      "required": []
+    },
+    {
+      "name": "ToastCollection",
+      "type": "object",
+      "propertyCount": 4,
+      "required": []
+    },
+    {
+      "name": "ToastCollectionRequest",
+      "type": "object",
+      "propertyCount": 4,
+      "required": [
+        "id",
+        "displayName"
+      ]
+    }
+  ],
+  "operations": [
+    {
+      "method": "GET",
+      "path": "/notifications/toast",
+      "operationId": "listToastNotifications",
+      "summary": "Microsoft Windows 10 List active toast notifications",
+      "tags": [
+        "Toast Notifications"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/notifications/toast",
+      "operationId": "createToastNotification",
+      "summary": "Microsoft Windows 10 Create a toast notification",
+      "tags": [
+        "Toast Notifications"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/notifications/toast/{notificationTag}",
+      "operationId": "getToastNotification",
+      "summary": "Microsoft Windows 10 Get a toast notification by tag",
+      "tags": [
+        "Toast Notifications"
+      ]
+    },
+    {
+      "method": "DELETE",
+      "path": "/notifications/toast/{notificationTag}",
+      "operationId": "removeToastNotification",
+      "summary": "Microsoft Windows 10 Remove a toast notification",
+      "tags": [
+        "Toast Notifications"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/notifications/toast/scheduled",
+      "operationId": "listScheduledToastNotifications",
+      "summary": "Microsoft Windows 10 List scheduled toast notifications",
+      "tags": [
+        "Scheduled Notifications"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/notifications/toast/scheduled",
+      "operationId": "scheduleToastNotification",
+      "summary": "Microsoft Windows 10 Schedule a toast notification",
+      "tags": [
+        "Scheduled Notifications"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/notifications/tile",
+      "operationId": "updateTileNotification",
+      "summary": "Microsoft Windows 10 Update a tile notification",
+      "tags": [
+        "Tile Notifications"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/notifications/badge",
+      "operationId": "updateBadgeNotification",
+      "summary": "Microsoft Windows 10 Update a badge notification",
+      "tags": [
+        "Badge Notifications"
+      ]
+    },
+    {
+      "method": "GET",
+      "path": "/notifications/collections",
+      "operationId": "listToastCollections",
+      "summary": "Microsoft Windows 10 List toast notification collections",
+      "tags": [
+        "Collections"
+      ]
+    },
+    {
+      "method": "POST",
+      "path": "/notifications/collections",
+      "operationId": "createToastCollection",
+      "summary": "Microsoft Windows 10 Create a toast notification collection",
+      "tags": [
+        "Collections"
+      ]
+    }
+  ]
+}

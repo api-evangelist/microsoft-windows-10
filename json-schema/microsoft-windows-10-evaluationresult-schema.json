@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/EvaluationResult",
+  "title": "EvaluationResult",
+  "type": "object",
+  "description": "Result of a model evaluation (LearningModelEvaluationResult)",
+  "properties": {
+    "correlationId": {
+      "type": "string",
+      "description": "Correlation ID from the request"
+    },
+    "succeeded": {
+      "type": "boolean",
+      "description": "Whether evaluation succeeded"
+    },
+    "errorStatus": {
+      "type": "integer",
+      "description": "Error code if evaluation failed"
+    },
+    "outputs": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "object"
+      },
+      "description": "Map of output feature names to their values"
+    }
+  }
+}

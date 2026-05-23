@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateFolderRequest",
+  "title": "CreateFolderRequest",
+  "type": "object",
+  "properties": {
+    "parentPath": {
+      "type": "string",
+      "description": "Path of the parent folder"
+    },
+    "name": {
+      "type": "string",
+      "description": "Name for the new folder"
+    },
+    "collisionOption": {
+      "type": "string",
+      "enum": [
+        "GenerateUniqueName",
+        "ReplaceExisting",
+        "FailIfExists",
+        "OpenIfExists"
+      ],
+      "description": "How to handle name collisions (CreationCollisionOption)",
+      "default": "FailIfExists"
+    }
+  },
+  "required": [
+    "name"
+  ]
+}

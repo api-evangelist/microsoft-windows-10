@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BluetoothDevice",
+  "title": "BluetoothDevice",
+  "type": "object",
+  "description": "A Bluetooth device",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Device identifier"
+    },
+    "name": {
+      "type": "string",
+      "description": "Device display name"
+    },
+    "bluetoothAddress": {
+      "type": "string",
+      "description": "Bluetooth MAC address"
+    },
+    "type": {
+      "type": "string",
+      "enum": [
+        "Classic",
+        "LowEnergy"
+      ]
+    },
+    "connectionStatus": {
+      "type": "string",
+      "enum": [
+        "Connected",
+        "Disconnected"
+      ]
+    },
+    "isPaired": {
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "id",
+    "name"
+  ]
+}

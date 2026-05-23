@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WriteFileRequest",
+  "title": "WriteFileRequest",
+  "type": "object",
+  "properties": {
+    "content": {
+      "type": "string",
+      "description": "Text content to write"
+    },
+    "encoding": {
+      "type": "string",
+      "description": "Text encoding",
+      "default": "UTF-8"
+    },
+    "writeMode": {
+      "type": "string",
+      "enum": [
+        "text",
+        "bytes",
+        "lines"
+      ],
+      "default": "text"
+    }
+  },
+  "required": [
+    "content"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateInkStrokeRequest",
+  "title": "CreateInkStrokeRequest",
+  "type": "object",
+  "properties": {
+    "points": {
+      "type": "array",
+      "items": {
+        "$ref": "#/components/schemas/InkPoint"
+      },
+      "description": "Ordered list of ink points"
+    },
+    "drawingAttributes": {
+      "$ref": "#/components/schemas/InkDrawingAttributes"
+    }
+  },
+  "required": [
+    "points"
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FunctionParameter",
+  "title": "FunctionParameter",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string"
+    },
+    "type": {
+      "type": "string"
+    },
+    "direction": {
+      "type": "string",
+      "enum": [
+        "in",
+        "out",
+        "inout"
+      ]
+    },
+    "description": {
+      "type": "string"
+    },
+    "optional": {
+      "type": "boolean"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/SignResult",
+  "title": "SignResult",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "Success",
+        "UserCanceled",
+        "NotFound",
+        "UserPrefersPassword"
+      ],
+      "description": "Sign operation status"
+    },
+    "signature": {
+      "type": "string",
+      "format": "byte",
+      "description": "Base64-encoded signed data"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ToastCollectionRequest",
+  "title": "ToastCollectionRequest",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "displayName": {
+      "type": "string"
+    },
+    "launchArgs": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "string",
+      "format": "uri"
+    }
+  },
+  "required": [
+    "id",
+    "displayName"
+  ]
+}

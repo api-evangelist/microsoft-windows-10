@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CaptureSession",
+  "title": "CaptureSession",
+  "type": "object",
+  "description": "An initialized media capture session",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Session identifier"
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "Initialized",
+        "Previewing",
+        "Recording",
+        "Paused"
+      ]
+    },
+    "videoDeviceId": {
+      "type": "string"
+    },
+    "audioDeviceId": {
+      "type": "string"
+    }
+  }
+}

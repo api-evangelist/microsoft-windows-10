@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/Geocoordinate",
+  "title": "Geocoordinate",
+  "type": "object",
+  "description": "Geographic coordinate data (Geocoordinate class)",
+  "properties": {
+    "latitude": {
+      "type": "number",
+      "format": "double",
+      "description": "Latitude in degrees (-90 to 90)"
+    },
+    "longitude": {
+      "type": "number",
+      "format": "double",
+      "description": "Longitude in degrees (-180 to 180)"
+    },
+    "altitude": {
+      "type": "number",
+      "format": "double",
+      "description": "Altitude in meters (nullable)"
+    },
+    "accuracy": {
+      "type": "number",
+      "format": "double",
+      "description": "Accuracy radius in meters"
+    },
+    "altitudeAccuracy": {
+      "type": "number",
+      "format": "double",
+      "description": "Altitude accuracy in meters (nullable)"
+    },
+    "heading": {
+      "type": "number",
+      "format": "double",
+      "description": "Heading in degrees relative to true north (nullable)"
+    },
+    "speed": {
+      "type": "number",
+      "format": "double",
+      "description": "Speed in meters per second (nullable)"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Time the position was determined"
+    },
+    "positionSource": {
+      "type": "string",
+      "enum": [
+        "Cellular",
+        "Satellite",
+        "WiFi",
+        "IPAddress",
+        "Unknown",
+        "Default",
+        "Obfuscated"
+      ],
+      "description": "Source of the position data"
+    },
+    "satelliteData": {
+      "type": "object",
+      "properties": {
+        "horizontalDilutionOfPrecision": {
+          "type": "number",
+          "format": "double"
+        },
+        "verticalDilutionOfPrecision": {
+          "type": "number",
+          "format": "double"
+        },
+        "geometricDilutionOfPrecision": {
+          "type": "number",
+          "format": "double"
+        }
+      },
+      "description": "Satellite data (if source is GNSS)"
+    }
+  },
+  "required": [
+    "latitude",
+    "longitude",
+    "accuracy",
+    "timestamp"
+  ]
+}

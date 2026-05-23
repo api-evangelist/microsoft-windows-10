@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BackgroundTransferOperation",
+  "title": "BackgroundTransferOperation",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "uri": {
+      "type": "string",
+      "format": "uri"
+    },
+    "destinationFile": {
+      "type": "string"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "Idle",
+        "Running",
+        "PausedByApplication",
+        "PausedCostedNetwork",
+        "PausedNoNetwork",
+        "Completed",
+        "Canceled",
+        "Error"
+      ]
+    },
+    "progress": {
+      "type": "object",
+      "properties": {
+        "bytesReceived": {
+          "type": "integer",
+          "format": "int64"
+        },
+        "totalBytesToReceive": {
+          "type": "integer",
+          "format": "int64"
+        }
+      }
+    }
+  }
+}

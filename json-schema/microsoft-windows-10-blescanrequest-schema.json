@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BLEScanRequest",
+  "title": "BLEScanRequest",
+  "type": "object",
+  "properties": {
+    "scanningMode": {
+      "type": "string",
+      "enum": [
+        "Passive",
+        "Active"
+      ],
+      "default": "Active"
+    },
+    "serviceUuidFilter": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Filter by service UUIDs"
+    },
+    "signalStrengthFilter": {
+      "type": "object",
+      "properties": {
+        "inRangeThresholdInDBm": {
+          "type": "integer"
+        },
+        "outOfRangeThresholdInDBm": {
+          "type": "integer"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/LearningModelSession",
+  "title": "LearningModelSession",
+  "type": "object",
+  "description": "An evaluation session (LearningModelSession class)",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Session identifier"
+    },
+    "modelId": {
+      "type": "string",
+      "description": "Associated model identifier"
+    },
+    "device": {
+      "$ref": "#/components/schemas/LearningModelDevice"
+    }
+  }
+}

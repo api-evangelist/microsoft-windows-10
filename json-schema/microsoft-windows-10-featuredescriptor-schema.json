@@ -1,0 +1,61 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FeatureDescriptor",
+  "title": "FeatureDescriptor",
+  "type": "object",
+  "description": "Describes an input or output feature of a model (ILearningModelFeatureDescriptor)",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Feature name"
+    },
+    "description": {
+      "type": "string",
+      "description": "Feature description"
+    },
+    "kind": {
+      "type": "string",
+      "enum": [
+        "Tensor",
+        "Sequence",
+        "Map",
+        "Image"
+      ],
+      "description": "The kind of feature (TensorFeatureDescriptor, ImageFeatureDescriptor, etc.)"
+    },
+    "isRequired": {
+      "type": "boolean",
+      "description": "Whether the feature is required"
+    },
+    "shape": {
+      "type": "array",
+      "items": {
+        "type": "integer"
+      },
+      "description": "Tensor shape dimensions (for tensor features)"
+    },
+    "tensorDataType": {
+      "type": "string",
+      "enum": [
+        "Float",
+        "Float16",
+        "Double",
+        "Int8",
+        "UInt8",
+        "Int16",
+        "UInt16",
+        "Int32",
+        "UInt32",
+        "Int64",
+        "UInt64",
+        "String",
+        "Boolean"
+      ],
+      "description": "Data type for tensor features"
+    }
+  },
+  "required": [
+    "name",
+    "kind"
+  ]
+}

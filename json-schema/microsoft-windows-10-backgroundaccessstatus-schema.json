@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/BackgroundAccessStatus",
+  "title": "BackgroundAccessStatus",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "enum": [
+        "Unspecified",
+        "AllowedSubjectToSystemPolicy",
+        "AlwaysAllowed",
+        "DeniedBySystemPolicy",
+        "DeniedByUser"
+      ],
+      "description": "Current background access status"
+    }
+  }
+}

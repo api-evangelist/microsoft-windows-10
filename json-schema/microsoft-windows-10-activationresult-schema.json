@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ActivationResult",
+  "title": "ActivationResult",
+  "type": "object",
+  "properties": {
+    "instanceId": {
+      "type": "string",
+      "description": "Unique identifier for the activated instance"
+    },
+    "runtimeClassName": {
+      "type": "string",
+      "description": "The runtime class that was activated"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "activated",
+        "failed"
+      ],
+      "description": "Activation result status"
+    }
+  }
+}

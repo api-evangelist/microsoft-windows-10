@@ -1,0 +1,28 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/AccelerometerReading",
+  "title": "AccelerometerReading",
+  "type": "object",
+  "description": "Accelerometer reading data",
+  "properties": {
+    "accelerationX": {
+      "type": "number",
+      "format": "double",
+      "description": "G-force along X axis"
+    },
+    "accelerationY": {
+      "type": "number",
+      "format": "double",
+      "description": "G-force along Y axis"
+    },
+    "accelerationZ": {
+      "type": "number",
+      "format": "double",
+      "description": "G-force along Z axis"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

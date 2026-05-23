@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/FluentIcon",
+  "title": "FluentIcon",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Icon name"
+    },
+    "symbol": {
+      "type": "string",
+      "description": "Symbol enum value (for SymbolIcon)"
+    },
+    "unicodePoint": {
+      "type": "string",
+      "description": "Unicode code point for FontIcon",
+      "example": "E700"
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}

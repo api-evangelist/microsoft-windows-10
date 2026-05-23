@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/WinRTClass",
+  "title": "WinRTClass",
+  "type": "object",
+  "description": "A WinRT runtime class",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Class name"
+    },
+    "namespace": {
+      "type": "string",
+      "description": "Fully qualified namespace"
+    },
+    "description": {
+      "type": "string",
+      "description": "Class description"
+    },
+    "isSealed": {
+      "type": "boolean",
+      "description": "Whether the class is sealed"
+    },
+    "isStatic": {
+      "type": "boolean",
+      "description": "Whether the class is static (no instances)"
+    },
+    "threading": {
+      "type": "string",
+      "enum": [
+        "STA",
+        "MTA",
+        "Both"
+      ],
+      "description": "Threading model"
+    }
+  },
+  "required": [
+    "name",
+    "namespace"
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/ToastCollection",
+  "title": "ToastCollection",
+  "type": "object",
+  "description": "A collection of related toast notifications",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Collection identifier"
+    },
+    "displayName": {
+      "type": "string",
+      "description": "Display name for the collection"
+    },
+    "launchArgs": {
+      "type": "string",
+      "description": "Launch arguments when collection is activated"
+    },
+    "icon": {
+      "type": "string",
+      "format": "uri",
+      "description": "Icon URI for the collection"
+    }
+  }
+}

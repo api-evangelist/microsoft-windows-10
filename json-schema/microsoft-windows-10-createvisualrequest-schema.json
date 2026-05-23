@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "#/components/schemas/CreateVisualRequest",
+  "title": "CreateVisualRequest",
+  "type": "object",
+  "properties": {
+    "type": {
+      "type": "string",
+      "enum": [
+        "SpriteVisual",
+        "ContainerVisual",
+        "LayerVisual",
+        "ShapeVisual"
+      ],
+      "description": "Type of visual to create"
+    },
+    "offset": {
+      "$ref": "#/components/schemas/Vector3"
+    },
+    "size": {
+      "$ref": "#/components/schemas/Vector2"
+    },
+    "opacity": {
+      "type": "number",
+      "format": "float",
+      "default": 1.0
+    }
+  },
+  "required": [
+    "type"
+  ]
+}
