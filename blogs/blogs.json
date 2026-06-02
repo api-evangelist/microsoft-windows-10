@@ -2,12 +2,17 @@
   "repo": "microsoft-windows-10",
   "feeds": [
     {
-      "source": "https://blogs.windows.com/windowsdeveloper/",
+      "source": "https://blogs.windows.com/windowsdeveloper/feed/",
       "feed_url": "https://blogs.windows.com/windowsdeveloper/feed/",
-      "title": "Windows Developer Blog",
-      "saved": 0
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://learn.microsoft.com/en-us/windows/apps/develop/security/windows-hello",
+      "error": "HTTPError"
     }
   ],
-  "fetched": "2026-05-17T20:20:35Z",
+  "fetched": "2026-06-01T23:35:02Z",
   "post_count": 10
 }
