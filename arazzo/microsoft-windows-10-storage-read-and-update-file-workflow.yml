@@ -1,0 +1,117 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Windows 10 Storage Read and Update File
+  summary: List files in a known folder, inspect the first file, read its text content, and write updated content back.
+  description: >-
+    A file read-modify-write flow built on the Windows.Storage namespace. The
+    workflow lists files of a given type in a known folder, selects the first
+    file, fetches its detailed StorageFile properties, reads its text content,
+    and then writes updated text back to the same file. Every step inlines its
+    request and documents the response status it keys on so the flow can be
+    executed without opening the OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: storageApi
+  url: ../openapi/microsoft-windows-10-storage-openapi.yml
+  type: openapi
+workflows:
+- workflowId: read-and-update-file
+  summary: Locate a file in a known folder, read it, and write updated content back.
+  description: >-
+    Lists files in the requested known folder, inspects and reads the first
+    matching file, and writes new text content back to that same file.
+  inputs:
+    type: object
+    required:
+    - folderId
+    - newContent
+    properties:
+      folderId:
+        type: string
+        description: Known folder to list files from.
+        enum:
+        - Documents
+        - Pictures
+        - Music
+        - Videos
+        - Downloads
+        - LocalAppData
+        - RoamingAppData
+        - TempState
+        default: Documents
+      fileType:
+        type: string
+        description: Optional file extension filter (e.g. .txt).
+      newContent:
+        type: string
+        description: New text content to write back to the file.
+  steps:
+  - stepId: listFiles
+    description: >-
+      List files of the requested type in the known folder and capture the first
+      file's path as the working file id.
+    operationId: listStorageFiles
+    parameters:
+    - name: folderId
+      in: query
+      value: $inputs.folderId
+    - name: fileType
+      in: query
+      value: $inputs.fileType
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      fileId: $response.body#/0/path
+      fileName: $response.body#/0/name
+  - stepId: getFile
+    description: >-
+      Fetch detailed properties for the selected file, including size and
+      modification time.
+    operationId: getStorageFile
+    parameters:
+    - name: fileId
+      in: path
+      value: $steps.listFiles.outputs.fileId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      size: $response.body#/size
+      contentType: $response.body#/contentType
+      dateModified: $response.body#/dateModified
+  - stepId: readContent
+    description: >-
+      Read the current text content of the file before overwriting it.
+    operationId: readFileContent
+    parameters:
+    - name: fileId
+      in: path
+      value: $steps.listFiles.outputs.fileId
+    - name: readMode
+      in: query
+      value: text
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      currentText: $response.body#/text
+      encoding: $response.body#/encoding
+  - stepId: writeContent
+    description: >-
+      Write the new text content back to the same file using a UTF-8 text write.
+    operationId: writeFileContent
+    parameters:
+    - name: fileId
+      in: path
+      value: $steps.listFiles.outputs.fileId
+    requestBody:
+      contentType: application/json
+      payload:
+        content: $inputs.newContent
+        encoding: UTF-8
+        writeMode: text
+    successCriteria:
+    - condition: $statusCode == 200
+  outputs:
+    fileId: $steps.listFiles.outputs.fileId
+    fileName: $steps.listFiles.outputs.fileName
+    previousText: $steps.readContent.outputs.currentText
+    size: $steps.getFile.outputs.size

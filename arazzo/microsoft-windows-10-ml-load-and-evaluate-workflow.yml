@@ -1,0 +1,108 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Windows 10 Windows ML Load and Evaluate Model
+  summary: Load an ONNX model, create a hardware-accelerated evaluation session, and run an inference against bound inputs.
+  description: >-
+    A local inference flow built on the Windows.AI.MachineLearning namespace. The
+    workflow loads an ONNX model from a file path, creates a LearningModelSession
+    bound to a chosen device (CPU, DirectX, or DirectXHighPerformance), and
+    evaluates the model with a map of input feature bindings, returning the
+    output tensors. Every step inlines its request and documents the status code
+    it keys on so the flow can be executed without opening the OpenAPI
+    description.
+  version: 1.0.0
+sourceDescriptions:
+- name: mlApi
+  url: ../openapi/microsoft-windows-10-ml-openapi.yml
+  type: openapi
+workflows:
+- workflowId: load-and-evaluate-model
+  summary: Load an ONNX model, create a session, and evaluate it against input bindings.
+  description: >-
+    Loads an ONNX model from a file path, creates an evaluation session on the
+    requested device, and evaluates the model with the supplied feature
+    bindings.
+  inputs:
+    type: object
+    required:
+    - filePath
+    - bindings
+    properties:
+      filePath:
+        type: string
+        description: Path to the ONNX model file to load.
+      deviceKind:
+        type: string
+        description: Device to use for evaluation.
+        enum:
+        - Default
+        - Cpu
+        - DirectX
+        - DirectXHighPerformance
+        - DirectXMinPower
+        default: Default
+      bindings:
+        type: object
+        description: Map of input feature names to their input values.
+      correlationId:
+        type: string
+        description: Correlation id for tracking the evaluation.
+  steps:
+  - stepId: loadModel
+    description: >-
+      Load the ONNX model from the supplied file path and capture the assigned
+      model id and feature counts.
+    operationId: loadMLModel
+    requestBody:
+      contentType: application/json
+      payload:
+        filePath: $inputs.filePath
+        modelFormat: ONNX
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      modelId: $response.body#/id
+      modelName: $response.body#/name
+      inputFeatureCount: $response.body#/inputFeatureCount
+  - stepId: createSession
+    description: >-
+      Create an evaluation session for the loaded model bound to the requested
+      device kind.
+    operationId: createMLSession
+    requestBody:
+      contentType: application/json
+      payload:
+        modelId: $steps.loadModel.outputs.modelId
+        deviceKind: $inputs.deviceKind
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      sessionId: $response.body#/id
+  - stepId: evaluate
+    description: >-
+      Evaluate the model with the supplied input bindings and capture the output
+      tensors and whether the evaluation succeeded.
+    operationId: evaluateMLModel
+    parameters:
+    - name: sessionId
+      in: path
+      value: $steps.createSession.outputs.sessionId
+    requestBody:
+      contentType: application/json
+      payload:
+        correlationId: $inputs.correlationId
+        bindings: $inputs.bindings
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.succeeded == true
+      type: jsonpath
+    outputs:
+      succeeded: $response.body#/succeeded
+      outputs: $response.body#/outputs
+      correlationId: $response.body#/correlationId
+  outputs:
+    modelId: $steps.loadModel.outputs.modelId
+    sessionId: $steps.createSession.outputs.sessionId
+    succeeded: $steps.evaluate.outputs.succeeded
+    evaluationOutputs: $steps.evaluate.outputs.outputs

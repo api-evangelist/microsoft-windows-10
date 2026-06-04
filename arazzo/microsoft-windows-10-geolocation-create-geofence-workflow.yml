@@ -1,0 +1,114 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Windows 10 Create and Confirm Geofence
+  summary: Ensure location access, create a circular geofence, and confirm it appears among the active geofences.
+  description: >-
+    A geofencing flow built on the Windows.Devices.Geolocation GeofenceMonitor.
+    The workflow checks location access, branches to request it when unspecified,
+    creates a circular geofence defined by a center point and radius with the
+    monitored states, and then lists active geofences to confirm registration.
+    Every step inlines its request and documents the response status it keys on
+    so the flow can be executed without opening the OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: geolocationApi
+  url: ../openapi/microsoft-windows-10-geolocation-openapi.yml
+  type: openapi
+workflows:
+- workflowId: create-geofence
+  summary: Resolve location access then create and confirm a circular geofence.
+  description: >-
+    Checks location access, requests it when unspecified, creates a geofence
+    from the supplied center and radius, and confirms it is in the active list.
+  inputs:
+    type: object
+    required:
+    - geofenceId
+    - latitude
+    - longitude
+    - radiusInMeters
+    properties:
+      geofenceId:
+        type: string
+        description: Unique identifier for the geofence.
+      latitude:
+        type: number
+        description: Center latitude of the geofence.
+      longitude:
+        type: number
+        description: Center longitude of the geofence.
+      radiusInMeters:
+        type: number
+        description: Radius of the geofence in meters.
+      dwellTimeInSeconds:
+        type: integer
+        description: Dwell time in seconds before the geofence triggers.
+  steps:
+  - stepId: checkAccess
+    description: >-
+      Check location access. If already allowed, proceed directly to creating the
+      geofence; otherwise request access first.
+    operationId: getGeolocationAccess
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      status: $response.body#/status
+    onSuccess:
+    - name: alreadyAllowed
+      type: goto
+      stepId: createGeofence
+      criteria:
+      - context: $response.body
+        condition: $.status == "Allowed"
+        type: jsonpath
+    - name: needsRequest
+      type: goto
+      stepId: requestAccess
+      criteria:
+      - context: $response.body
+        condition: $.status != "Allowed"
+        type: jsonpath
+  - stepId: requestAccess
+    description: >-
+      Request location access when it was not already allowed, and confirm the
+      resulting status.
+    operationId: requestGeolocationAccess
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.status == "Allowed"
+      type: jsonpath
+    outputs:
+      status: $response.body#/status
+  - stepId: createGeofence
+    description: >-
+      Create a circular geofence with the supplied center, radius, and dwell
+      time, monitoring entered and exited states.
+    operationId: createGeofence
+    requestBody:
+      contentType: application/json
+      payload:
+        id: $inputs.geofenceId
+        latitude: $inputs.latitude
+        longitude: $inputs.longitude
+        radiusInMeters: $inputs.radiusInMeters
+        monitoredStates:
+        - Entered
+        - Exited
+        singleUse: false
+        dwellTimeInSeconds: $inputs.dwellTimeInSeconds
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      geofenceId: $response.body#/id
+  - stepId: confirmGeofence
+    description: >-
+      List active geofences to confirm the newly created geofence is registered.
+    operationId: listGeofences
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstGeofenceId: $response.body#/0/id
+  outputs:
+    accessStatus: $steps.checkAccess.outputs.status
+    geofenceId: $steps.createGeofence.outputs.geofenceId

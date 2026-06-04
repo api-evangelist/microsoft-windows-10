@@ -1,0 +1,101 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Windows 10 Schedule Grouped Toast Notification
+  summary: Create a toast notification collection, schedule a future toast, and confirm it appears in the pending list.
+  description: >-
+    A scheduled notification flow built on the Windows.UI.Notifications namespace.
+    The workflow creates a ToastCollection to group related notifications,
+    schedules a ScheduledToastNotification for future delivery using an adaptive
+    ToastGeneric template, and then lists the pending scheduled notifications to
+    confirm the new one was registered. Every step inlines its request and
+    documents the response status it keys on so the flow can be executed without
+    opening the OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: notificationsApi
+  url: ../openapi/microsoft-windows-10-notifications-openapi.yml
+  type: openapi
+workflows:
+- workflowId: schedule-grouped-toast
+  summary: Create a collection, schedule a toast, and verify it is pending delivery.
+  description: >-
+    Creates a toast notification collection, schedules a future toast carrying a
+    title and body, and confirms the scheduled toast is present in the pending
+    list.
+  inputs:
+    type: object
+    required:
+    - collectionId
+    - collectionName
+    - title
+    - body
+    - deliveryTime
+    properties:
+      collectionId:
+        type: string
+        description: Unique identifier for the toast collection.
+      collectionName:
+        type: string
+        description: Display name for the toast collection.
+      title:
+        type: string
+        description: Title text shown in the toast.
+      body:
+        type: string
+        description: Body text shown in the toast.
+      deliveryTime:
+        type: string
+        description: ISO 8601 date-time to deliver the toast.
+      tag:
+        type: string
+        description: Tag identifier for the scheduled toast (max 16 characters).
+  steps:
+  - stepId: createCollection
+    description: >-
+      Create a toast notification collection to group the scheduled toast with
+      related notifications.
+    operationId: createToastCollection
+    requestBody:
+      contentType: application/json
+      payload:
+        id: $inputs.collectionId
+        displayName: $inputs.collectionName
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      collectionId: $response.body#/id
+  - stepId: scheduleToast
+    description: >-
+      Schedule a toast notification for future delivery using an adaptive
+      ToastGeneric template carrying the title and body.
+    operationId: scheduleToastNotification
+    requestBody:
+      contentType: application/json
+      payload:
+        content:
+          visual:
+            binding:
+              template: ToastGeneric
+              texts:
+              - content: $inputs.title
+              - content: $inputs.body
+        deliveryTime: $inputs.deliveryTime
+        tag: $inputs.tag
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      scheduledId: $response.body#/id
+      scheduledDeliveryTime: $response.body#/deliveryTime
+  - stepId: confirmScheduled
+    description: >-
+      List the pending scheduled toast notifications to confirm the newly
+      scheduled toast is present.
+    operationId: listScheduledToastNotifications
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      firstScheduledId: $response.body#/0/id
+  outputs:
+    collectionId: $steps.createCollection.outputs.collectionId
+    scheduledId: $steps.scheduleToast.outputs.scheduledId
+    scheduledDeliveryTime: $steps.scheduleToast.outputs.scheduledDeliveryTime

@@ -1,0 +1,108 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Windows 10 Bluetooth LE Read GATT Characteristic
+  summary: Discover a paired BLE device, drill into its GATT services and characteristics, and read a characteristic value.
+  description: >-
+    A complete Bluetooth Low Energy read flow built on the
+    Windows.Devices.Bluetooth GATT model. The workflow enumerates paired Low
+    Energy devices, selects the first match, lists the GATT services exposed by
+    that device, lists the characteristics of the first service, and then reads
+    the value of the first characteristic. Every step inlines its request so the
+    BLE traversal can be read and executed without opening the underlying
+    OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: bluetoothApi
+  url: ../openapi/microsoft-windows-10-bluetooth-openapi.yml
+  type: openapi
+workflows:
+- workflowId: read-gatt-characteristic
+  summary: Walk from a paired BLE device down to a single GATT characteristic value.
+  description: >-
+    Lists paired Low Energy Bluetooth devices, then chains the discovered device
+    id, service uuid, and characteristic uuid through GATT service and
+    characteristic enumeration before reading the characteristic value.
+  inputs:
+    type: object
+    properties:
+      cacheMode:
+        type: string
+        description: Whether to read the characteristic from cache or the device.
+        enum:
+        - Cached
+        - Uncached
+        default: Uncached
+  steps:
+  - stepId: listDevices
+    description: >-
+      Enumerate paired Low Energy Bluetooth devices and capture the first
+      device id for the GATT traversal.
+    operationId: listBluetoothDevices
+    parameters:
+    - name: type
+      in: query
+      value: LowEnergy
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      deviceId: $response.body#/0/id
+      deviceName: $response.body#/0/name
+  - stepId: listServices
+    description: >-
+      List the GATT services exposed by the selected BLE device and capture the
+      first service uuid.
+    operationId: listGattServices
+    parameters:
+    - name: deviceId
+      in: path
+      value: $steps.listDevices.outputs.deviceId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      serviceId: $response.body#/0/uuid
+  - stepId: listCharacteristics
+    description: >-
+      List the characteristics of the first GATT service and capture the first
+      characteristic uuid.
+    operationId: listGattCharacteristics
+    parameters:
+    - name: deviceId
+      in: path
+      value: $steps.listDevices.outputs.deviceId
+    - name: serviceId
+      in: path
+      value: $steps.listServices.outputs.serviceId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      characteristicId: $response.body#/0/uuid
+      characteristicProperties: $response.body#/0/properties
+  - stepId: readValue
+    description: >-
+      Read the value of the first characteristic and capture the read status and
+      the base64-encoded value.
+    operationId: readGattCharacteristic
+    parameters:
+    - name: deviceId
+      in: path
+      value: $steps.listDevices.outputs.deviceId
+    - name: serviceId
+      in: path
+      value: $steps.listServices.outputs.serviceId
+    - name: characteristicId
+      in: path
+      value: $steps.listCharacteristics.outputs.characteristicId
+    - name: cacheMode
+      in: query
+      value: $inputs.cacheMode
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      readStatus: $response.body#/status
+      value: $response.body#/value
+  outputs:
+    deviceId: $steps.listDevices.outputs.deviceId
+    serviceId: $steps.listServices.outputs.serviceId
+    characteristicId: $steps.listCharacteristics.outputs.characteristicId
+    readStatus: $steps.readValue.outputs.readStatus
+    value: $steps.readValue.outputs.value

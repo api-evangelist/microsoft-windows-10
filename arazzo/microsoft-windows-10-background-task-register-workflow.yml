@@ -1,0 +1,118 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Windows 10 Register Background Task with Access
+  summary: Confirm background access, request it when unspecified, register a time-triggered background task, and read back its details.
+  description: >-
+    An access-aware background task registration flow built on the
+    Windows.ApplicationModel.Background namespace. The workflow checks the
+    application's BackgroundAccessStatus and branches: when access is already
+    granted it registers directly, and when access is Unspecified it requests
+    access first. It then registers a TimeTrigger task with an entry point and
+    conditions and reads back the registered task's details. Every step inlines
+    its request and documents the response status it keys on.
+  version: 1.0.0
+sourceDescriptions:
+- name: backgroundTasksApi
+  url: ../openapi/microsoft-windows-10-background-tasks-openapi.yml
+  type: openapi
+workflows:
+- workflowId: register-background-task
+  summary: Resolve background access then register and verify a time-triggered task.
+  description: >-
+    Checks background access status, requests access when unspecified, registers
+    a TimeTrigger background task, and reads back the registered task details.
+  inputs:
+    type: object
+    required:
+    - name
+    - entryPoint
+    - freshnessTime
+    properties:
+      name:
+        type: string
+        description: Unique name for the background task.
+      entryPoint:
+        type: string
+        description: Fully qualified class name implementing IBackgroundTask.
+      freshnessTime:
+        type: integer
+        description: TimeTrigger interval in minutes.
+      oneShot:
+        type: boolean
+        description: Whether the trigger fires only once.
+        default: false
+  steps:
+  - stepId: checkAccess
+    description: >-
+      Check the application's background access status. If access is already
+      granted, skip ahead to registration; otherwise request access.
+    operationId: getBackgroundAccessStatus
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      status: $response.body#/status
+    onSuccess:
+    - name: alreadyGranted
+      type: goto
+      stepId: registerTask
+      criteria:
+      - context: $response.body
+        condition: $.status == "AlwaysAllowed" || $.status == "AllowedSubjectToSystemPolicy"
+        type: jsonpath
+    - name: needsRequest
+      type: goto
+      stepId: requestAccess
+      criteria:
+      - context: $response.body
+        condition: $.status == "Unspecified"
+        type: jsonpath
+  - stepId: requestAccess
+    description: >-
+      Request background execution access when it was not already granted, and
+      capture the resulting status.
+    operationId: requestBackgroundAccess
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      status: $response.body#/status
+  - stepId: registerTask
+    description: >-
+      Register a TimeTrigger background task with the supplied entry point and an
+      InternetAvailable condition.
+    operationId: registerBackgroundTask
+    requestBody:
+      contentType: application/json
+      payload:
+        name: $inputs.name
+        entryPoint: $inputs.entryPoint
+        trigger:
+          type: TimeTrigger
+          freshnessTime: $inputs.freshnessTime
+          oneShot: $inputs.oneShot
+        conditions:
+        - InternetAvailable
+        isNetworkRequested: true
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      taskId: $response.body#/id
+      taskName: $response.body#/name
+  - stepId: getTask
+    description: >-
+      Read back the registered background task's details to confirm its trigger
+      and conditions.
+    operationId: getBackgroundTask
+    parameters:
+    - name: taskId
+      in: path
+      value: $steps.registerTask.outputs.taskId
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      entryPoint: $response.body#/entryPoint
+      conditions: $response.body#/conditions
+  outputs:
+    accessStatus: $steps.checkAccess.outputs.status
+    taskId: $steps.registerTask.outputs.taskId
+    taskName: $steps.registerTask.outputs.taskName
+    entryPoint: $steps.getTask.outputs.entryPoint

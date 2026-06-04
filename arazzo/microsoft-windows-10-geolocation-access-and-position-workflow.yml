@@ -1,0 +1,106 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Windows 10 Geolocation Access and Current Position
+  summary: Check location permission, request it when unspecified, and then read the device's current geographic position.
+  description: >-
+    A permission-aware geolocation flow built on the Windows.Devices.Geolocation
+    namespace. The workflow first checks the application's GeolocationAccessStatus
+    and branches: when access is already Allowed it reads the position directly,
+    and when access is Unspecified it prompts the user via a request before
+    reading. Each step inlines its request and documents the response status it
+    keys on so the flow can be executed without opening the OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: geolocationApi
+  url: ../openapi/microsoft-windows-10-geolocation-openapi.yml
+  type: openapi
+workflows:
+- workflowId: get-position-with-access
+  summary: Resolve geolocation access then read the current geographic position.
+  description: >-
+    Checks the current geolocation access status, requests access when it is
+    unspecified, and reads the current Geoposition with the requested accuracy.
+  inputs:
+    type: object
+    properties:
+      desiredAccuracy:
+        type: string
+        description: Desired position accuracy level.
+        enum:
+        - Default
+        - High
+        default: High
+      maximumAge:
+        type: integer
+        description: Maximum age of a cached position in seconds.
+        default: 30
+      timeout:
+        type: integer
+        description: Timeout in seconds for obtaining a position.
+        default: 10
+  steps:
+  - stepId: checkAccess
+    description: >-
+      Check the current geolocation access status. If it is already Allowed,
+      skip ahead to reading the position; otherwise request access.
+    operationId: getGeolocationAccess
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      status: $response.body#/status
+    onSuccess:
+    - name: alreadyAllowed
+      type: goto
+      stepId: getPosition
+      criteria:
+      - context: $response.body
+        condition: $.status == "Allowed"
+        type: jsonpath
+    - name: needsRequest
+      type: goto
+      stepId: requestAccess
+      criteria:
+      - context: $response.body
+        condition: $.status != "Allowed"
+        type: jsonpath
+  - stepId: requestAccess
+    description: >-
+      Prompt the user to grant location access when it was not already allowed,
+      and confirm the resulting access status.
+    operationId: requestGeolocationAccess
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.status == "Allowed"
+      type: jsonpath
+    outputs:
+      status: $response.body#/status
+  - stepId: getPosition
+    description: >-
+      Read the current geographic position once access is allowed, capturing the
+      coordinate, accuracy, timestamp, and position source.
+    operationId: getCurrentPosition
+    parameters:
+    - name: desiredAccuracy
+      in: query
+      value: $inputs.desiredAccuracy
+    - name: maximumAge
+      in: query
+      value: $inputs.maximumAge
+    - name: timeout
+      in: query
+      value: $inputs.timeout
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      latitude: $response.body#/coordinate/latitude
+      longitude: $response.body#/coordinate/longitude
+      accuracy: $response.body#/coordinate/accuracy
+      positionSource: $response.body#/coordinate/positionSource
+      timestamp: $response.body#/coordinate/timestamp
+  outputs:
+    accessStatus: $steps.checkAccess.outputs.status
+    latitude: $steps.getPosition.outputs.latitude
+    longitude: $steps.getPosition.outputs.longitude
+    accuracy: $steps.getPosition.outputs.accuracy
+    positionSource: $steps.getPosition.outputs.positionSource

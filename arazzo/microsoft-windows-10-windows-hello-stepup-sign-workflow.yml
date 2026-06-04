@@ -1,0 +1,103 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Windows 10 Windows Hello Step-Up Sign Challenge
+  summary: Verify the user with biometrics or PIN, open their key credential, and sign a server challenge for step-up authentication.
+  description: >-
+    A step-up authentication flow built on the Windows.Security.Credentials
+    namespace. Before a sensitive operation, the workflow prompts the user to
+    verify their identity with Windows Hello via UserConsentVerifier, branches on
+    the verification result, opens the existing key credential for the account,
+    and signs a server-supplied challenge with the credential's private key so
+    the server can verify the user. Every step inlines its request and documents
+    the status it keys on.
+  version: 1.0.0
+sourceDescriptions:
+- name: helloApi
+  url: ../openapi/microsoft-windows-10-hello-openapi.yml
+  type: openapi
+workflows:
+- workflowId: stepup-sign-challenge
+  summary: Verify the user then sign a challenge with their Windows Hello credential.
+  description: >-
+    Prompts the user for Windows Hello verification, and on a verified result
+    opens the account credential and signs the supplied challenge buffer.
+  inputs:
+    type: object
+    required:
+    - accountId
+    - challenge
+    properties:
+      accountId:
+        type: string
+        description: Account identifier whose credential signs the challenge.
+      challenge:
+        type: string
+        description: Base64-encoded challenge buffer to sign.
+      message:
+        type: string
+        description: Message shown to the user in the verification prompt.
+        default: Confirm your identity to continue.
+  steps:
+  - stepId: verifyUser
+    description: >-
+      Prompt the user to verify their identity with Windows Hello biometrics or
+      PIN, and only proceed when the result is Verified.
+    operationId: verifyUserConsent
+    requestBody:
+      contentType: application/json
+      payload:
+        message: $inputs.message
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.result == "Verified"
+      type: jsonpath
+    outputs:
+      result: $response.body#/result
+    onSuccess:
+    - name: verified
+      type: goto
+      stepId: openCredential
+      criteria:
+      - context: $response.body
+        condition: $.result == "Verified"
+        type: jsonpath
+  - stepId: openCredential
+    description: >-
+      Open the existing Windows Hello key credential for the account so it can be
+      used for signing.
+    operationId: openKeyCredential
+    parameters:
+    - name: accountId
+      in: path
+      value: $inputs.accountId
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.status == "Success"
+      type: jsonpath
+    outputs:
+      accountId: $response.body#/accountId
+      status: $response.body#/status
+  - stepId: signChallenge
+    description: >-
+      Sign the supplied challenge buffer with the credential's private key and
+      capture the signature for server-side verification.
+    operationId: signWithCredential
+    requestBody:
+      contentType: application/json
+      payload:
+        accountId: $steps.openCredential.outputs.accountId
+        challenge: $inputs.challenge
+    successCriteria:
+    - condition: $statusCode == 200
+    - context: $response.body
+      condition: $.status == "Success"
+      type: jsonpath
+    outputs:
+      status: $response.body#/status
+      signature: $response.body#/signature
+  outputs:
+    verificationResult: $steps.verifyUser.outputs.result
+    accountId: $steps.openCredential.outputs.accountId
+    signature: $steps.signChallenge.outputs.signature

@@ -529,6 +529,39 @@ apis:
   - type: NaftikoCapability
     url: capabilities/background-tasks-triggers.yaml
 common:
+- type: ArazzoWorkflows
+  url: arazzo/
+  workflows:
+  - url: arazzo/microsoft-windows-10-background-task-register-workflow.yml
+    name: Microsoft Windows 10 Register Background Task with Access
+    summary: Confirm background access, request it when unspecified, register a time-triggered background task, and read back its details.
+  - url: arazzo/microsoft-windows-10-bluetooth-le-read-characteristic-workflow.yml
+    name: Microsoft Windows 10 Bluetooth LE Read GATT Characteristic
+    summary: Discover a paired BLE device, drill into its GATT services and characteristics, and read a characteristic value.
+  - url: arazzo/microsoft-windows-10-geolocation-access-and-position-workflow.yml
+    name: Microsoft Windows 10 Geolocation Access and Current Position
+    summary: Check location permission, request it when unspecified, and then read the device's current geographic position.
+  - url: arazzo/microsoft-windows-10-geolocation-create-geofence-workflow.yml
+    name: Microsoft Windows 10 Create and Confirm Geofence
+    summary: Ensure location access, create a circular geofence, and confirm it appears among the active geofences.
+  - url: arazzo/microsoft-windows-10-media-capture-photo-workflow.yml
+    name: Microsoft Windows 10 Media Capture Photo
+    summary: Pick a camera, initialize a capture session, start the preview, and capture a photo to a file.
+  - url: arazzo/microsoft-windows-10-ml-load-and-evaluate-workflow.yml
+    name: Microsoft Windows 10 Windows ML Load and Evaluate Model
+    summary: Load an ONNX model, create a hardware-accelerated evaluation session, and run an inference against bound inputs.
+  - url: arazzo/microsoft-windows-10-notifications-schedule-toast-workflow.yml
+    name: Microsoft Windows 10 Schedule Grouped Toast Notification
+    summary: Create a toast notification collection, schedule a future toast, and confirm it appears in the pending list.
+  - url: arazzo/microsoft-windows-10-storage-read-and-update-file-workflow.yml
+    name: Microsoft Windows 10 Storage Read and Update File
+    summary: List files in a known folder, inspect the first file, read its text content, and write updated content back.
+  - url: arazzo/microsoft-windows-10-windows-hello-enroll-credential-workflow.yml
+    name: Microsoft Windows 10 Windows Hello Enroll Key Credential
+    summary: Confirm Windows Hello is available, create a passwordless key credential, and retrieve its TPM attestation for server registration.
+  - url: arazzo/microsoft-windows-10-windows-hello-stepup-sign-workflow.yml
+    name: Microsoft Windows 10 Windows Hello Step-Up Sign Challenge
+    summary: Verify the user with biometrics or PIN, open their key credential, and sign a server challenge for step-up authentication.
 - type: Portal
   url: https://developer.microsoft.com/en-us/windows/
 - type: Documentation

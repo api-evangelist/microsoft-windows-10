@@ -1,0 +1,107 @@
+arazzo: 1.0.1
+info:
+  title: Microsoft Windows 10 Media Capture Photo
+  summary: Pick a camera, initialize a capture session, start the preview, and capture a photo to a file.
+  description: >-
+    A camera capture flow built on the Windows.Media.Capture namespace. The
+    workflow enumerates VideoCapture devices, selects the first camera,
+    initializes a MediaCapture session for it, starts the preview stream, and
+    captures a photo to the supplied output path with the chosen encoding. Every
+    step inlines its request and documents the response status it keys on so the
+    flow can be executed without opening the OpenAPI description.
+  version: 1.0.0
+sourceDescriptions:
+- name: mediaCaptureApi
+  url: ../openapi/microsoft-windows-10-media-capture-openapi.yml
+  type: openapi
+workflows:
+- workflowId: capture-photo
+  summary: Initialize a camera session and capture a photo to a file.
+  description: >-
+    Selects the first video capture device, initializes a capture session,
+    starts the preview, and captures a photo to the requested output path.
+  inputs:
+    type: object
+    required:
+    - outputPath
+    properties:
+      outputPath:
+        type: string
+        description: File path the captured photo is written to.
+      encodingFormat:
+        type: string
+        description: Image encoding format for the captured photo.
+        enum:
+        - Jpeg
+        - Png
+        - Bmp
+        - Tiff
+        default: Jpeg
+  steps:
+  - stepId: listCameras
+    description: >-
+      Enumerate available video capture devices and capture the first camera's
+      device id.
+    operationId: listCaptureDevices
+    parameters:
+    - name: deviceClass
+      in: query
+      value: VideoCapture
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      videoDeviceId: $response.body#/0/id
+      cameraName: $response.body#/0/name
+  - stepId: initializeSession
+    description: >-
+      Initialize a video-only MediaCapture session bound to the selected camera.
+    operationId: initializeMediaCapture
+    requestBody:
+      contentType: application/json
+      payload:
+        videoDeviceId: $steps.listCameras.outputs.videoDeviceId
+        streamingCaptureMode: Video
+        sharingMode: ExclusiveControl
+        photoCaptureSource: Auto
+    successCriteria:
+    - condition: $statusCode == 201
+    outputs:
+      sessionId: $response.body#/id
+      state: $response.body#/state
+  - stepId: startPreview
+    description: >-
+      Start the camera preview stream for the initialized session before
+      capturing.
+    operationId: startPreview
+    parameters:
+    - name: sessionId
+      in: path
+      value: $steps.initializeSession.outputs.sessionId
+    successCriteria:
+    - condition: $statusCode == 200
+  - stepId: capturePhoto
+    description: >-
+      Capture a photo to the supplied output path and capture the resulting file
+      path and dimensions.
+    operationId: capturePhoto
+    parameters:
+    - name: sessionId
+      in: path
+      value: $steps.initializeSession.outputs.sessionId
+    requestBody:
+      contentType: application/json
+      payload:
+        encodingFormat: $inputs.encodingFormat
+        outputPath: $inputs.outputPath
+    successCriteria:
+    - condition: $statusCode == 200
+    outputs:
+      filePath: $response.body#/filePath
+      width: $response.body#/width
+      height: $response.body#/height
+      sizeInBytes: $response.body#/sizeInBytes
+  outputs:
+    sessionId: $steps.initializeSession.outputs.sessionId
+    filePath: $steps.capturePhoto.outputs.filePath
+    width: $steps.capturePhoto.outputs.width
+    height: $steps.capturePhoto.outputs.height
