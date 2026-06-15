@@ -1,0 +1,1249 @@
+{
+  "item": [
+    {
+      "id": "9c93853d-505f-4e16-9c76-d2fc1b304e5d",
+      "name": "BLE Scanning",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9b4b69c3-4230-43d8-8f90-e05267fa729f",
+          "name": "Microsoft Windows 10 Start BLE advertisement scanning",
+          "request": {
+            "name": "Microsoft Windows 10 Start BLE advertisement scanning",
+            "description": {
+              "content": "Starts scanning for BLE advertisements using BluetoothLEAdvertisementWatcher. Discovers nearby BLE devices that are broadcasting advertisement packets. Supports filtering by service UUID, manufacturer data, and signal strength.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bluetooth",
+                "le",
+                "scan"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"scanningMode\": \"Active\",\n  \"serviceUuidFilter\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"signalStrengthFilter\": {\n    \"inRangeThresholdInDBm\": \"<integer>\",\n    \"outOfRangeThresholdInDBm\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0b5526be-42f2-4102-9b44-b9de2732c56d",
+              "name": "Scan started",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bluetooth",
+                    "le",
+                    "scan"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"scanningMode\": \"Active\",\n  \"serviceUuidFilter\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"signalStrengthFilter\": {\n    \"inRangeThresholdInDBm\": \"<integer>\",\n    \"outOfRangeThresholdInDBm\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"Started\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e0a38ba0-7ea8-43e4-810a-b3bc724a002a",
+      "name": "Devices",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3e5dcfbb-a6a0-46c8-8b2f-63f796a666aa",
+          "name": "Microsoft Windows 10 List paired Bluetooth devices",
+          "request": {
+            "name": "Microsoft Windows 10 List paired Bluetooth devices",
+            "description": {
+              "content": "Enumerates paired Bluetooth devices using DeviceInformation.FindAllAsync with the BluetoothDevice or BluetoothLEDevice selector. Returns device information including name, address, connection status, and services.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bluetooth",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "All",
+                  "description": "Filter by Bluetooth type"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "67724e44-35a4-46dd-b10e-cb43adf7801b",
+              "name": "Successful retrieval of Bluetooth devices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bluetooth",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "All"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"bluetoothAddress\": \"string\",\n    \"type\": \"Classic\",\n    \"connectionStatus\": \"Disconnected\",\n    \"isPaired\": false\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"bluetoothAddress\": \"string\",\n    \"type\": \"Classic\",\n    \"connectionStatus\": \"Connected\",\n    \"isPaired\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b887555c-d692-41a3-a7fc-23bdfc30f0fa",
+          "name": "Microsoft Windows 10 Get Bluetooth device details",
+          "request": {
+            "name": "Microsoft Windows 10 Get Bluetooth device details",
+            "description": {
+              "content": "Retrieves detailed information about a Bluetooth device using BluetoothDevice.FromIdAsync or BluetoothLEDevice.FromIdAsync. Includes connection status, paired status, and available services.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bluetooth",
+                "devices",
+                ":deviceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) Bluetooth device identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5c004b44-23b6-4b25-b174-f3d078b3a2bb",
+              "name": "Successful retrieval of device details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bluetooth",
+                    "devices",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) Bluetooth device identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"bluetoothAddress\": \"string\",\n  \"type\": \"string\",\n  \"connectionStatus\": \"string\",\n  \"isPaired\": false,\n  \"classOfDevice\": {\n    \"majorClass\": \"string\",\n    \"minorClass\": \"string\"\n  },\n  \"appearance\": {\n    \"category\": \"string\",\n    \"subCategory\": \"string\"\n  },\n  \"serviceUuids\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f24456eb-82cc-4ef2-b67f-cfbf731337a4",
+              "name": "Device not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bluetooth",
+                    "devices",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) Bluetooth device identifier"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e8a4111c-5d39-4f8b-92e6-ec660f07dca3",
+      "name": "GATT Characteristics",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cef309d5-8cb5-433a-b87e-a4103f3137c1",
+          "name": "Microsoft Windows 10 List GATT characteristics",
+          "request": {
+            "name": "Microsoft Windows 10 List GATT characteristics",
+            "description": {
+              "content": "Retrieves the characteristics of a GATT service using GattDeviceService.GetCharacteristicsAsync. Characteristics contain the actual data values and support read, write, notify, and indicate operations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bluetooth",
+                "le",
+                "devices",
+                ":deviceId",
+                "services",
+                ":serviceId",
+                "characteristics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) BLE device identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "serviceId",
+                  "description": "(Required) GATT service UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "818a8426-ec7c-4bf1-be1e-cb0233cba871",
+              "name": "Successful retrieval of characteristics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bluetooth",
+                    "le",
+                    "devices",
+                    ":deviceId",
+                    "services",
+                    ":serviceId",
+                    "characteristics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) BLE device identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) GATT service UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"uuid\": \"string\",\n    \"name\": \"string\",\n    \"properties\": [\n      \"Read\",\n      \"SignedWrite\"\n    ],\n    \"protectionLevel\": \"Plain\"\n  },\n  {\n    \"uuid\": \"string\",\n    \"name\": \"string\",\n    \"properties\": [\n      \"Read\",\n      \"Write\"\n    ],\n    \"protectionLevel\": \"EncryptionAndAuthenticationRequired\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "edad131e-919c-4597-b5d6-af743ac5cbc3",
+              "name": "Service not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bluetooth",
+                    "le",
+                    "devices",
+                    ":deviceId",
+                    "services",
+                    ":serviceId",
+                    "characteristics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) BLE device identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) GATT service UUID"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "847385bc-7cfe-4e47-bbdb-1e675285e950",
+      "name": "GATT Operations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "710128e7-1246-42e8-a2d8-39b401665203",
+          "name": "Microsoft Windows 10 Read a GATT characteristic value",
+          "request": {
+            "name": "Microsoft Windows 10 Read a GATT characteristic value",
+            "description": {
+              "content": "Reads the value of a GATT characteristic using GattCharacteristic.ReadValueAsync. Returns the raw byte data and the communication status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bluetooth",
+                "le",
+                "devices",
+                ":deviceId",
+                "services",
+                ":serviceId",
+                "characteristics",
+                ":characteristicId",
+                "value"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cacheMode",
+                  "value": "Uncached"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "serviceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "characteristicId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "593e791d-8071-48c9-af21-9efed1aa325a",
+              "name": "Characteristic value read",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bluetooth",
+                    "le",
+                    "devices",
+                    ":deviceId",
+                    "services",
+                    ":serviceId",
+                    "characteristics",
+                    ":characteristicId",
+                    "value"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cacheMode",
+                      "value": "Uncached"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "characteristicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"Success\",\n  \"value\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b85579e4-b680-4b42-8b1b-808c097eda0f",
+              "name": "Characteristic not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bluetooth",
+                    "le",
+                    "devices",
+                    ":deviceId",
+                    "services",
+                    ":serviceId",
+                    "characteristics",
+                    ":characteristicId",
+                    "value"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cacheMode",
+                      "value": "Uncached"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "characteristicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "092b7b52-9f97-410e-9075-2137e863c863",
+          "name": "Microsoft Windows 10 Write a GATT characteristic value",
+          "request": {
+            "name": "Microsoft Windows 10 Write a GATT characteristic value",
+            "description": {
+              "content": "Writes a value to a GATT characteristic using GattCharacteristic.WriteValueAsync or WriteValueWithResultAsync. Supports WriteWithResponse and WriteWithoutResponse options.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bluetooth",
+                "le",
+                "devices",
+                ":deviceId",
+                "services",
+                ":serviceId",
+                "characteristics",
+                ":characteristicId",
+                "value"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "serviceId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "characteristicId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"value\": \"<byte>\",\n  \"writeOption\": \"WriteWithResponse\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2c3c5856-7f68-4c5e-8a5c-1675a23ddea3",
+              "name": "Value written successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bluetooth",
+                    "le",
+                    "devices",
+                    ":deviceId",
+                    "services",
+                    ":serviceId",
+                    "characteristics",
+                    ":characteristicId",
+                    "value"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "characteristicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"<byte>\",\n  \"writeOption\": \"WriteWithResponse\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"ProtocolError\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0efff4fe-b052-4a5c-b550-dc2443699f3a",
+              "name": "Characteristic not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bluetooth",
+                    "le",
+                    "devices",
+                    ":deviceId",
+                    "services",
+                    ":serviceId",
+                    "characteristics",
+                    ":characteristicId",
+                    "value"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "characteristicId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"value\": \"<byte>\",\n  \"writeOption\": \"WriteWithResponse\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9a2fc0cd-f4b2-455d-b097-896bfc8f1774",
+      "name": "GATT Services",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5d4a21e3-4ae0-4747-8548-a8addbecc3b6",
+          "name": "Microsoft Windows 10 List GATT services",
+          "request": {
+            "name": "Microsoft Windows 10 List GATT services",
+            "description": {
+              "content": "Retrieves the list of GATT services on a BLE device using BluetoothLEDevice.GetGattServicesAsync. Each service contains characteristics and descriptors that define the device's capabilities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bluetooth",
+                "le",
+                "devices",
+                ":deviceId",
+                "services"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) BLE device identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0c4cf448-8d64-4fae-9a83-8525ae932f71",
+              "name": "Successful retrieval of GATT services",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bluetooth",
+                    "le",
+                    "devices",
+                    ":deviceId",
+                    "services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) BLE device identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"uuid\": \"string\",\n    \"name\": \"string\",\n    \"characteristicCount\": 2652\n  },\n  {\n    \"uuid\": \"string\",\n    \"name\": \"string\",\n    \"characteristicCount\": 501\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "49fbfd5c-ae66-4f0a-a61c-b0be975fd339",
+              "name": "Device not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bluetooth",
+                    "le",
+                    "devices",
+                    ":deviceId",
+                    "services"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) BLE device identifier"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "014153d1-dd68-46de-8080-b2e49f620d25",
+      "name": "RFCOMM",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "72cef4b9-8ae5-41b1-982b-8a506af67191",
+          "name": "Microsoft Windows 10 Create an RFCOMM connection",
+          "request": {
+            "name": "Microsoft Windows 10 Create an RFCOMM connection",
+            "description": {
+              "content": "Establishes a Bluetooth Classic RFCOMM connection to a device using RfcommDeviceService. RFCOMM provides a stream-based connection similar to TCP sockets for serial port emulation.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bluetooth",
+                "rfcomm",
+                "connections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"deviceId\": \"<string>\",\n  \"serviceId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "da81d185-37ae-4800-8dd7-b7750195d99c",
+              "name": "RFCOMM connection established",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bluetooth",
+                    "rfcomm",
+                    "connections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deviceId\": \"<string>\",\n  \"serviceId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"deviceId\": \"string\",\n  \"serviceId\": \"string\",\n  \"maxMessageSize\": 5795\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "48f7fcf6-6d4d-4726-ba1e-b19702cfcc0f",
+              "name": "Connection failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bluetooth",
+                    "rfcomm",
+                    "connections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"deviceId\": \"<string>\",\n  \"serviceId\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2790a89e-5b49-42ce-bd45-ed9db4a50162",
+    "name": "Microsoft Windows 10 Windows Bluetooth API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for Bluetooth communication in Windows applications, based on the Windows.Devices.Bluetooth namespace. Supports Bluetooth Classic (RFCOMM) for stream-based communication and Bluetooth Low Energy (GATT) for attribute-based communication with BLE peripherals. Key classes include BluetoothDevice, BluetoothLEDevice, RfcommDeviceService, GattDeviceService, GattCharacteristic, and BluetoothLEAdvertisementWatcher.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

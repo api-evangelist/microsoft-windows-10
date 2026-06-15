@@ -1,0 +1,664 @@
+{
+  "info": {
+    "_postman_id": "d8949952-53c4-4bae-8a8b-6d3588826529",
+    "name": "Microsoft Windows 10 Win32 API",
+    "description": "Core Windows API for building traditional desktop applications using C and C++. Win32 provides direct access to system-level functionality including window management, graphics, networking, and hardware. This specification models the major Win32 API categories including User Interface, System Services, Graphics, Networking, Security, and Devices.\n\nContact Support:\n Name: Microsoft Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:12:22.000Z",
+    "updatedAt": "2026-06-05T15:12:23.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d8949952-53c4-4bae-8a8b-6d3588826529"
+  },
+  "item": [
+    {
+      "name": "win32",
+      "item": [
+        {
+          "name": "api-categories",
+          "item": [
+            {
+              "name": "{categoryId}",
+              "item": [
+                {
+                  "name": "functions",
+                  "item": [
+                    {
+                      "name": "Microsoft Windows 10 List functions in a category",
+                      "id": "33cf65dc-123b-40c3-bb73-81f016439ebe",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/win32/api-categories/:categoryId/functions?dll=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "win32",
+                            "api-categories",
+                            ":categoryId",
+                            "functions"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by DLL name (e.g., kernel32.dll, user32.dll)",
+                              "key": "dll",
+                              "value": "<string>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "dc10fd37-acd1-4e8c-be47-d49ca3fdf6bb",
+                              "key": "categoryId",
+                              "value": "<string>",
+                              "description": "(Required) The API category identifier"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves the list of Win32 API functions within a specified category. Each function includes its DLL, parameters, return type, and minimum supported version information."
+                      },
+                      "response": [
+                        {
+                          "id": "5d586b10-7463-4dd7-ac02-6641a35b68c5",
+                          "name": "Successful retrieval of functions",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/win32/api-categories/:categoryId/functions?dll=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "win32",
+                                "api-categories",
+                                ":categoryId",
+                                "functions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter by DLL name (e.g., kernel32.dll, user32.dll)",
+                                  "key": "dll",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "categoryId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"name\": \"<string>\",\n    \"dll\": \"<string>\",\n    \"header\": \"<string>\",\n    \"category\": \"<string>\",\n    \"description\": \"<string>\",\n    \"minClientVersion\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"dll\": \"<string>\",\n    \"header\": \"<string>\",\n    \"category\": \"<string>\",\n    \"description\": \"<string>\",\n    \"minClientVersion\": \"<string>\"\n  }\n]",
+                          "createdAt": "2026-06-05T15:12:23.000Z",
+                          "updatedAt": "2026-06-05T15:12:23.000Z",
+                          "uid": "35240-5d586b10-7463-4dd7-ac02-6641a35b68c5"
+                        },
+                        {
+                          "id": "498e24b9-d4f8-45b6-ae19-64936924f7b9",
+                          "name": "Category not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/win32/api-categories/:categoryId/functions?dll=<string>",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "win32",
+                                "api-categories",
+                                ":categoryId",
+                                "functions"
+                              ],
+                              "query": [
+                                {
+                                  "description": "Filter by DLL name (e.g., kernel32.dll, user32.dll)",
+                                  "key": "dll",
+                                  "value": "<string>"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "categoryId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:12:23.000Z",
+                          "updatedAt": "2026-06-05T15:12:23.000Z",
+                          "uid": "35240-498e24b9-d4f8-45b6-ae19-64936924f7b9"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:12:23.000Z",
+                      "updatedAt": "2026-06-05T15:12:23.000Z",
+                      "uid": "35240-33cf65dc-123b-40c3-bb73-81f016439ebe"
+                    }
+                  ],
+                  "id": "d959153a-cbf8-4c0e-9144-c6c5fd68b1e1",
+                  "createdAt": "2026-06-05T15:12:23.000Z",
+                  "updatedAt": "2026-06-05T15:12:23.000Z",
+                  "uid": "35240-d959153a-cbf8-4c0e-9144-c6c5fd68b1e1"
+                }
+              ],
+              "id": "6130da7e-f3cc-48b3-94d0-7169aa58d686",
+              "createdAt": "2026-06-05T15:12:23.000Z",
+              "updatedAt": "2026-06-05T15:12:23.000Z",
+              "uid": "35240-6130da7e-f3cc-48b3-94d0-7169aa58d686"
+            },
+            {
+              "name": "Microsoft Windows 10 List Win32 API categories",
+              "id": "982aa870-a757-446d-b3c0-2fad387e0649",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/win32/api-categories",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "win32",
+                    "api-categories"
+                  ]
+                },
+                "description": "Retrieves the list of major Win32 API categories including User Interface, Windows Environment (Shell), User Input and Messaging, Data Access and Storage, Diagnostics, Graphics and Multimedia, Devices, System Services, Security and Identity, Networking and Internet, and System Administration."
+              },
+              "response": [
+                {
+                  "id": "f9217e71-642e-46aa-ae7c-11c5e3080373",
+                  "name": "Successful retrieval of API categories",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/win32/api-categories",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "win32",
+                        "api-categories"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"subcategories\": [\n      {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"referenceUrl\": \"<uri>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"referenceUrl\": \"<uri>\"\n      }\n    ],\n    \"functionCount\": \"<integer>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"subcategories\": [\n      {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"referenceUrl\": \"<uri>\"\n      },\n      {\n        \"name\": \"<string>\",\n        \"description\": \"<string>\",\n        \"referenceUrl\": \"<uri>\"\n      }\n    ],\n    \"functionCount\": \"<integer>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:12:23.000Z",
+                  "updatedAt": "2026-06-05T15:12:23.000Z",
+                  "uid": "35240-f9217e71-642e-46aa-ae7c-11c5e3080373"
+                },
+                {
+                  "id": "506ba069-547b-4a73-8e2d-924be2d7db71",
+                  "name": "Unauthorized",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/win32/api-categories",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "win32",
+                        "api-categories"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:12:23.000Z",
+                  "updatedAt": "2026-06-05T15:12:23.000Z",
+                  "uid": "35240-506ba069-547b-4a73-8e2d-924be2d7db71"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:23.000Z",
+              "updatedAt": "2026-06-05T15:12:23.000Z",
+              "uid": "35240-982aa870-a757-446d-b3c0-2fad387e0649"
+            }
+          ],
+          "id": "cf944e37-bc6b-422c-9598-42fbd6378318",
+          "createdAt": "2026-06-05T15:12:23.000Z",
+          "updatedAt": "2026-06-05T15:12:23.000Z",
+          "uid": "35240-cf944e37-bc6b-422c-9598-42fbd6378318"
+        },
+        {
+          "name": "functions",
+          "item": [
+            {
+              "name": "{functionName}",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Get Win32 function details",
+                  "id": "48f4fc29-5da5-420c-8650-163e65de2957",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/win32/functions/:functionName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "win32",
+                        "functions",
+                        ":functionName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "231a5e29-2976-4912-8d36-83b76f0658a7",
+                          "key": "functionName",
+                          "value": "<string>",
+                          "description": "(Required) The function name (e.g., CreateWindowExW, SendMessage)"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves detailed information about a specific Win32 function including its syntax, parameters, return value, remarks, requirements (minimum supported client/server, header, library, DLL), and related functions."
+                  },
+                  "response": [
+                    {
+                      "id": "9f71a69a-9802-4657-a4b9-d1a19ecc94d6",
+                      "name": "Successful retrieval of function details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/win32/functions/:functionName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "win32",
+                            "functions",
+                            ":functionName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "functionName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"name\": \"<string>\",\n  \"syntax\": \"<string>\",\n  \"parameters\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"direction\": \"inout\",\n      \"description\": \"<string>\",\n      \"optional\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"direction\": \"inout\",\n      \"description\": \"<string>\",\n      \"optional\": \"<boolean>\"\n    }\n  ],\n  \"returnValue\": {\n    \"type\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  \"remarks\": \"<string>\",\n  \"requirements\": {\n    \"minimumSupportedClient\": \"<string>\",\n    \"minimumSupportedServer\": \"<string>\",\n    \"header\": \"<string>\",\n    \"library\": \"<string>\",\n    \"dll\": \"<string>\"\n  },\n  \"relatedFunctions\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:12:23.000Z",
+                      "updatedAt": "2026-06-05T15:12:23.000Z",
+                      "uid": "35240-9f71a69a-9802-4657-a4b9-d1a19ecc94d6"
+                    },
+                    {
+                      "id": "5ee62b6f-ca84-461e-96c0-f4d46670020b",
+                      "name": "Function not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/win32/functions/:functionName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "win32",
+                            "functions",
+                            ":functionName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "functionName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:23.000Z",
+                      "updatedAt": "2026-06-05T15:12:23.000Z",
+                      "uid": "35240-5ee62b6f-ca84-461e-96c0-f4d46670020b"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:23.000Z",
+                  "updatedAt": "2026-06-05T15:12:23.000Z",
+                  "uid": "35240-48f4fc29-5da5-420c-8650-163e65de2957"
+                }
+              ],
+              "id": "c08b91c7-8970-4957-9bd6-57da148546d2",
+              "createdAt": "2026-06-05T15:12:23.000Z",
+              "updatedAt": "2026-06-05T15:12:23.000Z",
+              "uid": "35240-c08b91c7-8970-4957-9bd6-57da148546d2"
+            }
+          ],
+          "id": "8b7b1106-1aba-4963-819f-68131f839950",
+          "createdAt": "2026-06-05T15:12:23.000Z",
+          "updatedAt": "2026-06-05T15:12:23.000Z",
+          "uid": "35240-8b7b1106-1aba-4963-819f-68131f839950"
+        },
+        {
+          "name": "structures",
+          "item": [
+            {
+              "name": "{structureName}",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Get Win32 structure definition",
+                  "id": "910339ed-2d3a-4ac0-9ae5-4de64508745e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/win32/structures/:structureName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "win32",
+                        "structures",
+                        ":structureName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "4e27437c-94a9-453e-baef-5169d72d7c78",
+                          "key": "structureName",
+                          "value": "<string>",
+                          "description": "(Required) The structure name (e.g., WNDCLASSEXW, MSG, RECT)"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves the definition of a Win32 data structure, including its fields, sizes, alignment requirements, and associated API functions."
+                  },
+                  "response": [
+                    {
+                      "id": "a7fdef38-2406-4c85-862f-4478155da1b4",
+                      "name": "Successful retrieval of structure definition",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/win32/structures/:structureName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "win32",
+                            "structures",
+                            ":structureName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "structureName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"name\": \"<string>\",\n  \"fields\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"sizeInBytes\": \"<integer>\",\n  \"header\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:12:23.000Z",
+                      "updatedAt": "2026-06-05T15:12:23.000Z",
+                      "uid": "35240-a7fdef38-2406-4c85-862f-4478155da1b4"
+                    },
+                    {
+                      "id": "94bbc590-f8c0-42ca-92d8-5e14e3ef5c6e",
+                      "name": "Structure not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/win32/structures/:structureName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "win32",
+                            "structures",
+                            ":structureName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "structureName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:23.000Z",
+                      "updatedAt": "2026-06-05T15:12:23.000Z",
+                      "uid": "35240-94bbc590-f8c0-42ca-92d8-5e14e3ef5c6e"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:23.000Z",
+                  "updatedAt": "2026-06-05T15:12:23.000Z",
+                  "uid": "35240-910339ed-2d3a-4ac0-9ae5-4de64508745e"
+                }
+              ],
+              "id": "70056b68-f4e2-422d-ad49-1030f241cb53",
+              "createdAt": "2026-06-05T15:12:23.000Z",
+              "updatedAt": "2026-06-05T15:12:23.000Z",
+              "uid": "35240-70056b68-f4e2-422d-ad49-1030f241cb53"
+            }
+          ],
+          "id": "84bd26d2-c9c7-473f-b00e-61a18cf0e260",
+          "createdAt": "2026-06-05T15:12:23.000Z",
+          "updatedAt": "2026-06-05T15:12:23.000Z",
+          "uid": "35240-84bd26d2-c9c7-473f-b00e-61a18cf0e260"
+        },
+        {
+          "name": "messages",
+          "item": [
+            {
+              "name": "Microsoft Windows 10 List window messages",
+              "id": "d077b8f6-be36-48e1-8e8b-cf241e45366f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/win32/messages?prefix=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "win32",
+                    "messages"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter messages by prefix (e.g., WM_, BM_, CB_)",
+                      "key": "prefix",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieves the list of Win32 window messages (WM_*) used for inter-window communication. Includes system-defined messages for window management, user input, and application-defined messages."
+              },
+              "response": [
+                {
+                  "id": "2d48a828-2669-41c1-b4e7-82a5f6736e5f",
+                  "name": "Successful retrieval of messages",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/win32/messages?prefix=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "win32",
+                        "messages"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter messages by prefix (e.g., WM_, BM_, CB_)",
+                          "key": "prefix",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"name\": \"<string>\",\n    \"value\": \"<string>\",\n    \"description\": \"<string>\",\n    \"wParam\": \"<string>\",\n    \"lParam\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"value\": \"<string>\",\n    \"description\": \"<string>\",\n    \"wParam\": \"<string>\",\n    \"lParam\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:12:23.000Z",
+                  "updatedAt": "2026-06-05T15:12:23.000Z",
+                  "uid": "35240-2d48a828-2669-41c1-b4e7-82a5f6736e5f"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:23.000Z",
+              "updatedAt": "2026-06-05T15:12:23.000Z",
+              "uid": "35240-d077b8f6-be36-48e1-8e8b-cf241e45366f"
+            }
+          ],
+          "id": "2e366cdb-48a2-49e8-abb0-18aecb3ee683",
+          "createdAt": "2026-06-05T15:12:23.000Z",
+          "updatedAt": "2026-06-05T15:12:23.000Z",
+          "uid": "35240-2e366cdb-48a2-49e8-abb0-18aecb3ee683"
+        }
+      ],
+      "id": "c9fecabf-d761-4197-acb5-795e2a8599dc",
+      "createdAt": "2026-06-05T15:12:23.000Z",
+      "updatedAt": "2026-06-05T15:12:23.000Z",
+      "uid": "35240-c9fecabf-d761-4197-acb5-795e2a8599dc"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.windows.com"
+    }
+  ]
+}

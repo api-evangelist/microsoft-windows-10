@@ -1,0 +1,135 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Win32 API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "API Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List Win32 API categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/win32/api-categories"
+          },
+          "docs": "Retrieves the list of major Win32 API categories including User Interface, Windows Environment (Shell), User Input and Messaging, Data Access and Storage, Diagnostics, Graphics and Multimedia, Devices, System Services, Security and Identity, Networking and Internet, and System Administration."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Functions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List functions in a category",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/win32/api-categories/:categoryId/functions",
+            "params": [
+              {
+                "name": "categoryId",
+                "value": "",
+                "type": "path",
+                "description": "The API category identifier"
+              },
+              {
+                "name": "dll",
+                "value": "",
+                "type": "query",
+                "description": "Filter by DLL name (e.g., kernel32.dll, user32.dll)"
+              }
+            ]
+          },
+          "docs": "Retrieves the list of Win32 API functions within a specified category. Each function includes its DLL, parameters, return type, and minimum supported version information."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get Win32 function details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/win32/functions/:functionName",
+            "params": [
+              {
+                "name": "functionName",
+                "value": "",
+                "type": "path",
+                "description": "The function name (e.g., CreateWindowExW, SendMessage)"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a specific Win32 function including its syntax, parameters, return value, remarks, requirements (minimum supported client/server, header, library, DLL), and related functions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Structures",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get Win32 structure definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/win32/structures/:structureName",
+            "params": [
+              {
+                "name": "structureName",
+                "value": "",
+                "type": "path",
+                "description": "The structure name (e.g., WNDCLASSEXW, MSG, RECT)"
+              }
+            ]
+          },
+          "docs": "Retrieves the definition of a Win32 data structure, including its fields, sizes, alignment requirements, and associated API functions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Messages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List window messages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/win32/messages",
+            "params": [
+              {
+                "name": "prefix",
+                "value": "",
+                "type": "query",
+                "description": "Filter messages by prefix (e.g., WM_, BM_, CB_)"
+              }
+            ]
+          },
+          "docs": "Retrieves the list of Win32 window messages (WM_*) used for inter-window communication. Includes system-defined messages for window management, user input, and application-defined messages."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

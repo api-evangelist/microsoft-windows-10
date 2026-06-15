@@ -1,0 +1,155 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Hello Authentication API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Availability",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Check Windows Hello availability",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/hello/availability"
+          },
+          "docs": "Checks whether Windows Hello is available on the device using KeyCredentialManager.IsSupportedAsync. Returns whether the device supports biometric or PIN-based authentication through Windows Hello."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Credentials",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a Windows Hello key credential",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/hello/credentials",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new key credential for Windows Hello authentication using KeyCredentialManager.RequestCreateAsync. Generates a public/private key pair where the private key is stored securely on the device (in TPM if available) and the public key is returned for server registration."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Open an existing key credential",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/hello/credentials/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "The account identifier for the credential"
+              }
+            ]
+          },
+          "docs": "Opens an existing Windows Hello key credential using KeyCredentialManager.OpenAsync. Returns the credential if it exists, allowing the application to use it for signing operations."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Delete a key credential",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.windows.com/hello/credentials/:accountId",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "path",
+                "description": "The account identifier for the credential"
+              }
+            ]
+          },
+          "docs": "Deletes a Windows Hello key credential using KeyCredentialManager.DeleteAsync. Removes the key pair from the device."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Sign data with a Windows Hello credential",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/hello/sign",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Signs a challenge buffer using the Windows Hello credential's private key via KeyCredential.RequestSignAsync. The user is prompted for biometric or PIN verification before the signing operation proceeds. Returns the signed data for server-side verification."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Verify user identity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/hello/verify-user",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Prompts the user to verify their identity using Windows Hello biometrics or PIN via UserConsentVerifier.RequestVerificationAsync. Returns whether the verification succeeded. This can be used for step-up authentication before sensitive operations."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Attestation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get key attestation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/hello/attestation",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "query",
+                "description": "Account identifier for the credential"
+              }
+            ]
+          },
+          "docs": "Retrieves attestation information for a Windows Hello key credential using KeyCredential.GetAttestationAsync. Returns a KeyCredentialAttestationResult with an attestation buffer and certificate chain that can be sent to a server to verify the key was generated in a secure environment (TPM)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

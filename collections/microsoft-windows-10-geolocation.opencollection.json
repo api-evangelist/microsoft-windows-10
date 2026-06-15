@@ -1,0 +1,166 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Geolocation API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Access",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Check geolocation access status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/geolocation/access"
+          },
+          "docs": "Checks the application's permission to access location data using Geolocator.RequestAccessAsync. Returns the current GeolocationAccessStatus indicating whether access is allowed, denied, or unspecified."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Request geolocation access",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/geolocation/access"
+          },
+          "docs": "Requests permission to access the device's location using Geolocator.RequestAccessAsync. Prompts the user to grant or deny location access if not previously configured."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Position",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get current geographic position",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/geolocation/position",
+            "params": [
+              {
+                "name": "desiredAccuracy",
+                "value": "",
+                "type": "query",
+                "description": "Desired position accuracy level"
+              },
+              {
+                "name": "maximumAge",
+                "value": "",
+                "type": "query",
+                "description": "Maximum age of cached position in seconds"
+              },
+              {
+                "name": "timeout",
+                "value": "",
+                "type": "query",
+                "description": "Timeout in seconds for obtaining a position"
+              }
+            ]
+          },
+          "docs": "Retrieves the current geographic position using Geolocator.GetGeopositionAsync. Returns a Geoposition containing a Geocoordinate with latitude, longitude, altitude, accuracy, heading, speed, and timestamp. Accuracy depends on the position source (GNSS ~10m, Wi-Fi ~30-500m, cellular ~300-3000m, IP ~300-10000m)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tracking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Start continuous position tracking",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/geolocation/tracking",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Starts continuous position tracking by subscribing to the Geolocator.PositionChanged event. Reports position updates based on the configured movement threshold (in meters) and reporting interval."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Stop position tracking",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.windows.com/geolocation/tracking"
+          },
+          "docs": "Stops continuous position tracking by unsubscribing from the Geolocator.PositionChanged event and disposing the Geolocator."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Geofencing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List active geofences",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/geolocation/geofences"
+          },
+          "docs": "Retrieves the list of active geofences registered with the GeofenceMonitor. Geofences are geographic areas (circles) that trigger events when the device enters, exits, or dwells in the area."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a geofence",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/geolocation/geofences",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new geofence and adds it to the GeofenceMonitor. The geofence is defined by a Geocircle (center point and radius) and monitored states (entered, exited, removed). Supports dwell time, start time, and duration."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Visits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get recent location visits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/geolocation/visits"
+          },
+          "docs": "Retrieves recent visit records using GeovisitMonitor.GetLastReportAsync. Visits represent significant location stays detected by the system, including arrival/departure times and position data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

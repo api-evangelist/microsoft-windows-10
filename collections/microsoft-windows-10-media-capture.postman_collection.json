@@ -1,0 +1,1046 @@
+{
+  "item": [
+    {
+      "id": "92eee297-a41c-4f56-a311-699710938702",
+      "name": "Devices",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dbf3ddbd-19cd-44a9-8697-b69f2389a27c",
+          "name": "Microsoft Windows 10 List media capture devices",
+          "request": {
+            "name": "Microsoft Windows 10 List media capture devices",
+            "description": {
+              "content": "Enumerates available media capture devices (cameras and microphones) using DeviceInformation.FindAllAsync with the appropriate device class filter. Returns device information including ID, name, location, and capabilities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "media",
+                "capture",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "deviceClass",
+                  "value": "<string>",
+                  "description": "Filter by device class"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "295f31f2-db28-4882-a77f-d33aed62e19e",
+              "name": "Successful retrieval of capture devices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deviceClass",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"deviceClass\": \"AudioRender\",\n    \"enclosureLocation\": {\n      \"panel\": \"Back\"\n    },\n    \"isEnabled\": false,\n    \"isDefault\": true\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"deviceClass\": \"AudioRender\",\n    \"enclosureLocation\": {\n      \"panel\": \"Right\"\n    },\n    \"isEnabled\": false,\n    \"isDefault\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d4585eee-67ac-4e54-b8f4-cb31176e7458",
+      "name": "Photo Capture",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9dcfba70-2df9-4518-a1a5-304a32bff820",
+          "name": "Microsoft Windows 10 Capture a photo",
+          "request": {
+            "name": "Microsoft Windows 10 Capture a photo",
+            "description": {
+              "content": "Captures a photo using MediaCapture.CapturePhotoToStorageFileAsync or CapturePhotoToStreamAsync. The photo is encoded using the specified ImageEncodingProperties (JPEG, PNG, BMP, or TIFF).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "media",
+                "capture",
+                "sessions",
+                ":sessionId",
+                "photo"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sessionId",
+                  "description": "(Required) Capture session identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"outputPath\": \"<string>\",\n  \"encodingFormat\": \"Jpeg\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "5d7cf216-48da-4554-871f-0ffb6b3a3e2f",
+              "name": "Photo captured successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions",
+                    ":sessionId",
+                    "photo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Capture session identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"outputPath\": \"<string>\",\n  \"encodingFormat\": \"Jpeg\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"filePath\": \"string\",\n  \"width\": 9992,\n  \"height\": 9708,\n  \"encodingFormat\": \"string\",\n  \"sizeInBytes\": 5099\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d373e964-5502-426c-9fcc-34bd0e755fcb",
+              "name": "Session not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions",
+                    ":sessionId",
+                    "photo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Capture session identifier"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"outputPath\": \"<string>\",\n  \"encodingFormat\": \"Jpeg\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "bd5ad7d5-04f2-4108-800f-59c1d9290750",
+      "name": "Preview",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "299e0203-0e85-4fb3-a7a2-8257eaa87cf8",
+          "name": "Microsoft Windows 10 Start camera preview",
+          "request": {
+            "name": "Microsoft Windows 10 Start camera preview",
+            "description": {
+              "content": "Starts the camera preview stream using MediaCapture.StartPreviewAsync. The preview stream is displayed in a CaptureElement XAML control.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "media",
+                "capture",
+                "sessions",
+                ":sessionId",
+                "preview",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sessionId",
+                  "description": "(Required) Capture session identifier"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee2c682f-bde7-484c-956b-18ab25954986",
+              "name": "Preview started",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions",
+                    ":sessionId",
+                    "preview",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Capture session identifier"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "0acf16ca-52c6-4b35-aaea-67a72ebc4a75",
+              "name": "Session not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions",
+                    ":sessionId",
+                    "preview",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Capture session identifier"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "35ee38e7-eba5-4cd4-82ec-410a6ecd894a",
+          "name": "Microsoft Windows 10 Stop camera preview",
+          "request": {
+            "name": "Microsoft Windows 10 Stop camera preview",
+            "description": {
+              "content": "Stops the camera preview stream using MediaCapture.StopPreviewAsync.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "media",
+                "capture",
+                "sessions",
+                ":sessionId",
+                "preview",
+                "stop"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sessionId",
+                  "description": "(Required) Capture session identifier"
+                }
+              ]
+            },
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f8652f24-ce16-42cf-b981-f39bb8f4794c",
+              "name": "Preview stopped",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions",
+                    ":sessionId",
+                    "preview",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Capture session identifier"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d0ee6507-c71f-4893-b753-a35a076a8993",
+              "name": "Session not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions",
+                    ":sessionId",
+                    "preview",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Capture session identifier"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ecb8e904-98d7-45d4-a9b6-38c89737bcd2",
+      "name": "Sessions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "439f5d83-c95d-4748-9ef6-0d54ee46a70f",
+          "name": "Microsoft Windows 10 Initialize a media capture session",
+          "request": {
+            "name": "Microsoft Windows 10 Initialize a media capture session",
+            "description": {
+              "content": "Initializes a MediaCapture session with specified settings using MediaCapture.InitializeAsync. The MediaCaptureInitializationSettings specify the video and audio device, streaming category, and sharing mode.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "media",
+                "capture",
+                "sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"videoDeviceId\": \"<string>\",\n  \"audioDeviceId\": \"<string>\",\n  \"streamingCaptureMode\": \"AudioAndVideo\",\n  \"sharingMode\": \"ExclusiveControl\",\n  \"photoCaptureSource\": \"Auto\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d0906fc6-e3d5-4b62-8bf5-189cc1356787",
+              "name": "Capture session initialized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"videoDeviceId\": \"<string>\",\n  \"audioDeviceId\": \"<string>\",\n  \"streamingCaptureMode\": \"AudioAndVideo\",\n  \"sharingMode\": \"ExclusiveControl\",\n  \"photoCaptureSource\": \"Auto\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"state\": \"Initialized\",\n  \"videoDeviceId\": \"string\",\n  \"audioDeviceId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "934daea8-142d-46de-b184-27d90103a29e",
+              "name": "Invalid initialization settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"videoDeviceId\": \"<string>\",\n  \"audioDeviceId\": \"<string>\",\n  \"streamingCaptureMode\": \"AudioAndVideo\",\n  \"sharingMode\": \"ExclusiveControl\",\n  \"photoCaptureSource\": \"Auto\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "116f1aeb-8902-4ed9-99ca-79158391b3e4",
+              "name": "Camera/microphone access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"videoDeviceId\": \"<string>\",\n  \"audioDeviceId\": \"<string>\",\n  \"streamingCaptureMode\": \"AudioAndVideo\",\n  \"sharingMode\": \"ExclusiveControl\",\n  \"photoCaptureSource\": \"Auto\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "79e345e2-9581-4022-9741-8e5c7c2fa66e",
+      "name": "Video Recording",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8eb2c8a8-1fa7-43ad-9d73-4302a37d67d8",
+          "name": "Microsoft Windows 10 Start video recording",
+          "request": {
+            "name": "Microsoft Windows 10 Start video recording",
+            "description": {
+              "content": "Starts video recording using MediaCapture.StartRecordToStorageFileAsync or StartRecordToStreamAsync. The video is encoded using the specified MediaEncodingProfile (MP4, WMV, or AVI with configurable resolution, bitrate, and frame rate).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "media",
+                "capture",
+                "sessions",
+                ":sessionId",
+                "video",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sessionId",
+                  "description": "(Required) Capture session identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"outputPath\": \"<string>\",\n  \"encodingProfile\": \"Mp4\",\n  \"quality\": \"Auto\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "21c5f381-6207-4a00-9e86-3d252cd76683",
+              "name": "Video recording started",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions",
+                    ":sessionId",
+                    "video",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Capture session identifier"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"outputPath\": \"<string>\",\n  \"encodingProfile\": \"Mp4\",\n  \"quality\": \"Auto\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "7b1fefe5-e006-4b61-ab28-839d4e2ce67c",
+              "name": "Session not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions",
+                    ":sessionId",
+                    "video",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Capture session identifier"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"outputPath\": \"<string>\",\n  \"encodingProfile\": \"Mp4\",\n  \"quality\": \"Auto\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "904f051b-e9d2-4601-b0ad-162d98be1f1f",
+          "name": "Microsoft Windows 10 Stop video recording",
+          "request": {
+            "name": "Microsoft Windows 10 Stop video recording",
+            "description": {
+              "content": "Stops an active video recording using MediaCapture.StopRecordAsync. Finalizes the output file or stream and returns information about the recorded media.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "media",
+                "capture",
+                "sessions",
+                ":sessionId",
+                "video",
+                "stop"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sessionId",
+                  "description": "(Required) Capture session identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5d898d77-7e4b-4f2e-8b8c-1deb47a2a1b5",
+              "name": "Video recording stopped",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions",
+                    ":sessionId",
+                    "video",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Capture session identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"filePath\": \"string\",\n  \"durationInSeconds\": 7850.150837507596,\n  \"width\": 2904,\n  \"height\": 1138,\n  \"encodingProfile\": \"string\",\n  \"sizeInBytes\": 5353\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2655ddf2-d914-468c-9ff4-f496c313e054",
+              "name": "Session not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions",
+                    ":sessionId",
+                    "video",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Capture session identifier"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b0aad3d3-97cc-4fc4-a79c-d997876243cf",
+    "name": "Microsoft Windows 10 Windows Media Capture API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for capturing photos, audio, and video from camera and microphone devices in Windows applications. Based on the Windows.Media.Capture namespace, it provides classes for previewing (CaptureElement), recording (MediaCapture), and processing media streams with configurable encoding settings (MediaEncodingProfile). Supports photo capture, video recording, audio recording, and advanced scenarios like HDR and variable photo sequences.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

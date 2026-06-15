@@ -1,0 +1,1453 @@
+{
+  "info": {
+    "_postman_id": "8e759e40-6a60-4176-bb23-35b4fa9db97e",
+    "name": "Microsoft Windows 10 Windows Storage API",
+    "description": "API for file system access, storage management, and data operations in Windows applications. Based on the Windows.Storage namespace, this API provides classes for reading, writing, and managing files (StorageFile) and folders (StorageFolder) with appropriate access permissions. Also includes ApplicationData for settings and app data management, KnownFolders for library access, and StorageLibrary for library management with change tracking.\n\nContact Support:\n Name: Microsoft Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:12:28.000Z",
+    "updatedAt": "2026-06-05T15:12:28.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-8e759e40-6a60-4176-bb23-35b4fa9db97e"
+  },
+  "item": [
+    {
+      "name": "storage",
+      "item": [
+        {
+          "name": "files",
+          "item": [
+            {
+              "name": "{fileId}",
+              "item": [
+                {
+                  "name": "content",
+                  "item": [
+                    {
+                      "name": "Microsoft Windows 10 Read file content",
+                      "id": "a04e7dac-f69c-47d4-b020-81679e98267a",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/storage/files/:fileId/content?readMode=text",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "storage",
+                            "files",
+                            ":fileId",
+                            "content"
+                          ],
+                          "query": [
+                            {
+                              "description": "How to read the file content",
+                              "key": "readMode",
+                              "value": "text"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "id": "0690bdd0-d5c0-45be-99be-08e0fc906559",
+                              "key": "fileId",
+                              "value": "<string>",
+                              "description": "(Required) Unique file identifier"
+                            }
+                          ]
+                        },
+                        "description": "Reads the content of a file using FileIO helper methods. Supports reading as text (FileIO.ReadTextAsync), binary (FileIO.ReadBufferAsync), or line-by-line (FileIO.ReadLinesAsync)."
+                      },
+                      "response": [
+                        {
+                          "id": "3c361d54-d3ad-427f-922e-fee05fbf74fd",
+                          "name": "Successful read of file content",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/storage/files/:fileId/content?readMode=text",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "storage",
+                                "files",
+                                ":fileId",
+                                "content"
+                              ],
+                              "query": [
+                                {
+                                  "description": "How to read the file content",
+                                  "key": "readMode",
+                                  "value": "text"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "fileId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"text\": \"<string>\",\n  \"lines\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"buffer\": \"<string>\",\n  \"encoding\": \"<string>\"\n}",
+                          "createdAt": "2026-06-05T15:12:28.000Z",
+                          "updatedAt": "2026-06-05T15:12:28.000Z",
+                          "uid": "35240-3c361d54-d3ad-427f-922e-fee05fbf74fd"
+                        },
+                        {
+                          "id": "9c4d3b03-dc86-4b83-ab47-107524e23626",
+                          "name": "File not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [],
+                            "url": {
+                              "raw": "{{baseUrl}}/storage/files/:fileId/content?readMode=text",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "storage",
+                                "files",
+                                ":fileId",
+                                "content"
+                              ],
+                              "query": [
+                                {
+                                  "description": "How to read the file content",
+                                  "key": "readMode",
+                                  "value": "text"
+                                }
+                              ],
+                              "variable": [
+                                {
+                                  "key": "fileId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:12:28.000Z",
+                          "updatedAt": "2026-06-05T15:12:28.000Z",
+                          "uid": "35240-9c4d3b03-dc86-4b83-ab47-107524e23626"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:12:28.000Z",
+                      "updatedAt": "2026-06-05T15:12:28.000Z",
+                      "uid": "35240-a04e7dac-f69c-47d4-b020-81679e98267a"
+                    },
+                    {
+                      "name": "Microsoft Windows 10 Write file content",
+                      "id": "363ddfdc-99c2-469e-969f-84e69a0a4dc2",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"content\": \"<string>\",\n  \"encoding\": \"UTF-8\",\n  \"writeMode\": \"text\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/storage/files/:fileId/content",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "storage",
+                            "files",
+                            ":fileId",
+                            "content"
+                          ],
+                          "variable": [
+                            {
+                              "id": "4e027083-3b18-4176-ba99-bca1ef1e09d6",
+                              "key": "fileId",
+                              "value": "<string>",
+                              "description": "(Required) Unique file identifier"
+                            }
+                          ]
+                        },
+                        "description": "Writes content to a file using FileIO helper methods. Supports writing text (FileIO.WriteTextAsync), binary (FileIO.WriteBytesAsync), or lines (FileIO.WriteLinesAsync)."
+                      },
+                      "response": [
+                        {
+                          "id": "f9a94394-358f-4cd8-82cb-9fac73159a57",
+                          "name": "File content written successfully",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"content\": \"<string>\",\n  \"encoding\": \"UTF-8\",\n  \"writeMode\": \"text\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/storage/files/:fileId/content",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "storage",
+                                "files",
+                                ":fileId",
+                                "content"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "fileId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:12:28.000Z",
+                          "updatedAt": "2026-06-05T15:12:28.000Z",
+                          "uid": "35240-f9a94394-358f-4cd8-82cb-9fac73159a57"
+                        },
+                        {
+                          "id": "ef5e4b90-ddac-47d3-a816-32ace105fd90",
+                          "name": "Access denied",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"content\": \"<string>\",\n  \"encoding\": \"UTF-8\",\n  \"writeMode\": \"text\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/storage/files/:fileId/content",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "storage",
+                                "files",
+                                ":fileId",
+                                "content"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "fileId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Forbidden",
+                          "code": 403,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:12:28.000Z",
+                          "updatedAt": "2026-06-05T15:12:28.000Z",
+                          "uid": "35240-ef5e4b90-ddac-47d3-a816-32ace105fd90"
+                        },
+                        {
+                          "id": "bb6ebc4f-dcb5-49f6-8493-4896b4ca7ff3",
+                          "name": "File not found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"content\": \"<string>\",\n  \"encoding\": \"UTF-8\",\n  \"writeMode\": \"text\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/storage/files/:fileId/content",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "storage",
+                                "files",
+                                ":fileId",
+                                "content"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "fileId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:12:28.000Z",
+                          "updatedAt": "2026-06-05T15:12:28.000Z",
+                          "uid": "35240-bb6ebc4f-dcb5-49f6-8493-4896b4ca7ff3"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:12:28.000Z",
+                      "updatedAt": "2026-06-05T15:12:28.000Z",
+                      "uid": "35240-363ddfdc-99c2-469e-969f-84e69a0a4dc2"
+                    }
+                  ],
+                  "id": "94d67d5e-25ad-44a7-a4c9-f10e327add5b",
+                  "createdAt": "2026-06-05T15:12:28.000Z",
+                  "updatedAt": "2026-06-05T15:12:28.000Z",
+                  "uid": "35240-94d67d5e-25ad-44a7-a4c9-f10e327add5b"
+                },
+                {
+                  "name": "Microsoft Windows 10 Get file details",
+                  "id": "ac8db5ed-7563-4eab-99c4-df6fd831b09a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/storage/files/:fileId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "storage",
+                        "files",
+                        ":fileId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "5c24f9d6-b994-4b17-8362-4d5445e6adfb",
+                          "key": "fileId",
+                          "value": "<string>",
+                          "description": "(Required) Unique file identifier or path"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves detailed information about a specific file using StorageFile properties including name, path, size, date created, date modified, content type, file attributes, and storage provider information."
+                  },
+                  "response": [
+                    {
+                      "id": "73120f36-e509-4c53-a4a1-2c4714fd60d7",
+                      "name": "Successful retrieval of file details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/storage/files/:fileId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "storage",
+                            "files",
+                            ":fileId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "fileId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"name\": \"<string>\",\n  \"path\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"fileType\": \"<string>\",\n  \"contentType\": \"<string>\",\n  \"dateCreated\": \"<dateTime>\",\n  \"dateModified\": \"<dateTime>\",\n  \"size\": \"<long>\",\n  \"attributes\": [\n    \"Temporary\",\n    \"Normal\"\n  ],\n  \"provider\": {\n    \"id\": \"<string>\",\n    \"displayName\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:12:28.000Z",
+                      "updatedAt": "2026-06-05T15:12:28.000Z",
+                      "uid": "35240-73120f36-e509-4c53-a4a1-2c4714fd60d7"
+                    },
+                    {
+                      "id": "cb6533ae-3d7e-4c75-b645-ce3a6759a27f",
+                      "name": "File not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/storage/files/:fileId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "storage",
+                            "files",
+                            ":fileId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "fileId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:28.000Z",
+                      "updatedAt": "2026-06-05T15:12:28.000Z",
+                      "uid": "35240-cb6533ae-3d7e-4c75-b645-ce3a6759a27f"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:28.000Z",
+                  "updatedAt": "2026-06-05T15:12:28.000Z",
+                  "uid": "35240-ac8db5ed-7563-4eab-99c4-df6fd831b09a"
+                },
+                {
+                  "name": "Microsoft Windows 10 Delete a file",
+                  "id": "ad041a8f-bdc4-4b63-99b2-50cbbe78f540",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/storage/files/:fileId?option=PermanentDelete",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "storage",
+                        "files",
+                        ":fileId"
+                      ],
+                      "query": [
+                        {
+                          "description": "Delete option",
+                          "key": "option",
+                          "value": "PermanentDelete"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "4eb563bc-8ca9-44c8-9a98-2e57ffca4787",
+                          "key": "fileId",
+                          "value": "<string>",
+                          "description": "(Required) Unique file identifier"
+                        }
+                      ]
+                    },
+                    "description": "Deletes a file using StorageFile.DeleteAsync. Supports permanent deletion or moving to the Recycle Bin as specified by the StorageDeleteOption."
+                  },
+                  "response": [
+                    {
+                      "id": "14f31238-4c2d-4d45-a970-90c9236797f8",
+                      "name": "File deleted successfully",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/storage/files/:fileId?option=PermanentDelete",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "storage",
+                            "files",
+                            ":fileId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Delete option",
+                              "key": "option",
+                              "value": "PermanentDelete"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "fileId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:28.000Z",
+                      "updatedAt": "2026-06-05T15:12:28.000Z",
+                      "uid": "35240-14f31238-4c2d-4d45-a970-90c9236797f8"
+                    },
+                    {
+                      "id": "7dc85084-bcce-4055-b6a0-a6a57b3ffec3",
+                      "name": "Access denied",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/storage/files/:fileId?option=PermanentDelete",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "storage",
+                            "files",
+                            ":fileId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Delete option",
+                              "key": "option",
+                              "value": "PermanentDelete"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "fileId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Forbidden",
+                      "code": 403,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:28.000Z",
+                      "updatedAt": "2026-06-05T15:12:28.000Z",
+                      "uid": "35240-7dc85084-bcce-4055-b6a0-a6a57b3ffec3"
+                    },
+                    {
+                      "id": "00214040-0d0f-4f3c-9807-08489d5af520",
+                      "name": "File not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/storage/files/:fileId?option=PermanentDelete",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "storage",
+                            "files",
+                            ":fileId"
+                          ],
+                          "query": [
+                            {
+                              "description": "Delete option",
+                              "key": "option",
+                              "value": "PermanentDelete"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "fileId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:28.000Z",
+                      "updatedAt": "2026-06-05T15:12:28.000Z",
+                      "uid": "35240-00214040-0d0f-4f3c-9807-08489d5af520"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:28.000Z",
+                  "updatedAt": "2026-06-05T15:12:28.000Z",
+                  "uid": "35240-ad041a8f-bdc4-4b63-99b2-50cbbe78f540"
+                }
+              ],
+              "id": "ee08cf36-937c-4936-bb81-3f3d1f8f6626",
+              "createdAt": "2026-06-05T15:12:28.000Z",
+              "updatedAt": "2026-06-05T15:12:28.000Z",
+              "uid": "35240-ee08cf36-937c-4936-bb81-3f3d1f8f6626"
+            },
+            {
+              "name": "Microsoft Windows 10 List storage files",
+              "id": "ec1000da-2abf-4de3-b16c-3674947ca3f7",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/storage/files?folderId=Pictures&fileType=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "storage",
+                    "files"
+                  ],
+                  "query": [
+                    {
+                      "description": "Known folder identifier (Documents, Pictures, Music, Videos)",
+                      "key": "folderId",
+                      "value": "Pictures"
+                    },
+                    {
+                      "description": "Filter by file extension (e.g., .jpg, .mp3)",
+                      "key": "fileType",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieves files from a specified storage location. Uses StorageFolder.GetFilesAsync to enumerate files with optional query options for filtering by type, date, size, and other properties."
+              },
+              "response": [
+                {
+                  "id": "3a0aeb34-2453-4cd9-9234-5196579b6abf",
+                  "name": "Successful retrieval of files",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/storage/files?folderId=Pictures&fileType=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "storage",
+                        "files"
+                      ],
+                      "query": [
+                        {
+                          "description": "Known folder identifier (Documents, Pictures, Music, Videos)",
+                          "key": "folderId",
+                          "value": "Pictures"
+                        },
+                        {
+                          "description": "Filter by file extension (e.g., .jpg, .mp3)",
+                          "key": "fileType",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"name\": \"<string>\",\n    \"path\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"fileType\": \"<string>\",\n    \"contentType\": \"<string>\",\n    \"dateCreated\": \"<dateTime>\",\n    \"isAvailable\": \"<boolean>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"path\": \"<string>\",\n    \"displayName\": \"<string>\",\n    \"fileType\": \"<string>\",\n    \"contentType\": \"<string>\",\n    \"dateCreated\": \"<dateTime>\",\n    \"isAvailable\": \"<boolean>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:12:28.000Z",
+                  "updatedAt": "2026-06-05T15:12:28.000Z",
+                  "uid": "35240-3a0aeb34-2453-4cd9-9234-5196579b6abf"
+                },
+                {
+                  "id": "2d882659-5458-4dae-a193-d2567f64497e",
+                  "name": "Access denied to the specified location",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/storage/files?folderId=Pictures&fileType=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "storage",
+                        "files"
+                      ],
+                      "query": [
+                        {
+                          "description": "Known folder identifier (Documents, Pictures, Music, Videos)",
+                          "key": "folderId",
+                          "value": "Pictures"
+                        },
+                        {
+                          "description": "Filter by file extension (e.g., .jpg, .mp3)",
+                          "key": "fileType",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Forbidden",
+                  "code": 403,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:12:28.000Z",
+                  "updatedAt": "2026-06-05T15:12:28.000Z",
+                  "uid": "35240-2d882659-5458-4dae-a193-d2567f64497e"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:28.000Z",
+              "updatedAt": "2026-06-05T15:12:28.000Z",
+              "uid": "35240-ec1000da-2abf-4de3-b16c-3674947ca3f7"
+            }
+          ],
+          "id": "bcf60d62-deac-4088-8d9d-6a1d277cd5cf",
+          "createdAt": "2026-06-05T15:12:28.000Z",
+          "updatedAt": "2026-06-05T15:12:28.000Z",
+          "uid": "35240-bcf60d62-deac-4088-8d9d-6a1d277cd5cf"
+        },
+        {
+          "name": "folders",
+          "item": [
+            {
+              "name": "Microsoft Windows 10 List storage folders",
+              "id": "60e77f93-6b46-4647-99fd-4b9eb1fa7e4c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/storage/folders?parentFolderId=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "storage",
+                    "folders"
+                  ],
+                  "query": [
+                    {
+                      "description": "Parent folder identifier",
+                      "key": "parentFolderId",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieves the list of subfolders in a specified location using StorageFolder.GetFoldersAsync. Includes folder metadata such as name, path, date created, and item counts."
+              },
+              "response": [
+                {
+                  "id": "0cecafa4-67dd-4aec-b211-55b841f7ba31",
+                  "name": "Successful retrieval of folders",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/storage/folders?parentFolderId=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "storage",
+                        "folders"
+                      ],
+                      "query": [
+                        {
+                          "description": "Parent folder identifier",
+                          "key": "parentFolderId",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"name\": \"<string>\",\n    \"path\": \"<string>\",\n    \"dateCreated\": \"<dateTime>\",\n    \"attributes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"name\": \"<string>\",\n    \"path\": \"<string>\",\n    \"dateCreated\": \"<dateTime>\",\n    \"attributes\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+                  "createdAt": "2026-06-05T15:12:28.000Z",
+                  "updatedAt": "2026-06-05T15:12:28.000Z",
+                  "uid": "35240-0cecafa4-67dd-4aec-b211-55b841f7ba31"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:28.000Z",
+              "updatedAt": "2026-06-05T15:12:28.000Z",
+              "uid": "35240-60e77f93-6b46-4647-99fd-4b9eb1fa7e4c"
+            },
+            {
+              "name": "Microsoft Windows 10 Create a folder",
+              "id": "b0bc5e8a-6262-4e95-9c41-ae01614af770",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"parentPath\": \"<string>\",\n  \"collisionOption\": \"FailIfExists\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/storage/folders",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "storage",
+                    "folders"
+                  ]
+                },
+                "description": "Creates a new folder using StorageFolder.CreateFolderAsync. Supports collision options to handle existing folders with the same name."
+              },
+              "response": [
+                {
+                  "id": "bb4a8411-16a6-46f0-80bd-c4fd08dacd5c",
+                  "name": "Folder created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"parentPath\": \"<string>\",\n  \"collisionOption\": \"FailIfExists\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/storage/folders",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "storage",
+                        "folders"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"name\": \"<string>\",\n  \"path\": \"<string>\",\n  \"dateCreated\": \"<dateTime>\",\n  \"attributes\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "createdAt": "2026-06-05T15:12:28.000Z",
+                  "updatedAt": "2026-06-05T15:12:28.000Z",
+                  "uid": "35240-bb4a8411-16a6-46f0-80bd-c4fd08dacd5c"
+                },
+                {
+                  "id": "9d6072cc-5d53-44da-baa2-42d5f41bb4a3",
+                  "name": "Folder already exists",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"name\": \"<string>\",\n  \"parentPath\": \"<string>\",\n  \"collisionOption\": \"FailIfExists\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/storage/folders",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "storage",
+                        "folders"
+                      ]
+                    }
+                  },
+                  "status": "Conflict",
+                  "code": 409,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:12:28.000Z",
+                  "updatedAt": "2026-06-05T15:12:28.000Z",
+                  "uid": "35240-9d6072cc-5d53-44da-baa2-42d5f41bb4a3"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:28.000Z",
+              "updatedAt": "2026-06-05T15:12:28.000Z",
+              "uid": "35240-b0bc5e8a-6262-4e95-9c41-ae01614af770"
+            }
+          ],
+          "id": "4867648b-467a-4e7a-b745-1084382483c1",
+          "createdAt": "2026-06-05T15:12:28.000Z",
+          "updatedAt": "2026-06-05T15:12:28.000Z",
+          "uid": "35240-4867648b-467a-4e7a-b745-1084382483c1"
+        },
+        {
+          "name": "app-data",
+          "item": [
+            {
+              "name": "settings",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Get application settings",
+                  "id": "38ddc15f-6905-4848-88c3-1036f17398e5",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/storage/app-data/settings?locality=Local&containerName=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "storage",
+                        "app-data",
+                        "settings"
+                      ],
+                      "query": [
+                        {
+                          "description": "Settings locality",
+                          "key": "locality",
+                          "value": "Local"
+                        },
+                        {
+                          "description": "Settings container name",
+                          "key": "containerName",
+                          "value": "<string>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves application settings from the ApplicationData.LocalSettings or RoamingSettings containers. Settings are stored as key-value pairs in ApplicationDataContainer objects."
+                  },
+                  "response": [
+                    {
+                      "id": "2ce94a88-0f27-4c9c-9510-f507ca795612",
+                      "name": "Successful retrieval of settings",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/storage/app-data/settings?locality=Local&containerName=<string>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "storage",
+                            "app-data",
+                            "settings"
+                          ],
+                          "query": [
+                            {
+                              "description": "Settings locality",
+                              "key": "locality",
+                              "value": "Local"
+                            },
+                            {
+                              "description": "Settings container name",
+                              "key": "containerName",
+                              "value": "<string>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"occaecate9\": \"<string>\",\n  \"sed_080\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:12:28.000Z",
+                      "updatedAt": "2026-06-05T15:12:28.000Z",
+                      "uid": "35240-2ce94a88-0f27-4c9c-9510-f507ca795612"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:28.000Z",
+                  "updatedAt": "2026-06-05T15:12:28.000Z",
+                  "uid": "35240-38ddc15f-6905-4848-88c3-1036f17398e5"
+                },
+                {
+                  "name": "Microsoft Windows 10 Update application settings",
+                  "id": "eef1b81a-cd99-4a92-8b79-dea037178bc3",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"occaecate9\": \"<string>\",\n  \"sed_080\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/storage/app-data/settings?locality=Local",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "storage",
+                        "app-data",
+                        "settings"
+                      ],
+                      "query": [
+                        {
+                          "description": "Settings locality",
+                          "key": "locality",
+                          "value": "Local"
+                        }
+                      ]
+                    },
+                    "description": "Updates application settings in the specified ApplicationDataContainer. Supports simple values and composite values (ApplicationDataCompositeValue) for atomic serialization."
+                  },
+                  "response": [
+                    {
+                      "id": "746bb4c8-e72a-430f-8510-03b7966d00f7",
+                      "name": "Settings updated successfully",
+                      "originalRequest": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"occaecate9\": \"<string>\",\n  \"sed_080\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/storage/app-data/settings?locality=Local",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "storage",
+                            "app-data",
+                            "settings"
+                          ],
+                          "query": [
+                            {
+                              "description": "Settings locality",
+                              "key": "locality",
+                              "value": "Local"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:28.000Z",
+                      "updatedAt": "2026-06-05T15:12:28.000Z",
+                      "uid": "35240-746bb4c8-e72a-430f-8510-03b7966d00f7"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:28.000Z",
+                  "updatedAt": "2026-06-05T15:12:28.000Z",
+                  "uid": "35240-eef1b81a-cd99-4a92-8b79-dea037178bc3"
+                }
+              ],
+              "id": "c5958a60-8a5c-49b6-a059-43a816885e60",
+              "createdAt": "2026-06-05T15:12:28.000Z",
+              "updatedAt": "2026-06-05T15:12:28.000Z",
+              "uid": "35240-c5958a60-8a5c-49b6-a059-43a816885e60"
+            }
+          ],
+          "id": "fdbf5a52-20d1-42dd-9539-94d81192bd18",
+          "createdAt": "2026-06-05T15:12:28.000Z",
+          "updatedAt": "2026-06-05T15:12:28.000Z",
+          "uid": "35240-fdbf5a52-20d1-42dd-9539-94d81192bd18"
+        },
+        {
+          "name": "libraries",
+          "item": [
+            {
+              "name": "{libraryId}",
+              "item": [
+                {
+                  "name": "changes",
+                  "item": [
+                    {
+                      "name": "Microsoft Windows 10 Get library changes",
+                      "id": "62a7de83-895f-452d-9fa4-240dd3893d54",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/storage/libraries/:libraryId/changes",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "storage",
+                            "libraries",
+                            ":libraryId",
+                            "changes"
+                          ],
+                          "variable": [
+                            {
+                              "id": "9d2002dd-5d2e-42b3-a5fa-e73103588db7",
+                              "key": "libraryId",
+                              "value": "<string>",
+                              "description": "(Required) Library identifier (Documents, Music, Pictures, Videos)"
+                            }
+                          ]
+                        },
+                        "description": "Retrieves change records for a storage library using StorageLibraryChangeTracker and StorageLibraryChangeReader. Returns a list of changes including file/folder creation, modification, deletion, and moves."
+                      },
+                      "response": [
+                        {
+                          "id": "2dcda5d9-2f0f-4812-a63f-64ed2cd2ff9c",
+                          "name": "Successful retrieval of library changes",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/storage/libraries/:libraryId/changes",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "storage",
+                                "libraries",
+                                ":libraryId",
+                                "changes"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "libraryId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "[\n  {\n    \"changeType\": \"IndexingStatusChanged\",\n    \"path\": \"<string>\",\n    \"previousPath\": \"<string>\",\n    \"isOfType\": \"Folder\"\n  },\n  {\n    \"changeType\": \"MovedOutOfLibrary\",\n    \"path\": \"<string>\",\n    \"previousPath\": \"<string>\",\n    \"isOfType\": \"File\"\n  }\n]",
+                          "createdAt": "2026-06-05T15:12:28.000Z",
+                          "updatedAt": "2026-06-05T15:12:28.000Z",
+                          "uid": "35240-2dcda5d9-2f0f-4812-a63f-64ed2cd2ff9c"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:12:28.000Z",
+                      "updatedAt": "2026-06-05T15:12:28.000Z",
+                      "uid": "35240-62a7de83-895f-452d-9fa4-240dd3893d54"
+                    }
+                  ],
+                  "id": "cb61e461-8431-4a0a-9b35-f6b5f49da49c",
+                  "createdAt": "2026-06-05T15:12:28.000Z",
+                  "updatedAt": "2026-06-05T15:12:28.000Z",
+                  "uid": "35240-cb61e461-8431-4a0a-9b35-f6b5f49da49c"
+                }
+              ],
+              "id": "e3e3e312-e996-42e7-916e-a0340339631b",
+              "createdAt": "2026-06-05T15:12:28.000Z",
+              "updatedAt": "2026-06-05T15:12:28.000Z",
+              "uid": "35240-e3e3e312-e996-42e7-916e-a0340339631b"
+            },
+            {
+              "name": "Microsoft Windows 10 List storage libraries",
+              "id": "e3bda010-50e8-44c3-87ba-fab373ee95be",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/storage/libraries",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "storage",
+                    "libraries"
+                  ]
+                },
+                "description": "Retrieves the list of storage libraries (Documents, Music, Pictures, Videos) using StorageLibrary.GetLibraryAsync. Each library contains a list of included folders and supports change tracking."
+              },
+              "response": [
+                {
+                  "id": "55e651de-93da-4dec-8249-f6d2b3eb4e15",
+                  "name": "Successful retrieval of libraries",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/storage/libraries",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "storage",
+                        "libraries"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"id\": \"Documents\",\n    \"folders\": [\n      {\n        \"name\": \"<string>\",\n        \"path\": \"<string>\",\n        \"dateCreated\": \"<dateTime>\",\n        \"attributes\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"path\": \"<string>\",\n        \"dateCreated\": \"<dateTime>\",\n        \"attributes\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"saveFolder\": {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\",\n      \"dateCreated\": \"<dateTime>\",\n      \"attributes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  },\n  {\n    \"id\": \"Music\",\n    \"folders\": [\n      {\n        \"name\": \"<string>\",\n        \"path\": \"<string>\",\n        \"dateCreated\": \"<dateTime>\",\n        \"attributes\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      },\n      {\n        \"name\": \"<string>\",\n        \"path\": \"<string>\",\n        \"dateCreated\": \"<dateTime>\",\n        \"attributes\": [\n          \"<string>\",\n          \"<string>\"\n        ]\n      }\n    ],\n    \"saveFolder\": {\n      \"name\": \"<string>\",\n      \"path\": \"<string>\",\n      \"dateCreated\": \"<dateTime>\",\n      \"attributes\": [\n        \"<string>\",\n        \"<string>\"\n      ]\n    }\n  }\n]",
+                  "createdAt": "2026-06-05T15:12:28.000Z",
+                  "updatedAt": "2026-06-05T15:12:28.000Z",
+                  "uid": "35240-55e651de-93da-4dec-8249-f6d2b3eb4e15"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:28.000Z",
+              "updatedAt": "2026-06-05T15:12:28.000Z",
+              "uid": "35240-e3bda010-50e8-44c3-87ba-fab373ee95be"
+            }
+          ],
+          "id": "f1573cce-bcc7-4bba-a975-93f8b3d4a432",
+          "createdAt": "2026-06-05T15:12:28.000Z",
+          "updatedAt": "2026-06-05T15:12:28.000Z",
+          "uid": "35240-f1573cce-bcc7-4bba-a975-93f8b3d4a432"
+        }
+      ],
+      "id": "218ff8a7-bfa8-4a71-8dfd-0ddb036517b5",
+      "createdAt": "2026-06-05T15:12:28.000Z",
+      "updatedAt": "2026-06-05T15:12:28.000Z",
+      "uid": "35240-218ff8a7-bfa8-4a71-8dfd-0ddb036517b5"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.windows.com"
+    }
+  ]
+}

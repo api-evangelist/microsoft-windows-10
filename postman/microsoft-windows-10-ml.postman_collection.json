@@ -1,0 +1,1029 @@
+{
+  "info": {
+    "_postman_id": "d4d8646a-b246-461c-9a48-0d6dd4eea791",
+    "name": "Microsoft Windows 10 Windows ML API",
+    "description": "API for integrating trained machine learning models into Windows applications using the ONNX format. Based on the Windows.AI.MachineLearning namespace, Windows ML evaluates models locally on the device using hardware acceleration with DirectX 12. Key classes include LearningModel, LearningModelSession, LearningModelBinding, and LearningModelEvaluationResult.\n\nContact Support:\n Name: Microsoft Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:12:26.000Z",
+    "updatedAt": "2026-06-05T15:12:27.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d4d8646a-b246-461c-9a48-0d6dd4eea791"
+  },
+  "item": [
+    {
+      "name": "ml",
+      "item": [
+        {
+          "name": "models",
+          "item": [
+            {
+              "name": "{modelId}",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Get model details",
+                  "id": "11d02a85-6d37-403f-834a-d403d4509cb4",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ml/models/:modelId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ml",
+                        "models",
+                        ":modelId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "a47ed3f0-8a8f-43da-b6cd-e6e57cee9929",
+                          "key": "modelId",
+                          "value": "<string>",
+                          "description": "(Required) Unique identifier for the loaded model"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves detailed information about a loaded model including its input features (ILearningModelFeatureDescriptor), output features, metadata properties, and device capabilities."
+                  },
+                  "response": [
+                    {
+                      "id": "af1ac31d-ebd8-4de5-a072-b0c25307a940",
+                      "name": "Successful retrieval of model details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ml/models/:modelId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ml",
+                            "models",
+                            ":modelId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "modelId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"author\": \"<string>\",\n  \"domain\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<integer>\",\n  \"inputFeatures\": [\n    {\n      \"name\": \"<string>\",\n      \"kind\": \"Map\",\n      \"description\": \"<string>\",\n      \"isRequired\": \"<boolean>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"tensorDataType\": \"String\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"kind\": \"Image\",\n      \"description\": \"<string>\",\n      \"isRequired\": \"<boolean>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"tensorDataType\": \"Float16\"\n    }\n  ],\n  \"outputFeatures\": [\n    {\n      \"name\": \"<string>\",\n      \"kind\": \"Sequence\",\n      \"description\": \"<string>\",\n      \"isRequired\": \"<boolean>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"tensorDataType\": \"UInt8\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"kind\": \"Map\",\n      \"description\": \"<string>\",\n      \"isRequired\": \"<boolean>\",\n      \"shape\": [\n        \"<integer>\",\n        \"<integer>\"\n      ],\n      \"tensorDataType\": \"Float\"\n    }\n  ],\n  \"metadata\": {\n    \"elit_b\": \"<string>\",\n    \"ut_ee2\": \"<string>\",\n    \"dolor_be\": \"<string>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:12:27.000Z",
+                      "updatedAt": "2026-06-05T15:12:27.000Z",
+                      "uid": "35240-af1ac31d-ebd8-4de5-a072-b0c25307a940"
+                    },
+                    {
+                      "id": "33e627d7-a881-4c6e-95c4-c32ebe148757",
+                      "name": "Model not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/ml/models/:modelId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ml",
+                            "models",
+                            ":modelId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "modelId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:27.000Z",
+                      "updatedAt": "2026-06-05T15:12:27.000Z",
+                      "uid": "35240-33e627d7-a881-4c6e-95c4-c32ebe148757"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:27.000Z",
+                  "updatedAt": "2026-06-05T15:12:27.000Z",
+                  "uid": "35240-11d02a85-6d37-403f-834a-d403d4509cb4"
+                },
+                {
+                  "name": "Microsoft Windows 10 Unload a machine learning model",
+                  "id": "6540048e-7da1-43ed-ac45-67ae47f12ef6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/ml/models/:modelId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ml",
+                        "models",
+                        ":modelId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "65b994f0-8d65-4392-bf19-efd7850d2ff3",
+                          "key": "modelId",
+                          "value": "<string>",
+                          "description": "(Required) Unique identifier for the model"
+                        }
+                      ]
+                    },
+                    "description": "Unloads a machine learning model by calling LearningModel.Close, releasing all associated resources and terminating any active sessions."
+                  },
+                  "response": [
+                    {
+                      "id": "437cda35-c1b5-478f-a0f2-300707478f93",
+                      "name": "Model unloaded successfully",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/ml/models/:modelId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ml",
+                            "models",
+                            ":modelId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "modelId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:27.000Z",
+                      "updatedAt": "2026-06-05T15:12:27.000Z",
+                      "uid": "35240-437cda35-c1b5-478f-a0f2-300707478f93"
+                    },
+                    {
+                      "id": "c2b27ca2-1f0d-4113-8ad1-d33797fe6db8",
+                      "name": "Model not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/ml/models/:modelId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ml",
+                            "models",
+                            ":modelId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "modelId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:27.000Z",
+                      "updatedAt": "2026-06-05T15:12:27.000Z",
+                      "uid": "35240-c2b27ca2-1f0d-4113-8ad1-d33797fe6db8"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:27.000Z",
+                  "updatedAt": "2026-06-05T15:12:27.000Z",
+                  "uid": "35240-6540048e-7da1-43ed-ac45-67ae47f12ef6"
+                }
+              ],
+              "id": "80b57538-f215-4e8c-8db0-e73de1924bb4",
+              "createdAt": "2026-06-05T15:12:27.000Z",
+              "updatedAt": "2026-06-05T15:12:27.000Z",
+              "uid": "35240-80b57538-f215-4e8c-8db0-e73de1924bb4"
+            },
+            {
+              "name": "Microsoft Windows 10 List loaded ML models",
+              "id": "b73a2004-5f9d-49ba-88cf-76df6413ed90",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ml/models",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ml",
+                    "models"
+                  ]
+                },
+                "description": "Retrieves the list of currently loaded machine learning models. Each model is loaded via the LearningModel class from ONNX format files and provides metadata including the model author, name, domain, description, version, and input/output features."
+              },
+              "response": [
+                {
+                  "id": "6cc6ac0a-cdba-4154-9f38-3e3a1c94ef55",
+                  "name": "Successful retrieval of loaded models",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ml/models",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ml",
+                        "models"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"author\": \"<string>\",\n    \"domain\": \"<string>\",\n    \"description\": \"<string>\",\n    \"version\": \"<integer>\",\n    \"inputFeatureCount\": \"<integer>\",\n    \"outputFeatureCount\": \"<integer>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"author\": \"<string>\",\n    \"domain\": \"<string>\",\n    \"description\": \"<string>\",\n    \"version\": \"<integer>\",\n    \"inputFeatureCount\": \"<integer>\",\n    \"outputFeatureCount\": \"<integer>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:12:27.000Z",
+                  "updatedAt": "2026-06-05T15:12:27.000Z",
+                  "uid": "35240-6cc6ac0a-cdba-4154-9f38-3e3a1c94ef55"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:27.000Z",
+              "updatedAt": "2026-06-05T15:12:27.000Z",
+              "uid": "35240-b73a2004-5f9d-49ba-88cf-76df6413ed90"
+            },
+            {
+              "name": "Microsoft Windows 10 Load a machine learning model",
+              "id": "98a3a752-b95b-4cd7-9aac-bd99a1f08876",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filePath\": \"<string>\",\n  \"modelFormat\": \"ONNX\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ml/models",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ml",
+                    "models"
+                  ]
+                },
+                "description": "Loads an ONNX machine learning model using LearningModel.LoadFromFilePath or LearningModel.LoadFromStream. The loaded model can then be used to create evaluation sessions. Supports ONNX versions 1.2 and 1.3."
+              },
+              "response": [
+                {
+                  "id": "2f5edbfc-683d-4e9a-b4be-7d860917a8c8",
+                  "name": "Model loaded successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"filePath\": \"<string>\",\n  \"modelFormat\": \"ONNX\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ml/models",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ml",
+                        "models"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"author\": \"<string>\",\n  \"domain\": \"<string>\",\n  \"description\": \"<string>\",\n  \"version\": \"<integer>\",\n  \"inputFeatureCount\": \"<integer>\",\n  \"outputFeatureCount\": \"<integer>\"\n}",
+                  "createdAt": "2026-06-05T15:12:27.000Z",
+                  "updatedAt": "2026-06-05T15:12:27.000Z",
+                  "uid": "35240-2f5edbfc-683d-4e9a-b4be-7d860917a8c8"
+                },
+                {
+                  "id": "1101e16d-f99d-4ee6-8fee-3e379799c81d",
+                  "name": "Invalid model file or format",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"filePath\": \"<string>\",\n  \"modelFormat\": \"ONNX\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ml/models",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ml",
+                        "models"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:12:27.000Z",
+                  "updatedAt": "2026-06-05T15:12:27.000Z",
+                  "uid": "35240-1101e16d-f99d-4ee6-8fee-3e379799c81d"
+                },
+                {
+                  "id": "3045548e-6c2f-4853-b1d8-259e7a65c321",
+                  "name": "Unsupported model format (must be ONNX)",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"filePath\": \"<string>\",\n  \"modelFormat\": \"ONNX\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ml/models",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ml",
+                        "models"
+                      ]
+                    }
+                  },
+                  "status": "Unsupported Media Type",
+                  "code": 415,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:12:27.000Z",
+                  "updatedAt": "2026-06-05T15:12:27.000Z",
+                  "uid": "35240-3045548e-6c2f-4853-b1d8-259e7a65c321"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:27.000Z",
+              "updatedAt": "2026-06-05T15:12:27.000Z",
+              "uid": "35240-98a3a752-b95b-4cd7-9aac-bd99a1f08876"
+            }
+          ],
+          "id": "b6c2810a-4a9a-44e1-a025-ead0637ff80d",
+          "createdAt": "2026-06-05T15:12:27.000Z",
+          "updatedAt": "2026-06-05T15:12:27.000Z",
+          "uid": "35240-b6c2810a-4a9a-44e1-a025-ead0637ff80d"
+        },
+        {
+          "name": "sessions",
+          "item": [
+            {
+              "name": "{sessionId}",
+              "item": [
+                {
+                  "name": "evaluate",
+                  "item": [
+                    {
+                      "name": "Microsoft Windows 10 Evaluate model with input data",
+                      "id": "ac01ab4d-f9fc-45ea-bb58-14cab5cdab4d",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"bindings\": {\n    \"sit_592\": {}\n  },\n  \"correlationId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/ml/sessions/:sessionId/evaluate",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ml",
+                            "sessions",
+                            ":sessionId",
+                            "evaluate"
+                          ],
+                          "variable": [
+                            {
+                              "id": "0a1cadc7-1c45-4079-8645-69b3672d6de9",
+                              "key": "sessionId",
+                              "value": "<string>",
+                              "description": "(Required) Unique identifier for the evaluation session"
+                            }
+                          ]
+                        },
+                        "description": "Evaluates the model with bound input data using LearningModelSession.Evaluate. Input features are bound via a LearningModelBinding, and results are returned as a LearningModelEvaluationResult containing output tensors, maps, sequences, or images."
+                      },
+                      "response": [
+                        {
+                          "id": "8b05d910-b966-4fe4-8fbd-e58d6cc62022",
+                          "name": "Evaluation completed successfully",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"bindings\": {\n    \"sit_592\": {}\n  },\n  \"correlationId\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ml/sessions/:sessionId/evaluate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ml",
+                                "sessions",
+                                ":sessionId",
+                                "evaluate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sessionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"correlationId\": \"<string>\",\n  \"succeeded\": \"<boolean>\",\n  \"errorStatus\": \"<integer>\",\n  \"outputs\": {\n    \"magna3\": {}\n  }\n}",
+                          "createdAt": "2026-06-05T15:12:27.000Z",
+                          "updatedAt": "2026-06-05T15:12:27.000Z",
+                          "uid": "35240-8b05d910-b966-4fe4-8fbd-e58d6cc62022"
+                        },
+                        {
+                          "id": "8001a9c7-6c00-49ac-9cae-5e63205c56c4",
+                          "name": "Invalid input bindings",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"bindings\": {\n    \"sit_592\": {}\n  },\n  \"correlationId\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ml/sessions/:sessionId/evaluate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ml",
+                                "sessions",
+                                ":sessionId",
+                                "evaluate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sessionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Bad Request",
+                          "code": 400,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:12:27.000Z",
+                          "updatedAt": "2026-06-05T15:12:27.000Z",
+                          "uid": "35240-8001a9c7-6c00-49ac-9cae-5e63205c56c4"
+                        },
+                        {
+                          "id": "99fddb1e-00ff-4c3b-9626-63151bfacf08",
+                          "name": "Session not found",
+                          "originalRequest": {
+                            "method": "POST",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"bindings\": {\n    \"sit_592\": {}\n  },\n  \"correlationId\": \"<string>\"\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/ml/sessions/:sessionId/evaluate",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "ml",
+                                "sessions",
+                                ":sessionId",
+                                "evaluate"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "sessionId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "text",
+                          "header": [],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": null,
+                          "createdAt": "2026-06-05T15:12:27.000Z",
+                          "updatedAt": "2026-06-05T15:12:27.000Z",
+                          "uid": "35240-99fddb1e-00ff-4c3b-9626-63151bfacf08"
+                        }
+                      ],
+                      "createdAt": "2026-06-05T15:12:27.000Z",
+                      "updatedAt": "2026-06-05T15:12:27.000Z",
+                      "uid": "35240-ac01ab4d-f9fc-45ea-bb58-14cab5cdab4d"
+                    }
+                  ],
+                  "id": "69719c73-5c33-4282-afbe-9ba9624acdff",
+                  "createdAt": "2026-06-05T15:12:27.000Z",
+                  "updatedAt": "2026-06-05T15:12:27.000Z",
+                  "uid": "35240-69719c73-5c33-4282-afbe-9ba9624acdff"
+                }
+              ],
+              "id": "d1891783-3cba-4e28-9ade-505e55577ff6",
+              "createdAt": "2026-06-05T15:12:27.000Z",
+              "updatedAt": "2026-06-05T15:12:27.000Z",
+              "uid": "35240-d1891783-3cba-4e28-9ade-505e55577ff6"
+            },
+            {
+              "name": "Microsoft Windows 10 Create an evaluation session",
+              "id": "ca246f12-1f22-49cf-be20-2c9fa7c82cea",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modelId\": \"<string>\",\n  \"deviceKind\": \"Default\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ml/sessions",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ml",
+                    "sessions"
+                  ]
+                },
+                "description": "Creates a LearningModelSession for evaluating a loaded model. The session binds the model to a LearningModelDevice (CPU, DirectX, or DirectXHighPerformance) for hardware-accelerated inference."
+              },
+              "response": [
+                {
+                  "id": "777833ad-46ed-47b5-aaee-990905da6cd8",
+                  "name": "Session created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"modelId\": \"<string>\",\n  \"deviceKind\": \"Default\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ml/sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ml",
+                        "sessions"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"modelId\": \"<string>\",\n  \"device\": {\n    \"kind\": \"DirectX\",\n    \"adapterId\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:12:27.000Z",
+                  "updatedAt": "2026-06-05T15:12:27.000Z",
+                  "uid": "35240-777833ad-46ed-47b5-aaee-990905da6cd8"
+                },
+                {
+                  "id": "5950e43e-05b6-4869-b027-637b3354381d",
+                  "name": "Invalid session configuration",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"modelId\": \"<string>\",\n  \"deviceKind\": \"Default\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ml/sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ml",
+                        "sessions"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:12:27.000Z",
+                  "updatedAt": "2026-06-05T15:12:27.000Z",
+                  "uid": "35240-5950e43e-05b6-4869-b027-637b3354381d"
+                },
+                {
+                  "id": "f4cef9dc-419d-4a5e-9c84-0fca7125f28f",
+                  "name": "Model not found",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"modelId\": \"<string>\",\n  \"deviceKind\": \"Default\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ml/sessions",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ml",
+                        "sessions"
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:12:27.000Z",
+                  "updatedAt": "2026-06-05T15:12:27.000Z",
+                  "uid": "35240-f4cef9dc-419d-4a5e-9c84-0fca7125f28f"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:27.000Z",
+              "updatedAt": "2026-06-05T15:12:27.000Z",
+              "uid": "35240-ca246f12-1f22-49cf-be20-2c9fa7c82cea"
+            }
+          ],
+          "id": "3e89001b-117e-4541-a50c-0f3d97bc1505",
+          "createdAt": "2026-06-05T15:12:27.000Z",
+          "updatedAt": "2026-06-05T15:12:27.000Z",
+          "uid": "35240-3e89001b-117e-4541-a50c-0f3d97bc1505"
+        },
+        {
+          "name": "devices",
+          "item": [
+            {
+              "name": "Microsoft Windows 10 List available ML devices",
+              "id": "b1fca21c-59fc-43db-9c5f-daa9c9519484",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ml/devices",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ml",
+                    "devices"
+                  ]
+                },
+                "description": "Retrieves the list of available LearningModelDevice options for model evaluation, including CPU, DirectX GPU, and DirectXHighPerformance targets."
+              },
+              "response": [
+                {
+                  "id": "5382ca65-f67e-4081-a5e0-5c6ca859427b",
+                  "name": "Successful retrieval of available devices",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ml/devices",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ml",
+                        "devices"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"kind\": \"DirectXMinPower\",\n    \"adapterId\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  {\n    \"kind\": \"Default\",\n    \"adapterId\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:12:27.000Z",
+                  "updatedAt": "2026-06-05T15:12:27.000Z",
+                  "uid": "35240-5382ca65-f67e-4081-a5e0-5c6ca859427b"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:27.000Z",
+              "updatedAt": "2026-06-05T15:12:27.000Z",
+              "uid": "35240-b1fca21c-59fc-43db-9c5f-daa9c9519484"
+            }
+          ],
+          "id": "38d7a636-0a62-44da-9683-72e49d147353",
+          "createdAt": "2026-06-05T15:12:27.000Z",
+          "updatedAt": "2026-06-05T15:12:27.000Z",
+          "uid": "35240-38d7a636-0a62-44da-9683-72e49d147353"
+        }
+      ],
+      "id": "a50447ab-b86e-43be-bb89-790ebca9d9b5",
+      "createdAt": "2026-06-05T15:12:27.000Z",
+      "updatedAt": "2026-06-05T15:12:27.000Z",
+      "uid": "35240-a50447ab-b86e-43be-bb89-790ebca9d9b5"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.windows.com"
+    }
+  ]
+}

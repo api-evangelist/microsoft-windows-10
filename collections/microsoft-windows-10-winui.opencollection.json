@@ -1,0 +1,129 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 WinUI API",
+    "version": "2.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Controls",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List WinUI controls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/winui/controls",
+            "params": [
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Filter controls by category"
+              }
+            ]
+          },
+          "docs": "Retrieves the catalog of available WinUI XAML controls organized by category. Includes basic input controls (Button, TextBox, CheckBox), collections (ListView, GridView, TreeView), navigation (NavigationView, TabView, Pivot), status (ProgressBar, ProgressRing, InfoBar), and media controls (MediaPlayerElement, Image)."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get control details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/winui/controls/:controlName",
+            "params": [
+              {
+                "name": "controlName",
+                "value": "",
+                "type": "path",
+                "description": "Control name (e.g., NavigationView, InfoBar, TreeView)"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a specific WinUI control including its properties, events, methods, XAML usage examples, and Fluent Design System guidelines."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Themes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List available themes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/winui/themes"
+          },
+          "docs": "Retrieves the list of available application themes. WinUI supports Light, Dark, and HighContrast themes with automatic system theme detection via Application.RequestedTheme."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Styles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List built-in styles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/winui/styles",
+            "params": [
+              {
+                "name": "resourceType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by resource type"
+              }
+            ]
+          },
+          "docs": "Retrieves the catalog of built-in WinUI styles and resources including Fluent Design System brushes, typography, corner radius, spacing, and animation definitions from generic.xaml."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Icons",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List Fluent Design icons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/winui/icons",
+            "params": [
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search icons by name"
+              }
+            ]
+          },
+          "docs": "Retrieves the catalog of available Segoe Fluent Icons for use with SymbolIcon and FontIcon controls. Includes icon name, unicode code point, and preview information."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,155 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Networking API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "TCP Sockets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a TCP stream socket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/networking/sockets/tcp",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a StreamSocket for TCP communication. StreamSocket provides reliable, ordered, and error-checked delivery of data between two endpoints. Supports TLS/SSL for secure connections via StreamSocket.UpgradeToSslAsync."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "UDP Sockets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a UDP datagram socket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/networking/sockets/udp",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a DatagramSocket for UDP communication. DatagramSocket provides connectionless, unreliable datagrams for low-latency communication. Supports multicast group membership via JoinMulticastGroup."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "WebSockets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a WebSocket connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/networking/websockets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a MessageWebSocket or StreamWebSocket for real-time bidirectional communication. MessageWebSocket handles discrete messages while StreamWebSocket provides continuous stream-based communication."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "HTTP Client",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Send an HTTP request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/networking/http/requests",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends an HTTP request using the Windows.Web.Http.HttpClient class. Supports GET, POST, PUT, PATCH, DELETE methods with configurable headers, content types, and authentication. Includes built-in cookie management and automatic decompression."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Background Transfers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List background downloads",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/networking/background-transfers/downloads"
+          },
+          "docs": "Retrieves the list of active and pending background download operations using BackgroundDownloader.GetCurrentDownloadsAsync."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a background download",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/networking/background-transfers/downloads",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a background download operation using BackgroundDownloader. Background transfers continue even when the app is suspended and support progress tracking, pause/resume, and cost-aware transfers."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Connectivity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get network connectivity information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/networking/connectivity"
+          },
+          "docs": "Retrieves current network connectivity information using NetworkInformation.GetInternetConnectionProfile and NetworkInformation.GetConnectionProfiles. Returns details about connection type, signal strength, data plan status, and cost."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

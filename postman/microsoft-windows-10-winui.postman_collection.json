@@ -1,0 +1,515 @@
+{
+  "info": {
+    "_postman_id": "da9ad034-f32b-4bed-a601-d396eb79aeb6",
+    "name": "Microsoft Windows 10 WinUI API",
+    "description": "Modern native UI framework for building Windows desktop applications with the Fluent Design System. Based on the Microsoft.UI.Xaml namespace, WinUI provides XAML-based controls, high-performance rendering, and supports both C# and C++ development. Key areas include controls (NavigationView, TreeView, InfoBar, ProgressRing), layout (Grid, StackPanel, RelativePanel), styling (themes, brushes, animations), and input handling.\n\nContact Support:\n Name: Microsoft Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:12:50.000Z",
+    "updatedAt": "2026-06-05T15:12:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-da9ad034-f32b-4bed-a601-d396eb79aeb6"
+  },
+  "item": [
+    {
+      "name": "winui",
+      "item": [
+        {
+          "name": "controls",
+          "item": [
+            {
+              "name": "{controlName}",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Get control details",
+                  "id": "5a7ae5b5-d991-4306-b2b9-ca2a00a3d7ab",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/winui/controls/:controlName",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "winui",
+                        "controls",
+                        ":controlName"
+                      ],
+                      "variable": [
+                        {
+                          "id": "862faf62-f624-4e90-8bf2-245d1b512b9b",
+                          "key": "controlName",
+                          "value": "<string>",
+                          "description": "(Required) Control name (e.g., NavigationView, InfoBar, TreeView)"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves detailed information about a specific WinUI control including its properties, events, methods, XAML usage examples, and Fluent Design System guidelines."
+                  },
+                  "response": [
+                    {
+                      "id": "f61be117-fed3-43c8-9beb-73c2ba4fc8c7",
+                      "name": "Successful retrieval of control details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/winui/controls/:controlName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "winui",
+                            "controls",
+                            ":controlName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "controlName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"name\": \"<string>\",\n  \"namespace\": \"<string>\",\n  \"description\": \"<string>\",\n  \"category\": \"<string>\",\n  \"baseClass\": \"<string>\",\n  \"properties\": [\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"defaultValue\": \"<string>\",\n      \"description\": \"<string>\",\n      \"isDependencyProperty\": \"<boolean>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"type\": \"<string>\",\n      \"defaultValue\": \"<string>\",\n      \"description\": \"<string>\",\n      \"isDependencyProperty\": \"<boolean>\"\n    }\n  ],\n  \"events\": [\n    {\n      \"name\": \"<string>\",\n      \"eventArgsType\": \"<string>\",\n      \"description\": \"<string>\"\n    },\n    {\n      \"name\": \"<string>\",\n      \"eventArgsType\": \"<string>\",\n      \"description\": \"<string>\"\n    }\n  ],\n  \"xamlUsage\": \"<string>\",\n  \"guidelines\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:12:51.000Z",
+                      "updatedAt": "2026-06-05T15:12:51.000Z",
+                      "uid": "35240-f61be117-fed3-43c8-9beb-73c2ba4fc8c7"
+                    },
+                    {
+                      "id": "2956ab72-3542-46e7-be8c-55d18a79e23a",
+                      "name": "Control not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/winui/controls/:controlName",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "winui",
+                            "controls",
+                            ":controlName"
+                          ],
+                          "variable": [
+                            {
+                              "key": "controlName"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:51.000Z",
+                      "updatedAt": "2026-06-05T15:12:51.000Z",
+                      "uid": "35240-2956ab72-3542-46e7-be8c-55d18a79e23a"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:51.000Z",
+                  "updatedAt": "2026-06-05T15:12:51.000Z",
+                  "uid": "35240-5a7ae5b5-d991-4306-b2b9-ca2a00a3d7ab"
+                }
+              ],
+              "id": "4c0389ec-d937-4a6e-b32a-ce78db031497",
+              "createdAt": "2026-06-05T15:12:51.000Z",
+              "updatedAt": "2026-06-05T15:12:51.000Z",
+              "uid": "35240-4c0389ec-d937-4a6e-b32a-ce78db031497"
+            },
+            {
+              "name": "Microsoft Windows 10 List WinUI controls",
+              "id": "9ced4c4d-39d9-45c6-adc2-c9d64d29b7fd",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/winui/controls?category=Collections",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "winui",
+                    "controls"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter controls by category",
+                      "key": "category",
+                      "value": "Collections"
+                    }
+                  ]
+                },
+                "description": "Retrieves the catalog of available WinUI XAML controls organized by category. Includes basic input controls (Button, TextBox, CheckBox), collections (ListView, GridView, TreeView), navigation (NavigationView, TabView, Pivot), status (ProgressBar, ProgressRing, InfoBar), and media controls (MediaPlayerElement, Image)."
+              },
+              "response": [
+                {
+                  "id": "ef02a3a4-f4f7-4eb9-b91b-3cb0c10469ba",
+                  "name": "Successful retrieval of controls",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/winui/controls?category=Collections",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "winui",
+                        "controls"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter controls by category",
+                          "key": "category",
+                          "value": "Collections"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"name\": \"<string>\",\n    \"namespace\": \"<string>\",\n    \"category\": \"<string>\",\n    \"description\": \"<string>\",\n    \"isNewInWinUI\": \"<boolean>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"namespace\": \"<string>\",\n    \"category\": \"<string>\",\n    \"description\": \"<string>\",\n    \"isNewInWinUI\": \"<boolean>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:12:51.000Z",
+                  "updatedAt": "2026-06-05T15:12:51.000Z",
+                  "uid": "35240-ef02a3a4-f4f7-4eb9-b91b-3cb0c10469ba"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:51.000Z",
+              "updatedAt": "2026-06-05T15:12:51.000Z",
+              "uid": "35240-9ced4c4d-39d9-45c6-adc2-c9d64d29b7fd"
+            }
+          ],
+          "id": "6595ebc4-3605-4725-9ebf-592d7de83e33",
+          "createdAt": "2026-06-05T15:12:51.000Z",
+          "updatedAt": "2026-06-05T15:12:51.000Z",
+          "uid": "35240-6595ebc4-3605-4725-9ebf-592d7de83e33"
+        },
+        {
+          "name": "themes",
+          "item": [
+            {
+              "name": "Microsoft Windows 10 List available themes",
+              "id": "f7367ec8-12d3-441b-8edf-a20aac7c612c",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/winui/themes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "winui",
+                    "themes"
+                  ]
+                },
+                "description": "Retrieves the list of available application themes. WinUI supports Light, Dark, and HighContrast themes with automatic system theme detection via Application.RequestedTheme."
+              },
+              "response": [
+                {
+                  "id": "ae137abc-3d9e-4e8a-a3b0-ee6e2722b272",
+                  "name": "Successful retrieval of themes",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/winui/themes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "winui",
+                        "themes"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"name\": \"Dark\",\n    \"description\": \"<string>\",\n    \"systemColors\": {\n      \"eu7\": \"<string>\"\n    }\n  },\n  {\n    \"name\": \"HighContrast\",\n    \"description\": \"<string>\",\n    \"systemColors\": {\n      \"velit_40\": \"<string>\",\n      \"commodo_a73\": \"<string>\",\n      \"magna2\": \"<string>\"\n    }\n  }\n]",
+                  "createdAt": "2026-06-05T15:12:51.000Z",
+                  "updatedAt": "2026-06-05T15:12:51.000Z",
+                  "uid": "35240-ae137abc-3d9e-4e8a-a3b0-ee6e2722b272"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:51.000Z",
+              "updatedAt": "2026-06-05T15:12:51.000Z",
+              "uid": "35240-f7367ec8-12d3-441b-8edf-a20aac7c612c"
+            }
+          ],
+          "id": "9c3b2959-8826-4893-b31c-fa81f02ee839",
+          "createdAt": "2026-06-05T15:12:51.000Z",
+          "updatedAt": "2026-06-05T15:12:51.000Z",
+          "uid": "35240-9c3b2959-8826-4893-b31c-fa81f02ee839"
+        },
+        {
+          "name": "styles",
+          "item": [
+            {
+              "name": "Microsoft Windows 10 List built-in styles",
+              "id": "b689a8ec-b439-45c7-87d8-d37f0cb7e81d",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/winui/styles?resourceType=Spacing",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "winui",
+                    "styles"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by resource type",
+                      "key": "resourceType",
+                      "value": "Spacing"
+                    }
+                  ]
+                },
+                "description": "Retrieves the catalog of built-in WinUI styles and resources including Fluent Design System brushes, typography, corner radius, spacing, and animation definitions from generic.xaml."
+              },
+              "response": [
+                {
+                  "id": "cdbd186a-eab7-4803-b625-b07bb2770b87",
+                  "name": "Successful retrieval of styles",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/winui/styles?resourceType=Spacing",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "winui",
+                        "styles"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by resource type",
+                          "key": "resourceType",
+                          "value": "Spacing"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"key\": \"<string>\",\n    \"type\": \"<string>\",\n    \"value\": \"<string>\",\n    \"themeVariants\": {\n      \"light\": \"<string>\",\n      \"dark\": \"<string>\",\n      \"highContrast\": \"<string>\"\n    }\n  },\n  {\n    \"key\": \"<string>\",\n    \"type\": \"<string>\",\n    \"value\": \"<string>\",\n    \"themeVariants\": {\n      \"light\": \"<string>\",\n      \"dark\": \"<string>\",\n      \"highContrast\": \"<string>\"\n    }\n  }\n]",
+                  "createdAt": "2026-06-05T15:12:51.000Z",
+                  "updatedAt": "2026-06-05T15:12:51.000Z",
+                  "uid": "35240-cdbd186a-eab7-4803-b625-b07bb2770b87"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:51.000Z",
+              "updatedAt": "2026-06-05T15:12:51.000Z",
+              "uid": "35240-b689a8ec-b439-45c7-87d8-d37f0cb7e81d"
+            }
+          ],
+          "id": "5f550d4a-0529-4194-ac7c-f5a6d37b9d45",
+          "createdAt": "2026-06-05T15:12:51.000Z",
+          "updatedAt": "2026-06-05T15:12:51.000Z",
+          "uid": "35240-5f550d4a-0529-4194-ac7c-f5a6d37b9d45"
+        },
+        {
+          "name": "icons",
+          "item": [
+            {
+              "name": "Microsoft Windows 10 List Fluent Design icons",
+              "id": "05eabcd5-7c2f-4528-941f-13d858c80869",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/winui/icons?search=<string>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "winui",
+                    "icons"
+                  ],
+                  "query": [
+                    {
+                      "description": "Search icons by name",
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ]
+                },
+                "description": "Retrieves the catalog of available Segoe Fluent Icons for use with SymbolIcon and FontIcon controls. Includes icon name, unicode code point, and preview information."
+              },
+              "response": [
+                {
+                  "id": "3c620014-91b9-41cc-aa0c-c4b6a40d851f",
+                  "name": "Successful retrieval of icons",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/winui/icons?search=<string>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "winui",
+                        "icons"
+                      ],
+                      "query": [
+                        {
+                          "description": "Search icons by name",
+                          "key": "search",
+                          "value": "<string>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"name\": \"<string>\",\n    \"symbol\": \"<string>\",\n    \"unicodePoint\": \"<string>\",\n    \"description\": \"<string>\"\n  },\n  {\n    \"name\": \"<string>\",\n    \"symbol\": \"<string>\",\n    \"unicodePoint\": \"<string>\",\n    \"description\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:12:51.000Z",
+                  "updatedAt": "2026-06-05T15:12:51.000Z",
+                  "uid": "35240-3c620014-91b9-41cc-aa0c-c4b6a40d851f"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:51.000Z",
+              "updatedAt": "2026-06-05T15:12:51.000Z",
+              "uid": "35240-05eabcd5-7c2f-4528-941f-13d858c80869"
+            }
+          ],
+          "id": "e4d553cb-bb8d-4946-b586-761019cf60f2",
+          "createdAt": "2026-06-05T15:12:51.000Z",
+          "updatedAt": "2026-06-05T15:12:51.000Z",
+          "uid": "35240-e4d553cb-bb8d-4946-b586-761019cf60f2"
+        }
+      ],
+      "id": "c0be3df0-22a0-4fa2-882d-755af77881ec",
+      "createdAt": "2026-06-05T15:12:51.000Z",
+      "updatedAt": "2026-06-05T15:12:51.000Z",
+      "uid": "35240-c0be3df0-22a0-4fa2-882d-755af77881ec"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.windows.com"
+    }
+  ]
+}

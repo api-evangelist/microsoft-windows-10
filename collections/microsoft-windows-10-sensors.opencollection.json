@@ -1,0 +1,219 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Sensors API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sensors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List available sensors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/sensors"
+          },
+          "docs": "Retrieves the list of available sensors on the device. Each sensor type uses a GetDefault() static method to check availability. Supported types include Accelerometer, Gyrometer, Compass, Inclinometer, LightSensor, Barometer, Altimeter, Magnetometer, OrientationSensor, Pedometer, ProximitySensor, ActivitySensor, HumanPresenceSensor, and HingeAngleSensor."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Accelerometer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get accelerometer reading",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/sensors/accelerometer/reading"
+          },
+          "docs": "Retrieves the current accelerometer reading using Accelerometer.GetCurrentReading. Returns G-force values along the x, y, and z axes. The sensor coordinate system is fixed to the device."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Gyrometer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get gyrometer reading",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/sensors/gyrometer/reading"
+          },
+          "docs": "Retrieves the current gyrometer reading using Gyrometer.GetCurrentReading. Returns angular velocity in degrees per second along the x, y, and z axes."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Compass",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get compass reading",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/sensors/compass/reading"
+          },
+          "docs": "Retrieves the current compass reading using Compass.GetCurrentReading. Returns heading in degrees relative to magnetic north and optionally true north (if the device has a GPS receiver)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Inclinometer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get inclinometer reading",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/sensors/inclinometer/reading"
+          },
+          "docs": "Retrieves the current inclinometer reading using Inclinometer.GetCurrentReading. Returns pitch, roll, and yaw values in degrees corresponding to rotation around the x, y, and z axes."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Light Sensor",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get light sensor reading",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/sensors/light/reading"
+          },
+          "docs": "Retrieves the current ambient light sensor reading using LightSensor.GetCurrentReading. Returns illuminance in lux and optionally chromaticity coordinates."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Barometer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get barometer reading",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/sensors/barometer/reading"
+          },
+          "docs": "Retrieves the current barometer reading using Barometer.GetCurrentReading. Returns atmospheric pressure in hectopascals (hPa)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Orientation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get orientation sensor reading",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/sensors/orientation/reading"
+          },
+          "docs": "Retrieves the current orientation sensor reading using OrientationSensor.GetCurrentReading. Returns a rotation matrix and quaternion representing the device's spatial orientation. The orientation sensor fuses data from accelerometer, compass, and gyrometer for smooth results."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pedometer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get pedometer reading",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/sensors/pedometer/reading"
+          },
+          "docs": "Retrieves the current pedometer reading using Pedometer.GetCurrentReadings. Returns step counts categorized by step kind (walking, running, unknown)."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Proximity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get proximity sensor reading",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/sensors/proximity/reading"
+          },
+          "docs": "Retrieves the current proximity sensor reading using ProximitySensor.GetCurrentReading. Returns whether an object is detected and optionally the distance in millimeters."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Human Presence",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get human presence sensor reading",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/sensors/human-presence/reading"
+          },
+          "docs": "Retrieves the current human presence sensor reading using HumanPresenceSensor.GetCurrentReading. Detects whether a user is present, absent, or engaged, with optional head position and orientation data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

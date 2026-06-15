@@ -1,0 +1,824 @@
+{
+  "item": [
+    {
+      "id": "79c406f9-d74d-453b-aa15-563cd1057891",
+      "name": "Phrase Lists",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0a9dbffa-b1e3-4d42-84a0-a62c78ef781e",
+          "name": "Microsoft Windows 10 Update a phrase list",
+          "request": {
+            "name": "Microsoft Windows 10 Update a phrase list",
+            "description": {
+              "content": "Updates a phrase list within a voice command set using VoiceCommandDefinition.SetPhraseListAsync. Phrase lists are dynamic vocabularies that can be updated at runtime without reinstalling the VCD file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cortana",
+                "voice-commands",
+                ":commandSetName",
+                "phrase-lists",
+                ":phraseListName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "commandSetName",
+                  "description": "(Required) The name of the voice command set"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "phraseListName",
+                  "description": "(Required) The name of the phrase list to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phrases\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "692617d8-034a-4acc-a6e4-3c393a50f67e",
+              "name": "Phrase list updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cortana",
+                    "voice-commands",
+                    ":commandSetName",
+                    "phrase-lists",
+                    ":phraseListName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "commandSetName",
+                      "description": "(Required) The name of the voice command set"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "phraseListName",
+                      "description": "(Required) The name of the phrase list to update"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phrases\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "fa50ddd1-33d9-4e3a-80aa-11467d7c8176",
+              "name": "Command set or phrase list not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cortana",
+                    "voice-commands",
+                    ":commandSetName",
+                    "phrase-lists",
+                    ":phraseListName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "commandSetName",
+                      "description": "(Required) The name of the voice command set"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "phraseListName",
+                      "description": "(Required) The name of the phrase list to update"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phrases\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "602a301a-cb27-48e9-96bc-d5893ffabd4c",
+      "name": "Responses",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b2102f59-ee8c-4e4e-b486-788215c5edfa",
+          "name": "Microsoft Windows 10 Send a response to Cortana",
+          "request": {
+            "name": "Microsoft Windows 10 Send a response to Cortana",
+            "description": {
+              "content": "Sends a VoiceCommandResponse back to Cortana containing content tiles, a message, and an app launch argument. Uses VoiceCommandResponse.CreateResponse to format the response for display in the Cortana canvas.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cortana",
+                "responses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"<string>\",\n  \"contentTiles\": [\n    {\n      \"title\": \"<string>\",\n      \"textLine1\": \"<string>\",\n      \"textLine2\": \"<string>\",\n      \"textLine3\": \"<string>\",\n      \"imageUri\": \"<uri>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"textLine1\": \"<string>\",\n      \"textLine2\": \"<string>\",\n      \"textLine3\": \"<string>\",\n      \"imageUri\": \"<uri>\"\n    }\n  ],\n  \"appLaunchArgument\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "35026c0d-550f-4661-9a51-b0f0c9624882",
+              "name": "Response sent to Cortana",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cortana",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"contentTiles\": [\n    {\n      \"title\": \"<string>\",\n      \"textLine1\": \"<string>\",\n      \"textLine2\": \"<string>\",\n      \"textLine3\": \"<string>\",\n      \"imageUri\": \"<uri>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"textLine1\": \"<string>\",\n      \"textLine2\": \"<string>\",\n      \"textLine3\": \"<string>\",\n      \"imageUri\": \"<uri>\"\n    }\n  ],\n  \"appLaunchArgument\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "bb19129a-555b-4b64-9451-13816f277e5b",
+              "name": "Invalid response format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cortana",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"contentTiles\": [\n    {\n      \"title\": \"<string>\",\n      \"textLine1\": \"<string>\",\n      \"textLine2\": \"<string>\",\n      \"textLine3\": \"<string>\",\n      \"imageUri\": \"<uri>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"textLine1\": \"<string>\",\n      \"textLine2\": \"<string>\",\n      \"textLine3\": \"<string>\",\n      \"imageUri\": \"<uri>\"\n    }\n  ],\n  \"appLaunchArgument\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "54ea0321-3dbd-4cce-aee7-e3e1afbf552c",
+      "name": "Service Connections",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "363eb304-6256-40fd-a586-b1f8255be142",
+          "name": "Microsoft Windows 10 Create a Cortana app service connection",
+          "request": {
+            "name": "Microsoft Windows 10 Create a Cortana app service connection",
+            "description": {
+              "content": "Establishes a connection to the Cortana app service for handling voice commands in the background. Uses VoiceCommandServiceConnection to receive voice commands, display progress, and return results to Cortana.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cortana",
+                "service-connections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"triggerDetails\": \"<object>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b84a96cd-fa4d-4cb2-bd3b-cb57defc96fe",
+              "name": "Service connection established",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cortana",
+                    "service-connections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"triggerDetails\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"language\": \"string\",\n  \"voiceCommandName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a46ec3af-336d-4f57-a3a7-22bfab6ab6ba",
+              "name": "Invalid connection request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cortana",
+                    "service-connections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"triggerDetails\": \"<object>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "4c642e38-a681-45ee-96b7-35b7f1f0e24f",
+      "name": "Voice Commands",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bdc07802-f898-4880-9d4b-2153deb98b7a",
+          "name": "Microsoft Windows 10 List voice command definitions",
+          "request": {
+            "name": "Microsoft Windows 10 List voice command definitions",
+            "description": {
+              "content": "Retrieves the list of installed Voice Command Definition (VCD) sets. Each VCD set defines a group of voice commands that Cortana can recognize for a specific application, including command names, phrases, and feedback text.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cortana",
+                "voice-commands"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ee2c793f-b2dc-4432-b385-2d2319f9350f",
+              "name": "Successful retrieval of voice command definitions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cortana",
+                    "voice-commands"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"language\": \"string\",\n    \"commandCount\": 1324\n  },\n  {\n    \"name\": \"string\",\n    \"language\": \"string\",\n    \"commandCount\": 1704\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4a631f54-fbf1-4585-879f-12eecd487af4",
+          "name": "Microsoft Windows 10 Install a voice command definition",
+          "request": {
+            "name": "Microsoft Windows 10 Install a voice command definition",
+            "description": {
+              "content": "Installs a VCD file using VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync. The VCD file is an XML document that defines the commands, example phrases, and phrase lists that Cortana will recognize for the application.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cortana",
+                "voice-commands"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vcdFilePath\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6e2e1d33-6d1b-4e0d-9a02-7f67c4a9cbeb",
+              "name": "VCD installed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cortana",
+                    "voice-commands"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vcdFilePath\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"language\": \"string\",\n  \"commandCount\": 6086\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ca0ecb0-55a8-482b-97e2-cfa865a394a7",
+              "name": "Invalid VCD file",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cortana",
+                    "voice-commands"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vcdFilePath\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5d00c848-3c3e-4305-a927-0cd077e24bfd",
+          "name": "Microsoft Windows 10 Get a voice command set",
+          "request": {
+            "name": "Microsoft Windows 10 Get a voice command set",
+            "description": {
+              "content": "Retrieves a specific voice command set by name. The command set contains the language, name, and all defined commands including their phrases and phrase lists.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cortana",
+                "voice-commands",
+                ":commandSetName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "commandSetName",
+                  "description": "(Required) The name of the voice command set"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4e9e110b-4c24-499e-b4df-4ca69971757e",
+              "name": "Successful retrieval of the voice command set",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cortana",
+                    "voice-commands",
+                    ":commandSetName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "commandSetName",
+                      "description": "(Required) The name of the voice command set"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"language\": \"string\",\n  \"commands\": [\n    {\n      \"type\": \"string\",\n      \"description\": \"Example phrase for the command\"\n    },\n    {\n      \"type\": \"string\",\n      \"description\": \"Example phrase for the command\"\n    }\n  ],\n  \"phraseLists\": [\n    {\n      \"name\": \"string\",\n      \"items\": [\n        \"string\",\n        \"string\"\n      ]\n    },\n    {\n      \"name\": \"string\",\n      \"items\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4219a7bb-a592-4fca-9dea-1fa0d40f2e36",
+              "name": "Command set not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cortana",
+                    "voice-commands",
+                    ":commandSetName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "commandSetName",
+                      "description": "(Required) The name of the voice command set"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "03da949f-bb83-4d12-b415-8a1b921359c2",
+    "name": "Microsoft Windows 10 Windows Cortana API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for integrating voice commands and Cortana digital assistant capabilities into Windows applications. Enables voice-activated interactions through Voice Command Definitions (VCD) that specify commands, phrases, and feedback. Applications register VCD files to define custom voice commands that Cortana recognizes and routes to the appropriate app handler.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

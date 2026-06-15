@@ -1,0 +1,874 @@
+{
+  "info": {
+    "_postman_id": "ff8b51f4-c816-4b74-8911-4530037b6f53",
+    "name": "Microsoft Windows 10 Windows Ink API",
+    "description": "API for pen and stylus input in Windows applications, based on the Windows.UI.Input.Inking namespace. Provides inking surfaces (InkCanvas, InkPresenter), stroke management (InkStroke, InkStrokeBuilder), ink recognition (InkRecognizer, InkAnalyzer), and handwriting analysis. Supports pressure sensitivity, tilt, and barrel button interactions.\n\nContact Support:\n Name: Microsoft Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:12:30.000Z",
+    "updatedAt": "2026-06-05T15:12:31.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ff8b51f4-c816-4b74-8911-4530037b6f53"
+  },
+  "item": [
+    {
+      "name": "ink",
+      "item": [
+        {
+          "name": "strokes",
+          "item": [
+            {
+              "name": "{strokeId}",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Get ink stroke details",
+                  "id": "d015d3a0-8bf6-48a3-b1bd-57ce53776049",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ink/strokes/:strokeId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ink",
+                        "strokes",
+                        ":strokeId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "c671341e-941e-4a35-95e1-dd3480273757",
+                          "key": "strokeId",
+                          "value": "<string>",
+                          "description": "(Required) Unique stroke identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves detailed information about a specific ink stroke including its points, drawing attributes, and bounding rectangle."
+                  },
+                  "response": [
+                    {
+                      "id": "870302fc-5b6e-40d8-9bda-3623984713be",
+                      "name": "Successful retrieval of ink stroke",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/ink/strokes/:strokeId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ink",
+                            "strokes",
+                            ":strokeId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "strokeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"points\": [\n    {\n      \"x\": \"<float>\",\n      \"y\": \"<float>\",\n      \"pressure\": \"<float>\",\n      \"tiltX\": \"<float>\",\n      \"tiltY\": \"<float>\",\n      \"timestamp\": \"<long>\"\n    },\n    {\n      \"x\": \"<float>\",\n      \"y\": \"<float>\",\n      \"pressure\": \"<float>\",\n      \"tiltX\": \"<float>\",\n      \"tiltY\": \"<float>\",\n      \"timestamp\": \"<long>\"\n    }\n  ],\n  \"boundingRect\": {\n    \"x\": \"<float>\",\n    \"y\": \"<float>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\"\n  },\n  \"drawingAttributes\": {\n    \"color\": \"<string>\",\n    \"size\": {\n      \"width\": \"<float>\",\n      \"height\": \"<float>\"\n    },\n    \"penTip\": \"Circle\",\n    \"drawAsHighlighter\": \"<boolean>\",\n    \"fitToCurve\": \"<boolean>\",\n    \"ignorePressure\": \"<boolean>\",\n    \"ignoreTilt\": \"<boolean>\"\n  },\n  \"strokeDuration\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:12:31.000Z",
+                      "updatedAt": "2026-06-05T15:12:31.000Z",
+                      "uid": "35240-870302fc-5b6e-40d8-9bda-3623984713be"
+                    },
+                    {
+                      "id": "e862bcdc-fae3-40e4-87b0-b70470d23167",
+                      "name": "Stroke not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/ink/strokes/:strokeId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ink",
+                            "strokes",
+                            ":strokeId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "strokeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:31.000Z",
+                      "updatedAt": "2026-06-05T15:12:31.000Z",
+                      "uid": "35240-e862bcdc-fae3-40e4-87b0-b70470d23167"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:31.000Z",
+                  "updatedAt": "2026-06-05T15:12:31.000Z",
+                  "uid": "35240-d015d3a0-8bf6-48a3-b1bd-57ce53776049"
+                },
+                {
+                  "name": "Microsoft Windows 10 Delete an ink stroke",
+                  "id": "7fe3d968-954e-480c-9d71-81d1b88cf75d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "DELETE",
+                    "header": [],
+                    "url": {
+                      "raw": "{{baseUrl}}/ink/strokes/:strokeId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ink",
+                        "strokes",
+                        ":strokeId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "e06b4339-ac6c-416b-bcb2-a389d186ef15",
+                          "key": "strokeId",
+                          "value": "<string>",
+                          "description": "(Required) Unique stroke identifier"
+                        }
+                      ]
+                    },
+                    "description": "Deletes a specific ink stroke from the container using InkStroke.Selected and InkStrokeContainer.DeleteSelected methods."
+                  },
+                  "response": [
+                    {
+                      "id": "176d054e-f18a-4bfd-8c0f-5ca88b79fecd",
+                      "name": "Stroke deleted successfully",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/ink/strokes/:strokeId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ink",
+                            "strokes",
+                            ":strokeId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "strokeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "No Content",
+                      "code": 204,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:31.000Z",
+                      "updatedAt": "2026-06-05T15:12:31.000Z",
+                      "uid": "35240-176d054e-f18a-4bfd-8c0f-5ca88b79fecd"
+                    },
+                    {
+                      "id": "f6b44c30-ba25-4446-bddd-63af8d691d86",
+                      "name": "Stroke not found",
+                      "originalRequest": {
+                        "method": "DELETE",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/ink/strokes/:strokeId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "ink",
+                            "strokes",
+                            ":strokeId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "strokeId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:31.000Z",
+                      "updatedAt": "2026-06-05T15:12:31.000Z",
+                      "uid": "35240-f6b44c30-ba25-4446-bddd-63af8d691d86"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:31.000Z",
+                  "updatedAt": "2026-06-05T15:12:31.000Z",
+                  "uid": "35240-7fe3d968-954e-480c-9d71-81d1b88cf75d"
+                }
+              ],
+              "id": "dc2a0a54-35a0-4440-a87c-5922be0e0e84",
+              "createdAt": "2026-06-05T15:12:31.000Z",
+              "updatedAt": "2026-06-05T15:12:31.000Z",
+              "uid": "35240-dc2a0a54-35a0-4440-a87c-5922be0e0e84"
+            },
+            {
+              "name": "Microsoft Windows 10 List ink strokes",
+              "id": "9c970f5d-f6d5-4fe9-9ee3-b2d2b1b9c369",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ink/strokes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ink",
+                    "strokes"
+                  ]
+                },
+                "description": "Retrieves the list of ink strokes from an InkStrokeContainer. Each InkStroke contains point data, drawing attributes (color, size, pen tip shape), and bounding rectangle information."
+              },
+              "response": [
+                {
+                  "id": "77b8d9c7-e267-4d7b-915f-b8393f1d9599",
+                  "name": "Successful retrieval of ink strokes",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ink/strokes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ink",
+                        "strokes"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"id\": \"<string>\",\n    \"pointCount\": \"<integer>\",\n    \"boundingRect\": {\n      \"x\": \"<float>\",\n      \"y\": \"<float>\",\n      \"width\": \"<float>\",\n      \"height\": \"<float>\"\n    },\n    \"drawingAttributes\": {\n      \"color\": \"<string>\",\n      \"size\": {\n        \"width\": \"<float>\",\n        \"height\": \"<float>\"\n      },\n      \"penTip\": \"Circle\",\n      \"drawAsHighlighter\": \"<boolean>\",\n      \"fitToCurve\": \"<boolean>\",\n      \"ignorePressure\": \"<boolean>\",\n      \"ignoreTilt\": \"<boolean>\"\n    }\n  },\n  {\n    \"id\": \"<string>\",\n    \"pointCount\": \"<integer>\",\n    \"boundingRect\": {\n      \"x\": \"<float>\",\n      \"y\": \"<float>\",\n      \"width\": \"<float>\",\n      \"height\": \"<float>\"\n    },\n    \"drawingAttributes\": {\n      \"color\": \"<string>\",\n      \"size\": {\n        \"width\": \"<float>\",\n        \"height\": \"<float>\"\n      },\n      \"penTip\": \"Circle\",\n      \"drawAsHighlighter\": \"<boolean>\",\n      \"fitToCurve\": \"<boolean>\",\n      \"ignorePressure\": \"<boolean>\",\n      \"ignoreTilt\": \"<boolean>\"\n    }\n  }\n]",
+                  "createdAt": "2026-06-05T15:12:31.000Z",
+                  "updatedAt": "2026-06-05T15:12:31.000Z",
+                  "uid": "35240-77b8d9c7-e267-4d7b-915f-b8393f1d9599"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:31.000Z",
+              "updatedAt": "2026-06-05T15:12:31.000Z",
+              "uid": "35240-9c970f5d-f6d5-4fe9-9ee3-b2d2b1b9c369"
+            },
+            {
+              "name": "Microsoft Windows 10 Add an ink stroke",
+              "id": "cfdf2c22-47e9-45d5-97cc-a3d2ce9aba62",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"points\": [\n    {\n      \"x\": \"<float>\",\n      \"y\": \"<float>\",\n      \"pressure\": \"<float>\",\n      \"tiltX\": \"<float>\",\n      \"tiltY\": \"<float>\",\n      \"timestamp\": \"<long>\"\n    },\n    {\n      \"x\": \"<float>\",\n      \"y\": \"<float>\",\n      \"pressure\": \"<float>\",\n      \"tiltX\": \"<float>\",\n      \"tiltY\": \"<float>\",\n      \"timestamp\": \"<long>\"\n    }\n  ],\n  \"drawingAttributes\": {\n    \"color\": \"<string>\",\n    \"size\": {\n      \"width\": \"<float>\",\n      \"height\": \"<float>\"\n    },\n    \"penTip\": \"Rectangle\",\n    \"drawAsHighlighter\": \"<boolean>\",\n    \"fitToCurve\": \"<boolean>\",\n    \"ignorePressure\": \"<boolean>\",\n    \"ignoreTilt\": \"<boolean>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ink/strokes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ink",
+                    "strokes"
+                  ]
+                },
+                "description": "Adds a new ink stroke to the InkStrokeContainer using InkStrokeBuilder. The stroke is created from a series of ink points with position, pressure, tilt, and timestamp data, combined with InkDrawingAttributes for visual styling."
+              },
+              "response": [
+                {
+                  "id": "8295a163-d7d4-435f-b203-5db74335e9e4",
+                  "name": "Ink stroke created",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"points\": [\n    {\n      \"x\": \"<float>\",\n      \"y\": \"<float>\",\n      \"pressure\": \"<float>\",\n      \"tiltX\": \"<float>\",\n      \"tiltY\": \"<float>\",\n      \"timestamp\": \"<long>\"\n    },\n    {\n      \"x\": \"<float>\",\n      \"y\": \"<float>\",\n      \"pressure\": \"<float>\",\n      \"tiltX\": \"<float>\",\n      \"tiltY\": \"<float>\",\n      \"timestamp\": \"<long>\"\n    }\n  ],\n  \"drawingAttributes\": {\n    \"color\": \"<string>\",\n    \"size\": {\n      \"width\": \"<float>\",\n      \"height\": \"<float>\"\n    },\n    \"penTip\": \"Rectangle\",\n    \"drawAsHighlighter\": \"<boolean>\",\n    \"fitToCurve\": \"<boolean>\",\n    \"ignorePressure\": \"<boolean>\",\n    \"ignoreTilt\": \"<boolean>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ink/strokes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ink",
+                        "strokes"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"pointCount\": \"<integer>\",\n  \"boundingRect\": {\n    \"x\": \"<float>\",\n    \"y\": \"<float>\",\n    \"width\": \"<float>\",\n    \"height\": \"<float>\"\n  },\n  \"drawingAttributes\": {\n    \"color\": \"<string>\",\n    \"size\": {\n      \"width\": \"<float>\",\n      \"height\": \"<float>\"\n    },\n    \"penTip\": \"Rectangle\",\n    \"drawAsHighlighter\": \"<boolean>\",\n    \"fitToCurve\": \"<boolean>\",\n    \"ignorePressure\": \"<boolean>\",\n    \"ignoreTilt\": \"<boolean>\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:12:31.000Z",
+                  "updatedAt": "2026-06-05T15:12:31.000Z",
+                  "uid": "35240-8295a163-d7d4-435f-b203-5db74335e9e4"
+                },
+                {
+                  "id": "c4bb8d59-2d1c-4477-b153-4c6bbd5a681b",
+                  "name": "Invalid stroke data",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"points\": [\n    {\n      \"x\": \"<float>\",\n      \"y\": \"<float>\",\n      \"pressure\": \"<float>\",\n      \"tiltX\": \"<float>\",\n      \"tiltY\": \"<float>\",\n      \"timestamp\": \"<long>\"\n    },\n    {\n      \"x\": \"<float>\",\n      \"y\": \"<float>\",\n      \"pressure\": \"<float>\",\n      \"tiltX\": \"<float>\",\n      \"tiltY\": \"<float>\",\n      \"timestamp\": \"<long>\"\n    }\n  ],\n  \"drawingAttributes\": {\n    \"color\": \"<string>\",\n    \"size\": {\n      \"width\": \"<float>\",\n      \"height\": \"<float>\"\n    },\n    \"penTip\": \"Rectangle\",\n    \"drawAsHighlighter\": \"<boolean>\",\n    \"fitToCurve\": \"<boolean>\",\n    \"ignorePressure\": \"<boolean>\",\n    \"ignoreTilt\": \"<boolean>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ink/strokes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ink",
+                        "strokes"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:12:31.000Z",
+                  "updatedAt": "2026-06-05T15:12:31.000Z",
+                  "uid": "35240-c4bb8d59-2d1c-4477-b153-4c6bbd5a681b"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:31.000Z",
+              "updatedAt": "2026-06-05T15:12:31.000Z",
+              "uid": "35240-cfdf2c22-47e9-45d5-97cc-a3d2ce9aba62"
+            }
+          ],
+          "id": "9ef98686-23e3-40cd-8413-4cc705136e4e",
+          "createdAt": "2026-06-05T15:12:31.000Z",
+          "updatedAt": "2026-06-05T15:12:31.000Z",
+          "uid": "35240-9ef98686-23e3-40cd-8413-4cc705136e4e"
+        },
+        {
+          "name": "recognize",
+          "item": [
+            {
+              "name": "Microsoft Windows 10 Recognize handwriting from ink strokes",
+              "id": "76dedb9c-8136-4453-acbd-49f420b61d7b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"strokeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"recognitionTarget\": \"All\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ink/recognize",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ink",
+                    "recognize"
+                  ]
+                },
+                "description": "Performs handwriting recognition on ink strokes using InkRecognizerContainer. RecognizeAsync. Returns a list of InkRecognitionResult candidates with recognized text alternatives ranked by confidence."
+              },
+              "response": [
+                {
+                  "id": "24efd3b4-1526-43c7-81f2-9f7036804bac",
+                  "name": "Recognition results returned",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"strokeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"recognitionTarget\": \"All\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ink/recognize",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ink",
+                        "recognize"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"boundingRect\": {\n      \"x\": \"<float>\",\n      \"y\": \"<float>\",\n      \"width\": \"<float>\",\n      \"height\": \"<float>\"\n    },\n    \"textCandidates\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"selectedTextIndex\": \"<integer>\",\n    \"strokeIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  },\n  {\n    \"boundingRect\": {\n      \"x\": \"<float>\",\n      \"y\": \"<float>\",\n      \"width\": \"<float>\",\n      \"height\": \"<float>\"\n    },\n    \"textCandidates\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"selectedTextIndex\": \"<integer>\",\n    \"strokeIds\": [\n      \"<string>\",\n      \"<string>\"\n    ]\n  }\n]",
+                  "createdAt": "2026-06-05T15:12:31.000Z",
+                  "updatedAt": "2026-06-05T15:12:31.000Z",
+                  "uid": "35240-24efd3b4-1526-43c7-81f2-9f7036804bac"
+                },
+                {
+                  "id": "a29419a7-1f28-446d-a6da-0ed0659c678a",
+                  "name": "No strokes to recognize",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"strokeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"recognitionTarget\": \"All\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ink/recognize",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ink",
+                        "recognize"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:12:31.000Z",
+                  "updatedAt": "2026-06-05T15:12:31.000Z",
+                  "uid": "35240-a29419a7-1f28-446d-a6da-0ed0659c678a"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:31.000Z",
+              "updatedAt": "2026-06-05T15:12:31.000Z",
+              "uid": "35240-76dedb9c-8136-4453-acbd-49f420b61d7b"
+            }
+          ],
+          "id": "ce463a33-b34f-48e0-bebd-dbce1331f357",
+          "createdAt": "2026-06-05T15:12:31.000Z",
+          "updatedAt": "2026-06-05T15:12:31.000Z",
+          "uid": "35240-ce463a33-b34f-48e0-bebd-dbce1331f357"
+        },
+        {
+          "name": "recognizers",
+          "item": [
+            {
+              "name": "Microsoft Windows 10 List available ink recognizers",
+              "id": "b4ef761d-c77d-4077-8312-cf49c0da9a0b",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ink/recognizers",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ink",
+                    "recognizers"
+                  ]
+                },
+                "description": "Retrieves the list of installed handwriting recognizers using InkRecognizerContainer.GetRecognizers. Each recognizer supports a specific language and script for handwriting recognition."
+              },
+              "response": [
+                {
+                  "id": "c56eaad8-3d07-4b7a-b03b-8533fb58ea00",
+                  "name": "Successful retrieval of recognizers",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ink/recognizers",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ink",
+                        "recognizers"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:12:31.000Z",
+                  "updatedAt": "2026-06-05T15:12:31.000Z",
+                  "uid": "35240-c56eaad8-3d07-4b7a-b03b-8533fb58ea00"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:31.000Z",
+              "updatedAt": "2026-06-05T15:12:31.000Z",
+              "uid": "35240-b4ef761d-c77d-4077-8312-cf49c0da9a0b"
+            }
+          ],
+          "id": "298cf986-cbf9-493a-a92a-14685841b82c",
+          "createdAt": "2026-06-05T15:12:31.000Z",
+          "updatedAt": "2026-06-05T15:12:31.000Z",
+          "uid": "35240-298cf986-cbf9-493a-a92a-14685841b82c"
+        },
+        {
+          "name": "drawing-attributes",
+          "item": [
+            {
+              "name": "Microsoft Windows 10 Get default drawing attributes",
+              "id": "7b84ee07-fc12-481d-b66e-e3a5be256e41",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/ink/drawing-attributes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ink",
+                    "drawing-attributes"
+                  ]
+                },
+                "description": "Retrieves the default InkDrawingAttributes used for new strokes, including color, size, pen tip shape, transparency, and fit-to-curve settings."
+              },
+              "response": [
+                {
+                  "id": "badbb749-6720-48bd-ac6a-b7df45391fb6",
+                  "name": "Successful retrieval of drawing attributes",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/ink/drawing-attributes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ink",
+                        "drawing-attributes"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"color\": \"<string>\",\n  \"size\": {\n    \"width\": \"<float>\",\n    \"height\": \"<float>\"\n  },\n  \"penTip\": \"Circle\",\n  \"drawAsHighlighter\": \"<boolean>\",\n  \"fitToCurve\": \"<boolean>\",\n  \"ignorePressure\": \"<boolean>\",\n  \"ignoreTilt\": \"<boolean>\"\n}",
+                  "createdAt": "2026-06-05T15:12:31.000Z",
+                  "updatedAt": "2026-06-05T15:12:31.000Z",
+                  "uid": "35240-badbb749-6720-48bd-ac6a-b7df45391fb6"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:31.000Z",
+              "updatedAt": "2026-06-05T15:12:31.000Z",
+              "uid": "35240-7b84ee07-fc12-481d-b66e-e3a5be256e41"
+            },
+            {
+              "name": "Microsoft Windows 10 Update default drawing attributes",
+              "id": "289a7f08-add3-4ef8-a0cb-eec5defb2198",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"color\": \"<string>\",\n  \"size\": {\n    \"width\": \"<float>\",\n    \"height\": \"<float>\"\n  },\n  \"penTip\": \"Circle\",\n  \"drawAsHighlighter\": \"<boolean>\",\n  \"fitToCurve\": \"<boolean>\",\n  \"ignorePressure\": \"<boolean>\",\n  \"ignoreTilt\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/ink/drawing-attributes",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "ink",
+                    "drawing-attributes"
+                  ]
+                },
+                "description": "Updates the default InkDrawingAttributes for new strokes. Changes affect all subsequently created strokes."
+              },
+              "response": [
+                {
+                  "id": "428e35b7-1c6f-42e1-99a4-735a82ec032f",
+                  "name": "Drawing attributes updated",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"color\": \"<string>\",\n  \"size\": {\n    \"width\": \"<float>\",\n    \"height\": \"<float>\"\n  },\n  \"penTip\": \"Circle\",\n  \"drawAsHighlighter\": \"<boolean>\",\n  \"fitToCurve\": \"<boolean>\",\n  \"ignorePressure\": \"<boolean>\",\n  \"ignoreTilt\": \"<boolean>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/ink/drawing-attributes",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "ink",
+                        "drawing-attributes"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:12:31.000Z",
+                  "updatedAt": "2026-06-05T15:12:31.000Z",
+                  "uid": "35240-428e35b7-1c6f-42e1-99a4-735a82ec032f"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:31.000Z",
+              "updatedAt": "2026-06-05T15:12:31.000Z",
+              "uid": "35240-289a7f08-add3-4ef8-a0cb-eec5defb2198"
+            }
+          ],
+          "id": "c5d0f34f-de19-42db-ae4c-8aa6ac9f7069",
+          "createdAt": "2026-06-05T15:12:31.000Z",
+          "updatedAt": "2026-06-05T15:12:31.000Z",
+          "uid": "35240-c5d0f34f-de19-42db-ae4c-8aa6ac9f7069"
+        }
+      ],
+      "id": "e0af8563-13c5-4f21-be37-ce990a85413f",
+      "createdAt": "2026-06-05T15:12:31.000Z",
+      "updatedAt": "2026-06-05T15:12:31.000Z",
+      "uid": "35240-e0af8563-13c5-4f21-be37-ce990a85413f"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.windows.com"
+    }
+  ]
+}

@@ -1,0 +1,969 @@
+{
+  "info": {
+    "_postman_id": "5a2a882a-b057-4ab8-8523-c526682fa543",
+    "name": "Microsoft Windows 10 Windows Networking API",
+    "description": "API for network communication in Windows applications, based on the Windows.Networking.Sockets and Windows.Web.Http namespaces. Provides support for TCP/UDP sockets (StreamSocket, DatagramSocket), WebSockets (MessageWebSocket, StreamWebSocket), HTTP clients (HttpClient), and background transfers (BackgroundDownloader, BackgroundUploader).\n\nContact Support:\n Name: Microsoft Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:12:35.000Z",
+    "updatedAt": "2026-06-05T15:12:35.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5a2a882a-b057-4ab8-8523-c526682fa543"
+  },
+  "item": [
+    {
+      "name": "networking",
+      "item": [
+        {
+          "name": "sockets",
+          "item": [
+            {
+              "name": "tcp",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Create a TCP stream socket",
+                  "id": "46455f6b-5232-4935-a385-c68a86b84e32",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"remoteHostName\": \"<string>\",\n  \"remoteServiceName\": \"<string>\",\n  \"protectionLevel\": \"PlainSocket\",\n  \"noDelay\": false,\n  \"keepAlive\": true\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/networking/sockets/tcp",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "networking",
+                        "sockets",
+                        "tcp"
+                      ]
+                    },
+                    "description": "Creates a StreamSocket for TCP communication. StreamSocket provides reliable, ordered, and error-checked delivery of data between two endpoints. Supports TLS/SSL for secure connections via StreamSocket.UpgradeToSslAsync."
+                  },
+                  "response": [
+                    {
+                      "id": "734c5946-13a4-463e-9230-48a38881e2fe",
+                      "name": "TCP socket created and connected",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"remoteHostName\": \"<string>\",\n  \"remoteServiceName\": \"<string>\",\n  \"protectionLevel\": \"PlainSocket\",\n  \"noDelay\": false,\n  \"keepAlive\": true\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/networking/sockets/tcp",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "networking",
+                            "sockets",
+                            "tcp"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"localAddress\": \"<string>\",\n  \"localPort\": \"<string>\",\n  \"remoteAddress\": \"<string>\",\n  \"remotePort\": \"<string>\",\n  \"protectionLevel\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:12:36.000Z",
+                      "updatedAt": "2026-06-05T15:12:36.000Z",
+                      "uid": "35240-734c5946-13a4-463e-9230-48a38881e2fe"
+                    },
+                    {
+                      "id": "b0fd126c-7ce5-4fbc-a4ef-e6b801ff9ead",
+                      "name": "Invalid socket configuration",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"remoteHostName\": \"<string>\",\n  \"remoteServiceName\": \"<string>\",\n  \"protectionLevel\": \"PlainSocket\",\n  \"noDelay\": false,\n  \"keepAlive\": true\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/networking/sockets/tcp",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "networking",
+                            "sockets",
+                            "tcp"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:36.000Z",
+                      "updatedAt": "2026-06-05T15:12:36.000Z",
+                      "uid": "35240-b0fd126c-7ce5-4fbc-a4ef-e6b801ff9ead"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:36.000Z",
+                  "updatedAt": "2026-06-05T15:12:36.000Z",
+                  "uid": "35240-46455f6b-5232-4935-a385-c68a86b84e32"
+                }
+              ],
+              "id": "b53de4e9-964a-420e-b9ed-8f1ce670a54b",
+              "createdAt": "2026-06-05T15:12:36.000Z",
+              "updatedAt": "2026-06-05T15:12:36.000Z",
+              "uid": "35240-b53de4e9-964a-420e-b9ed-8f1ce670a54b"
+            },
+            {
+              "name": "udp",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Create a UDP datagram socket",
+                  "id": "ada61b97-2d91-4200-9e55-e167906a1708",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"localServiceName\": \"<string>\",\n  \"multicastGroup\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/networking/sockets/udp",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "networking",
+                        "sockets",
+                        "udp"
+                      ]
+                    },
+                    "description": "Creates a DatagramSocket for UDP communication. DatagramSocket provides connectionless, unreliable datagrams for low-latency communication. Supports multicast group membership via JoinMulticastGroup."
+                  },
+                  "response": [
+                    {
+                      "id": "be3288c7-5a7a-4d3b-aaa1-5c3d44148ea1",
+                      "name": "UDP socket created and bound",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"localServiceName\": \"<string>\",\n  \"multicastGroup\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/networking/sockets/udp",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "networking",
+                            "sockets",
+                            "udp"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"localAddress\": \"<string>\",\n  \"localPort\": \"<string>\"\n}",
+                      "createdAt": "2026-06-05T15:12:36.000Z",
+                      "updatedAt": "2026-06-05T15:12:36.000Z",
+                      "uid": "35240-be3288c7-5a7a-4d3b-aaa1-5c3d44148ea1"
+                    },
+                    {
+                      "id": "9216003e-6bb3-4024-b522-d56f13f32f7a",
+                      "name": "Invalid socket configuration",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"localServiceName\": \"<string>\",\n  \"multicastGroup\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/networking/sockets/udp",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "networking",
+                            "sockets",
+                            "udp"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:36.000Z",
+                      "updatedAt": "2026-06-05T15:12:36.000Z",
+                      "uid": "35240-9216003e-6bb3-4024-b522-d56f13f32f7a"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:36.000Z",
+                  "updatedAt": "2026-06-05T15:12:36.000Z",
+                  "uid": "35240-ada61b97-2d91-4200-9e55-e167906a1708"
+                }
+              ],
+              "id": "8d6ba5a0-cd79-424f-95f5-6f6145c44a4a",
+              "createdAt": "2026-06-05T15:12:36.000Z",
+              "updatedAt": "2026-06-05T15:12:36.000Z",
+              "uid": "35240-8d6ba5a0-cd79-424f-95f5-6f6145c44a4a"
+            }
+          ],
+          "id": "16916ccb-15a1-432b-a2bd-1f9c25527503",
+          "createdAt": "2026-06-05T15:12:36.000Z",
+          "updatedAt": "2026-06-05T15:12:36.000Z",
+          "uid": "35240-16916ccb-15a1-432b-a2bd-1f9c25527503"
+        },
+        {
+          "name": "websockets",
+          "item": [
+            {
+              "name": "Microsoft Windows 10 Create a WebSocket connection",
+              "id": "01fc7437-7a76-4393-9075-0b7544337f85",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uri\": \"<uri>\",\n  \"type\": \"Message\",\n  \"messageType\": \"Utf8\",\n  \"protocols\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/networking/websockets",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "networking",
+                    "websockets"
+                  ]
+                },
+                "description": "Creates a MessageWebSocket or StreamWebSocket for real-time bidirectional communication. MessageWebSocket handles discrete messages while StreamWebSocket provides continuous stream-based communication."
+              },
+              "response": [
+                {
+                  "id": "8be9f22c-706d-453a-a84a-9029b990bb67",
+                  "name": "WebSocket connection established",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"uri\": \"<uri>\",\n  \"type\": \"Message\",\n  \"messageType\": \"Utf8\",\n  \"protocols\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/networking/websockets",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "networking",
+                        "websockets"
+                      ]
+                    }
+                  },
+                  "status": "Created",
+                  "code": 201,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<uri>\",\n  \"type\": \"<string>\",\n  \"state\": \"Closed\"\n}",
+                  "createdAt": "2026-06-05T15:12:36.000Z",
+                  "updatedAt": "2026-06-05T15:12:36.000Z",
+                  "uid": "35240-8be9f22c-706d-453a-a84a-9029b990bb67"
+                },
+                {
+                  "id": "5d5c3631-6b57-4fad-b4b0-55a9353ff8e9",
+                  "name": "Invalid WebSocket configuration",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"uri\": \"<uri>\",\n  \"type\": \"Message\",\n  \"messageType\": \"Utf8\",\n  \"protocols\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/networking/websockets",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "networking",
+                        "websockets"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-06-05T15:12:36.000Z",
+                  "updatedAt": "2026-06-05T15:12:36.000Z",
+                  "uid": "35240-5d5c3631-6b57-4fad-b4b0-55a9353ff8e9"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:36.000Z",
+              "updatedAt": "2026-06-05T15:12:36.000Z",
+              "uid": "35240-01fc7437-7a76-4393-9075-0b7544337f85"
+            }
+          ],
+          "id": "d8291e49-f764-4f44-a81b-ba3ad0689fbc",
+          "createdAt": "2026-06-05T15:12:36.000Z",
+          "updatedAt": "2026-06-05T15:12:36.000Z",
+          "uid": "35240-d8291e49-f764-4f44-a81b-ba3ad0689fbc"
+        },
+        {
+          "name": "http",
+          "item": [
+            {
+              "name": "requests",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Send an HTTP request",
+                  "id": "14e82f34-710d-4f6a-bdb9-f3c9ce0a538a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"method\": \"GET\",\n  \"uri\": \"<uri>\",\n  \"headers\": {\n    \"in_c2a\": \"<string>\"\n  },\n  \"content\": \"<string>\",\n  \"contentType\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/networking/http/requests",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "networking",
+                        "http",
+                        "requests"
+                      ]
+                    },
+                    "description": "Sends an HTTP request using the Windows.Web.Http.HttpClient class. Supports GET, POST, PUT, PATCH, DELETE methods with configurable headers, content types, and authentication. Includes built-in cookie management and automatic decompression."
+                  },
+                  "response": [
+                    {
+                      "id": "98623272-bd87-40a9-9131-e2cdf7f5736f",
+                      "name": "HTTP response received",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"method\": \"GET\",\n  \"uri\": \"<uri>\",\n  \"headers\": {\n    \"in_c2a\": \"<string>\"\n  },\n  \"content\": \"<string>\",\n  \"contentType\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/networking/http/requests",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "networking",
+                            "http",
+                            "requests"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"statusCode\": \"<integer>\",\n  \"reasonPhrase\": \"<string>\",\n  \"headers\": {\n    \"anim_b\": \"<string>\",\n    \"sint_6_\": \"<string>\",\n    \"autef3\": \"<string>\"\n  },\n  \"content\": \"<string>\",\n  \"isSuccessStatusCode\": \"<boolean>\"\n}",
+                      "createdAt": "2026-06-05T15:12:36.000Z",
+                      "updatedAt": "2026-06-05T15:12:36.000Z",
+                      "uid": "35240-98623272-bd87-40a9-9131-e2cdf7f5736f"
+                    },
+                    {
+                      "id": "15c70574-1fb1-49e7-b7ad-039a200cce46",
+                      "name": "Invalid request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"method\": \"GET\",\n  \"uri\": \"<uri>\",\n  \"headers\": {\n    \"in_c2a\": \"<string>\"\n  },\n  \"content\": \"<string>\",\n  \"contentType\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/networking/http/requests",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "networking",
+                            "http",
+                            "requests"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:36.000Z",
+                      "updatedAt": "2026-06-05T15:12:36.000Z",
+                      "uid": "35240-15c70574-1fb1-49e7-b7ad-039a200cce46"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:36.000Z",
+                  "updatedAt": "2026-06-05T15:12:36.000Z",
+                  "uid": "35240-14e82f34-710d-4f6a-bdb9-f3c9ce0a538a"
+                }
+              ],
+              "id": "8a248122-7d85-4897-b5ab-3a4550fd14e7",
+              "createdAt": "2026-06-05T15:12:36.000Z",
+              "updatedAt": "2026-06-05T15:12:36.000Z",
+              "uid": "35240-8a248122-7d85-4897-b5ab-3a4550fd14e7"
+            }
+          ],
+          "id": "367f9e87-66ed-4297-8d2a-37db90c388f5",
+          "createdAt": "2026-06-05T15:12:36.000Z",
+          "updatedAt": "2026-06-05T15:12:36.000Z",
+          "uid": "35240-367f9e87-66ed-4297-8d2a-37db90c388f5"
+        },
+        {
+          "name": "background-transfers",
+          "item": [
+            {
+              "name": "downloads",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Create a background download",
+                  "id": "13062403-a3f9-45b2-9faa-66d20bb0c518",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"uri\": \"<uri>\",\n  \"destinationFile\": \"<string>\",\n  \"costPolicy\": \"Default\",\n  \"priority\": \"Default\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/networking/background-transfers/downloads",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "networking",
+                        "background-transfers",
+                        "downloads"
+                      ]
+                    },
+                    "description": "Creates a background download operation using BackgroundDownloader. Background transfers continue even when the app is suspended and support progress tracking, pause/resume, and cost-aware transfers."
+                  },
+                  "response": [
+                    {
+                      "id": "adf1e62d-891c-4079-a523-174b59e051a0",
+                      "name": "Background download created",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"uri\": \"<uri>\",\n  \"destinationFile\": \"<string>\",\n  \"costPolicy\": \"Default\",\n  \"priority\": \"Default\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/networking/background-transfers/downloads",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "networking",
+                            "background-transfers",
+                            "downloads"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"uri\": \"<uri>\",\n  \"destinationFile\": \"<string>\",\n  \"status\": \"Error\",\n  \"progress\": {\n    \"bytesReceived\": \"<long>\",\n    \"totalBytesToReceive\": \"<long>\"\n  }\n}",
+                      "createdAt": "2026-06-05T15:12:36.000Z",
+                      "updatedAt": "2026-06-05T15:12:36.000Z",
+                      "uid": "35240-adf1e62d-891c-4079-a523-174b59e051a0"
+                    },
+                    {
+                      "id": "f52229b4-63b6-4d65-91c5-1641c2617748",
+                      "name": "Invalid download request",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"uri\": \"<uri>\",\n  \"destinationFile\": \"<string>\",\n  \"costPolicy\": \"Default\",\n  \"priority\": \"Default\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/networking/background-transfers/downloads",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "networking",
+                            "background-transfers",
+                            "downloads"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:36.000Z",
+                      "updatedAt": "2026-06-05T15:12:36.000Z",
+                      "uid": "35240-f52229b4-63b6-4d65-91c5-1641c2617748"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:36.000Z",
+                  "updatedAt": "2026-06-05T15:12:36.000Z",
+                  "uid": "35240-13062403-a3f9-45b2-9faa-66d20bb0c518"
+                },
+                {
+                  "name": "Microsoft Windows 10 List background downloads",
+                  "id": "7edf5382-8a69-4627-93c7-cb774e20b857",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/networking/background-transfers/downloads",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "networking",
+                        "background-transfers",
+                        "downloads"
+                      ]
+                    },
+                    "description": "Retrieves the list of active and pending background download operations using BackgroundDownloader.GetCurrentDownloadsAsync."
+                  },
+                  "response": [
+                    {
+                      "id": "e271ea03-4176-4d08-aff0-6305c406e040",
+                      "name": "Successful retrieval of downloads",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/networking/background-transfers/downloads",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "networking",
+                            "background-transfers",
+                            "downloads"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "[\n  {\n    \"id\": \"<string>\",\n    \"uri\": \"<uri>\",\n    \"destinationFile\": \"<string>\",\n    \"status\": \"Running\",\n    \"progress\": {\n      \"bytesReceived\": \"<long>\",\n      \"totalBytesToReceive\": \"<long>\"\n    }\n  },\n  {\n    \"id\": \"<string>\",\n    \"uri\": \"<uri>\",\n    \"destinationFile\": \"<string>\",\n    \"status\": \"PausedCostedNetwork\",\n    \"progress\": {\n      \"bytesReceived\": \"<long>\",\n      \"totalBytesToReceive\": \"<long>\"\n    }\n  }\n]",
+                      "createdAt": "2026-06-05T15:12:36.000Z",
+                      "updatedAt": "2026-06-05T15:12:36.000Z",
+                      "uid": "35240-e271ea03-4176-4d08-aff0-6305c406e040"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:36.000Z",
+                  "updatedAt": "2026-06-05T15:12:36.000Z",
+                  "uid": "35240-7edf5382-8a69-4627-93c7-cb774e20b857"
+                }
+              ],
+              "id": "ab47a0eb-c6bb-40aa-a409-b9cc7fe1efe7",
+              "createdAt": "2026-06-05T15:12:36.000Z",
+              "updatedAt": "2026-06-05T15:12:36.000Z",
+              "uid": "35240-ab47a0eb-c6bb-40aa-a409-b9cc7fe1efe7"
+            }
+          ],
+          "id": "63ff026f-34c3-46ea-9423-4f42135ae7c4",
+          "createdAt": "2026-06-05T15:12:36.000Z",
+          "updatedAt": "2026-06-05T15:12:36.000Z",
+          "uid": "35240-63ff026f-34c3-46ea-9423-4f42135ae7c4"
+        },
+        {
+          "name": "connectivity",
+          "item": [
+            {
+              "name": "Microsoft Windows 10 Get network connectivity information",
+              "id": "67c908ae-7ad3-4b00-b0ee-271c94ff85da",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/networking/connectivity",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "networking",
+                    "connectivity"
+                  ]
+                },
+                "description": "Retrieves current network connectivity information using NetworkInformation.GetInternetConnectionProfile and NetworkInformation.GetConnectionProfiles. Returns details about connection type, signal strength, data plan status, and cost."
+              },
+              "response": [
+                {
+                  "id": "a1bf4502-335b-400c-b900-6436893faff4",
+                  "name": "Successful retrieval of connectivity info",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/networking/connectivity",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "networking",
+                        "connectivity"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"isConnected\": \"<boolean>\",\n  \"connectionType\": \"WiFi\",\n  \"signalStrength\": \"<integer>\",\n  \"networkCostType\": \"Unknown\",\n  \"dataPlanStatus\": {\n    \"dataLimitInMegabytes\": \"<integer>\",\n    \"megabytesUsed\": \"<number>\",\n    \"maxTransferSizeInMegabytes\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-06-05T15:12:36.000Z",
+                  "updatedAt": "2026-06-05T15:12:36.000Z",
+                  "uid": "35240-a1bf4502-335b-400c-b900-6436893faff4"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:36.000Z",
+              "updatedAt": "2026-06-05T15:12:36.000Z",
+              "uid": "35240-67c908ae-7ad3-4b00-b0ee-271c94ff85da"
+            }
+          ],
+          "id": "6e88b55f-9f1c-44be-a966-eebcdd443aa2",
+          "createdAt": "2026-06-05T15:12:36.000Z",
+          "updatedAt": "2026-06-05T15:12:36.000Z",
+          "uid": "35240-6e88b55f-9f1c-44be-a966-eebcdd443aa2"
+        }
+      ],
+      "id": "619705e7-faec-44fb-b23e-192deea05b34",
+      "createdAt": "2026-06-05T15:12:36.000Z",
+      "updatedAt": "2026-06-05T15:12:36.000Z",
+      "uid": "35240-619705e7-faec-44fb-b23e-192deea05b34"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.windows.com"
+    }
+  ]
+}

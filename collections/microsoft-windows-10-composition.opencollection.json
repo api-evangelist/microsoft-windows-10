@@ -1,0 +1,113 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Composition API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Visuals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List composition visuals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/composition/visuals"
+          },
+          "docs": "Retrieves the list of visual objects in the composition tree. Visuals are the base building blocks of the visual layer, representing rectangular areas that can have size, position, opacity, clip, and transform properties. Types include SpriteVisual, ContainerVisual, LayerVisual, ShapeVisual, and RedirectVisual."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a composition visual",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/composition/visuals",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new visual object using the Compositor factory methods such as Compositor.CreateSpriteVisual, CreateContainerVisual, or CreateLayerVisual. The visual must be added to a visual tree to be rendered."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Animations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a composition animation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/composition/animations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a composition animation using Compositor factory methods such as CreateScalarKeyFrameAnimation, CreateVector3KeyFrameAnimation, CreateColorKeyFrameAnimation, or CreateExpressionAnimation. Animations drive property changes on visuals over time with easing functions."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Effects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a composition effect",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/composition/effects",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a CompositionEffectBrush for applying visual effects such as blur (GaussianBlurEffect), saturation, color adjustments, and compositing. Effects are created via Compositor.CreateEffectFactory and applied to SpriteVisual objects via their Brush property."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Surfaces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a composition surface",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/composition/surfaces",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a CompositionDrawingSurface or CompositionVirtualDrawingSurface for rendering content onto visuals. Surfaces can be backed by Direct2D, Win2D, or bitmap images using CompositionGraphicsDevice."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

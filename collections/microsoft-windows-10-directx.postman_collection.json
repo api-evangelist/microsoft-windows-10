@@ -1,0 +1,801 @@
+{
+  "item": [
+    {
+      "id": "df37081b-cbea-4f0f-8944-925b3f3c6129",
+      "name": "Command Queues",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e2fc6b1d-ac64-47b5-82b0-314518e14643",
+          "name": "Microsoft Windows 10 Create a command queue",
+          "request": {
+            "name": "Microsoft Windows 10 Create a command queue",
+            "description": {
+              "content": "Creates a Direct3D 12 command queue (ID3D12CommandQueue) for submitting command lists to the GPU. Command queues can be of type Direct, Compute, or Copy, determining which GPU operations they support.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "directx",
+                "command-queues"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"priority\": \"Normal\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2223de9c-dd56-4127-b2c0-810d9d47073b",
+              "name": "Command queue created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "directx",
+                    "command-queues"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"priority\": \"Normal\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"type\": \"string\",\n  \"priority\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c6e94c1-a224-412c-806d-7f29896d0338",
+              "name": "Invalid queue configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "directx",
+                    "command-queues"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"priority\": \"Normal\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ebb68599-ba16-43a3-9815-ab963e7ff5b5",
+      "name": "Devices",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dbf65010-792e-4496-83fb-9085af5e9a67",
+          "name": "Microsoft Windows 10 List DirectX graphics devices",
+          "request": {
+            "name": "Microsoft Windows 10 List DirectX graphics devices",
+            "description": {
+              "content": "Enumerates available DirectX graphics adapters using DXGI (DirectX Graphics Infrastructure). Returns information about each adapter including vendor, device ID, dedicated video memory, shared system memory, and feature level support.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "directx",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a3770bc5-2c28-41b8-9d7a-cd4ff8e49c5e",
+              "name": "Successful retrieval of graphics devices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "directx",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"description\": \"string\",\n    \"vendorId\": 2561,\n    \"deviceId\": 388,\n    \"dedicatedVideoMemory\": 7464,\n    \"sharedSystemMemory\": 8229,\n    \"isSoftwareAdapter\": false\n  },\n  {\n    \"id\": \"string\",\n    \"description\": \"string\",\n    \"vendorId\": 4776,\n    \"deviceId\": 8756,\n    \"dedicatedVideoMemory\": 9018,\n    \"sharedSystemMemory\": 764,\n    \"isSoftwareAdapter\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1cd4d5da-a879-49e1-9e9a-5bcd1a12bcb8",
+          "name": "Microsoft Windows 10 Get graphics device details",
+          "request": {
+            "name": "Microsoft Windows 10 Get graphics device details",
+            "description": {
+              "content": "Retrieves detailed information about a specific graphics adapter including supported feature levels, output displays, and hardware capabilities such as shader model support, ray tracing tier, and mesh shader support.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "directx",
+                "devices",
+                ":adapterId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "adapterId",
+                  "description": "(Required) DXGI adapter identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a86435d5-1adc-4a68-939d-f655f3392250",
+              "name": "Successful retrieval of adapter details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "directx",
+                    "devices",
+                    ":adapterId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adapterId",
+                      "description": "(Required) DXGI adapter identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"description\": \"string\",\n  \"vendorId\": 2808,\n  \"deviceId\": 4789,\n  \"dedicatedVideoMemory\": 6886,\n  \"sharedSystemMemory\": 8504,\n  \"maxFeatureLevel\": \"11_0\",\n  \"shaderModel\": \"string\",\n  \"rayTracingTier\": \"Tier1_0\",\n  \"meshShaderTier\": \"NotSupported\",\n  \"outputs\": [\n    {\n      \"name\": \"string\",\n      \"resolution\": \"string\",\n      \"refreshRate\": 3164.1066379118975\n    },\n    {\n      \"name\": \"string\",\n      \"resolution\": \"string\",\n      \"refreshRate\": 4952.383249645861\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b4f5f4e4-65bb-47a6-8182-a7b5859e97da",
+              "name": "Adapter not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "directx",
+                    "devices",
+                    ":adapterId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adapterId",
+                      "description": "(Required) DXGI adapter identifier"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "cc4a9e10-e7fb-4854-8fd9-fb5f50bf5601",
+      "name": "Pipeline",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "858db3e9-0464-4f1a-818d-65e367eaf253",
+          "name": "Microsoft Windows 10 Create a graphics pipeline state",
+          "request": {
+            "name": "Microsoft Windows 10 Create a graphics pipeline state",
+            "description": {
+              "content": "Creates a graphics pipeline state object (ID3D12PipelineState) that defines the complete rendering pipeline configuration including vertex shader, pixel shader, input layout, rasterizer state, blend state, depth stencil state, and render target formats.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "directx",
+                "pipeline-states"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vertexShader\": \"<string>\",\n  \"pixelShader\": \"<string>\",\n  \"inputLayout\": [\n    {\n      \"semanticName\": \"<string>\",\n      \"format\": \"<string>\",\n      \"inputSlot\": \"<integer>\"\n    },\n    {\n      \"semanticName\": \"<string>\",\n      \"format\": \"<string>\",\n      \"inputSlot\": \"<integer>\"\n    }\n  ],\n  \"primitiveTopology\": \"TriangleList\",\n  \"renderTargetCount\": 1,\n  \"renderTargetFormats\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"depthStencilFormat\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "fe1a05c4-dbed-4309-bb35-f4b6e932838a",
+              "name": "Pipeline state created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "directx",
+                    "pipeline-states"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vertexShader\": \"<string>\",\n  \"pixelShader\": \"<string>\",\n  \"inputLayout\": [\n    {\n      \"semanticName\": \"<string>\",\n      \"format\": \"<string>\",\n      \"inputSlot\": \"<integer>\"\n    },\n    {\n      \"semanticName\": \"<string>\",\n      \"format\": \"<string>\",\n      \"inputSlot\": \"<integer>\"\n    }\n  ],\n  \"primitiveTopology\": \"TriangleList\",\n  \"renderTargetCount\": 1,\n  \"renderTargetFormats\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"depthStencilFormat\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"isValid\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "2e0568dc-47fb-4a75-b2ca-d2254c374c53",
+              "name": "Invalid pipeline configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "directx",
+                    "pipeline-states"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vertexShader\": \"<string>\",\n  \"pixelShader\": \"<string>\",\n  \"inputLayout\": [\n    {\n      \"semanticName\": \"<string>\",\n      \"format\": \"<string>\",\n      \"inputSlot\": \"<integer>\"\n    },\n    {\n      \"semanticName\": \"<string>\",\n      \"format\": \"<string>\",\n      \"inputSlot\": \"<integer>\"\n    }\n  ],\n  \"primitiveTopology\": \"TriangleList\",\n  \"renderTargetCount\": 1,\n  \"renderTargetFormats\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"depthStencilFormat\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d7d69ce3-7e94-4bb0-9954-c9609bfd71c1",
+      "name": "Presentation",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2016ac4e-6379-4339-b459-79eb6ce8dd57",
+          "name": "Microsoft Windows 10 Create a swap chain",
+          "request": {
+            "name": "Microsoft Windows 10 Create a swap chain",
+            "description": {
+              "content": "Creates a DXGI swap chain (IDXGISwapChain) for presenting rendered frames to a window or output. The swap chain manages the back buffer(s) and handles presentation including v-sync and frame latency.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "directx",
+                "swap-chains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"format\": \"R8G8B8A8_UNORM\",\n  \"bufferCount\": 2,\n  \"swapEffect\": \"FlipDiscard\",\n  \"isWindowed\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a0180d0e-2ce4-4fcd-84ec-e53569f3389b",
+              "name": "Swap chain created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "directx",
+                    "swap-chains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"format\": \"R8G8B8A8_UNORM\",\n  \"bufferCount\": 2,\n  \"swapEffect\": \"FlipDiscard\",\n  \"isWindowed\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"width\": 5230,\n  \"height\": 4229,\n  \"format\": \"string\",\n  \"bufferCount\": 5300\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "127ee73a-0eef-449e-9531-ab7050da636d",
+              "name": "Invalid swap chain configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "directx",
+                    "swap-chains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"format\": \"R8G8B8A8_UNORM\",\n  \"bufferCount\": 2,\n  \"swapEffect\": \"FlipDiscard\",\n  \"isWindowed\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "a5fb0660-2583-477b-a623-7ed2f31d848b",
+      "name": "Resources",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d375b994-b9ee-4460-9d99-4f7bb9add0e7",
+          "name": "Microsoft Windows 10 Create a DirectX resource",
+          "request": {
+            "name": "Microsoft Windows 10 Create a DirectX resource",
+            "description": {
+              "content": "Creates a GPU resource such as a buffer, texture, or render target using ID3D12Device.CreateCommittedResource or similar methods. Resources are allocated in GPU heaps and can be used for vertex buffers, index buffers, constant buffers, textures, and render targets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "directx",
+                "resources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceType\": \"<string>\",\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"depthOrArraySize\": 1,\n  \"format\": \"<string>\",\n  \"heapType\": \"Default\",\n  \"flags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "eee622d4-a44a-44a7-a9f3-fa4cdac4b274",
+              "name": "Resource created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "directx",
+                    "resources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceType\": \"<string>\",\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"depthOrArraySize\": 1,\n  \"format\": \"<string>\",\n  \"heapType\": \"Default\",\n  \"flags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"resourceType\": \"Texture2D\",\n  \"dimension\": \"string\",\n  \"width\": 1384,\n  \"height\": 5351,\n  \"depthOrArraySize\": 3414,\n  \"format\": \"string\",\n  \"heapType\": \"Readback\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a6b9a176-1b50-4c5d-b5af-ba59161d9afb",
+              "name": "Invalid resource description",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "directx",
+                    "resources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceType\": \"<string>\",\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"depthOrArraySize\": 1,\n  \"format\": \"<string>\",\n  \"heapType\": \"Default\",\n  \"flags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2b817da9-880f-4e48-aa44-1ca97f6d0ee1",
+    "name": "Microsoft Windows 10 DirectX Graphics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Low-level graphics API for building high-performance 2D and 3D rendering in Windows applications. Includes Direct3D 12 for 3D graphics with explicit GPU control, Direct2D for hardware-accelerated 2D graphics, and DirectWrite for high-quality text rendering. This specification models the key DirectX resource management and rendering pipeline operations.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,613 @@
+{
+  "item": [
+    {
+      "id": "b2849776-9e18-441c-85c8-43e52b9ca7d3",
+      "name": "Activation",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fd7fdf49-ad88-45a2-a76d-baabd9865e4a",
+          "name": "Microsoft Windows 10 Activate a runtime class",
+          "request": {
+            "name": "Microsoft Windows 10 Activate a runtime class",
+            "description": {
+              "content": "Activates (instantiates) a WinRT runtime class by its activation factory. The Windows Runtime uses activation factories to create instances of runtime classes. This is the core mechanism by which UWP apps create objects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "winrt",
+                "activation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"runtimeClassName\": \"<string>\",\n  \"constructorArgs\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7c9abea0-88af-4cc0-8c9f-58af62f1e269",
+              "name": "Runtime class activated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "winrt",
+                    "activation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"runtimeClassName\": \"Windows.UI.Notifications.ToastNotification\",\n  \"constructorArgs\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"instanceId\": \"string\",\n  \"runtimeClassName\": \"string\",\n  \"status\": \"failed\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ec7d7387-28b6-4d74-abc7-a66f3f93594a",
+              "name": "Invalid activation request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "winrt",
+                    "activation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"runtimeClassName\": \"Windows.UI.Notifications.ToastNotification\",\n  \"constructorArgs\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "708f9bc4-409a-4b0e-a22f-0fa47abb0813",
+              "name": "Runtime class not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "winrt",
+                    "activation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"runtimeClassName\": \"Windows.UI.Notifications.ToastNotification\",\n  \"constructorArgs\": [\n    \"<object>\",\n    \"<object>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "c603846e-ef22-4cda-be62-d760f81b1cc1",
+      "name": "Classes",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a55a5cf3-eb7c-409c-a059-d49db0658816",
+          "name": "Microsoft Windows 10 List classes in a namespace",
+          "request": {
+            "name": "Microsoft Windows 10 List classes in a namespace",
+            "description": {
+              "content": "Retrieves the list of classes available within a specified WinRT namespace. Classes include their properties, methods, events, and constructors as documented in the WinRT type system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "winrt",
+                "namespaces",
+                ":namespaceName",
+                "classes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespaceName",
+                  "description": "(Required) The fully qualified WinRT namespace name (e.g., Windows.UI.Notifications)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d90115c6-bc63-479a-bb02-b8b4bc331624",
+              "name": "Successful retrieval of classes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "winrt",
+                    "namespaces",
+                    ":namespaceName",
+                    "classes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespaceName",
+                      "description": "(Required) The fully qualified WinRT namespace name (e.g., Windows.UI.Notifications)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"namespace\": \"string\",\n    \"description\": \"string\",\n    \"isSealed\": false,\n    \"isStatic\": false,\n    \"threading\": \"STA\"\n  },\n  {\n    \"name\": \"string\",\n    \"namespace\": \"string\",\n    \"description\": \"string\",\n    \"isSealed\": true,\n    \"isStatic\": false,\n    \"threading\": \"MTA\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "cfe2008d-e46a-4826-816a-784c73e771d0",
+              "name": "Namespace not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "winrt",
+                    "namespaces",
+                    ":namespaceName",
+                    "classes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespaceName",
+                      "description": "(Required) The fully qualified WinRT namespace name (e.g., Windows.UI.Notifications)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a8562bc2-55f0-4c35-acb7-fa61ee006d43",
+          "name": "Microsoft Windows 10 Get class details",
+          "request": {
+            "name": "Microsoft Windows 10 Get class details",
+            "description": {
+              "content": "Retrieves detailed information about a specific WinRT class, including its properties, methods, events, interfaces implemented, and inheritance hierarchy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "winrt",
+                "namespaces",
+                ":namespaceName",
+                "classes",
+                ":className"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespaceName",
+                  "description": "(Required) The fully qualified WinRT namespace name"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "className",
+                  "description": "(Required) The class name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3634aa2b-d70f-4a54-ad40-45c9c2e9325f",
+              "name": "Successful retrieval of class details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "winrt",
+                    "namespaces",
+                    ":namespaceName",
+                    "classes",
+                    ":className"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespaceName",
+                      "description": "(Required) The fully qualified WinRT namespace name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "className",
+                      "description": "(Required) The class name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"namespace\": \"string\",\n  \"description\": \"string\",\n  \"properties\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"isReadOnly\": false,\n      \"description\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"isReadOnly\": true,\n      \"description\": \"string\"\n    }\n  ],\n  \"methods\": [\n    {\n      \"name\": \"string\",\n      \"returnType\": \"string\",\n      \"parameters\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      ],\n      \"isStatic\": false,\n      \"description\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"returnType\": \"string\",\n      \"parameters\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      ],\n      \"isStatic\": true,\n      \"description\": \"string\"\n    }\n  ],\n  \"events\": [\n    {\n      \"name\": \"string\",\n      \"eventArgsType\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"eventArgsType\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"interfaces\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5a32e58d-47a4-4276-8a14-79cd9b9c068f",
+              "name": "Class not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "winrt",
+                    "namespaces",
+                    ":namespaceName",
+                    "classes",
+                    ":className"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespaceName",
+                      "description": "(Required) The fully qualified WinRT namespace name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "className",
+                      "description": "(Required) The class name"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "bd0fc968-e94b-482a-98cd-f30431e57ed8",
+      "name": "Namespaces",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a9617128-8049-4c45-8ef8-dc758005da29",
+          "name": "Microsoft Windows 10 List WinRT namespaces",
+          "request": {
+            "name": "Microsoft Windows 10 List WinRT namespaces",
+            "description": {
+              "content": "Retrieves the list of available Windows Runtime namespaces, including Windows.UI, Windows.Storage, Windows.Devices, Windows.Media, Windows.Networking, Windows.Security, and Windows.AI. Each namespace contains classes, interfaces, enums, and delegates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "winrt",
+                "namespaces"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "159ef0bb-31ac-4ee0-8131-b241149c8077",
+              "name": "Successful retrieval of WinRT namespaces",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "winrt",
+                    "namespaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"Windows.UI.Notifications\",\n    \"description\": \"string\",\n    \"classCount\": 1474,\n    \"interfaceCount\": 2129,\n    \"enumCount\": 486,\n    \"delegateCount\": 8535,\n    \"minSupportedVersion\": \"10.0.10240.0\"\n  },\n  {\n    \"name\": \"Windows.UI.Notifications\",\n    \"description\": \"string\",\n    \"classCount\": 1078,\n    \"interfaceCount\": 6667,\n    \"enumCount\": 4374,\n    \"delegateCount\": 7522,\n    \"minSupportedVersion\": \"10.0.10240.0\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1ff1a5be-2b26-46fe-8135-7a344ae02772",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "winrt",
+                    "namespaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "27484f96-2613-48b0-a1b3-892a5c30c7c7",
+    "name": "Microsoft Windows 10 Windows Runtime (WinRT) API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Modern API surface for building Universal Windows Platform (UWP) applications that run across all Windows 10 device families. WinRT provides a type system, APIs, and runtime environment for building apps using C#, C++, Visual Basic, and JavaScript. This specification models the key WinRT namespaces and their primary classes as a RESTful interface for documentation purposes.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

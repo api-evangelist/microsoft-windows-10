@@ -1,0 +1,661 @@
+{
+  "item": [
+    {
+      "id": "90450d99-97c9-4cc6-a9f7-688e40d5a3cd",
+      "name": "Animations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a9222139-8cf7-4db6-9185-ea6d7abed3d2",
+          "name": "Microsoft Windows 10 Create a composition animation",
+          "request": {
+            "name": "Microsoft Windows 10 Create a composition animation",
+            "description": {
+              "content": "Creates a composition animation using Compositor factory methods such as CreateScalarKeyFrameAnimation, CreateVector3KeyFrameAnimation, CreateColorKeyFrameAnimation, or CreateExpressionAnimation. Animations drive property changes on visuals over time with easing functions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composition",
+                "animations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"targetProperty\": \"<string>\",\n  \"keyFrames\": [\n    {\n      \"normalizedProgressKey\": \"<float>\",\n      \"value\": \"<object>\",\n      \"easingFunction\": \"<string>\"\n    },\n    {\n      \"normalizedProgressKey\": \"<float>\",\n      \"value\": \"<object>\",\n      \"easingFunction\": \"<string>\"\n    }\n  ],\n  \"expression\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a92fddbd-82b5-4b02-ba39-37d38ee93f05",
+              "name": "Animation created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composition",
+                    "animations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"targetProperty\": \"<string>\",\n  \"keyFrames\": [\n    {\n      \"normalizedProgressKey\": \"<float>\",\n      \"value\": \"<object>\",\n      \"easingFunction\": \"<string>\"\n    },\n    {\n      \"normalizedProgressKey\": \"<float>\",\n      \"value\": \"<object>\",\n      \"easingFunction\": \"<string>\"\n    }\n  ],\n  \"expression\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"type\": \"Vector2KeyFrame\",\n  \"duration\": \"string\",\n  \"iterationBehavior\": \"Count\",\n  \"targetProperty\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fe18d6c8-8214-425f-ba75-0ae0e5ee0091",
+              "name": "Invalid animation parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composition",
+                    "animations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"targetProperty\": \"<string>\",\n  \"keyFrames\": [\n    {\n      \"normalizedProgressKey\": \"<float>\",\n      \"value\": \"<object>\",\n      \"easingFunction\": \"<string>\"\n    },\n    {\n      \"normalizedProgressKey\": \"<float>\",\n      \"value\": \"<object>\",\n      \"easingFunction\": \"<string>\"\n    }\n  ],\n  \"expression\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "62dd1c34-1a50-45a4-b1cb-7002d25dd322",
+      "name": "Effects",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2f6730ca-5bf7-4151-be89-e88aa4a2344b",
+          "name": "Microsoft Windows 10 Create a composition effect",
+          "request": {
+            "name": "Microsoft Windows 10 Create a composition effect",
+            "description": {
+              "content": "Creates a CompositionEffectBrush for applying visual effects such as blur (GaussianBlurEffect), saturation, color adjustments, and compositing. Effects are created via Compositor.CreateEffectFactory and applied to SpriteVisual objects via their Brush property.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composition",
+                "effects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"effectType\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"<number>\"\n  },\n  \"animatableProperties\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "499b6ee0-e12b-4234-b428-2587865077a2",
+              "name": "Effect created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composition",
+                    "effects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"effectType\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"<number>\",\n    \"key_1\": \"<number>\",\n    \"key_2\": \"<number>\",\n    \"key_3\": \"<number>\"\n  },\n  \"animatableProperties\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"effectType\": \"GaussianBlur\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "eb53c6bf-62db-48d4-8096-75d719948ec0",
+              "name": "Invalid effect configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composition",
+                    "effects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"effectType\": \"<string>\",\n  \"properties\": {\n    \"key_0\": \"<number>\",\n    \"key_1\": \"<number>\",\n    \"key_2\": \"<number>\",\n    \"key_3\": \"<number>\"\n  },\n  \"animatableProperties\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "ae871368-28e2-41d8-83e3-a615090128dd",
+      "name": "Surfaces",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "039df0db-efb0-480d-854f-dea45f145adf",
+          "name": "Microsoft Windows 10 Create a composition surface",
+          "request": {
+            "name": "Microsoft Windows 10 Create a composition surface",
+            "description": {
+              "content": "Creates a CompositionDrawingSurface or CompositionVirtualDrawingSurface for rendering content onto visuals. Surfaces can be backed by Direct2D, Win2D, or bitmap images using CompositionGraphicsDevice.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composition",
+                "surfaces"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"pixelFormat\": \"B8G8R8A8UIntNormalized\",\n  \"alphaMode\": \"Premultiplied\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cb0ee7cf-e854-47ff-9dd8-6c73e0acd737",
+              "name": "Surface created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composition",
+                    "surfaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"pixelFormat\": \"B8G8R8A8UIntNormalized\",\n  \"alphaMode\": \"Premultiplied\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"size\": {\n    \"x\": 7435.2908835099015,\n    \"y\": 273.87067402467545\n  },\n  \"pixelFormat\": \"R16G16B16A16Float\",\n  \"alphaMode\": \"Ignore\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4058eeb3-025d-4edc-8454-9932a79a9290",
+              "name": "Invalid surface configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composition",
+                    "surfaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"pixelFormat\": \"B8G8R8A8UIntNormalized\",\n  \"alphaMode\": \"Premultiplied\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "458e37e5-91f6-4fc0-b8a4-5b265ea145a2",
+      "name": "Visuals",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "063faa4a-aecc-4ef5-92aa-eca408538858",
+          "name": "Microsoft Windows 10 List composition visuals",
+          "request": {
+            "name": "Microsoft Windows 10 List composition visuals",
+            "description": {
+              "content": "Retrieves the list of visual objects in the composition tree. Visuals are the base building blocks of the visual layer, representing rectangular areas that can have size, position, opacity, clip, and transform properties. Types include SpriteVisual, ContainerVisual, LayerVisual, ShapeVisual, and RedirectVisual.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composition",
+                "visuals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4370886a-5613-4c50-81c9-8c78c9d9b814",
+              "name": "Successful retrieval of visuals",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composition",
+                    "visuals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"type\": \"LayerVisual\",\n    \"offset\": {\n      \"x\": 4249.433615361328,\n      \"y\": 899.0473261682286,\n      \"z\": 8882.149357302445\n    },\n    \"size\": {\n      \"x\": 4666.4859417263415,\n      \"y\": 3001.5216113051324\n    },\n    \"opacity\": 6620.488848999366,\n    \"rotationAngleInDegrees\": 1777.1940003494412,\n    \"scale\": {\n      \"x\": 9122.955766043251,\n      \"y\": 1816.5082105392182,\n      \"z\": 1699.1647209727655\n    },\n    \"isVisible\": false,\n    \"comment\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"type\": \"LayerVisual\",\n    \"offset\": {\n      \"x\": 6319.262858885626,\n      \"y\": 1145.8146645636923,\n      \"z\": 7724.978611546791\n    },\n    \"size\": {\n      \"x\": 5182.8428346917535,\n      \"y\": 1535.9495130830503\n    },\n    \"opacity\": 7510.169645125564,\n    \"rotationAngleInDegrees\": 2717.6881468690362,\n    \"scale\": {\n      \"x\": 3092.2009476739163,\n      \"y\": 7817.467217472902,\n      \"z\": 1293.3296514619196\n    },\n    \"isVisible\": true,\n    \"comment\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0923d6d6-4a10-4084-9c9f-c3c97bd9b5d2",
+          "name": "Microsoft Windows 10 Create a composition visual",
+          "request": {
+            "name": "Microsoft Windows 10 Create a composition visual",
+            "description": {
+              "content": "Creates a new visual object using the Compositor factory methods such as Compositor.CreateSpriteVisual, CreateContainerVisual, or CreateLayerVisual. The visual must be added to a visual tree to be rendered.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composition",
+                "visuals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"offset\": {\n    \"x\": \"<float>\",\n    \"y\": \"<float>\",\n    \"z\": \"<float>\"\n  },\n  \"size\": {\n    \"x\": \"<float>\",\n    \"y\": \"<float>\"\n  },\n  \"opacity\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "926228a6-771f-489a-a69a-8bcd1d5b9cc6",
+              "name": "Visual created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composition",
+                    "visuals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"offset\": {\n    \"x\": 2601.3656001820605,\n    \"y\": 5705.522295716327,\n    \"z\": 1937.7250106356125\n  },\n  \"size\": {\n    \"x\": 5744.440624963409,\n    \"y\": 8620.494685552594\n  },\n  \"opacity\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"type\": \"LayerVisual\",\n  \"offset\": {\n    \"x\": 3785.279518816096,\n    \"y\": 6062.991444313035,\n    \"z\": 5974.197751867486\n  },\n  \"size\": {\n    \"x\": 4843.299120995447,\n    \"y\": 7694.183930889411\n  },\n  \"opacity\": 569.6063483674108,\n  \"rotationAngleInDegrees\": 9403.438832613949,\n  \"scale\": {\n    \"x\": 7978.8600604514895,\n    \"y\": 6847.0378762490645,\n    \"z\": 5816.981640817721\n  },\n  \"isVisible\": false,\n  \"comment\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a43f3e3b-2212-44f7-b950-10c94294cfec",
+              "name": "Invalid visual configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composition",
+                    "visuals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"offset\": {\n    \"x\": 2601.3656001820605,\n    \"y\": 5705.522295716327,\n    \"z\": 1937.7250106356125\n  },\n  \"size\": {\n    \"x\": 5744.440624963409,\n    \"y\": 8620.494685552594\n  },\n  \"opacity\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e1abf4f8-3342-44e5-86a9-d9e896f2a049",
+    "name": "Microsoft Windows 10 Windows Composition API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Windows.UI.Composition API provides access to the visual layer between the XAML framework and the DirectX graphics layer. Based on the Windows.UI.Composition namespace, it enables high-performance retained-mode graphics, effects, and animations. Key classes include Compositor, Visual, SpriteVisual, ContainerVisual, CompositionAnimation, CompositionEffectBrush, and CompositionSurfaceBrush.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

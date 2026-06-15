@@ -1,6 +1,7 @@
 aid: microsoft-windows-10
 name: Microsoft Windows 10
-description: Collection of APIs and developer resources for building applications on the Windows 10 platform, including Universal
+description: >-
+  Collection of APIs and developer resources for building applications on the Windows 10 platform, including Universal
   Windows Platform (UWP), Win32, and Windows Runtime APIs for desktop, mobile, and IoT applications.
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
@@ -9,607 +10,476 @@ modified: '2026-05-19'
 specificationVersion: '0.19'
 url: https://developer.microsoft.com/en-us/windows/
 tags:
-- Desktop
-- Operating System
-- UWP
-- Win32
-- Windows
-apis:
-- name: Windows Runtime (WinRT) API
-  description: Modern API surface for building Universal Windows Platform (UWP) applications that run across all Windows 10
-    device families. WinRT provides a type system, APIs, and runtime environment for building apps using C#, C++, Visual Basic,
-    and JavaScript.
-  image: https://www.microsoft.com/favicon.ico
-  humanURL: https://learn.microsoft.com/en-us/windows/uwp/
-  baseURL: https://api.windows.com
-  tags:
-  - Universal Apps
+  - Desktop
+  - Operating System
   - UWP
-  - Windows Runtime
-  - WinRT
-  properties:
+  - Win32
+  - Windows
+apis:
+  - name: Windows Runtime (WinRT) API
+    description: >-
+      Modern API surface for building Universal Windows Platform (UWP) applications that run across all Windows 10
+      device families. WinRT provides a type system, APIs, and runtime environment for building apps using C#, C++,
+      Visual Basic, and JavaScript.
+    image: https://www.microsoft.com/favicon.ico
+    humanURL: https://learn.microsoft.com/en-us/windows/uwp/
+    baseURL: https://api.windows.com
+    tags:
+      - Universal Apps
+      - UWP
+      - Windows Runtime
+      - WinRT
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/uwp/api/
+      - type: GettingStarted
+        url: https://learn.microsoft.com/en-us/windows/uwp/get-started/
+      - type: Samples
+        url: https://github.com/Microsoft/Windows-universal-samples
+      - type: Reference
+        url: https://learn.microsoft.com/en-us/uwp/api/
+      - type: SDKs
+        url: https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk/
+      - type: OpenAPI
+        url: openapi/microsoft-windows-10-winrt-openapi.yml
+  - name: Win32 API
+    description: >-
+      Core Windows API for building traditional desktop applications using C and C++. Win32 provides direct access to
+      system-level functionality including window management, graphics, networking, and hardware.
+    image: https://www.microsoft.com/favicon.ico
+    humanURL: https://learn.microsoft.com/en-us/windows/win32/
+    baseURL: https://api.windows.com
+    tags:
+      - Desktop
+      - Native
+      - System Programming
+      - Win32
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/windows/win32/apiindex/windows-api-list
+      - type: Reference
+        url: https://learn.microsoft.com/en-us/windows/win32/api/
+      - type: Samples
+        url: https://github.com/microsoft/Windows-classic-samples
+      - type: GettingStarted
+        url: https://learn.microsoft.com/en-us/windows/win32/desktop-programming
+      - type: OpenAPI
+        url: openapi/microsoft-windows-10-win32-openapi.yml
+  - name: Windows Notifications API
+    description: >-
+      API for sending and managing toast notifications, tile notifications, and badge updates in Windows 10
+      applications. Supports adaptive and interactive notifications with custom layouts, actions, and scheduling.
+    image: https://www.microsoft.com/favicon.ico
+    humanURL: https://learn.microsoft.com/en-us/windows/uwp/design/shell/tiles-and-notifications/
+    baseURL: https://api.windows.com
+    tags:
+      - Notifications
+      - Tiles
+      - Toast
+      - User Interface
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/windows/uwp/design/shell/tiles-and-notifications/adaptive-interactive-toasts
+      - type: Samples
+        url: https://github.com/WindowsNotifications/quickstart-sending-local-toast-win10
+      - type: Reference
+        url: https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications
+      - type: OpenAPI
+        url: openapi/microsoft-windows-10-notifications-openapi.yml
+  - name: Windows ML API
+    description: >-
+      API for integrating trained machine learning models into Windows applications using the ONNX format. Windows ML
+      evaluates models locally on the device using hardware acceleration with DirectX 12.
+    image: https://www.microsoft.com/favicon.ico
+    humanURL: https://learn.microsoft.com/en-us/windows/ai/windows-ml/
+    baseURL: https://api.windows.com
+    tags:
+      - Artificial Intelligence
+      - Inference
+      - Machine Learning
+      - ONNX
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/windows/ai/windows-ml/api-reference
+      - type: Tutorials
+        url: https://learn.microsoft.com/en-us/windows/ai/windows-ml/tutorials
+      - type: Samples
+        url: https://github.com/Microsoft/Windows-Machine-Learning
+      - type: GettingStarted
+        url: https://learn.microsoft.com/en-us/windows/ai/windows-ml/get-started
+      - type: OpenAPI
+        url: openapi/microsoft-windows-10-ml-openapi.yml
+  - name: Windows Storage API
+    description: >-
+      API for file system access, storage management, and data operations in Windows applications. Provides classes for
+      reading, writing, and managing files and folders with appropriate access permissions.
+    image: https://www.microsoft.com/favicon.ico
+    humanURL: https://learn.microsoft.com/en-us/windows/uwp/files/
+    baseURL: https://api.windows.com
+    tags:
+      - Data Management
+      - File System
+      - Files
+      - Storage
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/uwp/api/windows.storage
+      - type: Best Practices
+        url: https://learn.microsoft.com/en-us/windows/uwp/files/best-practices-for-writing-to-files
+      - type: GettingStarted
+        url: https://learn.microsoft.com/en-us/windows/uwp/files/
+      - type: OpenAPI
+        url: openapi/microsoft-windows-10-storage-openapi.yml
+  - name: Windows Cortana API
+    description: >-
+      API for integrating voice commands and Cortana digital assistant capabilities into Windows applications. Enables
+      voice-activated interactions and custom voice command definitions.
+    image: https://www.microsoft.com/favicon.ico
+    humanURL: https://learn.microsoft.com/en-us/cortana/
+    baseURL: https://api.windows.com
+    tags:
+      - Cortana
+      - Digital Assistant
+      - Voice
+      - Voice Commands
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/cortana/voice-commands/vcd
+      - type: Guidelines
+        url: https://learn.microsoft.com/en-us/cortana/voice-commands/voicecommand-design-guidelines
+      - type: OpenAPI
+        url: openapi/microsoft-windows-10-cortana-openapi.yml
+  - name: Windows Ink API
+    description: >-
+      API for pen and stylus input in Windows applications, providing inking surfaces, stroke recognition, and
+      handwriting analysis. Supports pressure sensitivity, tilt, and barrel button interactions.
+    image: https://www.microsoft.com/favicon.ico
+    humanURL: https://learn.microsoft.com/en-us/windows/uwp/design/input/pen-and-stylus-interactions
+    baseURL: https://api.windows.com
+    tags:
+      - Ink
+      - Input
+      - Pen
+      - Stylus
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/uwp/api/windows.ui.input.inking
+      - type: Samples
+        url: https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/SimpleInk
+      - type: GettingStarted
+        url: https://learn.microsoft.com/en-us/windows/uwp/design/input/pen-and-stylus-interactions
+      - type: OpenAPI
+        url: openapi/microsoft-windows-10-ink-openapi.yml
+  - name: Windows Composition API
+    description: >-
+      The Windows.UI.Composition API provides access to the visual layer between the XAML framework and the DirectX
+      graphics layer. It enables high-performance, retained-mode graphics, effects, and animations as the foundation for
+      UI across Windows devices.
+    image: https://www.microsoft.com/favicon.ico
+    humanURL: https://learn.microsoft.com/en-us/windows/uwp/composition/visual-layer
+    baseURL: https://api.windows.com
+    tags:
+      - Animations
+      - Composition
+      - Graphics
+      - Visual Layer
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/windows/uwp/composition/visual-layer
+      - type: Reference
+        url: https://learn.microsoft.com/en-us/uwp/api/windows.ui.composition
+      - type: Samples
+        url: https://github.com/microsoft/Windows.UI.Composition-Win32-Samples
+      - type: GettingStarted
+        url: https://learn.microsoft.com/en-us/windows/uwp/composition/using-the-visual-layer-with-xaml
+      - type: OpenAPI
+        url: openapi/microsoft-windows-10-composition-openapi.yml
+  - name: DirectX Graphics API
+    description: >-
+      Low-level graphics API for building high-performance 2D and 3D rendering in Windows applications. Includes
+      Direct3D for 3D graphics, Direct2D for 2D graphics, and DirectWrite for text rendering.
+    image: https://www.microsoft.com/favicon.ico
+    humanURL: https://learn.microsoft.com/en-us/windows/win32/directx
+    baseURL: https://api.windows.com
+    tags:
+      - DirectX
+      - Gaming
+      - Graphics
+      - Rendering
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/windows/win32/directx
+      - type: GettingStarted
+        url: https://learn.microsoft.com/en-us/windows/win32/getting-started-with-directx-graphics
+      - type: Samples
+        url: https://github.com/microsoft/DirectX-Graphics-Samples
+      - type: Reference
+        url: https://microsoft.github.io/DirectX-Specs/
+      - type: OpenAPI
+        url: openapi/microsoft-windows-10-directx-openapi.yml
+  - name: Windows Media Capture API
+    description: >-
+      API for capturing photos, audio, and video from camera and microphone devices in Windows applications. Provides
+      classes for previewing, recording, and processing media streams with configurable encoding settings.
+    image: https://www.microsoft.com/favicon.ico
+    humanURL: https://learn.microsoft.com/en-us/windows/apps/develop/audio-video-camera
+    baseURL: https://api.windows.com
+    tags:
+      - Audio
+      - Camera
+      - Media
+      - Video Capture
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/windows/apps/develop/audio-video-camera
+      - type: Reference
+        url: https://learn.microsoft.com/en-us/uwp/api/windows.media.capture
+      - type: GettingStarted
+        url: https://learn.microsoft.com/en-us/windows/win32/medfound/audio-video-capture-in-media-foundation
+      - type: OpenAPI
+        url: openapi/microsoft-windows-10-media-capture-openapi.yml
+  - name: Windows Networking API
+    description: >-
+      API for network communication in Windows applications, providing support for sockets, WebSockets, HTTP clients,
+      and background transfers. Enables TCP/UDP communication and real-time data streaming.
+    image: https://www.microsoft.com/favicon.ico
+    humanURL: https://learn.microsoft.com/en-us/windows/uwp/networking/
+    baseURL: https://api.windows.com
+    tags:
+      - HTTP
+      - Networking
+      - Sockets
+      - WebSockets
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/windows/uwp/networking/which-networking-technology
+      - type: Reference
+        url: https://learn.microsoft.com/en-us/uwp/api/windows.networking.sockets
+      - type: Samples
+        url: https://learn.microsoft.com/en-us/samples/microsoft/windows-universal-samples/websocket/
+      - type: OpenAPI
+        url: openapi/microsoft-windows-10-networking-openapi.yml
+  - name: Windows Bluetooth API
+    description: >-
+      API for Bluetooth communication in Windows applications, supporting Bluetooth Classic (RFCOMM) and Bluetooth Low
+      Energy (GATT) protocols for connecting to and exchanging data with Bluetooth devices.
+    image: https://www.microsoft.com/favicon.ico
+    humanURL: https://learn.microsoft.com/en-us/windows/uwp/devices-sensors/bluetooth
+    baseURL: https://api.windows.com
+    tags:
+      - Bluetooth
+      - Devices
+      - IoT
+      - Wireless
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/windows/uwp/devices-sensors/bluetooth-dev-faq
+      - type: Reference
+        url: https://learn.microsoft.com/en-us/windows/win32/api/_bluetooth/
+      - type: GettingStarted
+        url: https://learn.microsoft.com/en-us/windows/win32/bluetooth/bluetooth-programming-with-windows-sockets
+      - type: OpenAPI
+        url: openapi/microsoft-windows-10-bluetooth-openapi.yml
+  - name: Windows Geolocation API
+    description: >-
+      API for obtaining geographic location data in Windows applications. Provides access to latitude, longitude,
+      altitude, heading, and speed from GNSS, Wi-Fi, cellular networks, and IP address sources.
+    image: https://www.microsoft.com/favicon.ico
+    humanURL: https://learn.microsoft.com/en-us/windows/uwp/maps-and-location/
+    baseURL: https://api.windows.com
+    tags:
+      - Geolocation
+      - GPS
+      - Location
+      - Maps
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/uwp/api/windows.devices.geolocation
+      - type: Reference
+        url: https://learn.microsoft.com/en-us/windows/win32/locationapi/windows-location-api-portal
+      - type: Samples
+        url: https://learn.microsoft.com/en-us/samples/microsoft/windows-universal-samples/geolocation/
+      - type: OpenAPI
+        url: openapi/microsoft-windows-10-geolocation-openapi.yml
+  - name: Windows Sensors API
+    description: >-
+      API for accessing device sensor data including accelerometer, gyroscope, compass, light sensor, and proximity
+      sensor. Provides a unified interface for reading sensor values and responding to sensor events.
+    image: https://www.microsoft.com/favicon.ico
+    humanURL: >-
+      https://learn.microsoft.com/en-us/windows/win32/sensorsapi/introduction-to-the-sensor-and-location-platform-in-windows
+    baseURL: https://api.windows.com
+    tags:
+      - Devices
+      - Hardware
+      - IoT
+      - Sensors
+    properties:
+      - type: Documentation
+        url: >-
+          https://learn.microsoft.com/en-us/windows/win32/sensorsapi/introduction-to-the-sensor-and-location-platform-in-windows
+      - type: Reference
+        url: https://learn.microsoft.com/en-us/uwp/api/windows.devices.sensors
+      - type: OpenAPI
+        url: openapi/microsoft-windows-10-sensors-openapi.yml
+  - name: Windows Hello Authentication API
+    description: >-
+      Biometric and PIN-based authentication API that replaces passwords with strong two-factor authentication. Supports
+      facial recognition, fingerprint scanning, and PIN-based user verification for secure sign-in.
+    image: https://www.microsoft.com/favicon.ico
+    humanURL: https://learn.microsoft.com/en-us/windows/apps/develop/security/windows-hello
+    baseURL: https://api.windows.com
+    tags:
+      - Authentication
+      - Biometrics
+      - Identity
+      - Security
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/windows/apps/develop/security/windows-hello
+      - type: GettingStarted
+        url: https://learn.microsoft.com/en-us/windows/apps/develop/security/windows-hello-auth-service
+      - type: Reference
+        url: https://learn.microsoft.com/en-us/windows/security/identity-protection/hello-for-business/webauthn-apis
+      - type: OpenAPI
+        url: openapi/microsoft-windows-10-hello-openapi.yml
+  - name: WinUI API
+    description: >-
+      Modern native UI framework for building Windows desktop applications with the Fluent Design System. WinUI provides
+      XAML-based controls, high-performance rendering, and supports both C# and C++ development.
+    image: https://www.microsoft.com/favicon.ico
+    humanURL: https://learn.microsoft.com/en-us/windows/apps/winui/winui2/
+    baseURL: https://api.windows.com
+    tags:
+      - Controls
+      - Fluent Design
+      - User Interface
+      - XAML
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/windows/apps/winui/winui2/
+      - type: Reference
+        url: https://learn.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.controls
+      - type: GettingStarted
+        url: https://learn.microsoft.com/en-us/windows/apps/winui/winui2/getting-started
+      - type: Samples
+        url: https://github.com/microsoft/microsoft-ui-xaml
+      - type: OpenAPI
+        url: openapi/microsoft-windows-10-winui-openapi.yml
+  - name: Windows Background Tasks API
+    description: >-
+      API for running code in the background when an application is suspended or not running. Supports time-triggered,
+      system-triggered, and maintenance-triggered background tasks for continuous processing.
+    image: https://www.microsoft.com/favicon.ico
+    humanURL: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+    baseURL: https://api.windows.com
+    tags:
+      - App Lifecycle
+      - Background Tasks
+      - Scheduling
+    properties:
+      - type: Documentation
+        url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+      - type: Samples
+        url: https://learn.microsoft.com/en-us/samples/microsoft/windows-universal-samples/backgroundtask/
+      - type: OpenAPI
+        url: openapi/microsoft-windows-10-background-tasks-openapi.yml
+common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/microsoft-windows-10/overview
+  - type: ArazzoWorkflows
+    url: arazzo/
+    workflows:
+      - url: arazzo/microsoft-windows-10-background-task-register-workflow.yml
+        name: Microsoft Windows 10 Register Background Task with Access
+        summary: >-
+          Confirm background access, request it when unspecified, register a time-triggered background task, and read
+          back its details.
+      - url: arazzo/microsoft-windows-10-bluetooth-le-read-characteristic-workflow.yml
+        name: Microsoft Windows 10 Bluetooth LE Read GATT Characteristic
+        summary: >-
+          Discover a paired BLE device, drill into its GATT services and characteristics, and read a characteristic
+          value.
+      - url: arazzo/microsoft-windows-10-geolocation-access-and-position-workflow.yml
+        name: Microsoft Windows 10 Geolocation Access and Current Position
+        summary: >-
+          Check location permission, request it when unspecified, and then read the device's current geographic
+          position.
+      - url: arazzo/microsoft-windows-10-geolocation-create-geofence-workflow.yml
+        name: Microsoft Windows 10 Create and Confirm Geofence
+        summary: Ensure location access, create a circular geofence, and confirm it appears among the active geofences.
+      - url: arazzo/microsoft-windows-10-media-capture-photo-workflow.yml
+        name: Microsoft Windows 10 Media Capture Photo
+        summary: Pick a camera, initialize a capture session, start the preview, and capture a photo to a file.
+      - url: arazzo/microsoft-windows-10-ml-load-and-evaluate-workflow.yml
+        name: Microsoft Windows 10 Windows ML Load and Evaluate Model
+        summary: >-
+          Load an ONNX model, create a hardware-accelerated evaluation session, and run an inference against bound
+          inputs.
+      - url: arazzo/microsoft-windows-10-notifications-schedule-toast-workflow.yml
+        name: Microsoft Windows 10 Schedule Grouped Toast Notification
+        summary: Create a toast notification collection, schedule a future toast, and confirm it appears in the pending list.
+      - url: arazzo/microsoft-windows-10-storage-read-and-update-file-workflow.yml
+        name: Microsoft Windows 10 Storage Read and Update File
+        summary: List files in a known folder, inspect the first file, read its text content, and write updated content back.
+      - url: arazzo/microsoft-windows-10-windows-hello-enroll-credential-workflow.yml
+        name: Microsoft Windows 10 Windows Hello Enroll Key Credential
+        summary: >-
+          Confirm Windows Hello is available, create a passwordless key credential, and retrieve its TPM attestation for
+          server registration.
+      - url: arazzo/microsoft-windows-10-windows-hello-stepup-sign-workflow.yml
+        name: Microsoft Windows 10 Windows Hello Step-Up Sign Challenge
+        summary: >-
+          Verify the user with biometrics or PIN, open their key credential, and sign a server challenge for step-up
+          authentication.
+  - type: Portal
+    url: https://developer.microsoft.com/en-us/windows/
   - type: Documentation
-    url: https://learn.microsoft.com/en-us/uwp/api/
+    url: https://learn.microsoft.com/en-us/windows/apps/
   - type: GettingStarted
-    url: https://learn.microsoft.com/en-us/windows/uwp/get-started/
-  - type: Samples
-    url: https://github.com/Microsoft/Windows-universal-samples
-  - type: Reference
-    url: https://learn.microsoft.com/en-us/uwp/api/
+    url: https://learn.microsoft.com/en-us/windows/apps/get-started/
+  - type: Authentication
+    url: https://learn.microsoft.com/en-us/windows/apps/develop/security/windows-hello
+  - type: Blog
+    url: https://blogs.windows.com/windowsdeveloper/
+  - type: StatusPage
+    url: https://status.cloud.microsoft/
+  - type: Support
+    url: https://developer.microsoft.com/en-us/windows/support
+  - type: TermsOfService
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+  - type: PrivacyPolicy
+    url: https://www.microsoft.com/en-us/privacy/privacystatement
+  - type: GitHubOrganization
+    url: https://github.com/microsoft
+  - type: Community
+    url: https://developer.microsoft.com/en-us/windows/community/
+  - type: Website
+    url: https://www.microsoft.com
+  - type: Login
+    url: https://login.microsoftonline.com/
+  - type: SignUp
+    url: https://developer.microsoft.com/en-us/
   - type: SDKs
     url: https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk/
-  - type: OpenAPI
-    url: openapi/microsoft-windows-10-winrt-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/winrt-activation.yaml
-  - type: NaftikoCapability
-    url: capabilities/winrt-classes.yaml
-  - type: NaftikoCapability
-    url: capabilities/winrt-namespaces.yaml
-- name: Win32 API
-  description: Core Windows API for building traditional desktop applications using C and C++. Win32 provides direct access
-    to system-level functionality including window management, graphics, networking, and hardware.
-  image: https://www.microsoft.com/favicon.ico
-  humanURL: https://learn.microsoft.com/en-us/windows/win32/
-  baseURL: https://api.windows.com
-  tags:
-  - Desktop
-  - Native
-  - System Programming
-  - Win32
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/windows/win32/apiindex/windows-api-list
+  - type: ChangeLog
+    url: https://learn.microsoft.com/en-us/windows/apps/whats-new/whats-new-for-developers
   - type: Reference
-    url: https://learn.microsoft.com/en-us/windows/win32/api/
-  - type: Samples
-    url: https://github.com/microsoft/Windows-classic-samples
-  - type: GettingStarted
-    url: https://learn.microsoft.com/en-us/windows/win32/desktop-programming
-  - type: OpenAPI
-    url: openapi/microsoft-windows-10-win32-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/win32-api-categories.yaml
-  - type: NaftikoCapability
-    url: capabilities/win32-functions.yaml
-  - type: NaftikoCapability
-    url: capabilities/win32-messages.yaml
-  - type: NaftikoCapability
-    url: capabilities/win32-structures.yaml
-- name: Windows Notifications API
-  description: API for sending and managing toast notifications, tile notifications, and badge updates in Windows 10 applications.
-    Supports adaptive and interactive notifications with custom layouts, actions, and scheduling.
-  image: https://www.microsoft.com/favicon.ico
-  humanURL: https://learn.microsoft.com/en-us/windows/uwp/design/shell/tiles-and-notifications/
-  baseURL: https://api.windows.com
-  tags:
-  - Notifications
-  - Tiles
-  - Toast
-  - User Interface
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/windows/uwp/design/shell/tiles-and-notifications/adaptive-interactive-toasts
-  - type: Samples
-    url: https://github.com/WindowsNotifications/quickstart-sending-local-toast-win10
-  - type: Reference
-    url: https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications
-  - type: OpenAPI
-    url: openapi/microsoft-windows-10-notifications-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/notifications-badge-notifications.yaml
-  - type: NaftikoCapability
-    url: capabilities/notifications-collections.yaml
-  - type: NaftikoCapability
-    url: capabilities/notifications-scheduled-notifications.yaml
-  - type: NaftikoCapability
-    url: capabilities/notifications-tile-notifications.yaml
-  - type: NaftikoCapability
-    url: capabilities/notifications-toast-notifications.yaml
-- name: Windows ML API
-  description: API for integrating trained machine learning models into Windows applications using the ONNX format. Windows
-    ML evaluates models locally on the device using hardware acceleration with DirectX 12.
-  image: https://www.microsoft.com/favicon.ico
-  humanURL: https://learn.microsoft.com/en-us/windows/ai/windows-ml/
-  baseURL: https://api.windows.com
-  tags:
-  - Artificial Intelligence
-  - Inference
-  - Machine Learning
-  - ONNX
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/windows/ai/windows-ml/api-reference
-  - type: Tutorials
-    url: https://learn.microsoft.com/en-us/windows/ai/windows-ml/tutorials
-  - type: Samples
-    url: https://github.com/Microsoft/Windows-Machine-Learning
-  - type: GettingStarted
-    url: https://learn.microsoft.com/en-us/windows/ai/windows-ml/get-started
-  - type: OpenAPI
-    url: openapi/microsoft-windows-10-ml-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/ml-devices.yaml
-  - type: NaftikoCapability
-    url: capabilities/ml-evaluation.yaml
-  - type: NaftikoCapability
-    url: capabilities/ml-models.yaml
-  - type: NaftikoCapability
-    url: capabilities/ml-sessions.yaml
-- name: Windows Storage API
-  description: API for file system access, storage management, and data operations in Windows applications. Provides classes
-    for reading, writing, and managing files and folders with appropriate access permissions.
-  image: https://www.microsoft.com/favicon.ico
-  humanURL: https://learn.microsoft.com/en-us/windows/uwp/files/
-  baseURL: https://api.windows.com
-  tags:
-  - Data Management
-  - File System
-  - Files
-  - Storage
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/uwp/api/windows.storage
-  - type: Best Practices
-    url: https://learn.microsoft.com/en-us/windows/uwp/files/best-practices-for-writing-to-files
-  - type: GettingStarted
-    url: https://learn.microsoft.com/en-us/windows/uwp/files/
-  - type: OpenAPI
-    url: openapi/microsoft-windows-10-storage-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/storage-app-data.yaml
-  - type: NaftikoCapability
-    url: capabilities/storage-change-tracking.yaml
-  - type: NaftikoCapability
-    url: capabilities/storage-file-operations.yaml
-  - type: NaftikoCapability
-    url: capabilities/storage-files.yaml
-  - type: NaftikoCapability
-    url: capabilities/storage-folders.yaml
-  - type: NaftikoCapability
-    url: capabilities/storage-libraries.yaml
-- name: Windows Cortana API
-  description: API for integrating voice commands and Cortana digital assistant capabilities into Windows applications. Enables
-    voice-activated interactions and custom voice command definitions.
-  image: https://www.microsoft.com/favicon.ico
-  humanURL: https://learn.microsoft.com/en-us/cortana/
-  baseURL: https://api.windows.com
-  tags:
-  - Cortana
-  - Digital Assistant
-  - Voice
-  - Voice Commands
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/cortana/voice-commands/vcd
-  - type: Guidelines
-    url: https://learn.microsoft.com/en-us/cortana/voice-commands/voicecommand-design-guidelines
-  - type: OpenAPI
-    url: openapi/microsoft-windows-10-cortana-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/cortana-phrase-lists.yaml
-  - type: NaftikoCapability
-    url: capabilities/cortana-responses.yaml
-  - type: NaftikoCapability
-    url: capabilities/cortana-service-connections.yaml
-  - type: NaftikoCapability
-    url: capabilities/cortana-voice-commands.yaml
-- name: Windows Ink API
-  description: API for pen and stylus input in Windows applications, providing inking surfaces, stroke recognition, and handwriting
-    analysis. Supports pressure sensitivity, tilt, and barrel button interactions.
-  image: https://www.microsoft.com/favicon.ico
-  humanURL: https://learn.microsoft.com/en-us/windows/uwp/design/input/pen-and-stylus-interactions
-  baseURL: https://api.windows.com
-  tags:
-  - Ink
-  - Input
-  - Pen
-  - Stylus
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/uwp/api/windows.ui.input.inking
-  - type: Samples
-    url: https://github.com/Microsoft/Windows-universal-samples/tree/master/Samples/SimpleInk
-  - type: GettingStarted
-    url: https://learn.microsoft.com/en-us/windows/uwp/design/input/pen-and-stylus-interactions
-  - type: OpenAPI
-    url: openapi/microsoft-windows-10-ink-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/ink-drawing-attributes.yaml
-  - type: NaftikoCapability
-    url: capabilities/ink-recognition.yaml
-  - type: NaftikoCapability
-    url: capabilities/ink-strokes.yaml
-- name: Windows Composition API
-  description: The Windows.UI.Composition API provides access to the visual layer between the XAML framework and the DirectX
-    graphics layer. It enables high-performance, retained-mode graphics, effects, and animations as the foundation for UI
-    across Windows devices.
-  image: https://www.microsoft.com/favicon.ico
-  humanURL: https://learn.microsoft.com/en-us/windows/uwp/composition/visual-layer
-  baseURL: https://api.windows.com
-  tags:
-  - Animations
-  - Composition
-  - Graphics
-  - Visual Layer
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/windows/uwp/composition/visual-layer
-  - type: Reference
-    url: https://learn.microsoft.com/en-us/uwp/api/windows.ui.composition
-  - type: Samples
-    url: https://github.com/microsoft/Windows.UI.Composition-Win32-Samples
-  - type: GettingStarted
-    url: https://learn.microsoft.com/en-us/windows/uwp/composition/using-the-visual-layer-with-xaml
-  - type: OpenAPI
-    url: openapi/microsoft-windows-10-composition-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/composition-animations.yaml
-  - type: NaftikoCapability
-    url: capabilities/composition-effects.yaml
-  - type: NaftikoCapability
-    url: capabilities/composition-surfaces.yaml
-  - type: NaftikoCapability
-    url: capabilities/composition-visuals.yaml
-- name: DirectX Graphics API
-  description: Low-level graphics API for building high-performance 2D and 3D rendering in Windows applications. Includes
-    Direct3D for 3D graphics, Direct2D for 2D graphics, and DirectWrite for text rendering.
-  image: https://www.microsoft.com/favicon.ico
-  humanURL: https://learn.microsoft.com/en-us/windows/win32/directx
-  baseURL: https://api.windows.com
-  tags:
-  - DirectX
-  - Gaming
-  - Graphics
-  - Rendering
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/windows/win32/directx
-  - type: GettingStarted
-    url: https://learn.microsoft.com/en-us/windows/win32/getting-started-with-directx-graphics
-  - type: Samples
-    url: https://github.com/microsoft/DirectX-Graphics-Samples
-  - type: Reference
-    url: https://microsoft.github.io/DirectX-Specs/
-  - type: OpenAPI
-    url: openapi/microsoft-windows-10-directx-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/directx-command-queues.yaml
-  - type: NaftikoCapability
-    url: capabilities/directx-devices.yaml
-  - type: NaftikoCapability
-    url: capabilities/directx-pipeline.yaml
-  - type: NaftikoCapability
-    url: capabilities/directx-presentation.yaml
-  - type: NaftikoCapability
-    url: capabilities/directx-resources.yaml
-- name: Windows Media Capture API
-  description: API for capturing photos, audio, and video from camera and microphone devices in Windows applications. Provides
-    classes for previewing, recording, and processing media streams with configurable encoding settings.
-  image: https://www.microsoft.com/favicon.ico
-  humanURL: https://learn.microsoft.com/en-us/windows/apps/develop/audio-video-camera
-  baseURL: https://api.windows.com
-  tags:
-  - Audio
-  - Camera
-  - Media
-  - Video Capture
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/windows/apps/develop/audio-video-camera
-  - type: Reference
-    url: https://learn.microsoft.com/en-us/uwp/api/windows.media.capture
-  - type: GettingStarted
-    url: https://learn.microsoft.com/en-us/windows/win32/medfound/audio-video-capture-in-media-foundation
-  - type: OpenAPI
-    url: openapi/microsoft-windows-10-media-capture-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/media-capture-devices.yaml
-  - type: NaftikoCapability
-    url: capabilities/media-capture-photo-capture.yaml
-  - type: NaftikoCapability
-    url: capabilities/media-capture-preview.yaml
-  - type: NaftikoCapability
-    url: capabilities/media-capture-sessions.yaml
-  - type: NaftikoCapability
-    url: capabilities/media-capture-video-recording.yaml
-- name: Windows Networking API
-  description: API for network communication in Windows applications, providing support for sockets, WebSockets, HTTP clients,
-    and background transfers. Enables TCP/UDP communication and real-time data streaming.
-  image: https://www.microsoft.com/favicon.ico
-  humanURL: https://learn.microsoft.com/en-us/windows/uwp/networking/
-  baseURL: https://api.windows.com
-  tags:
-  - HTTP
-  - Networking
-  - Sockets
-  - WebSockets
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/windows/uwp/networking/which-networking-technology
-  - type: Reference
-    url: https://learn.microsoft.com/en-us/uwp/api/windows.networking.sockets
-  - type: Samples
-    url: https://learn.microsoft.com/en-us/samples/microsoft/windows-universal-samples/websocket/
-  - type: OpenAPI
-    url: openapi/microsoft-windows-10-networking-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/networking-background-transfers.yaml
-  - type: NaftikoCapability
-    url: capabilities/networking-connectivity.yaml
-  - type: NaftikoCapability
-    url: capabilities/networking-http-client.yaml
-  - type: NaftikoCapability
-    url: capabilities/networking-tcp-sockets.yaml
-  - type: NaftikoCapability
-    url: capabilities/networking-udp-sockets.yaml
-  - type: NaftikoCapability
-    url: capabilities/networking-websockets.yaml
-- name: Windows Bluetooth API
-  description: API for Bluetooth communication in Windows applications, supporting Bluetooth Classic (RFCOMM) and Bluetooth
-    Low Energy (GATT) protocols for connecting to and exchanging data with Bluetooth devices.
-  image: https://www.microsoft.com/favicon.ico
-  humanURL: https://learn.microsoft.com/en-us/windows/uwp/devices-sensors/bluetooth
-  baseURL: https://api.windows.com
-  tags:
-  - Bluetooth
-  - Devices
-  - IoT
-  - Wireless
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/windows/uwp/devices-sensors/bluetooth-dev-faq
-  - type: Reference
-    url: https://learn.microsoft.com/en-us/windows/win32/api/_bluetooth/
-  - type: GettingStarted
-    url: https://learn.microsoft.com/en-us/windows/win32/bluetooth/bluetooth-programming-with-windows-sockets
-  - type: OpenAPI
-    url: openapi/microsoft-windows-10-bluetooth-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/bluetooth-ble-scanning.yaml
-  - type: NaftikoCapability
-    url: capabilities/bluetooth-devices.yaml
-  - type: NaftikoCapability
-    url: capabilities/bluetooth-gatt-characteristics.yaml
-  - type: NaftikoCapability
-    url: capabilities/bluetooth-gatt-operations.yaml
-  - type: NaftikoCapability
-    url: capabilities/bluetooth-gatt-services.yaml
-  - type: NaftikoCapability
-    url: capabilities/bluetooth-rfcomm.yaml
-- name: Windows Geolocation API
-  description: API for obtaining geographic location data in Windows applications. Provides access to latitude, longitude,
-    altitude, heading, and speed from GNSS, Wi-Fi, cellular networks, and IP address sources.
-  image: https://www.microsoft.com/favicon.ico
-  humanURL: https://learn.microsoft.com/en-us/windows/uwp/maps-and-location/
-  baseURL: https://api.windows.com
-  tags:
-  - Geolocation
-  - GPS
-  - Location
-  - Maps
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/uwp/api/windows.devices.geolocation
-  - type: Reference
-    url: https://learn.microsoft.com/en-us/windows/win32/locationapi/windows-location-api-portal
-  - type: Samples
-    url: https://learn.microsoft.com/en-us/samples/microsoft/windows-universal-samples/geolocation/
-  - type: OpenAPI
-    url: openapi/microsoft-windows-10-geolocation-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/geolocation-access.yaml
-  - type: NaftikoCapability
-    url: capabilities/geolocation-geofencing.yaml
-  - type: NaftikoCapability
-    url: capabilities/geolocation-position.yaml
-  - type: NaftikoCapability
-    url: capabilities/geolocation-tracking.yaml
-  - type: NaftikoCapability
-    url: capabilities/geolocation-visits.yaml
-- name: Windows Sensors API
-  description: API for accessing device sensor data including accelerometer, gyroscope, compass, light sensor, and proximity
-    sensor. Provides a unified interface for reading sensor values and responding to sensor events.
-  image: https://www.microsoft.com/favicon.ico
-  humanURL: https://learn.microsoft.com/en-us/windows/win32/sensorsapi/introduction-to-the-sensor-and-location-platform-in-windows
-  baseURL: https://api.windows.com
-  tags:
-  - Devices
-  - Hardware
-  - IoT
-  - Sensors
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/windows/win32/sensorsapi/introduction-to-the-sensor-and-location-platform-in-windows
-  - type: Reference
-    url: https://learn.microsoft.com/en-us/uwp/api/windows.devices.sensors
-  - type: OpenAPI
-    url: openapi/microsoft-windows-10-sensors-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/sensors-accelerometer.yaml
-  - type: NaftikoCapability
-    url: capabilities/sensors-barometer.yaml
-  - type: NaftikoCapability
-    url: capabilities/sensors-compass.yaml
-  - type: NaftikoCapability
-    url: capabilities/sensors-gyrometer.yaml
-  - type: NaftikoCapability
-    url: capabilities/sensors-human-presence.yaml
-  - type: NaftikoCapability
-    url: capabilities/sensors-inclinometer.yaml
-  - type: NaftikoCapability
-    url: capabilities/sensors-light-sensor.yaml
-  - type: NaftikoCapability
-    url: capabilities/sensors-orientation.yaml
-  - type: NaftikoCapability
-    url: capabilities/sensors-pedometer.yaml
-  - type: NaftikoCapability
-    url: capabilities/sensors-proximity.yaml
-  - type: NaftikoCapability
-    url: capabilities/sensors-sensors.yaml
-- name: Windows Hello Authentication API
-  description: Biometric and PIN-based authentication API that replaces passwords with strong two-factor authentication. Supports
-    facial recognition, fingerprint scanning, and PIN-based user verification for secure sign-in.
-  image: https://www.microsoft.com/favicon.ico
-  humanURL: https://learn.microsoft.com/en-us/windows/apps/develop/security/windows-hello
-  baseURL: https://api.windows.com
-  tags:
-  - Authentication
-  - Biometrics
-  - Identity
-  - Security
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/windows/apps/develop/security/windows-hello
-  - type: GettingStarted
-    url: https://learn.microsoft.com/en-us/windows/apps/develop/security/windows-hello-auth-service
-  - type: Reference
-    url: https://learn.microsoft.com/en-us/windows/security/identity-protection/hello-for-business/webauthn-apis
-  - type: OpenAPI
-    url: openapi/microsoft-windows-10-hello-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/hello-attestation.yaml
-  - type: NaftikoCapability
-    url: capabilities/hello-authentication.yaml
-  - type: NaftikoCapability
-    url: capabilities/hello-availability.yaml
-  - type: NaftikoCapability
-    url: capabilities/hello-credentials.yaml
-- name: WinUI API
-  description: Modern native UI framework for building Windows desktop applications with the Fluent Design System. WinUI provides
-    XAML-based controls, high-performance rendering, and supports both C# and C++ development.
-  image: https://www.microsoft.com/favicon.ico
-  humanURL: https://learn.microsoft.com/en-us/windows/apps/winui/winui2/
-  baseURL: https://api.windows.com
-  tags:
-  - Controls
-  - Fluent Design
-  - User Interface
-  - XAML
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/windows/apps/winui/winui2/
-  - type: Reference
-    url: https://learn.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.controls
-  - type: GettingStarted
-    url: https://learn.microsoft.com/en-us/windows/apps/winui/winui2/getting-started
-  - type: Samples
-    url: https://github.com/microsoft/microsoft-ui-xaml
-  - type: OpenAPI
-    url: openapi/microsoft-windows-10-winui-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/winui-controls.yaml
-  - type: NaftikoCapability
-    url: capabilities/winui-icons.yaml
-  - type: NaftikoCapability
-    url: capabilities/winui-styles.yaml
-  - type: NaftikoCapability
-    url: capabilities/winui-themes.yaml
-- name: Windows Background Tasks API
-  description: API for running code in the background when an application is suspended or not running. Supports time-triggered,
-    system-triggered, and maintenance-triggered background tasks for continuous processing.
-  image: https://www.microsoft.com/favicon.ico
-  humanURL: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
-  baseURL: https://api.windows.com
-  tags:
-  - App Lifecycle
-  - Background Tasks
-  - Scheduling
-  properties:
-  - type: Documentation
-    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
-  - type: Samples
-    url: https://learn.microsoft.com/en-us/samples/microsoft/windows-universal-samples/backgroundtask/
-  - type: OpenAPI
-    url: openapi/microsoft-windows-10-background-tasks-openapi.yml
-  - type: NaftikoCapability
-    url: capabilities/background-tasks-access.yaml
-  - type: NaftikoCapability
-    url: capabilities/background-tasks-tasks.yaml
-  - type: NaftikoCapability
-    url: capabilities/background-tasks-triggers.yaml
-common:
-- type: ArazzoWorkflows
-  url: arazzo/
-  workflows:
-  - url: arazzo/microsoft-windows-10-background-task-register-workflow.yml
-    name: Microsoft Windows 10 Register Background Task with Access
-    summary: Confirm background access, request it when unspecified, register a time-triggered background task, and read back its details.
-  - url: arazzo/microsoft-windows-10-bluetooth-le-read-characteristic-workflow.yml
-    name: Microsoft Windows 10 Bluetooth LE Read GATT Characteristic
-    summary: Discover a paired BLE device, drill into its GATT services and characteristics, and read a characteristic value.
-  - url: arazzo/microsoft-windows-10-geolocation-access-and-position-workflow.yml
-    name: Microsoft Windows 10 Geolocation Access and Current Position
-    summary: Check location permission, request it when unspecified, and then read the device's current geographic position.
-  - url: arazzo/microsoft-windows-10-geolocation-create-geofence-workflow.yml
-    name: Microsoft Windows 10 Create and Confirm Geofence
-    summary: Ensure location access, create a circular geofence, and confirm it appears among the active geofences.
-  - url: arazzo/microsoft-windows-10-media-capture-photo-workflow.yml
-    name: Microsoft Windows 10 Media Capture Photo
-    summary: Pick a camera, initialize a capture session, start the preview, and capture a photo to a file.
-  - url: arazzo/microsoft-windows-10-ml-load-and-evaluate-workflow.yml
-    name: Microsoft Windows 10 Windows ML Load and Evaluate Model
-    summary: Load an ONNX model, create a hardware-accelerated evaluation session, and run an inference against bound inputs.
-  - url: arazzo/microsoft-windows-10-notifications-schedule-toast-workflow.yml
-    name: Microsoft Windows 10 Schedule Grouped Toast Notification
-    summary: Create a toast notification collection, schedule a future toast, and confirm it appears in the pending list.
-  - url: arazzo/microsoft-windows-10-storage-read-and-update-file-workflow.yml
-    name: Microsoft Windows 10 Storage Read and Update File
-    summary: List files in a known folder, inspect the first file, read its text content, and write updated content back.
-  - url: arazzo/microsoft-windows-10-windows-hello-enroll-credential-workflow.yml
-    name: Microsoft Windows 10 Windows Hello Enroll Key Credential
-    summary: Confirm Windows Hello is available, create a passwordless key credential, and retrieve its TPM attestation for server registration.
-  - url: arazzo/microsoft-windows-10-windows-hello-stepup-sign-workflow.yml
-    name: Microsoft Windows 10 Windows Hello Step-Up Sign Challenge
-    summary: Verify the user with biometrics or PIN, open their key credential, and sign a server challenge for step-up authentication.
-- type: Portal
-  url: https://developer.microsoft.com/en-us/windows/
-- type: Documentation
-  url: https://learn.microsoft.com/en-us/windows/apps/
-- type: GettingStarted
-  url: https://learn.microsoft.com/en-us/windows/apps/get-started/
-- type: Authentication
-  url: https://learn.microsoft.com/en-us/windows/apps/develop/security/windows-hello
-- type: Blog
-  url: https://blogs.windows.com/windowsdeveloper/
-- type: StatusPage
-  url: https://status.cloud.microsoft/
-- type: Support
-  url: https://developer.microsoft.com/en-us/windows/support
-- type: TermsOfService
-  url: https://www.microsoft.com/en-us/legal/terms-of-use
-- type: PrivacyPolicy
-  url: https://www.microsoft.com/en-us/privacy/privacystatement
-- type: GitHubOrganization
-  url: https://github.com/microsoft
-- type: Community
-  url: https://developer.microsoft.com/en-us/windows/community/
-- type: Website
-  url: https://www.microsoft.com
-- type: Login
-  url: https://login.microsoftonline.com/
-- type: SignUp
-  url: https://developer.microsoft.com/en-us/
-- type: SDKs
-  url: https://developer.microsoft.com/en-us/windows/downloads/windows-10-sdk/
-- type: ChangeLog
-  url: https://learn.microsoft.com/en-us/windows/apps/whats-new/whats-new-for-developers
-- type: Reference
-  url: https://learn.microsoft.com/en-us/windows/apps/api-reference/
-- type: JSONLD
-  url: json-ld/microsoft-windows-10-context.jsonld
-- type: JSONSchema
-  url: json-schema/microsoft-windows-10-notification-schema.json
-- type: JSONSchema
-  url: json-schema/microsoft-windows-10-storage-item-schema.json
-- type: JSONSchema
-  url: json-schema/microsoft-windows-10-geolocation-schema.json
-- type: JSONSchema
-  url: json-schema/microsoft-windows-10-sensor-reading-schema.json
-- type: JSONSchema
-  url: json-schema/microsoft-windows-10-ml-model-schema.json
-- type: JSONSchema
-  url: json-schema/microsoft-windows-10-bluetooth-device-schema.json
+    url: https://learn.microsoft.com/en-us/windows/apps/api-reference/
+  - type: JSONLD
+    url: json-ld/microsoft-windows-10-context.jsonld
+  - type: JSONSchema
+    url: json-schema/microsoft-windows-10-notification-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-windows-10-storage-item-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-windows-10-geolocation-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-windows-10-sensor-reading-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-windows-10-ml-model-schema.json
+  - type: JSONSchema
+    url: json-schema/microsoft-windows-10-bluetooth-device-schema.json
 maintainers:
-- FN: Kin Lane
-  email: kin@apievangelist.com
+  - FN: Kin Lane
+    email: kin@apievangelist.com

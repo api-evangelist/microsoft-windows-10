@@ -1,0 +1,919 @@
+{
+  "item": [
+    {
+      "id": "57257c8c-3719-4699-94d1-d62bab9258b3",
+      "name": "Access",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "84044070-0866-429a-a811-0761df968bd0",
+          "name": "Microsoft Windows 10 Check geolocation access status",
+          "request": {
+            "name": "Microsoft Windows 10 Check geolocation access status",
+            "description": {
+              "content": "Checks the application's permission to access location data using Geolocator.RequestAccessAsync. Returns the current GeolocationAccessStatus indicating whether access is allowed, denied, or unspecified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geolocation",
+                "access"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "e04fdad2-0268-452f-833b-0f1225c7e3b2",
+              "name": "Access status retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "access"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"Unspecified\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "89c4e015-85a5-4d81-a3f9-cbbd84dde2dc",
+          "name": "Microsoft Windows 10 Request geolocation access",
+          "request": {
+            "name": "Microsoft Windows 10 Request geolocation access",
+            "description": {
+              "content": "Requests permission to access the device's location using Geolocator.RequestAccessAsync. Prompts the user to grant or deny location access if not previously configured.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geolocation",
+                "access"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c725856b-aa3f-4375-9079-85d8a38f3056",
+              "name": "Access request processed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "access"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"Unspecified\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "4dce7b7e-6077-4535-845c-6dc40f96e6eb",
+      "name": "Geofencing",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c4931f06-2fdd-4f32-97ac-560699bde7a0",
+          "name": "Microsoft Windows 10 List active geofences",
+          "request": {
+            "name": "Microsoft Windows 10 List active geofences",
+            "description": {
+              "content": "Retrieves the list of active geofences registered with the GeofenceMonitor. Geofences are geographic areas (circles) that trigger events when the device enters, exits, or dwells in the area.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geolocation",
+                "geofences"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d0ca19f-451e-44a8-b853-6dbfe6f8a287",
+              "name": "Successful retrieval of geofences",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "geofences"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"geoshape\": {\n      \"center\": {\n        \"latitude\": 3724.9892159655737,\n        \"longitude\": 8083.459940150242,\n        \"altitude\": 9256.820192331035\n      },\n      \"radiusInMeters\": 2031.5716122352212\n    },\n    \"monitoredStates\": [\n      \"Exited\",\n      \"Removed\"\n    ],\n    \"singleUse\": true,\n    \"dwellTime\": \"string\",\n    \"startTime\": \"1994-05-20T06:05:45.594Z\",\n    \"duration\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"geoshape\": {\n      \"center\": {\n        \"latitude\": 5528.836011594347,\n        \"longitude\": 5089.482947048816,\n        \"altitude\": 2505.0931706436795\n      },\n      \"radiusInMeters\": 1319.2288421936016\n    },\n    \"monitoredStates\": [\n      \"Entered\",\n      \"Removed\"\n    ],\n    \"singleUse\": false,\n    \"dwellTime\": \"string\",\n    \"startTime\": \"2002-07-30T18:46:56.201Z\",\n    \"duration\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f9f9e4fb-da67-4f78-b752-9624e8f6c701",
+          "name": "Microsoft Windows 10 Create a geofence",
+          "request": {
+            "name": "Microsoft Windows 10 Create a geofence",
+            "description": {
+              "content": "Creates a new geofence and adds it to the GeofenceMonitor. The geofence is defined by a Geocircle (center point and radius) and monitored states (entered, exited, removed). Supports dwell time, start time, and duration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geolocation",
+                "geofences"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"latitude\": \"<double>\",\n  \"longitude\": \"<double>\",\n  \"radiusInMeters\": \"<double>\",\n  \"monitoredStates\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"singleUse\": false,\n  \"dwellTimeInSeconds\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cf1571d1-d4f1-459e-adf7-28e8d341bf01",
+              "name": "Geofence created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "geofences"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"latitude\": \"<double>\",\n  \"longitude\": \"<double>\",\n  \"radiusInMeters\": \"<double>\",\n  \"monitoredStates\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"singleUse\": false,\n  \"dwellTimeInSeconds\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"geoshape\": {\n    \"center\": {\n      \"latitude\": 5988.817529726185,\n      \"longitude\": 5249.920312681232,\n      \"altitude\": 4416.359291899739\n    },\n    \"radiusInMeters\": 8201.587550467839\n  },\n  \"monitoredStates\": [\n    \"Removed\",\n    \"Entered\"\n  ],\n  \"singleUse\": true,\n  \"dwellTime\": \"string\",\n  \"startTime\": \"1984-04-22T17:26:54.659Z\",\n  \"duration\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "93993e8f-3ffa-4d1a-81e5-4eb498640af7",
+              "name": "Invalid geofence configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "geofences"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"latitude\": \"<double>\",\n  \"longitude\": \"<double>\",\n  \"radiusInMeters\": \"<double>\",\n  \"monitoredStates\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"singleUse\": false,\n  \"dwellTimeInSeconds\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9d1c49c0-0057-4c8c-9024-17398ca55e33",
+      "name": "Position",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eb2fadde-f924-4e46-9f34-ac97e36406a9",
+          "name": "Microsoft Windows 10 Get current geographic position",
+          "request": {
+            "name": "Microsoft Windows 10 Get current geographic position",
+            "description": {
+              "content": "Retrieves the current geographic position using Geolocator.GetGeopositionAsync. Returns a Geoposition containing a Geocoordinate with latitude, longitude, altitude, accuracy, heading, speed, and timestamp. Accuracy depends on the position source (GNSS ~10m, Wi-Fi ~30-500m, cellular ~300-3000m, IP ~300-10000m).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geolocation",
+                "position"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "desiredAccuracy",
+                  "value": "Default",
+                  "description": "Desired position accuracy level"
+                },
+                {
+                  "disabled": false,
+                  "key": "maximumAge",
+                  "value": "<integer>",
+                  "description": "Maximum age of cached position in seconds"
+                },
+                {
+                  "disabled": false,
+                  "key": "timeout",
+                  "value": "<integer>",
+                  "description": "Timeout in seconds for obtaining a position"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ddca5503-bda0-4efe-9ccf-aaab776072e4",
+              "name": "Position retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "position"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "desiredAccuracy",
+                      "value": "Default"
+                    },
+                    {
+                      "key": "maximumAge",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"coordinate\": {\n    \"latitude\": 1500.7823512849604,\n    \"longitude\": 8547.45843410425,\n    \"accuracy\": 2295.1579034923743,\n    \"timestamp\": \"1977-04-09T18:24:46.621Z\",\n    \"altitude\": 8007.788404969202,\n    \"altitudeAccuracy\": 6843.164810868868,\n    \"heading\": 8350.571965203162,\n    \"speed\": 920.2463391602079,\n    \"positionSource\": \"WiFi\",\n    \"satelliteData\": {\n      \"horizontalDilutionOfPrecision\": 7466.355715320975,\n      \"verticalDilutionOfPrecision\": 3173.2922221344706,\n      \"geometricDilutionOfPrecision\": 1691.0149779929307\n    }\n  },\n  \"civicAddress\": {\n    \"city\": \"string\",\n    \"country\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"venueData\": {\n    \"id\": \"string\",\n    \"level\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4343a3f7-7258-46e0-a3a6-27d48f81f393",
+              "name": "Location access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "position"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "desiredAccuracy",
+                      "value": "Default"
+                    },
+                    {
+                      "key": "maximumAge",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4aecbe2a-81a7-451c-9632-33e363cba221",
+              "name": "Position request timed out",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "position"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "desiredAccuracy",
+                      "value": "Default"
+                    },
+                    {
+                      "key": "maximumAge",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Request Timeout",
+              "code": 408,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3b15f65a-094e-4475-9cf7-5580a81aae7c",
+              "name": "Location service unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "position"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "desiredAccuracy",
+                      "value": "Default"
+                    },
+                    {
+                      "key": "maximumAge",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "5e0c5297-c72e-4aed-990c-b05f9f3e44bd",
+      "name": "Tracking",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fe3eb137-b004-4409-b8e7-8d8a5067dfbf",
+          "name": "Microsoft Windows 10 Start continuous position tracking",
+          "request": {
+            "name": "Microsoft Windows 10 Start continuous position tracking",
+            "description": {
+              "content": "Starts continuous position tracking by subscribing to the Geolocator.PositionChanged event. Reports position updates based on the configured movement threshold (in meters) and reporting interval.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geolocation",
+                "tracking"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"desiredAccuracy\": \"Default\",\n  \"movementThreshold\": 0,\n  \"reportInterval\": 1000\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ae82448d-3bec-4320-859b-106e71fa956c",
+              "name": "Tracking started",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "tracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"desiredAccuracy\": \"Default\",\n  \"movementThreshold\": 0,\n  \"reportInterval\": 1000\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"NotAvailable\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ff0da76e-a994-4425-ba22-c5ef2961a901",
+              "name": "Location access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "tracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"desiredAccuracy\": \"Default\",\n  \"movementThreshold\": 0,\n  \"reportInterval\": 1000\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dcc8a8ae-9f6d-430b-b759-8023f0c3f24a",
+          "name": "Microsoft Windows 10 Stop position tracking",
+          "request": {
+            "name": "Microsoft Windows 10 Stop position tracking",
+            "description": {
+              "content": "Stops continuous position tracking by unsubscribing from the Geolocator.PositionChanged event and disposing the Geolocator.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geolocation",
+                "tracking"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "87e80115-6f4d-4b0d-a2cf-008cef0f9a88",
+              "name": "Tracking stopped",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "tracking"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9fde1fdb-df5d-410c-b082-84580968ed2e",
+      "name": "Visits",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fb496a02-b356-4e32-9337-ceef3908d1e6",
+          "name": "Microsoft Windows 10 Get recent location visits",
+          "request": {
+            "name": "Microsoft Windows 10 Get recent location visits",
+            "description": {
+              "content": "Retrieves recent visit records using GeovisitMonitor.GetLastReportAsync. Visits represent significant location stays detected by the system, including arrival/departure times and position data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geolocation",
+                "visits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0683b18f-2dcf-4ba2-b5d0-0e73c964d275",
+              "name": "Successful retrieval of visits",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "visits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"position\": {\n      \"coordinate\": {\n        \"latitude\": 9418.280259498504,\n        \"longitude\": 6047.8308013681935,\n        \"accuracy\": 92.11533297882491,\n        \"timestamp\": \"1955-09-26T01:17:55.864Z\",\n        \"altitude\": 3775.789394667757,\n        \"altitudeAccuracy\": 4598.277791658444,\n        \"heading\": 3893.8739108603727,\n        \"speed\": 8334.937536622552,\n        \"positionSource\": \"Default\",\n        \"satelliteData\": {\n          \"horizontalDilutionOfPrecision\": 3703.26220418596,\n          \"verticalDilutionOfPrecision\": 9842.516289892274,\n          \"geometricDilutionOfPrecision\": 6040.688532251102\n        }\n      },\n      \"civicAddress\": {\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"state\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"venueData\": {\n        \"id\": \"string\",\n        \"level\": \"string\"\n      }\n    },\n    \"stateChange\": \"Arrived\",\n    \"timestamp\": \"2011-03-30T08:24:21.922Z\"\n  },\n  {\n    \"position\": {\n      \"coordinate\": {\n        \"latitude\": 1277.7624079442608,\n        \"longitude\": 8064.676601460421,\n        \"accuracy\": 5974.828249221579,\n        \"timestamp\": \"1999-10-12T05:20:28.487Z\",\n        \"altitude\": 9860.191978885974,\n        \"altitudeAccuracy\": 874.965715996583,\n        \"heading\": 9446.870169903885,\n        \"speed\": 8623.122810865008,\n        \"positionSource\": \"Default\",\n        \"satelliteData\": {\n          \"horizontalDilutionOfPrecision\": 9068.638225042036,\n          \"verticalDilutionOfPrecision\": 1192.237624246396,\n          \"geometricDilutionOfPrecision\": 2819.692873977696\n        }\n      },\n      \"civicAddress\": {\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"state\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"venueData\": {\n        \"id\": \"string\",\n        \"level\": \"string\"\n      }\n    },\n    \"stateChange\": \"TrackingLost\",\n    \"timestamp\": \"2016-12-25T15:56:00.058Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dcf08676-578d-42cd-a51f-8f1016872b68",
+    "name": "Microsoft Windows 10 Windows Geolocation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for obtaining geographic location data in Windows applications, based on the Windows.Devices.Geolocation namespace. Provides access to latitude, longitude, altitude, heading, and speed from GNSS, Wi-Fi, cellular networks, and IP address sources. Key classes include Geolocator, Geoposition, Geocoordinate, GeocoordinateSatelliteData, Geocircle, GeoboundingBox, and GeovisitMonitor for visit tracking.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

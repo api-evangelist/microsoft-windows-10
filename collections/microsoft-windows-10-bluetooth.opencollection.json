@@ -1,0 +1,235 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Bluetooth API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List paired Bluetooth devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/bluetooth/devices",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by Bluetooth type"
+              }
+            ]
+          },
+          "docs": "Enumerates paired Bluetooth devices using DeviceInformation.FindAllAsync with the BluetoothDevice or BluetoothLEDevice selector. Returns device information including name, address, connection status, and services."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get Bluetooth device details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/bluetooth/devices/:deviceId",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "Bluetooth device identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a Bluetooth device using BluetoothDevice.FromIdAsync or BluetoothLEDevice.FromIdAsync. Includes connection status, paired status, and available services."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "BLE Scanning",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Start BLE advertisement scanning",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/bluetooth/le/scan",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Starts scanning for BLE advertisements using BluetoothLEAdvertisementWatcher. Discovers nearby BLE devices that are broadcasting advertisement packets. Supports filtering by service UUID, manufacturer data, and signal strength."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "GATT Services",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List GATT services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/bluetooth/le/devices/:deviceId/services",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "BLE device identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves the list of GATT services on a BLE device using BluetoothLEDevice.GetGattServicesAsync. Each service contains characteristics and descriptors that define the device's capabilities."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "GATT Characteristics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List GATT characteristics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/bluetooth/le/devices/:deviceId/services/:serviceId/characteristics",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "BLE device identifier"
+              },
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path",
+                "description": "GATT service UUID"
+              }
+            ]
+          },
+          "docs": "Retrieves the characteristics of a GATT service using GattDeviceService.GetCharacteristicsAsync. Characteristics contain the actual data values and support read, write, notify, and indicate operations."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "GATT Operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Read a GATT characteristic value",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/bluetooth/le/devices/:deviceId/services/:serviceId/characteristics/:characteristicId/value",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "characteristicId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cacheMode",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Reads the value of a GATT characteristic using GattCharacteristic.ReadValueAsync. Returns the raw byte data and the communication status."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Write a GATT characteristic value",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.windows.com/bluetooth/le/devices/:deviceId/services/:serviceId/characteristics/:characteristicId/value",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "characteristicId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Writes a value to a GATT characteristic using GattCharacteristic.WriteValueAsync or WriteValueWithResultAsync. Supports WriteWithResponse and WriteWithoutResponse options."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "RFCOMM",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create an RFCOMM connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/bluetooth/rfcomm/connections",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Establishes a Bluetooth Classic RFCOMM connection to a device using RfcommDeviceService. RFCOMM provides a stream-based connection similar to TCP sockets for serial port emulation."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

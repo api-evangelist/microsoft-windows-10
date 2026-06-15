@@ -1,0 +1,196 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Notifications API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Toast Notifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List active toast notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/notifications/toast"
+          },
+          "docs": "Retrieves the list of currently active toast notifications for the application. Uses the ToastNotificationHistory class to access notification history and manage displayed notifications."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a toast notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/notifications/toast",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates and displays a toast notification using the ToastNotificationManager. Toast notifications are pop-up UI elements that appear in the lower right of the screen and can contain text, images, and interactive elements such as buttons and text input fields. The notification content is defined using adaptive notification XML templates."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get a toast notification by tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/notifications/toast/:notificationTag",
+            "params": [
+              {
+                "name": "notificationTag",
+                "value": "",
+                "type": "path",
+                "description": "The notification tag identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific toast notification identified by its tag. Tags are used as unique identifiers for notifications, enabling updates and removal of individual notifications."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Remove a toast notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.windows.com/notifications/toast/:notificationTag",
+            "params": [
+              {
+                "name": "notificationTag",
+                "value": "",
+                "type": "path",
+                "description": "The notification tag identifier"
+              }
+            ]
+          },
+          "docs": "Removes a specific toast notification from the notification center using the ToastNotificationHistory.Remove method. The notification is identified by its tag."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Scheduled Notifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List scheduled toast notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/notifications/toast/scheduled"
+          },
+          "docs": "Retrieves the list of scheduled toast notifications pending delivery. Uses the ToastNotifier.GetScheduledToastNotifications method."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Schedule a toast notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/notifications/toast/scheduled",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Schedules a toast notification for future delivery using the ScheduledToastNotification class. The notification will be displayed at the specified delivery time and can optionally recur at a specified interval."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Tile Notifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Update a tile notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/notifications/tile",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the content of a Start menu tile using the TileUpdateManager and TileUpdater classes. Tile notifications can display text, images, and badges using predefined or adaptive templates."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Badge Notifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Update a badge notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/notifications/badge",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the badge overlay on a tile using the BadgeUpdateManager and BadgeUpdater classes. Badges can display a number (1-99) or a status glyph on the tile corner."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List toast notification collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/notifications/collections"
+          },
+          "docs": "Retrieves the list of toast notification collections for the application. Collections group related notifications using the ToastCollection and ToastCollectionManager classes."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a toast notification collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/notifications/collections",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new toast notification collection for grouping related notifications. Uses the ToastCollectionManager.SaveToastCollectionAsync method."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

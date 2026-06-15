@@ -1,0 +1,150 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Ink API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Strokes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List ink strokes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/ink/strokes"
+          },
+          "docs": "Retrieves the list of ink strokes from an InkStrokeContainer. Each InkStroke contains point data, drawing attributes (color, size, pen tip shape), and bounding rectangle information."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Add an ink stroke",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/ink/strokes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a new ink stroke to the InkStrokeContainer using InkStrokeBuilder. The stroke is created from a series of ink points with position, pressure, tilt, and timestamp data, combined with InkDrawingAttributes for visual styling."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get ink stroke details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/ink/strokes/:strokeId",
+            "params": [
+              {
+                "name": "strokeId",
+                "value": "",
+                "type": "path",
+                "description": "Unique stroke identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a specific ink stroke including its points, drawing attributes, and bounding rectangle."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Delete an ink stroke",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.windows.com/ink/strokes/:strokeId",
+            "params": [
+              {
+                "name": "strokeId",
+                "value": "",
+                "type": "path",
+                "description": "Unique stroke identifier"
+              }
+            ]
+          },
+          "docs": "Deletes a specific ink stroke from the container using InkStroke.Selected and InkStrokeContainer.DeleteSelected methods."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Recognition",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Recognize handwriting from ink strokes",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/ink/recognize",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Performs handwriting recognition on ink strokes using InkRecognizerContainer. RecognizeAsync. Returns a list of InkRecognitionResult candidates with recognized text alternatives ranked by confidence."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List available ink recognizers",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/ink/recognizers"
+          },
+          "docs": "Retrieves the list of installed handwriting recognizers using InkRecognizerContainer.GetRecognizers. Each recognizer supports a specific language and script for handwriting recognition."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Drawing Attributes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get default drawing attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/ink/drawing-attributes"
+          },
+          "docs": "Retrieves the default InkDrawingAttributes used for new strokes, including color, size, pen tip shape, transparency, and fit-to-curve settings."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Update default drawing attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.windows.com/ink/drawing-attributes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the default InkDrawingAttributes for new strokes. Changes affect all subsequently created strokes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

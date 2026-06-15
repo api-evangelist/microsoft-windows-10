@@ -1,0 +1,1287 @@
+{
+  "info": {
+    "_postman_id": "769b760c-648f-478e-8b17-dfdf752a0ef3",
+    "name": "Microsoft Windows 10 Windows Sensors API",
+    "description": "API for accessing device sensor data, based on the Windows.Devices.Sensors namespace. Provides a unified interface for reading sensor values and responding to sensor events for accelerometer, gyrometer, compass, inclinometer, light sensor, barometer, altimeter, magnetometer, orientation sensor, pedometer, proximity sensor, activity sensor, and human presence sensor. Sensors must be PC-integrated to be accessible.\n\nContact Support:\n Name: Microsoft Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:12:48.000Z",
+    "updatedAt": "2026-06-05T15:12:48.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-769b760c-648f-478e-8b17-dfdf752a0ef3"
+  },
+  "item": [
+    {
+      "name": "sensors",
+      "item": [
+        {
+          "name": "accelerometer",
+          "item": [
+            {
+              "name": "reading",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Get accelerometer reading",
+                  "id": "683c175d-62b4-42db-8412-d1cc2924cde1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sensors/accelerometer/reading",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sensors",
+                        "accelerometer",
+                        "reading"
+                      ]
+                    },
+                    "description": "Retrieves the current accelerometer reading using Accelerometer.GetCurrentReading. Returns G-force values along the x, y, and z axes. The sensor coordinate system is fixed to the device."
+                  },
+                  "response": [
+                    {
+                      "id": "dd9256a5-aeda-4b76-810a-439e373aa66a",
+                      "name": "Successful reading",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensors/accelerometer/reading",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensors",
+                            "accelerometer",
+                            "reading"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"accelerationX\": \"<double>\",\n  \"accelerationY\": \"<double>\",\n  \"accelerationZ\": \"<double>\",\n  \"timestamp\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:12:48.000Z",
+                      "updatedAt": "2026-06-05T15:12:48.000Z",
+                      "uid": "35240-dd9256a5-aeda-4b76-810a-439e373aa66a"
+                    },
+                    {
+                      "id": "8581d0a4-116c-4eb0-bff2-598dd699671b",
+                      "name": "Accelerometer not available",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensors/accelerometer/reading",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensors",
+                            "accelerometer",
+                            "reading"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:48.000Z",
+                      "updatedAt": "2026-06-05T15:12:48.000Z",
+                      "uid": "35240-8581d0a4-116c-4eb0-bff2-598dd699671b"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:48.000Z",
+                  "updatedAt": "2026-06-05T15:12:48.000Z",
+                  "uid": "35240-683c175d-62b4-42db-8412-d1cc2924cde1"
+                }
+              ],
+              "id": "d5557e08-cc2f-4fcc-aa78-925211fa808e",
+              "createdAt": "2026-06-05T15:12:48.000Z",
+              "updatedAt": "2026-06-05T15:12:48.000Z",
+              "uid": "35240-d5557e08-cc2f-4fcc-aa78-925211fa808e"
+            }
+          ],
+          "id": "6c1910da-eca4-42aa-b127-b2822d478cdc",
+          "createdAt": "2026-06-05T15:12:48.000Z",
+          "updatedAt": "2026-06-05T15:12:48.000Z",
+          "uid": "35240-6c1910da-eca4-42aa-b127-b2822d478cdc"
+        },
+        {
+          "name": "gyrometer",
+          "item": [
+            {
+              "name": "reading",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Get gyrometer reading",
+                  "id": "5674721e-211a-4735-97e1-88047cbd8f28",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sensors/gyrometer/reading",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sensors",
+                        "gyrometer",
+                        "reading"
+                      ]
+                    },
+                    "description": "Retrieves the current gyrometer reading using Gyrometer.GetCurrentReading. Returns angular velocity in degrees per second along the x, y, and z axes."
+                  },
+                  "response": [
+                    {
+                      "id": "a2b61c8a-9ee2-4b6a-ac77-1d645388bc4d",
+                      "name": "Successful reading",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensors/gyrometer/reading",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensors",
+                            "gyrometer",
+                            "reading"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"angularVelocityX\": \"<double>\",\n  \"angularVelocityY\": \"<double>\",\n  \"angularVelocityZ\": \"<double>\",\n  \"timestamp\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:12:48.000Z",
+                      "updatedAt": "2026-06-05T15:12:48.000Z",
+                      "uid": "35240-a2b61c8a-9ee2-4b6a-ac77-1d645388bc4d"
+                    },
+                    {
+                      "id": "82cd1772-afb9-4842-87ff-254df42fff70",
+                      "name": "Gyrometer not available",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensors/gyrometer/reading",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensors",
+                            "gyrometer",
+                            "reading"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:48.000Z",
+                      "updatedAt": "2026-06-05T15:12:48.000Z",
+                      "uid": "35240-82cd1772-afb9-4842-87ff-254df42fff70"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:48.000Z",
+                  "updatedAt": "2026-06-05T15:12:48.000Z",
+                  "uid": "35240-5674721e-211a-4735-97e1-88047cbd8f28"
+                }
+              ],
+              "id": "1b197cf6-f1b0-403b-aa1f-e415bc5f6eaa",
+              "createdAt": "2026-06-05T15:12:48.000Z",
+              "updatedAt": "2026-06-05T15:12:48.000Z",
+              "uid": "35240-1b197cf6-f1b0-403b-aa1f-e415bc5f6eaa"
+            }
+          ],
+          "id": "8d8d1fd3-fc2c-4482-a654-c3793d1b09da",
+          "createdAt": "2026-06-05T15:12:48.000Z",
+          "updatedAt": "2026-06-05T15:12:48.000Z",
+          "uid": "35240-8d8d1fd3-fc2c-4482-a654-c3793d1b09da"
+        },
+        {
+          "name": "compass",
+          "item": [
+            {
+              "name": "reading",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Get compass reading",
+                  "id": "322df2ba-54e4-49fd-8a17-78cfe0390197",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sensors/compass/reading",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sensors",
+                        "compass",
+                        "reading"
+                      ]
+                    },
+                    "description": "Retrieves the current compass reading using Compass.GetCurrentReading. Returns heading in degrees relative to magnetic north and optionally true north (if the device has a GPS receiver)."
+                  },
+                  "response": [
+                    {
+                      "id": "6ae15cc1-1da0-4822-9f8b-baefa2a8a013",
+                      "name": "Successful reading",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensors/compass/reading",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensors",
+                            "compass",
+                            "reading"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"headingMagneticNorth\": \"<double>\",\n  \"headingTrueNorth\": \"<double>\",\n  \"headingAccuracy\": \"Unreliable\",\n  \"timestamp\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:12:48.000Z",
+                      "updatedAt": "2026-06-05T15:12:48.000Z",
+                      "uid": "35240-6ae15cc1-1da0-4822-9f8b-baefa2a8a013"
+                    },
+                    {
+                      "id": "4ffa3388-0ea9-4466-b92d-e5d29fcbf255",
+                      "name": "Compass not available",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensors/compass/reading",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensors",
+                            "compass",
+                            "reading"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:48.000Z",
+                      "updatedAt": "2026-06-05T15:12:48.000Z",
+                      "uid": "35240-4ffa3388-0ea9-4466-b92d-e5d29fcbf255"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:48.000Z",
+                  "updatedAt": "2026-06-05T15:12:48.000Z",
+                  "uid": "35240-322df2ba-54e4-49fd-8a17-78cfe0390197"
+                }
+              ],
+              "id": "ab35b0bc-dfc1-4a89-a4b4-47bd8bba62f1",
+              "createdAt": "2026-06-05T15:12:48.000Z",
+              "updatedAt": "2026-06-05T15:12:48.000Z",
+              "uid": "35240-ab35b0bc-dfc1-4a89-a4b4-47bd8bba62f1"
+            }
+          ],
+          "id": "c34fac10-30e6-4432-96d0-082fdf0e35d8",
+          "createdAt": "2026-06-05T15:12:48.000Z",
+          "updatedAt": "2026-06-05T15:12:48.000Z",
+          "uid": "35240-c34fac10-30e6-4432-96d0-082fdf0e35d8"
+        },
+        {
+          "name": "inclinometer",
+          "item": [
+            {
+              "name": "reading",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Get inclinometer reading",
+                  "id": "fdbec4ed-70b5-4828-887c-c05f84ff8e6f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sensors/inclinometer/reading",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sensors",
+                        "inclinometer",
+                        "reading"
+                      ]
+                    },
+                    "description": "Retrieves the current inclinometer reading using Inclinometer.GetCurrentReading. Returns pitch, roll, and yaw values in degrees corresponding to rotation around the x, y, and z axes."
+                  },
+                  "response": [
+                    {
+                      "id": "e5dce9c8-cd14-4068-b70a-366ae28964b2",
+                      "name": "Successful reading",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensors/inclinometer/reading",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensors",
+                            "inclinometer",
+                            "reading"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"pitchDegrees\": \"<double>\",\n  \"rollDegrees\": \"<double>\",\n  \"yawDegrees\": \"<double>\",\n  \"yawAccuracy\": \"Approximate\",\n  \"timestamp\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:12:48.000Z",
+                      "updatedAt": "2026-06-05T15:12:48.000Z",
+                      "uid": "35240-e5dce9c8-cd14-4068-b70a-366ae28964b2"
+                    },
+                    {
+                      "id": "59a19e11-8299-453d-b20d-b711c7c0c3ce",
+                      "name": "Inclinometer not available",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensors/inclinometer/reading",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensors",
+                            "inclinometer",
+                            "reading"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:48.000Z",
+                      "updatedAt": "2026-06-05T15:12:48.000Z",
+                      "uid": "35240-59a19e11-8299-453d-b20d-b711c7c0c3ce"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:48.000Z",
+                  "updatedAt": "2026-06-05T15:12:48.000Z",
+                  "uid": "35240-fdbec4ed-70b5-4828-887c-c05f84ff8e6f"
+                }
+              ],
+              "id": "7549e19e-d610-4b25-9eab-b998d7a59362",
+              "createdAt": "2026-06-05T15:12:48.000Z",
+              "updatedAt": "2026-06-05T15:12:48.000Z",
+              "uid": "35240-7549e19e-d610-4b25-9eab-b998d7a59362"
+            }
+          ],
+          "id": "290aeea1-2968-4be8-9394-34faba1278d8",
+          "createdAt": "2026-06-05T15:12:48.000Z",
+          "updatedAt": "2026-06-05T15:12:48.000Z",
+          "uid": "35240-290aeea1-2968-4be8-9394-34faba1278d8"
+        },
+        {
+          "name": "light",
+          "item": [
+            {
+              "name": "reading",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Get light sensor reading",
+                  "id": "da0add4c-9b1f-46e7-8926-7024deb3a955",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sensors/light/reading",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sensors",
+                        "light",
+                        "reading"
+                      ]
+                    },
+                    "description": "Retrieves the current ambient light sensor reading using LightSensor.GetCurrentReading. Returns illuminance in lux and optionally chromaticity coordinates."
+                  },
+                  "response": [
+                    {
+                      "id": "7467057e-7b0b-4dbc-8775-bb9ced8c9afc",
+                      "name": "Successful reading",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensors/light/reading",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensors",
+                            "light",
+                            "reading"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"illuminanceInLux\": \"<float>\",\n  \"chromaticity\": {\n    \"x\": \"<float>\",\n    \"y\": \"<float>\"\n  },\n  \"timestamp\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:12:48.000Z",
+                      "updatedAt": "2026-06-05T15:12:48.000Z",
+                      "uid": "35240-7467057e-7b0b-4dbc-8775-bb9ced8c9afc"
+                    },
+                    {
+                      "id": "de303851-7e45-411e-86c6-04dda9011f44",
+                      "name": "Light sensor not available",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensors/light/reading",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensors",
+                            "light",
+                            "reading"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:48.000Z",
+                      "updatedAt": "2026-06-05T15:12:48.000Z",
+                      "uid": "35240-de303851-7e45-411e-86c6-04dda9011f44"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:48.000Z",
+                  "updatedAt": "2026-06-05T15:12:48.000Z",
+                  "uid": "35240-da0add4c-9b1f-46e7-8926-7024deb3a955"
+                }
+              ],
+              "id": "def1b575-d16c-4fbb-9584-b1b94d44de74",
+              "createdAt": "2026-06-05T15:12:48.000Z",
+              "updatedAt": "2026-06-05T15:12:48.000Z",
+              "uid": "35240-def1b575-d16c-4fbb-9584-b1b94d44de74"
+            }
+          ],
+          "id": "e69767b7-49bf-4825-bfc8-0277e8d8a417",
+          "createdAt": "2026-06-05T15:12:48.000Z",
+          "updatedAt": "2026-06-05T15:12:48.000Z",
+          "uid": "35240-e69767b7-49bf-4825-bfc8-0277e8d8a417"
+        },
+        {
+          "name": "barometer",
+          "item": [
+            {
+              "name": "reading",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Get barometer reading",
+                  "id": "1522b6e9-d98e-4e33-a783-8076cdc3355c",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sensors/barometer/reading",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sensors",
+                        "barometer",
+                        "reading"
+                      ]
+                    },
+                    "description": "Retrieves the current barometer reading using Barometer.GetCurrentReading. Returns atmospheric pressure in hectopascals (hPa)."
+                  },
+                  "response": [
+                    {
+                      "id": "a7937357-d7be-436d-8cfc-a3c2483ae7e0",
+                      "name": "Successful reading",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensors/barometer/reading",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensors",
+                            "barometer",
+                            "reading"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"stationPressureInHectopascals\": \"<double>\",\n  \"timestamp\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:12:48.000Z",
+                      "updatedAt": "2026-06-05T15:12:48.000Z",
+                      "uid": "35240-a7937357-d7be-436d-8cfc-a3c2483ae7e0"
+                    },
+                    {
+                      "id": "b0ae9f2b-4226-4eb9-908b-dd64149ed982",
+                      "name": "Barometer not available",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensors/barometer/reading",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensors",
+                            "barometer",
+                            "reading"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:48.000Z",
+                      "updatedAt": "2026-06-05T15:12:48.000Z",
+                      "uid": "35240-b0ae9f2b-4226-4eb9-908b-dd64149ed982"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:48.000Z",
+                  "updatedAt": "2026-06-05T15:12:48.000Z",
+                  "uid": "35240-1522b6e9-d98e-4e33-a783-8076cdc3355c"
+                }
+              ],
+              "id": "580c9f75-4027-4c6f-b497-3a45767aae0d",
+              "createdAt": "2026-06-05T15:12:48.000Z",
+              "updatedAt": "2026-06-05T15:12:48.000Z",
+              "uid": "35240-580c9f75-4027-4c6f-b497-3a45767aae0d"
+            }
+          ],
+          "id": "115bf68b-fd3f-4be4-9471-c6614f13d4ca",
+          "createdAt": "2026-06-05T15:12:48.000Z",
+          "updatedAt": "2026-06-05T15:12:48.000Z",
+          "uid": "35240-115bf68b-fd3f-4be4-9471-c6614f13d4ca"
+        },
+        {
+          "name": "orientation",
+          "item": [
+            {
+              "name": "reading",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Get orientation sensor reading",
+                  "id": "a9c691d3-3e08-4339-a45a-9b5c2019e16f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sensors/orientation/reading",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sensors",
+                        "orientation",
+                        "reading"
+                      ]
+                    },
+                    "description": "Retrieves the current orientation sensor reading using OrientationSensor.GetCurrentReading. Returns a rotation matrix and quaternion representing the device's spatial orientation. The orientation sensor fuses data from accelerometer, compass, and gyrometer for smooth results."
+                  },
+                  "response": [
+                    {
+                      "id": "1bf99cea-b493-45d2-8433-2e359a057636",
+                      "name": "Successful reading",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensors/orientation/reading",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensors",
+                            "orientation",
+                            "reading"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"quaternion\": {\n    \"w\": \"<float>\",\n    \"x\": \"<float>\",\n    \"y\": \"<float>\",\n    \"z\": \"<float>\"\n  },\n  \"rotationMatrix\": {\n    \"m11\": \"<float>\",\n    \"m12\": \"<float>\",\n    \"m13\": \"<float>\",\n    \"m21\": \"<float>\",\n    \"m22\": \"<float>\",\n    \"m23\": \"<float>\",\n    \"m31\": \"<float>\",\n    \"m32\": \"<float>\",\n    \"m33\": \"<float>\"\n  },\n  \"timestamp\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:12:48.000Z",
+                      "updatedAt": "2026-06-05T15:12:48.000Z",
+                      "uid": "35240-1bf99cea-b493-45d2-8433-2e359a057636"
+                    },
+                    {
+                      "id": "08c4fefa-2ebf-4056-9de6-47552c9819d8",
+                      "name": "Orientation sensor not available",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensors/orientation/reading",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensors",
+                            "orientation",
+                            "reading"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:48.000Z",
+                      "updatedAt": "2026-06-05T15:12:48.000Z",
+                      "uid": "35240-08c4fefa-2ebf-4056-9de6-47552c9819d8"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:48.000Z",
+                  "updatedAt": "2026-06-05T15:12:48.000Z",
+                  "uid": "35240-a9c691d3-3e08-4339-a45a-9b5c2019e16f"
+                }
+              ],
+              "id": "60890a01-5d12-4001-9cce-169ea9d61b99",
+              "createdAt": "2026-06-05T15:12:48.000Z",
+              "updatedAt": "2026-06-05T15:12:48.000Z",
+              "uid": "35240-60890a01-5d12-4001-9cce-169ea9d61b99"
+            }
+          ],
+          "id": "3012033c-8f7e-4904-811a-59df7ebd155e",
+          "createdAt": "2026-06-05T15:12:48.000Z",
+          "updatedAt": "2026-06-05T15:12:48.000Z",
+          "uid": "35240-3012033c-8f7e-4904-811a-59df7ebd155e"
+        },
+        {
+          "name": "pedometer",
+          "item": [
+            {
+              "name": "reading",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Get pedometer reading",
+                  "id": "de95b367-1fa2-4412-a909-bf0b2b85e90f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sensors/pedometer/reading",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sensors",
+                        "pedometer",
+                        "reading"
+                      ]
+                    },
+                    "description": "Retrieves the current pedometer reading using Pedometer.GetCurrentReadings. Returns step counts categorized by step kind (walking, running, unknown)."
+                  },
+                  "response": [
+                    {
+                      "id": "5c371570-0572-4c26-a685-b027d93e8eef",
+                      "name": "Successful reading",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensors/pedometer/reading",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensors",
+                            "pedometer",
+                            "reading"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"cumulativeSteps\": \"<integer>\",\n  \"stepKind\": \"Walking\",\n  \"cumulativeStepsDuration\": \"<string>\",\n  \"timestamp\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:12:48.000Z",
+                      "updatedAt": "2026-06-05T15:12:48.000Z",
+                      "uid": "35240-5c371570-0572-4c26-a685-b027d93e8eef"
+                    },
+                    {
+                      "id": "f1a1d009-b268-4146-a942-ccd06ab70928",
+                      "name": "Pedometer not available",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensors/pedometer/reading",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensors",
+                            "pedometer",
+                            "reading"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:48.000Z",
+                      "updatedAt": "2026-06-05T15:12:48.000Z",
+                      "uid": "35240-f1a1d009-b268-4146-a942-ccd06ab70928"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:48.000Z",
+                  "updatedAt": "2026-06-05T15:12:48.000Z",
+                  "uid": "35240-de95b367-1fa2-4412-a909-bf0b2b85e90f"
+                }
+              ],
+              "id": "f32beb42-5847-4eb4-b0be-e184aaed7b74",
+              "createdAt": "2026-06-05T15:12:48.000Z",
+              "updatedAt": "2026-06-05T15:12:48.000Z",
+              "uid": "35240-f32beb42-5847-4eb4-b0be-e184aaed7b74"
+            }
+          ],
+          "id": "7b031e5d-169b-4612-912f-0f9dcb50d9cc",
+          "createdAt": "2026-06-05T15:12:48.000Z",
+          "updatedAt": "2026-06-05T15:12:48.000Z",
+          "uid": "35240-7b031e5d-169b-4612-912f-0f9dcb50d9cc"
+        },
+        {
+          "name": "proximity",
+          "item": [
+            {
+              "name": "reading",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Get proximity sensor reading",
+                  "id": "5dd0847d-c5cd-4226-b544-6644005db5c0",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sensors/proximity/reading",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sensors",
+                        "proximity",
+                        "reading"
+                      ]
+                    },
+                    "description": "Retrieves the current proximity sensor reading using ProximitySensor.GetCurrentReading. Returns whether an object is detected and optionally the distance in millimeters."
+                  },
+                  "response": [
+                    {
+                      "id": "b10ae426-6b4f-44a8-85f3-1d55210fcc9c",
+                      "name": "Successful reading",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensors/proximity/reading",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensors",
+                            "proximity",
+                            "reading"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"isDetected\": \"<boolean>\",\n  \"distanceInMillimeters\": \"<integer>\",\n  \"timestamp\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:12:48.000Z",
+                      "updatedAt": "2026-06-05T15:12:48.000Z",
+                      "uid": "35240-b10ae426-6b4f-44a8-85f3-1d55210fcc9c"
+                    },
+                    {
+                      "id": "9238c9c1-fdd9-43a5-889f-263ad484eab4",
+                      "name": "Proximity sensor not available",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensors/proximity/reading",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensors",
+                            "proximity",
+                            "reading"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:48.000Z",
+                      "updatedAt": "2026-06-05T15:12:48.000Z",
+                      "uid": "35240-9238c9c1-fdd9-43a5-889f-263ad484eab4"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:48.000Z",
+                  "updatedAt": "2026-06-05T15:12:48.000Z",
+                  "uid": "35240-5dd0847d-c5cd-4226-b544-6644005db5c0"
+                }
+              ],
+              "id": "bddf89bd-5e3b-44d2-af2c-b0d42aef252e",
+              "createdAt": "2026-06-05T15:12:48.000Z",
+              "updatedAt": "2026-06-05T15:12:48.000Z",
+              "uid": "35240-bddf89bd-5e3b-44d2-af2c-b0d42aef252e"
+            }
+          ],
+          "id": "f164694b-8ae3-456a-af91-05c348c3da97",
+          "createdAt": "2026-06-05T15:12:48.000Z",
+          "updatedAt": "2026-06-05T15:12:48.000Z",
+          "uid": "35240-f164694b-8ae3-456a-af91-05c348c3da97"
+        },
+        {
+          "name": "human-presence",
+          "item": [
+            {
+              "name": "reading",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Get human presence sensor reading",
+                  "id": "ab4606af-ae3f-4bac-80b8-9a301cd0c92d",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/sensors/human-presence/reading",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "sensors",
+                        "human-presence",
+                        "reading"
+                      ]
+                    },
+                    "description": "Retrieves the current human presence sensor reading using HumanPresenceSensor.GetCurrentReading. Detects whether a user is present, absent, or engaged, with optional head position and orientation data."
+                  },
+                  "response": [
+                    {
+                      "id": "c200e862-855e-46c5-b8bf-c2b6b9d4a9ef",
+                      "name": "Successful reading",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensors/human-presence/reading",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensors",
+                            "human-presence",
+                            "reading"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"presence\": \"Unknown\",\n  \"engagement\": \"Unknown\",\n  \"distanceInMillimeters\": \"<integer>\",\n  \"headPosition\": {\n    \"azimuthInDegrees\": \"<float>\",\n    \"altitudeInDegrees\": \"<float>\"\n  },\n  \"headOrientation\": {\n    \"pitchInDegrees\": \"<float>\",\n    \"rollInDegrees\": \"<float>\",\n    \"yawInDegrees\": \"<float>\"\n  },\n  \"timestamp\": \"<dateTime>\"\n}",
+                      "createdAt": "2026-06-05T15:12:48.000Z",
+                      "updatedAt": "2026-06-05T15:12:48.000Z",
+                      "uid": "35240-c200e862-855e-46c5-b8bf-c2b6b9d4a9ef"
+                    },
+                    {
+                      "id": "d504c319-0c7b-44d0-a269-9a3ee88ab577",
+                      "name": "Human presence sensor not available",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/sensors/human-presence/reading",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "sensors",
+                            "human-presence",
+                            "reading"
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:48.000Z",
+                      "updatedAt": "2026-06-05T15:12:48.000Z",
+                      "uid": "35240-d504c319-0c7b-44d0-a269-9a3ee88ab577"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:48.000Z",
+                  "updatedAt": "2026-06-05T15:12:48.000Z",
+                  "uid": "35240-ab4606af-ae3f-4bac-80b8-9a301cd0c92d"
+                }
+              ],
+              "id": "2a092fd0-9773-4829-9814-9f1b5b27b2e5",
+              "createdAt": "2026-06-05T15:12:48.000Z",
+              "updatedAt": "2026-06-05T15:12:48.000Z",
+              "uid": "35240-2a092fd0-9773-4829-9814-9f1b5b27b2e5"
+            }
+          ],
+          "id": "b7615904-d573-43cc-80eb-4fd099155e52",
+          "createdAt": "2026-06-05T15:12:48.000Z",
+          "updatedAt": "2026-06-05T15:12:48.000Z",
+          "uid": "35240-b7615904-d573-43cc-80eb-4fd099155e52"
+        },
+        {
+          "name": "Microsoft Windows 10 List available sensors",
+          "id": "4b372a13-6d60-45ec-992b-5c0e031b43d9",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/sensors",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "sensors"
+              ]
+            },
+            "description": "Retrieves the list of available sensors on the device. Each sensor type uses a GetDefault() static method to check availability. Supported types include Accelerometer, Gyrometer, Compass, Inclinometer, LightSensor, Barometer, Altimeter, Magnetometer, OrientationSensor, Pedometer, ProximitySensor, ActivitySensor, HumanPresenceSensor, and HingeAngleSensor."
+          },
+          "response": [
+            {
+              "id": "f75b6106-fdcf-40af-8c47-6a354d287139",
+              "name": "Successful retrieval of available sensors",
+              "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/sensors",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "sensors"
+                  ]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "cookie": [],
+              "responseTime": null,
+              "body": "[\n  {\n    \"type\": \"ActivitySensor\",\n    \"deviceId\": \"<string>\",\n    \"minimumReportInterval\": \"<integer>\",\n    \"reportInterval\": \"<integer>\"\n  },\n  {\n    \"type\": \"ActivitySensor\",\n    \"deviceId\": \"<string>\",\n    \"minimumReportInterval\": \"<integer>\",\n    \"reportInterval\": \"<integer>\"\n  }\n]",
+              "createdAt": "2026-06-05T15:12:48.000Z",
+              "updatedAt": "2026-06-05T15:12:48.000Z",
+              "uid": "35240-f75b6106-fdcf-40af-8c47-6a354d287139"
+            }
+          ],
+          "createdAt": "2026-06-05T15:12:48.000Z",
+          "updatedAt": "2026-06-05T15:12:48.000Z",
+          "uid": "35240-4b372a13-6d60-45ec-992b-5c0e031b43d9"
+        }
+      ],
+      "id": "666ea38c-728c-41b7-af7e-6d1892c62515",
+      "createdAt": "2026-06-05T15:12:48.000Z",
+      "updatedAt": "2026-06-05T15:12:48.000Z",
+      "uid": "35240-666ea38c-728c-41b7-af7e-6d1892c62515"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.windows.com"
+    }
+  ]
+}

@@ -1,0 +1,1244 @@
+{
+  "info": {
+    "_postman_id": "102e5b5e-fc59-4e38-af43-a6a9c459ac04",
+    "name": "Microsoft Windows 10 Windows Bluetooth API",
+    "description": "API for Bluetooth communication in Windows applications, based on the Windows.Devices.Bluetooth namespace. Supports Bluetooth Classic (RFCOMM) for stream-based communication and Bluetooth Low Energy (GATT) for attribute-based communication with BLE peripherals. Key classes include BluetoothDevice, BluetoothLEDevice, RfcommDeviceService, GattDeviceService, GattCharacteristic, and BluetoothLEAdvertisementWatcher.\n\nContact Support:\n Name: Microsoft Developer Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-06-05T15:12:45.000Z",
+    "updatedAt": "2026-06-05T15:12:46.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-102e5b5e-fc59-4e38-af43-a6a9c459ac04"
+  },
+  "item": [
+    {
+      "name": "bluetooth",
+      "item": [
+        {
+          "name": "devices",
+          "item": [
+            {
+              "name": "{deviceId}",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Get Bluetooth device details",
+                  "id": "9f227646-7b53-452f-979a-2d0ac03e0c47",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/bluetooth/devices/:deviceId",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bluetooth",
+                        "devices",
+                        ":deviceId"
+                      ],
+                      "variable": [
+                        {
+                          "id": "d30361a3-5c24-44d3-92b9-09024988ed1f",
+                          "key": "deviceId",
+                          "value": "<string>",
+                          "description": "(Required) Bluetooth device identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieves detailed information about a Bluetooth device using BluetoothDevice.FromIdAsync or BluetoothLEDevice.FromIdAsync. Includes connection status, paired status, and available services."
+                  },
+                  "response": [
+                    {
+                      "id": "b8a21adf-b6ca-4b50-af24-9ff5edffbec8",
+                      "name": "Successful retrieval of device details",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/bluetooth/devices/:deviceId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "bluetooth",
+                            "devices",
+                            ":deviceId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "deviceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"name\": \"<string>\",\n  \"bluetoothAddress\": \"<string>\",\n  \"type\": \"<string>\",\n  \"connectionStatus\": \"<string>\",\n  \"isPaired\": \"<boolean>\",\n  \"classOfDevice\": {\n    \"majorClass\": \"<string>\",\n    \"minorClass\": \"<string>\"\n  },\n  \"appearance\": {\n    \"category\": \"<string>\",\n    \"subCategory\": \"<string>\"\n  },\n  \"serviceUuids\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                      "createdAt": "2026-06-05T15:12:46.000Z",
+                      "updatedAt": "2026-06-05T15:12:46.000Z",
+                      "uid": "35240-b8a21adf-b6ca-4b50-af24-9ff5edffbec8"
+                    },
+                    {
+                      "id": "c674ecc3-7f97-4d9a-88d5-3fb1fa9d6466",
+                      "name": "Device not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [],
+                        "url": {
+                          "raw": "{{baseUrl}}/bluetooth/devices/:deviceId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "bluetooth",
+                            "devices",
+                            ":deviceId"
+                          ],
+                          "variable": [
+                            {
+                              "key": "deviceId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:46.000Z",
+                      "updatedAt": "2026-06-05T15:12:46.000Z",
+                      "uid": "35240-c674ecc3-7f97-4d9a-88d5-3fb1fa9d6466"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:46.000Z",
+                  "updatedAt": "2026-06-05T15:12:46.000Z",
+                  "uid": "35240-9f227646-7b53-452f-979a-2d0ac03e0c47"
+                }
+              ],
+              "id": "cc3f7f10-b005-46ea-99a4-cbd7e2de3141",
+              "createdAt": "2026-06-05T15:12:46.000Z",
+              "updatedAt": "2026-06-05T15:12:46.000Z",
+              "uid": "35240-cc3f7f10-b005-46ea-99a4-cbd7e2de3141"
+            },
+            {
+              "name": "Microsoft Windows 10 List paired Bluetooth devices",
+              "id": "5ca694ff-7153-42cf-9655-b9e47652d7b4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/bluetooth/devices?type=All",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "bluetooth",
+                    "devices"
+                  ],
+                  "query": [
+                    {
+                      "description": "Filter by Bluetooth type",
+                      "key": "type",
+                      "value": "All"
+                    }
+                  ]
+                },
+                "description": "Enumerates paired Bluetooth devices using DeviceInformation.FindAllAsync with the BluetoothDevice or BluetoothLEDevice selector. Returns device information including name, address, connection status, and services."
+              },
+              "response": [
+                {
+                  "id": "98a4137b-a743-4b5d-8452-ec850070579d",
+                  "name": "Successful retrieval of Bluetooth devices",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/bluetooth/devices?type=All",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bluetooth",
+                        "devices"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by Bluetooth type",
+                          "key": "type",
+                          "value": "All"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "[\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"bluetoothAddress\": \"<string>\",\n    \"type\": \"Classic\",\n    \"connectionStatus\": \"Connected\",\n    \"isPaired\": \"<boolean>\"\n  },\n  {\n    \"id\": \"<string>\",\n    \"name\": \"<string>\",\n    \"bluetoothAddress\": \"<string>\",\n    \"type\": \"Classic\",\n    \"connectionStatus\": \"Connected\",\n    \"isPaired\": \"<boolean>\"\n  }\n]",
+                  "createdAt": "2026-06-05T15:12:46.000Z",
+                  "updatedAt": "2026-06-05T15:12:46.000Z",
+                  "uid": "35240-98a4137b-a743-4b5d-8452-ec850070579d"
+                }
+              ],
+              "createdAt": "2026-06-05T15:12:46.000Z",
+              "updatedAt": "2026-06-05T15:12:46.000Z",
+              "uid": "35240-5ca694ff-7153-42cf-9655-b9e47652d7b4"
+            }
+          ],
+          "id": "0b2be11f-5aba-4a81-af03-e46a10412dc1",
+          "createdAt": "2026-06-05T15:12:46.000Z",
+          "updatedAt": "2026-06-05T15:12:46.000Z",
+          "uid": "35240-0b2be11f-5aba-4a81-af03-e46a10412dc1"
+        },
+        {
+          "name": "le",
+          "item": [
+            {
+              "name": "scan",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Start BLE advertisement scanning",
+                  "id": "e688eccb-c3c9-4f33-be89-b7f667c0e97a",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"scanningMode\": \"Active\",\n  \"serviceUuidFilter\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"signalStrengthFilter\": {\n    \"inRangeThresholdInDBm\": \"<integer>\",\n    \"outOfRangeThresholdInDBm\": \"<integer>\"\n  }\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/bluetooth/le/scan",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bluetooth",
+                        "le",
+                        "scan"
+                      ]
+                    },
+                    "description": "Starts scanning for BLE advertisements using BluetoothLEAdvertisementWatcher. Discovers nearby BLE devices that are broadcasting advertisement packets. Supports filtering by service UUID, manufacturer data, and signal strength."
+                  },
+                  "response": [
+                    {
+                      "id": "64dbb39f-d455-4b95-85ea-315f89624802",
+                      "name": "Scan started",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"scanningMode\": \"Active\",\n  \"serviceUuidFilter\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"signalStrengthFilter\": {\n    \"inRangeThresholdInDBm\": \"<integer>\",\n    \"outOfRangeThresholdInDBm\": \"<integer>\"\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/bluetooth/le/scan",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "bluetooth",
+                            "le",
+                            "scan"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"status\": \"Aborted\"\n}",
+                      "createdAt": "2026-06-05T15:12:46.000Z",
+                      "updatedAt": "2026-06-05T15:12:46.000Z",
+                      "uid": "35240-64dbb39f-d455-4b95-85ea-315f89624802"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:46.000Z",
+                  "updatedAt": "2026-06-05T15:12:46.000Z",
+                  "uid": "35240-e688eccb-c3c9-4f33-be89-b7f667c0e97a"
+                }
+              ],
+              "id": "9ee97294-e83f-402f-bec3-81e6170a77e4",
+              "createdAt": "2026-06-05T15:12:46.000Z",
+              "updatedAt": "2026-06-05T15:12:46.000Z",
+              "uid": "35240-9ee97294-e83f-402f-bec3-81e6170a77e4"
+            },
+            {
+              "name": "devices",
+              "item": [
+                {
+                  "name": "{deviceId}",
+                  "item": [
+                    {
+                      "name": "services",
+                      "item": [
+                        {
+                          "name": "{serviceId}",
+                          "item": [
+                            {
+                              "name": "characteristics",
+                              "item": [
+                                {
+                                  "name": "{characteristicId}",
+                                  "item": [
+                                    {
+                                      "name": "value",
+                                      "item": [
+                                        {
+                                          "name": "Microsoft Windows 10 Read a GATT characteristic value",
+                                          "id": "1e43cee8-b5f4-4bca-ad31-ceb343bc8abb",
+                                          "protocolProfileBehavior": {
+                                            "disableBodyPruning": true
+                                          },
+                                          "request": {
+                                            "method": "GET",
+                                            "header": [
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              }
+                                            ],
+                                            "url": {
+                                              "raw": "{{baseUrl}}/bluetooth/le/devices/:deviceId/services/:serviceId/characteristics/:characteristicId/value?cacheMode=Uncached",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "bluetooth",
+                                                "le",
+                                                "devices",
+                                                ":deviceId",
+                                                "services",
+                                                ":serviceId",
+                                                "characteristics",
+                                                ":characteristicId",
+                                                "value"
+                                              ],
+                                              "query": [
+                                                {
+                                                  "key": "cacheMode",
+                                                  "value": "Uncached"
+                                                }
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "id": "d24d7a54-11ff-4672-93d1-26f1b58b5311",
+                                                  "key": "deviceId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "b81c1c80-878b-4791-9b05-59cad9f32c36",
+                                                  "key": "serviceId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "ea9d6935-2d75-4bc3-be81-8141f5f73282",
+                                                  "key": "characteristicId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                }
+                                              ]
+                                            },
+                                            "description": "Reads the value of a GATT characteristic using GattCharacteristic.ReadValueAsync. Returns the raw byte data and the communication status."
+                                          },
+                                          "response": [
+                                            {
+                                              "id": "f683c662-7175-45fe-aa46-7b85baf82b11",
+                                              "name": "Characteristic value read",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  }
+                                                ],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/bluetooth/le/devices/:deviceId/services/:serviceId/characteristics/:characteristicId/value?cacheMode=Uncached",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "bluetooth",
+                                                    "le",
+                                                    "devices",
+                                                    ":deviceId",
+                                                    "services",
+                                                    ":serviceId",
+                                                    "characteristics",
+                                                    ":characteristicId",
+                                                    "value"
+                                                  ],
+                                                  "query": [
+                                                    {
+                                                      "key": "cacheMode",
+                                                      "value": "Uncached"
+                                                    }
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "deviceId"
+                                                    },
+                                                    {
+                                                      "key": "serviceId"
+                                                    },
+                                                    {
+                                                      "key": "characteristicId"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "OK",
+                                              "code": 200,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"status\": \"Success\",\n  \"value\": \"<string>\"\n}",
+                                              "createdAt": "2026-06-05T15:12:46.000Z",
+                                              "updatedAt": "2026-06-05T15:12:46.000Z",
+                                              "uid": "35240-f683c662-7175-45fe-aa46-7b85baf82b11"
+                                            },
+                                            {
+                                              "id": "54181e11-63cc-4be5-ad37-edb09b86deed",
+                                              "name": "Characteristic not found",
+                                              "originalRequest": {
+                                                "method": "GET",
+                                                "header": [],
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/bluetooth/le/devices/:deviceId/services/:serviceId/characteristics/:characteristicId/value?cacheMode=Uncached",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "bluetooth",
+                                                    "le",
+                                                    "devices",
+                                                    ":deviceId",
+                                                    "services",
+                                                    ":serviceId",
+                                                    "characteristics",
+                                                    ":characteristicId",
+                                                    "value"
+                                                  ],
+                                                  "query": [
+                                                    {
+                                                      "key": "cacheMode",
+                                                      "value": "Uncached"
+                                                    }
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "deviceId"
+                                                    },
+                                                    {
+                                                      "key": "serviceId"
+                                                    },
+                                                    {
+                                                      "key": "characteristicId"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Not Found",
+                                              "code": 404,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": null,
+                                              "createdAt": "2026-06-05T15:12:46.000Z",
+                                              "updatedAt": "2026-06-05T15:12:46.000Z",
+                                              "uid": "35240-54181e11-63cc-4be5-ad37-edb09b86deed"
+                                            }
+                                          ],
+                                          "createdAt": "2026-06-05T15:12:46.000Z",
+                                          "updatedAt": "2026-06-05T15:12:46.000Z",
+                                          "uid": "35240-1e43cee8-b5f4-4bca-ad31-ceb343bc8abb"
+                                        },
+                                        {
+                                          "name": "Microsoft Windows 10 Write a GATT characteristic value",
+                                          "id": "c97d4888-20db-4253-9e70-463ed83e50d6",
+                                          "protocolProfileBehavior": {
+                                            "disableBodyPruning": true
+                                          },
+                                          "request": {
+                                            "method": "PUT",
+                                            "header": [
+                                              {
+                                                "key": "Content-Type",
+                                                "value": "application/json"
+                                              },
+                                              {
+                                                "key": "Accept",
+                                                "value": "application/json"
+                                              }
+                                            ],
+                                            "body": {
+                                              "mode": "raw",
+                                              "raw": "{\n  \"value\": \"<string>\",\n  \"writeOption\": \"WriteWithResponse\"\n}",
+                                              "options": {
+                                                "raw": {
+                                                  "headerFamily": "json",
+                                                  "language": "json"
+                                                }
+                                              }
+                                            },
+                                            "url": {
+                                              "raw": "{{baseUrl}}/bluetooth/le/devices/:deviceId/services/:serviceId/characteristics/:characteristicId/value",
+                                              "host": [
+                                                "{{baseUrl}}"
+                                              ],
+                                              "path": [
+                                                "bluetooth",
+                                                "le",
+                                                "devices",
+                                                ":deviceId",
+                                                "services",
+                                                ":serviceId",
+                                                "characteristics",
+                                                ":characteristicId",
+                                                "value"
+                                              ],
+                                              "variable": [
+                                                {
+                                                  "id": "b0dcc8f2-1b56-4f6e-9629-5e96ff8c5818",
+                                                  "key": "deviceId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "a08fd742-d754-433d-8cb9-1e491d6e1ce5",
+                                                  "key": "serviceId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                },
+                                                {
+                                                  "id": "fe2a851a-5290-45ea-b10d-17d28abe1146",
+                                                  "key": "characteristicId",
+                                                  "value": "<string>",
+                                                  "description": "(Required) "
+                                                }
+                                              ]
+                                            },
+                                            "description": "Writes a value to a GATT characteristic using GattCharacteristic.WriteValueAsync or WriteValueWithResultAsync. Supports WriteWithResponse and WriteWithoutResponse options."
+                                          },
+                                          "response": [
+                                            {
+                                              "id": "55a3595b-d73c-4756-9f88-620837ba02c5",
+                                              "name": "Value written successfully",
+                                              "originalRequest": {
+                                                "method": "PUT",
+                                                "header": [
+                                                  {
+                                                    "key": "Content-Type",
+                                                    "value": "application/json"
+                                                  },
+                                                  {
+                                                    "key": "Accept",
+                                                    "value": "application/json"
+                                                  }
+                                                ],
+                                                "body": {
+                                                  "mode": "raw",
+                                                  "raw": "{\n  \"value\": \"<string>\",\n  \"writeOption\": \"WriteWithResponse\"\n}",
+                                                  "options": {
+                                                    "raw": {
+                                                      "headerFamily": "json",
+                                                      "language": "json"
+                                                    }
+                                                  }
+                                                },
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/bluetooth/le/devices/:deviceId/services/:serviceId/characteristics/:characteristicId/value",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "bluetooth",
+                                                    "le",
+                                                    "devices",
+                                                    ":deviceId",
+                                                    "services",
+                                                    ":serviceId",
+                                                    "characteristics",
+                                                    ":characteristicId",
+                                                    "value"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "deviceId"
+                                                    },
+                                                    {
+                                                      "key": "serviceId"
+                                                    },
+                                                    {
+                                                      "key": "characteristicId"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "OK",
+                                              "code": 200,
+                                              "_postman_previewlanguage": "json",
+                                              "header": [
+                                                {
+                                                  "key": "Content-Type",
+                                                  "value": "application/json"
+                                                }
+                                              ],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": "{\n  \"status\": \"Unreachable\"\n}",
+                                              "createdAt": "2026-06-05T15:12:46.000Z",
+                                              "updatedAt": "2026-06-05T15:12:46.000Z",
+                                              "uid": "35240-55a3595b-d73c-4756-9f88-620837ba02c5"
+                                            },
+                                            {
+                                              "id": "e5f80a76-8c27-4029-8011-8102c0bbcefc",
+                                              "name": "Characteristic not found",
+                                              "originalRequest": {
+                                                "method": "PUT",
+                                                "header": [
+                                                  {
+                                                    "key": "Content-Type",
+                                                    "value": "application/json"
+                                                  }
+                                                ],
+                                                "body": {
+                                                  "mode": "raw",
+                                                  "raw": "{\n  \"value\": \"<string>\",\n  \"writeOption\": \"WriteWithResponse\"\n}",
+                                                  "options": {
+                                                    "raw": {
+                                                      "headerFamily": "json",
+                                                      "language": "json"
+                                                    }
+                                                  }
+                                                },
+                                                "url": {
+                                                  "raw": "{{baseUrl}}/bluetooth/le/devices/:deviceId/services/:serviceId/characteristics/:characteristicId/value",
+                                                  "host": [
+                                                    "{{baseUrl}}"
+                                                  ],
+                                                  "path": [
+                                                    "bluetooth",
+                                                    "le",
+                                                    "devices",
+                                                    ":deviceId",
+                                                    "services",
+                                                    ":serviceId",
+                                                    "characteristics",
+                                                    ":characteristicId",
+                                                    "value"
+                                                  ],
+                                                  "variable": [
+                                                    {
+                                                      "key": "deviceId"
+                                                    },
+                                                    {
+                                                      "key": "serviceId"
+                                                    },
+                                                    {
+                                                      "key": "characteristicId"
+                                                    }
+                                                  ]
+                                                }
+                                              },
+                                              "status": "Not Found",
+                                              "code": 404,
+                                              "_postman_previewlanguage": "text",
+                                              "header": [],
+                                              "cookie": [],
+                                              "responseTime": null,
+                                              "body": null,
+                                              "createdAt": "2026-06-05T15:12:46.000Z",
+                                              "updatedAt": "2026-06-05T15:12:46.000Z",
+                                              "uid": "35240-e5f80a76-8c27-4029-8011-8102c0bbcefc"
+                                            }
+                                          ],
+                                          "createdAt": "2026-06-05T15:12:46.000Z",
+                                          "updatedAt": "2026-06-05T15:12:46.000Z",
+                                          "uid": "35240-c97d4888-20db-4253-9e70-463ed83e50d6"
+                                        }
+                                      ],
+                                      "id": "7dfc2e45-17d3-4d79-8c53-5a3b38d218ee",
+                                      "createdAt": "2026-06-05T15:12:46.000Z",
+                                      "updatedAt": "2026-06-05T15:12:46.000Z",
+                                      "uid": "35240-7dfc2e45-17d3-4d79-8c53-5a3b38d218ee"
+                                    }
+                                  ],
+                                  "id": "44afb5b5-04dd-455a-ab43-82b4ce842738",
+                                  "createdAt": "2026-06-05T15:12:46.000Z",
+                                  "updatedAt": "2026-06-05T15:12:46.000Z",
+                                  "uid": "35240-44afb5b5-04dd-455a-ab43-82b4ce842738"
+                                },
+                                {
+                                  "name": "Microsoft Windows 10 List GATT characteristics",
+                                  "id": "fac53a85-9b9c-45ea-be2d-3f1be27ca014",
+                                  "protocolProfileBehavior": {
+                                    "disableBodyPruning": true
+                                  },
+                                  "request": {
+                                    "method": "GET",
+                                    "header": [
+                                      {
+                                        "key": "Accept",
+                                        "value": "application/json"
+                                      }
+                                    ],
+                                    "url": {
+                                      "raw": "{{baseUrl}}/bluetooth/le/devices/:deviceId/services/:serviceId/characteristics",
+                                      "host": [
+                                        "{{baseUrl}}"
+                                      ],
+                                      "path": [
+                                        "bluetooth",
+                                        "le",
+                                        "devices",
+                                        ":deviceId",
+                                        "services",
+                                        ":serviceId",
+                                        "characteristics"
+                                      ],
+                                      "variable": [
+                                        {
+                                          "id": "47f12970-51e9-4b8a-b158-5be857098f02",
+                                          "key": "deviceId",
+                                          "value": "<string>",
+                                          "description": "(Required) BLE device identifier"
+                                        },
+                                        {
+                                          "id": "fbd5ebaf-b1a1-4bfb-9fd3-de2a5cff6a0b",
+                                          "key": "serviceId",
+                                          "value": "<string>",
+                                          "description": "(Required) GATT service UUID"
+                                        }
+                                      ]
+                                    },
+                                    "description": "Retrieves the characteristics of a GATT service using GattDeviceService.GetCharacteristicsAsync. Characteristics contain the actual data values and support read, write, notify, and indicate operations."
+                                  },
+                                  "response": [
+                                    {
+                                      "id": "6795e791-5a28-437a-bfbd-b830dda9aea0",
+                                      "name": "Successful retrieval of characteristics",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [
+                                          {
+                                            "key": "Accept",
+                                            "value": "application/json"
+                                          }
+                                        ],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/bluetooth/le/devices/:deviceId/services/:serviceId/characteristics",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "bluetooth",
+                                            "le",
+                                            "devices",
+                                            ":deviceId",
+                                            "services",
+                                            ":serviceId",
+                                            "characteristics"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "deviceId"
+                                            },
+                                            {
+                                              "key": "serviceId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "OK",
+                                      "code": 200,
+                                      "_postman_previewlanguage": "json",
+                                      "header": [
+                                        {
+                                          "key": "Content-Type",
+                                          "value": "application/json"
+                                        }
+                                      ],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": "[\n  {\n    \"uuid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"properties\": [\n      \"SignedWrite\",\n      \"SignedWrite\"\n    ],\n    \"protectionLevel\": \"EncryptionRequired\"\n  },\n  {\n    \"uuid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"properties\": [\n      \"SignedWrite\",\n      \"SignedWrite\"\n    ],\n    \"protectionLevel\": \"Plain\"\n  }\n]",
+                                      "createdAt": "2026-06-05T15:12:46.000Z",
+                                      "updatedAt": "2026-06-05T15:12:46.000Z",
+                                      "uid": "35240-6795e791-5a28-437a-bfbd-b830dda9aea0"
+                                    },
+                                    {
+                                      "id": "776cd18a-0663-4208-8359-7162d3aebd89",
+                                      "name": "Service not found",
+                                      "originalRequest": {
+                                        "method": "GET",
+                                        "header": [],
+                                        "url": {
+                                          "raw": "{{baseUrl}}/bluetooth/le/devices/:deviceId/services/:serviceId/characteristics",
+                                          "host": [
+                                            "{{baseUrl}}"
+                                          ],
+                                          "path": [
+                                            "bluetooth",
+                                            "le",
+                                            "devices",
+                                            ":deviceId",
+                                            "services",
+                                            ":serviceId",
+                                            "characteristics"
+                                          ],
+                                          "variable": [
+                                            {
+                                              "key": "deviceId"
+                                            },
+                                            {
+                                              "key": "serviceId"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "status": "Not Found",
+                                      "code": 404,
+                                      "_postman_previewlanguage": "text",
+                                      "header": [],
+                                      "cookie": [],
+                                      "responseTime": null,
+                                      "body": null,
+                                      "createdAt": "2026-06-05T15:12:46.000Z",
+                                      "updatedAt": "2026-06-05T15:12:46.000Z",
+                                      "uid": "35240-776cd18a-0663-4208-8359-7162d3aebd89"
+                                    }
+                                  ],
+                                  "createdAt": "2026-06-05T15:12:46.000Z",
+                                  "updatedAt": "2026-06-05T15:12:46.000Z",
+                                  "uid": "35240-fac53a85-9b9c-45ea-be2d-3f1be27ca014"
+                                }
+                              ],
+                              "id": "5e6554d8-f668-4867-9d64-42e32cdb8fd3",
+                              "createdAt": "2026-06-05T15:12:46.000Z",
+                              "updatedAt": "2026-06-05T15:12:46.000Z",
+                              "uid": "35240-5e6554d8-f668-4867-9d64-42e32cdb8fd3"
+                            }
+                          ],
+                          "id": "ac400a6e-0550-4bcc-a08a-74d5f45b1c05",
+                          "createdAt": "2026-06-05T15:12:46.000Z",
+                          "updatedAt": "2026-06-05T15:12:46.000Z",
+                          "uid": "35240-ac400a6e-0550-4bcc-a08a-74d5f45b1c05"
+                        },
+                        {
+                          "name": "Microsoft Windows 10 List GATT services",
+                          "id": "42ef04ba-9196-41ad-95eb-ac12b859fa45",
+                          "protocolProfileBehavior": {
+                            "disableBodyPruning": true
+                          },
+                          "request": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/bluetooth/le/devices/:deviceId/services",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "bluetooth",
+                                "le",
+                                "devices",
+                                ":deviceId",
+                                "services"
+                              ],
+                              "variable": [
+                                {
+                                  "id": "7be9c45e-65fa-4752-8dad-e5a4a1202d99",
+                                  "key": "deviceId",
+                                  "value": "<string>",
+                                  "description": "(Required) BLE device identifier"
+                                }
+                              ]
+                            },
+                            "description": "Retrieves the list of GATT services on a BLE device using BluetoothLEDevice.GetGattServicesAsync. Each service contains characteristics and descriptors that define the device's capabilities."
+                          },
+                          "response": [
+                            {
+                              "id": "4e702359-7857-439d-8477-099425c791d2",
+                              "name": "Successful retrieval of GATT services",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [
+                                  {
+                                    "key": "Accept",
+                                    "value": "application/json"
+                                  }
+                                ],
+                                "url": {
+                                  "raw": "{{baseUrl}}/bluetooth/le/devices/:deviceId/services",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "bluetooth",
+                                    "le",
+                                    "devices",
+                                    ":deviceId",
+                                    "services"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "deviceId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "OK",
+                              "code": 200,
+                              "_postman_previewlanguage": "json",
+                              "header": [
+                                {
+                                  "key": "Content-Type",
+                                  "value": "application/json"
+                                }
+                              ],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": "[\n  {\n    \"uuid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"characteristicCount\": \"<integer>\"\n  },\n  {\n    \"uuid\": \"<string>\",\n    \"name\": \"<string>\",\n    \"characteristicCount\": \"<integer>\"\n  }\n]",
+                              "createdAt": "2026-06-05T15:12:46.000Z",
+                              "updatedAt": "2026-06-05T15:12:46.000Z",
+                              "uid": "35240-4e702359-7857-439d-8477-099425c791d2"
+                            },
+                            {
+                              "id": "523dc1c6-3e43-4d6a-9268-0c56a9b0305c",
+                              "name": "Device not found",
+                              "originalRequest": {
+                                "method": "GET",
+                                "header": [],
+                                "url": {
+                                  "raw": "{{baseUrl}}/bluetooth/le/devices/:deviceId/services",
+                                  "host": [
+                                    "{{baseUrl}}"
+                                  ],
+                                  "path": [
+                                    "bluetooth",
+                                    "le",
+                                    "devices",
+                                    ":deviceId",
+                                    "services"
+                                  ],
+                                  "variable": [
+                                    {
+                                      "key": "deviceId"
+                                    }
+                                  ]
+                                }
+                              },
+                              "status": "Not Found",
+                              "code": 404,
+                              "_postman_previewlanguage": "text",
+                              "header": [],
+                              "cookie": [],
+                              "responseTime": null,
+                              "body": null,
+                              "createdAt": "2026-06-05T15:12:46.000Z",
+                              "updatedAt": "2026-06-05T15:12:46.000Z",
+                              "uid": "35240-523dc1c6-3e43-4d6a-9268-0c56a9b0305c"
+                            }
+                          ],
+                          "createdAt": "2026-06-05T15:12:46.000Z",
+                          "updatedAt": "2026-06-05T15:12:46.000Z",
+                          "uid": "35240-42ef04ba-9196-41ad-95eb-ac12b859fa45"
+                        }
+                      ],
+                      "id": "f10ecd94-ef5f-4e97-8aff-de55529f0e79",
+                      "createdAt": "2026-06-05T15:12:46.000Z",
+                      "updatedAt": "2026-06-05T15:12:46.000Z",
+                      "uid": "35240-f10ecd94-ef5f-4e97-8aff-de55529f0e79"
+                    }
+                  ],
+                  "id": "c07e10fe-d503-498c-b7c0-1c462f1bd2f8",
+                  "createdAt": "2026-06-05T15:12:46.000Z",
+                  "updatedAt": "2026-06-05T15:12:46.000Z",
+                  "uid": "35240-c07e10fe-d503-498c-b7c0-1c462f1bd2f8"
+                }
+              ],
+              "id": "3fb7ae51-8faa-4b64-85d1-005d9c08df2b",
+              "createdAt": "2026-06-05T15:12:46.000Z",
+              "updatedAt": "2026-06-05T15:12:46.000Z",
+              "uid": "35240-3fb7ae51-8faa-4b64-85d1-005d9c08df2b"
+            }
+          ],
+          "id": "3eaf3ef7-607f-4a1f-b096-6fe478f29417",
+          "createdAt": "2026-06-05T15:12:46.000Z",
+          "updatedAt": "2026-06-05T15:12:46.000Z",
+          "uid": "35240-3eaf3ef7-607f-4a1f-b096-6fe478f29417"
+        },
+        {
+          "name": "rfcomm",
+          "item": [
+            {
+              "name": "connections",
+              "item": [
+                {
+                  "name": "Microsoft Windows 10 Create an RFCOMM connection",
+                  "id": "e54257e3-663e-4e16-8099-3837f67a4e59",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"deviceId\": \"<string>\",\n  \"serviceId\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/bluetooth/rfcomm/connections",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "bluetooth",
+                        "rfcomm",
+                        "connections"
+                      ]
+                    },
+                    "description": "Establishes a Bluetooth Classic RFCOMM connection to a device using RfcommDeviceService. RFCOMM provides a stream-based connection similar to TCP sockets for serial port emulation."
+                  },
+                  "response": [
+                    {
+                      "id": "6f7c7ab9-3d06-477f-beed-149ee1d1adba",
+                      "name": "RFCOMM connection established",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"deviceId\": \"<string>\",\n  \"serviceId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/bluetooth/rfcomm/connections",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "bluetooth",
+                            "rfcomm",
+                            "connections"
+                          ]
+                        }
+                      },
+                      "status": "Created",
+                      "code": 201,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"id\": \"<string>\",\n  \"deviceId\": \"<string>\",\n  \"serviceId\": \"<string>\",\n  \"maxMessageSize\": \"<integer>\"\n}",
+                      "createdAt": "2026-06-05T15:12:46.000Z",
+                      "updatedAt": "2026-06-05T15:12:46.000Z",
+                      "uid": "35240-6f7c7ab9-3d06-477f-beed-149ee1d1adba"
+                    },
+                    {
+                      "id": "7223e3be-e418-4487-8424-83765d0e5ea7",
+                      "name": "Connection failed",
+                      "originalRequest": {
+                        "method": "POST",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"deviceId\": \"<string>\",\n  \"serviceId\": \"<string>\"\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/bluetooth/rfcomm/connections",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "bluetooth",
+                            "rfcomm",
+                            "connections"
+                          ]
+                        }
+                      },
+                      "status": "Bad Request",
+                      "code": 400,
+                      "_postman_previewlanguage": "text",
+                      "header": [],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": null,
+                      "createdAt": "2026-06-05T15:12:46.000Z",
+                      "updatedAt": "2026-06-05T15:12:46.000Z",
+                      "uid": "35240-7223e3be-e418-4487-8424-83765d0e5ea7"
+                    }
+                  ],
+                  "createdAt": "2026-06-05T15:12:46.000Z",
+                  "updatedAt": "2026-06-05T15:12:46.000Z",
+                  "uid": "35240-e54257e3-663e-4e16-8099-3837f67a4e59"
+                }
+              ],
+              "id": "d021f6f6-269c-45f4-a88c-e87740688711",
+              "createdAt": "2026-06-05T15:12:46.000Z",
+              "updatedAt": "2026-06-05T15:12:46.000Z",
+              "uid": "35240-d021f6f6-269c-45f4-a88c-e87740688711"
+            }
+          ],
+          "id": "7d29bcef-76c3-4a60-90e1-13a2b417f85c",
+          "createdAt": "2026-06-05T15:12:46.000Z",
+          "updatedAt": "2026-06-05T15:12:46.000Z",
+          "uid": "35240-7d29bcef-76c3-4a60-90e1-13a2b417f85c"
+        }
+      ],
+      "id": "959ce276-a88c-4661-9540-189cdaa9f377",
+      "createdAt": "2026-06-05T15:12:46.000Z",
+      "updatedAt": "2026-06-05T15:12:46.000Z",
+      "uid": "35240-959ce276-a88c-4661-9540-189cdaa9f377"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://api.windows.com"
+    }
+  ]
+}

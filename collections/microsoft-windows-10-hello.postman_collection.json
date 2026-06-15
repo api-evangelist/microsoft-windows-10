@@ -1,0 +1,933 @@
+{
+  "item": [
+    {
+      "id": "e1878c7b-cb4f-4e2f-aa01-707abc1329de",
+      "name": "Attestation",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3d6062a4-9f1d-4eab-84d5-5092e7d4a801",
+          "name": "Microsoft Windows 10 Get key attestation",
+          "request": {
+            "name": "Microsoft Windows 10 Get key attestation",
+            "description": {
+              "content": "Retrieves attestation information for a Windows Hello key credential using KeyCredential.GetAttestationAsync. Returns a KeyCredentialAttestationResult with an attestation buffer and certificate chain that can be sent to a server to verify the key was generated in a secure environment (TPM).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hello",
+                "attestation"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "accountId",
+                  "value": "<string>",
+                  "description": "(Required) Account identifier for the credential"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c60588c-32f4-4661-9978-97b4be297369",
+              "name": "Attestation retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hello",
+                    "attestation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"TemporaryFailure\",\n  \"attestationBuffer\": \"string\",\n  \"certificateChainBuffer\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "702b8c3f-2aad-4f92-9fb6-cac92c102071",
+              "name": "Credential not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hello",
+                    "attestation"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "accountId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "e0199c33-d774-4bc5-b39c-930f5af71ff1",
+      "name": "Authentication",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ccc8678b-2b7d-4d17-9672-9d3aee3de23f",
+          "name": "Microsoft Windows 10 Sign data with a Windows Hello credential",
+          "request": {
+            "name": "Microsoft Windows 10 Sign data with a Windows Hello credential",
+            "description": {
+              "content": "Signs a challenge buffer using the Windows Hello credential's private key via KeyCredential.RequestSignAsync. The user is prompted for biometric or PIN verification before the signing operation proceeds. Returns the signed data for server-side verification.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hello",
+                "sign"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountId\": \"<string>\",\n  \"challenge\": \"<byte>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bccd74cb-90af-4122-acc0-5e92c919be0e",
+              "name": "Data signed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hello",
+                    "sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"<string>\",\n  \"challenge\": \"<byte>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"Success\",\n  \"signature\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d3f78eb-5311-4c2f-97cf-430b4bb8486e",
+              "name": "User cancelled the consent prompt",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hello",
+                    "sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"<string>\",\n  \"challenge\": \"<byte>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "1ba8aa00-7130-49fc-8232-c6cf51837e7c",
+              "name": "Credential not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hello",
+                    "sign"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"<string>\",\n  \"challenge\": \"<byte>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2d7ac858-c4b3-4a06-b459-d6dbe73220fe",
+          "name": "Microsoft Windows 10 Verify user identity",
+          "request": {
+            "name": "Microsoft Windows 10 Verify user identity",
+            "description": {
+              "content": "Prompts the user to verify their identity using Windows Hello biometrics or PIN via UserConsentVerifier.RequestVerificationAsync. Returns whether the verification succeeded. This can be used for step-up authentication before sensitive operations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hello",
+                "verify-user"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6e65b1a0-8257-44fc-8cf9-59f76a10356b",
+              "name": "Verification result returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hello",
+                    "verify-user"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"result\": \"DeviceBusy\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "be19a99e-91c0-4877-be5f-b5dd46b789f3",
+      "name": "Availability",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2d8c59ce-3e78-40ae-8bb7-2039205d89d1",
+          "name": "Microsoft Windows 10 Check Windows Hello availability",
+          "request": {
+            "name": "Microsoft Windows 10 Check Windows Hello availability",
+            "description": {
+              "content": "Checks whether Windows Hello is available on the device using KeyCredentialManager.IsSupportedAsync. Returns whether the device supports biometric or PIN-based authentication through Windows Hello.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hello",
+                "availability"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69569d73-954f-47cc-8f02-20ceddd5fa89",
+              "name": "Availability status retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hello",
+                    "availability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"isSupported\": false,\n  \"availableMethods\": [\n    \"PIN\",\n    \"Face\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "cfc79d93-5214-4156-bcf5-5e1d397fd18f",
+      "name": "Credentials",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fb7af9b1-1576-43cd-86e8-47b17e321fee",
+          "name": "Microsoft Windows 10 Create a Windows Hello key credential",
+          "request": {
+            "name": "Microsoft Windows 10 Create a Windows Hello key credential",
+            "description": {
+              "content": "Creates a new key credential for Windows Hello authentication using KeyCredentialManager.RequestCreateAsync. Generates a public/private key pair where the private key is stored securely on the device (in TPM if available) and the public key is returned for server registration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hello",
+                "credentials"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"accountId\": \"<string>\",\n  \"keyCreationOption\": \"ReplaceExisting\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7c80f359-9257-4a30-89a7-f3c01937d929",
+              "name": "Key credential created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hello",
+                    "credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"<string>\",\n  \"keyCreationOption\": \"ReplaceExisting\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountId\": \"string\",\n  \"status\": \"CredentialAlreadyExists\",\n  \"publicKey\": \"string\",\n  \"keyName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1017dd14-47da-4603-8474-416090f7f5ff",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hello",
+                    "credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"<string>\",\n  \"keyCreationOption\": \"ReplaceExisting\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "33afef97-4d9c-4f4f-986f-e1ca00948875",
+              "name": "User cancelled the consent prompt",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hello",
+                    "credentials"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"accountId\": \"<string>\",\n  \"keyCreationOption\": \"ReplaceExisting\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1874d82d-e2bc-4c43-a985-c9f074452aaf",
+          "name": "Microsoft Windows 10 Open an existing key credential",
+          "request": {
+            "name": "Microsoft Windows 10 Open an existing key credential",
+            "description": {
+              "content": "Opens an existing Windows Hello key credential using KeyCredentialManager.OpenAsync. Returns the credential if it exists, allowing the application to use it for signing operations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hello",
+                "credentials",
+                ":accountId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) The account identifier for the credential"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8c6ad6ad-f0fc-419f-b8f2-e3ede2e24d5c",
+              "name": "Credential opened successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hello",
+                    "credentials",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) The account identifier for the credential"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accountId\": \"string\",\n  \"status\": \"CredentialAlreadyExists\",\n  \"publicKey\": \"string\",\n  \"keyName\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "42d12854-f681-4669-aaa0-325f24b20015",
+              "name": "Credential not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hello",
+                    "credentials",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) The account identifier for the credential"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ef65676b-b7ee-421c-99b1-36cc8cf21bc7",
+          "name": "Microsoft Windows 10 Delete a key credential",
+          "request": {
+            "name": "Microsoft Windows 10 Delete a key credential",
+            "description": {
+              "content": "Deletes a Windows Hello key credential using KeyCredentialManager.DeleteAsync. Removes the key pair from the device.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hello",
+                "credentials",
+                ":accountId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "accountId",
+                  "description": "(Required) The account identifier for the credential"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e11e481-0864-486e-92f8-d7813eb2ac94",
+              "name": "Credential deleted",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hello",
+                    "credentials",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) The account identifier for the credential"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2aaf84d9-e6c4-4a82-bf5e-bdcc45c5b21a",
+              "name": "Credential not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hello",
+                    "credentials",
+                    ":accountId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "accountId",
+                      "description": "(Required) The account identifier for the credential"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5a7f4709-9b5d-4082-95a3-91961653cc94",
+    "name": "Microsoft Windows 10 Windows Hello Authentication API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Biometric and PIN-based authentication API that replaces passwords with strong two-factor authentication. Based on the Windows.Security.Credentials namespace, Windows Hello supports facial recognition, fingerprint scanning, and PIN-based user verification for secure sign-in. Key classes include KeyCredentialManager, KeyCredentialRetrievalResult, and UserConsentVerifier. Implements the FIDO2/WebAuthn standards for passwordless authentication.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}
