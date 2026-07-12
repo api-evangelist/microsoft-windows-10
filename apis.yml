@@ -385,6 +385,10 @@ apis:
       - type: OpenAPI
         url: openapi/microsoft-windows-10-background-tasks-openapi.yml
 common:
+  - type: VulnerabilityDisclosure
+    url: security/microsoft-windows-10-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/microsoft-windows-10-domain-security.yml
   - type: PostmanWorkspace
     url: https://www.postman.com/kinlaneapi/microsoft-windows-10/overview
   - type: Arazzo
