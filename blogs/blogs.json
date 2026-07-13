@@ -3,10 +3,7 @@
   "feeds": [
     {
       "source": "https://blogs.windows.com/windowsdeveloper/feed/",
-      "feed_url": "https://blogs.windows.com/windowsdeveloper/feed/",
-      "title": "",
-      "saved": 0,
-      "method": "feed"
+      "error": "HTTPError"
     },
     {
       "source": "https://learn.microsoft.com/en-us/windows/apps/develop/security/windows-hello",
@@ -14,5 +11,5 @@
     }
   ],
   "post_count": 12,
-  "fetched": "2026-06-27T12:03:07Z"
+  "fetched": "2026-07-11T11:50:51Z"
 }
