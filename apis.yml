@@ -385,6 +385,8 @@ apis:
       - type: OpenAPI
         url: openapi/microsoft-windows-10-background-tasks-openapi.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/microsoft-windows-10-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/microsoft-windows-10-vulnerability-disclosure.yml
   - type: DomainSecurity
