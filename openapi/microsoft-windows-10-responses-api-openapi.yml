@@ -1,0 +1,68 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Responses API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Responses
+paths:
+  /cortana/responses:
+    post:
+      operationId: sendCortanaResponse
+      summary: Microsoft Windows 10 Send a response to Cortana
+      description: Sends a VoiceCommandResponse back to Cortana containing content tiles, a message, and an app launch argument. Uses VoiceCommandResponse.CreateResponse to format the response for display in the Cortana canvas.
+      tags:
+      - Responses
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VoiceCommandResponseRequest'
+      responses:
+        '200':
+          description: Response sent to Cortana
+        '400':
+          description: Invalid response format
+components:
+  schemas:
+    VoiceCommandResponseRequest:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Message to display in Cortana
+        contentTiles:
+          type: array
+          items:
+            type: object
+            properties:
+              title:
+                type: string
+              textLine1:
+                type: string
+              textLine2:
+                type: string
+              textLine3:
+                type: string
+              imageUri:
+                type: string
+                format: uri
+          description: Content tiles to display
+        appLaunchArgument:
+          type: string
+          description: Argument passed when user taps to launch app
+      required:
+      - message
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

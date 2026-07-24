@@ -1,0 +1,112 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Animations API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Animations
+paths:
+  /composition/animations:
+    post:
+      operationId: createAnimation
+      summary: Microsoft Windows 10 Create a composition animation
+      description: Creates a composition animation using Compositor factory methods such as CreateScalarKeyFrameAnimation, CreateVector3KeyFrameAnimation, CreateColorKeyFrameAnimation, or CreateExpressionAnimation. Animations drive property changes on visuals over time with easing functions.
+      tags:
+      - Animations
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateAnimationRequest'
+      responses:
+        '201':
+          description: Animation created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompositionAnimation'
+        '400':
+          description: Invalid animation parameters
+components:
+  schemas:
+    CreateAnimationRequest:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - ScalarKeyFrame
+          - Vector2KeyFrame
+          - Vector3KeyFrame
+          - ColorKeyFrame
+          - QuaternionKeyFrame
+          - Expression
+        duration:
+          type: string
+          description: ISO 8601 duration
+        targetProperty:
+          type: string
+          description: Target property name (e.g., Offset, Opacity, Scale)
+        keyFrames:
+          type: array
+          items:
+            type: object
+            properties:
+              normalizedProgressKey:
+                type: number
+                format: float
+                description: Progress key (0.0 to 1.0)
+              value:
+                type: object
+                description: Value at this key frame
+              easingFunction:
+                type: string
+                enum:
+                - Linear
+                - CubicBezier
+                - StepEasing
+        expression:
+          type: string
+          description: Expression string (for Expression animations)
+      required:
+      - type
+    CompositionAnimation:
+      type: object
+      description: A composition animation
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum:
+          - ScalarKeyFrame
+          - Vector2KeyFrame
+          - Vector3KeyFrame
+          - ColorKeyFrame
+          - QuaternionKeyFrame
+          - Expression
+          description: Animation type
+        duration:
+          type: string
+          description: ISO 8601 duration
+        iterationBehavior:
+          type: string
+          enum:
+          - Count
+          - Forever
+        targetProperty:
+          type: string
+          description: Property being animated
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

@@ -1,0 +1,144 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Geofencing API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Geofencing
+paths:
+  /geolocation/geofences:
+    get:
+      operationId: listGeofences
+      summary: Microsoft Windows 10 List active geofences
+      description: Retrieves the list of active geofences registered with the GeofenceMonitor. Geofences are geographic areas (circles) that trigger events when the device enters, exits, or dwells in the area.
+      tags:
+      - Geofencing
+      responses:
+        '200':
+          description: Successful retrieval of geofences
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Geofence'
+    post:
+      operationId: createGeofence
+      summary: Microsoft Windows 10 Create a geofence
+      description: Creates a new geofence and adds it to the GeofenceMonitor. The geofence is defined by a Geocircle (center point and radius) and monitored states (entered, exited, removed). Supports dwell time, start time, and duration.
+      tags:
+      - Geofencing
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateGeofenceRequest'
+      responses:
+        '201':
+          description: Geofence created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Geofence'
+        '400':
+          description: Invalid geofence configuration
+components:
+  schemas:
+    Geocircle:
+      type: object
+      description: A geographic circle (Geocircle class)
+      properties:
+        center:
+          type: object
+          properties:
+            latitude:
+              type: number
+              format: double
+            longitude:
+              type: number
+              format: double
+            altitude:
+              type: number
+              format: double
+        radiusInMeters:
+          type: number
+          format: double
+    CreateGeofenceRequest:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique geofence identifier
+        latitude:
+          type: number
+          format: double
+          description: Center latitude
+        longitude:
+          type: number
+          format: double
+          description: Center longitude
+        radiusInMeters:
+          type: number
+          format: double
+          description: Geofence radius in meters
+        monitoredStates:
+          type: array
+          items:
+            type: string
+            enum:
+            - Entered
+            - Exited
+            - Removed
+        singleUse:
+          type: boolean
+          default: false
+        dwellTimeInSeconds:
+          type: integer
+          description: Dwell time in seconds
+      required:
+      - id
+      - latitude
+      - longitude
+      - radiusInMeters
+    Geofence:
+      type: object
+      description: A geographic fence
+      properties:
+        id:
+          type: string
+          description: Geofence identifier
+        geoshape:
+          $ref: '#/components/schemas/Geocircle'
+        monitoredStates:
+          type: array
+          items:
+            type: string
+            enum:
+            - Entered
+            - Exited
+            - Removed
+        singleUse:
+          type: boolean
+          description: Whether the geofence is removed after first trigger
+        dwellTime:
+          type: string
+          description: ISO 8601 duration required inside the geofence
+        startTime:
+          type: string
+          format: date-time
+        duration:
+          type: string
+          description: ISO 8601 duration for the geofence lifetime
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

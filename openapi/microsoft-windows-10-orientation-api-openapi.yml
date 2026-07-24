@@ -1,0 +1,92 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Orientation API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Orientation
+paths:
+  /sensors/orientation/reading:
+    get:
+      operationId: getOrientationReading
+      summary: Microsoft Windows 10 Get orientation sensor reading
+      description: Retrieves the current orientation sensor reading using OrientationSensor.GetCurrentReading. Returns a rotation matrix and quaternion representing the device's spatial orientation. The orientation sensor fuses data from accelerometer, compass, and gyrometer for smooth results.
+      tags:
+      - Orientation
+      responses:
+        '200':
+          description: Successful reading
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrientationReading'
+        '404':
+          description: Orientation sensor not available
+components:
+  schemas:
+    OrientationReading:
+      type: object
+      description: Orientation sensor reading data
+      properties:
+        quaternion:
+          type: object
+          properties:
+            w:
+              type: number
+              format: float
+            x:
+              type: number
+              format: float
+            y:
+              type: number
+              format: float
+            z:
+              type: number
+              format: float
+          description: Orientation as a quaternion
+        rotationMatrix:
+          type: object
+          properties:
+            m11:
+              type: number
+              format: float
+            m12:
+              type: number
+              format: float
+            m13:
+              type: number
+              format: float
+            m21:
+              type: number
+              format: float
+            m22:
+              type: number
+              format: float
+            m23:
+              type: number
+              format: float
+            m31:
+              type: number
+              format: float
+            m32:
+              type: number
+              format: float
+            m33:
+              type: number
+              format: float
+          description: 3x3 rotation matrix
+        timestamp:
+          type: string
+          format: date-time
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

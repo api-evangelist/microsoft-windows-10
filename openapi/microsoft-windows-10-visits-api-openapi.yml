@@ -1,0 +1,147 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Visits API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Visits
+paths:
+  /geolocation/visits:
+    get:
+      operationId: getRecentVisits
+      summary: Microsoft Windows 10 Get recent location visits
+      description: Retrieves recent visit records using GeovisitMonitor.GetLastReportAsync. Visits represent significant location stays detected by the system, including arrival/departure times and position data.
+      tags:
+      - Visits
+      responses:
+        '200':
+          description: Successful retrieval of visits
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Geovisit'
+components:
+  schemas:
+    Geocoordinate:
+      type: object
+      description: Geographic coordinate data (Geocoordinate class)
+      properties:
+        latitude:
+          type: number
+          format: double
+          description: Latitude in degrees (-90 to 90)
+        longitude:
+          type: number
+          format: double
+          description: Longitude in degrees (-180 to 180)
+        altitude:
+          type: number
+          format: double
+          description: Altitude in meters (nullable)
+        accuracy:
+          type: number
+          format: double
+          description: Accuracy radius in meters
+        altitudeAccuracy:
+          type: number
+          format: double
+          description: Altitude accuracy in meters (nullable)
+        heading:
+          type: number
+          format: double
+          description: Heading in degrees relative to true north (nullable)
+        speed:
+          type: number
+          format: double
+          description: Speed in meters per second (nullable)
+        timestamp:
+          type: string
+          format: date-time
+          description: Time the position was determined
+        positionSource:
+          type: string
+          enum:
+          - Cellular
+          - Satellite
+          - WiFi
+          - IPAddress
+          - Unknown
+          - Default
+          - Obfuscated
+          description: Source of the position data
+        satelliteData:
+          type: object
+          properties:
+            horizontalDilutionOfPrecision:
+              type: number
+              format: double
+            verticalDilutionOfPrecision:
+              type: number
+              format: double
+            geometricDilutionOfPrecision:
+              type: number
+              format: double
+          description: Satellite data (if source is GNSS)
+      required:
+      - latitude
+      - longitude
+      - accuracy
+      - timestamp
+    Geoposition:
+      type: object
+      description: A geographic position (Geoposition class)
+      properties:
+        coordinate:
+          $ref: '#/components/schemas/Geocoordinate'
+        civicAddress:
+          type: object
+          properties:
+            city:
+              type: string
+            country:
+              type: string
+            state:
+              type: string
+            postalCode:
+              type: string
+          description: Civic address (if available)
+        venueData:
+          type: object
+          properties:
+            id:
+              type: string
+            level:
+              type: string
+          description: Venue information (if available)
+      required:
+      - coordinate
+    Geovisit:
+      type: object
+      description: A location visit record (Geovisit class)
+      properties:
+        position:
+          $ref: '#/components/schemas/Geoposition'
+        stateChange:
+          type: string
+          enum:
+          - Arrived
+          - Departed
+          - TrackingLost
+          description: Visit state change type
+        timestamp:
+          type: string
+          format: date-time
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

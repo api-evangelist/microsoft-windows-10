@@ -1,0 +1,151 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Controls API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Controls
+paths:
+  /winui/controls:
+    get:
+      operationId: listWinUIControls
+      summary: Microsoft Windows 10 List WinUI controls
+      description: Retrieves the catalog of available WinUI XAML controls organized by category. Includes basic input controls (Button, TextBox, CheckBox), collections (ListView, GridView, TreeView), navigation (NavigationView, TabView, Pivot), status (ProgressBar, ProgressRing, InfoBar), and media controls (MediaPlayerElement, Image).
+      tags:
+      - Controls
+      parameters:
+      - name: category
+        in: query
+        required: false
+        description: Filter controls by category
+        schema:
+          type: string
+          enum:
+          - BasicInput
+          - Collections
+          - DateAndTime
+          - Dialogs
+          - Layout
+          - Media
+          - Menus
+          - Navigation
+          - Scrolling
+          - StatusAndInfo
+          - Text
+      responses:
+        '200':
+          description: Successful retrieval of controls
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WinUIControl'
+  /winui/controls/{controlName}:
+    get:
+      operationId: getWinUIControl
+      summary: Microsoft Windows 10 Get control details
+      description: Retrieves detailed information about a specific WinUI control including its properties, events, methods, XAML usage examples, and Fluent Design System guidelines.
+      tags:
+      - Controls
+      parameters:
+      - name: controlName
+        in: path
+        required: true
+        description: Control name (e.g., NavigationView, InfoBar, TreeView)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval of control details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WinUIControlDetail'
+        '404':
+          description: Control not found
+components:
+  schemas:
+    WinUIControlDetail:
+      type: object
+      description: Detailed control information
+      properties:
+        name:
+          type: string
+        namespace:
+          type: string
+        description:
+          type: string
+        category:
+          type: string
+        baseClass:
+          type: string
+          description: Parent class in the inheritance hierarchy
+        properties:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+              defaultValue:
+                type: string
+              description:
+                type: string
+              isDependencyProperty:
+                type: boolean
+        events:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              eventArgsType:
+                type: string
+              description:
+                type: string
+        xamlUsage:
+          type: string
+          description: Example XAML markup
+        guidelines:
+          type: string
+          description: Fluent Design usage guidelines
+    WinUIControl:
+      type: object
+      description: A WinUI XAML control
+      properties:
+        name:
+          type: string
+          description: Control class name
+          example: NavigationView
+        namespace:
+          type: string
+          description: Full namespace
+          example: Microsoft.UI.Xaml.Controls
+        category:
+          type: string
+          description: Control category
+        description:
+          type: string
+          description: Brief description
+        isNewInWinUI:
+          type: boolean
+          description: Whether this control is new or updated in WinUI
+      required:
+      - name
+      - namespace
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

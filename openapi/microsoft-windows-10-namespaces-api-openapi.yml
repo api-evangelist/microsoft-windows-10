@@ -1,0 +1,69 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Namespaces API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Namespaces
+paths:
+  /winrt/namespaces:
+    get:
+      operationId: listWinRTNamespaces
+      summary: Microsoft Windows 10 List WinRT namespaces
+      description: Retrieves the list of available Windows Runtime namespaces, including Windows.UI, Windows.Storage, Windows.Devices, Windows.Media, Windows.Networking, Windows.Security, and Windows.AI. Each namespace contains classes, interfaces, enums, and delegates.
+      tags:
+      - Namespaces
+      responses:
+        '200':
+          description: Successful retrieval of WinRT namespaces
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WinRTNamespace'
+        '401':
+          description: Unauthorized
+components:
+  schemas:
+    WinRTNamespace:
+      type: object
+      description: A Windows Runtime namespace containing types and APIs
+      properties:
+        name:
+          type: string
+          description: Fully qualified namespace name
+          example: Windows.UI.Notifications
+        description:
+          type: string
+          description: Description of the namespace purpose
+        classCount:
+          type: integer
+          description: Number of classes in the namespace
+        interfaceCount:
+          type: integer
+          description: Number of interfaces in the namespace
+        enumCount:
+          type: integer
+          description: Number of enumerations in the namespace
+        delegateCount:
+          type: integer
+          description: Number of delegates in the namespace
+        minSupportedVersion:
+          type: string
+          description: Minimum supported Windows version
+          example: 10.0.10240.0
+      required:
+      - name
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

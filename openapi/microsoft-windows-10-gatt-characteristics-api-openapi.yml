@@ -1,0 +1,84 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer GATT Characteristics API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: GATT Characteristics
+paths:
+  /bluetooth/le/devices/{deviceId}/services/{serviceId}/characteristics:
+    get:
+      operationId: listGattCharacteristics
+      summary: Microsoft Windows 10 List GATT characteristics
+      description: Retrieves the characteristics of a GATT service using GattDeviceService.GetCharacteristicsAsync. Characteristics contain the actual data values and support read, write, notify, and indicate operations.
+      tags:
+      - GATT Characteristics
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        description: BLE device identifier
+        schema:
+          type: string
+      - name: serviceId
+        in: path
+        required: true
+        description: GATT service UUID
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval of characteristics
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GattCharacteristic'
+        '404':
+          description: Service not found
+components:
+  schemas:
+    GattCharacteristic:
+      type: object
+      description: A GATT characteristic
+      properties:
+        uuid:
+          type: string
+          description: Characteristic UUID
+        name:
+          type: string
+          description: Standard characteristic name (if known)
+        properties:
+          type: array
+          items:
+            type: string
+            enum:
+            - Read
+            - Write
+            - WriteWithoutResponse
+            - Notify
+            - Indicate
+            - Broadcast
+            - SignedWrite
+            - ExtendedProperties
+          description: Supported operations
+        protectionLevel:
+          type: string
+          enum:
+          - Plain
+          - AuthenticationRequired
+          - EncryptionRequired
+          - EncryptionAndAuthenticationRequired
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

@@ -1,0 +1,166 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Sessions API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Sessions
+paths:
+  /media/capture/sessions:
+    post:
+      operationId: initializeMediaCapture
+      summary: Microsoft Windows 10 Initialize a media capture session
+      description: Initializes a MediaCapture session with specified settings using MediaCapture.InitializeAsync. The MediaCaptureInitializationSettings specify the video and audio device, streaming category, and sharing mode.
+      tags:
+      - Sessions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InitializeCaptureRequest'
+      responses:
+        '201':
+          description: Capture session initialized
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CaptureSession'
+        '400':
+          description: Invalid initialization settings
+        '403':
+          description: Camera/microphone access denied
+  /ml/sessions:
+    post:
+      operationId: createMLSession
+      summary: Microsoft Windows 10 Create an evaluation session
+      description: Creates a LearningModelSession for evaluating a loaded model. The session binds the model to a LearningModelDevice (CPU, DirectX, or DirectXHighPerformance) for hardware-accelerated inference.
+      tags:
+      - Sessions
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSessionRequest'
+      responses:
+        '201':
+          description: Session created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LearningModelSession'
+        '400':
+          description: Invalid session configuration
+        '404':
+          description: Model not found
+components:
+  schemas:
+    InitializeCaptureRequest:
+      type: object
+      properties:
+        videoDeviceId:
+          type: string
+          description: Video capture device ID
+        audioDeviceId:
+          type: string
+          description: Audio capture device ID
+        streamingCaptureMode:
+          type: string
+          enum:
+          - AudioAndVideo
+          - Audio
+          - Video
+          default: AudioAndVideo
+        sharingMode:
+          type: string
+          enum:
+          - ExclusiveControl
+          - SharedReadOnly
+          default: ExclusiveControl
+        photoCaptureSource:
+          type: string
+          enum:
+          - Auto
+          - VideoPreview
+          - Photo
+          default: Auto
+    LearningModelSession:
+      type: object
+      description: An evaluation session (LearningModelSession class)
+      properties:
+        id:
+          type: string
+          description: Session identifier
+        modelId:
+          type: string
+          description: Associated model identifier
+        device:
+          $ref: '#/components/schemas/LearningModelDevice'
+    CreateSessionRequest:
+      type: object
+      properties:
+        modelId:
+          type: string
+          description: ID of the loaded model
+        deviceKind:
+          type: string
+          enum:
+          - Default
+          - Cpu
+          - DirectX
+          - DirectXHighPerformance
+          - DirectXMinPower
+          description: The device to use for evaluation (maps to LearningModelDeviceKind)
+          default: Default
+      required:
+      - modelId
+    CaptureSession:
+      type: object
+      description: An initialized media capture session
+      properties:
+        id:
+          type: string
+          description: Session identifier
+        state:
+          type: string
+          enum:
+          - Initialized
+          - Previewing
+          - Recording
+          - Paused
+        videoDeviceId:
+          type: string
+        audioDeviceId:
+          type: string
+    LearningModelDevice:
+      type: object
+      description: A device for model evaluation (LearningModelDevice class)
+      properties:
+        kind:
+          type: string
+          enum:
+          - Default
+          - Cpu
+          - DirectX
+          - DirectXHighPerformance
+          - DirectXMinPower
+          description: Device kind
+        adapterId:
+          type: string
+          description: GPU adapter ID (for DirectX devices)
+        name:
+          type: string
+          description: Device name
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

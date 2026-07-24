@@ -1,0 +1,75 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Activation API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Activation
+paths:
+  /winrt/activation:
+    post:
+      operationId: activateRuntimeClass
+      summary: Microsoft Windows 10 Activate a runtime class
+      description: Activates (instantiates) a WinRT runtime class by its activation factory. The Windows Runtime uses activation factories to create instances of runtime classes. This is the core mechanism by which UWP apps create objects.
+      tags:
+      - Activation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ActivationRequest'
+      responses:
+        '200':
+          description: Runtime class activated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ActivationResult'
+        '400':
+          description: Invalid activation request
+        '404':
+          description: Runtime class not found
+components:
+  schemas:
+    ActivationRequest:
+      type: object
+      properties:
+        runtimeClassName:
+          type: string
+          description: Fully qualified runtime class name to activate
+          example: Windows.UI.Notifications.ToastNotification
+        constructorArgs:
+          type: array
+          items:
+            type: object
+          description: Arguments to pass to the constructor
+      required:
+      - runtimeClassName
+    ActivationResult:
+      type: object
+      properties:
+        instanceId:
+          type: string
+          description: Unique identifier for the activated instance
+        runtimeClassName:
+          type: string
+          description: The runtime class that was activated
+        status:
+          type: string
+          enum:
+          - activated
+          - failed
+          description: Activation result status
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

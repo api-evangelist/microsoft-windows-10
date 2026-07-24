@@ -1,0 +1,72 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Styles API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Styles
+paths:
+  /winui/styles:
+    get:
+      operationId: listStyles
+      summary: Microsoft Windows 10 List built-in styles
+      description: Retrieves the catalog of built-in WinUI styles and resources including Fluent Design System brushes, typography, corner radius, spacing, and animation definitions from generic.xaml.
+      tags:
+      - Styles
+      parameters:
+      - name: resourceType
+        in: query
+        required: false
+        description: Filter by resource type
+        schema:
+          type: string
+          enum:
+          - Brushes
+          - Typography
+          - CornerRadius
+          - Spacing
+          - Animations
+      responses:
+        '200':
+          description: Successful retrieval of styles
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StyleResource'
+components:
+  schemas:
+    StyleResource:
+      type: object
+      properties:
+        key:
+          type: string
+          description: Resource key name
+        type:
+          type: string
+          description: Resource type (Brush, Double, CornerRadius, etc.)
+        value:
+          type: string
+          description: Default value
+        themeVariants:
+          type: object
+          properties:
+            light:
+              type: string
+            dark:
+              type: string
+            highContrast:
+              type: string
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

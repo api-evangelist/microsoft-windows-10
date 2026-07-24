@@ -1,0 +1,59 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer GATT Services API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: GATT Services
+paths:
+  /bluetooth/le/devices/{deviceId}/services:
+    get:
+      operationId: listGattServices
+      summary: Microsoft Windows 10 List GATT services
+      description: Retrieves the list of GATT services on a BLE device using BluetoothLEDevice.GetGattServicesAsync. Each service contains characteristics and descriptors that define the device's capabilities.
+      tags:
+      - GATT Services
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        description: BLE device identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval of GATT services
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GattService'
+        '404':
+          description: Device not found
+components:
+  schemas:
+    GattService:
+      type: object
+      description: A GATT service on a BLE device
+      properties:
+        uuid:
+          type: string
+          description: Service UUID
+        name:
+          type: string
+          description: Standard service name (if known)
+        characteristicCount:
+          type: integer
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

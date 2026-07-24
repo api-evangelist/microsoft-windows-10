@@ -1,0 +1,59 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Light Sensor API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Light Sensor
+paths:
+  /sensors/light/reading:
+    get:
+      operationId: getLightSensorReading
+      summary: Microsoft Windows 10 Get light sensor reading
+      description: Retrieves the current ambient light sensor reading using LightSensor.GetCurrentReading. Returns illuminance in lux and optionally chromaticity coordinates.
+      tags:
+      - Light Sensor
+      responses:
+        '200':
+          description: Successful reading
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LightSensorReading'
+        '404':
+          description: Light sensor not available
+components:
+  schemas:
+    LightSensorReading:
+      type: object
+      description: Ambient light sensor reading
+      properties:
+        illuminanceInLux:
+          type: number
+          format: float
+          description: Ambient light level in lux
+        chromaticity:
+          type: object
+          properties:
+            x:
+              type: number
+              format: float
+            y:
+              type: number
+              format: float
+          description: CIE xyY chromaticity coordinates
+        timestamp:
+          type: string
+          format: date-time
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

@@ -1,0 +1,71 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Sensors API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Sensors
+paths:
+  /sensors:
+    get:
+      operationId: listAvailableSensors
+      summary: Microsoft Windows 10 List available sensors
+      description: Retrieves the list of available sensors on the device. Each sensor type uses a GetDefault() static method to check availability. Supported types include Accelerometer, Gyrometer, Compass, Inclinometer, LightSensor, Barometer, Altimeter, Magnetometer, OrientationSensor, Pedometer, ProximitySensor, ActivitySensor, HumanPresenceSensor, and HingeAngleSensor.
+      tags:
+      - Sensors
+      responses:
+        '200':
+          description: Successful retrieval of available sensors
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/SensorInfo'
+components:
+  schemas:
+    SensorInfo:
+      type: object
+      description: Information about an available sensor
+      properties:
+        type:
+          type: string
+          enum:
+          - Accelerometer
+          - Gyrometer
+          - Compass
+          - Inclinometer
+          - LightSensor
+          - Barometer
+          - Altimeter
+          - Magnetometer
+          - OrientationSensor
+          - SimpleOrientationSensor
+          - Pedometer
+          - ProximitySensor
+          - ActivitySensor
+          - HumanPresenceSensor
+          - HingeAngleSensor
+        deviceId:
+          type: string
+          description: Sensor device identifier
+        minimumReportInterval:
+          type: integer
+          description: Minimum report interval in milliseconds
+        reportInterval:
+          type: integer
+          description: Current report interval in milliseconds
+      required:
+      - type
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

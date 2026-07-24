@@ -1,0 +1,63 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Phrase Lists API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Phrase Lists
+paths:
+  /cortana/voice-commands/{commandSetName}/phrase-lists/{phraseListName}:
+    put:
+      operationId: updatePhraseList
+      summary: Microsoft Windows 10 Update a phrase list
+      description: Updates a phrase list within a voice command set using VoiceCommandDefinition.SetPhraseListAsync. Phrase lists are dynamic vocabularies that can be updated at runtime without reinstalling the VCD file.
+      tags:
+      - Phrase Lists
+      parameters:
+      - name: commandSetName
+        in: path
+        required: true
+        description: The name of the voice command set
+        schema:
+          type: string
+      - name: phraseListName
+        in: path
+        required: true
+        description: The name of the phrase list to update
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePhraseListRequest'
+      responses:
+        '200':
+          description: Phrase list updated successfully
+        '404':
+          description: Command set or phrase list not found
+components:
+  schemas:
+    UpdatePhraseListRequest:
+      type: object
+      properties:
+        phrases:
+          type: array
+          items:
+            type: string
+          description: Updated list of phrases
+      required:
+      - phrases
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

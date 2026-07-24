@@ -1,0 +1,60 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Icons API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Icons
+paths:
+  /winui/icons:
+    get:
+      operationId: listIcons
+      summary: Microsoft Windows 10 List Fluent Design icons
+      description: Retrieves the catalog of available Segoe Fluent Icons for use with SymbolIcon and FontIcon controls. Includes icon name, unicode code point, and preview information.
+      tags:
+      - Icons
+      parameters:
+      - name: search
+        in: query
+        required: false
+        description: Search icons by name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval of icons
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/FluentIcon'
+components:
+  schemas:
+    FluentIcon:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Icon name
+        symbol:
+          type: string
+          description: Symbol enum value (for SymbolIcon)
+        unicodePoint:
+          type: string
+          description: Unicode code point for FontIcon
+          example: E700
+        description:
+          type: string
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

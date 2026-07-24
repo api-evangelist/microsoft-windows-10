@@ -1,0 +1,84 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Photo Capture API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Photo Capture
+paths:
+  /media/capture/sessions/{sessionId}/photo:
+    post:
+      operationId: capturePhoto
+      summary: Microsoft Windows 10 Capture a photo
+      description: Captures a photo using MediaCapture.CapturePhotoToStorageFileAsync or CapturePhotoToStreamAsync. The photo is encoded using the specified ImageEncodingProperties (JPEG, PNG, BMP, or TIFF).
+      tags:
+      - Photo Capture
+      parameters:
+      - name: sessionId
+        in: path
+        required: true
+        description: Capture session identifier
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PhotoCaptureRequest'
+      responses:
+        '200':
+          description: Photo captured successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CapturedPhoto'
+        '404':
+          description: Session not found
+components:
+  schemas:
+    PhotoCaptureRequest:
+      type: object
+      properties:
+        encodingFormat:
+          type: string
+          enum:
+          - Jpeg
+          - Png
+          - Bmp
+          - Tiff
+          default: Jpeg
+        outputPath:
+          type: string
+          description: File path for the captured photo
+      required:
+      - outputPath
+    CapturedPhoto:
+      type: object
+      properties:
+        filePath:
+          type: string
+          description: Path to the captured photo file
+        width:
+          type: integer
+          description: Photo width in pixels
+        height:
+          type: integer
+          description: Photo height in pixels
+        encodingFormat:
+          type: string
+        sizeInBytes:
+          type: integer
+          format: int64
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

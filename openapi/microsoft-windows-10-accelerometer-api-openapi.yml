@@ -1,0 +1,57 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Accelerometer
+paths:
+  /sensors/accelerometer/reading:
+    get:
+      operationId: getAccelerometerReading
+      summary: Microsoft Windows 10 Get accelerometer reading
+      description: Retrieves the current accelerometer reading using Accelerometer.GetCurrentReading. Returns G-force values along the x, y, and z axes. The sensor coordinate system is fixed to the device.
+      tags:
+      - Accelerometer
+      responses:
+        '200':
+          description: Successful reading
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AccelerometerReading'
+        '404':
+          description: Accelerometer not available
+components:
+  schemas:
+    AccelerometerReading:
+      type: object
+      description: Accelerometer reading data
+      properties:
+        accelerationX:
+          type: number
+          format: double
+          description: G-force along X axis
+        accelerationY:
+          type: number
+          format: double
+          description: G-force along Y axis
+        accelerationZ:
+          type: number
+          format: double
+          description: G-force along Z axis
+        timestamp:
+          type: string
+          format: date-time
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

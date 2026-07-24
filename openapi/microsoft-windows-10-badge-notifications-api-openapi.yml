@@ -1,0 +1,71 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Badge Notifications API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Badge Notifications
+paths:
+  /notifications/badge:
+    post:
+      operationId: updateBadgeNotification
+      summary: Microsoft Windows 10 Update a badge notification
+      description: Updates the badge overlay on a tile using the BadgeUpdateManager and BadgeUpdater classes. Badges can display a number (1-99) or a status glyph on the tile corner.
+      tags:
+      - Badge Notifications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BadgeNotificationRequest'
+      responses:
+        '200':
+          description: Badge updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BadgeNotification'
+        '400':
+          description: Invalid badge content
+components:
+  schemas:
+    BadgeNotificationRequest:
+      type: object
+      description: Request to update a badge
+      properties:
+        type:
+          type: string
+          enum:
+          - numeric
+          - glyph
+          description: Badge type
+        value:
+          type: string
+          description: Badge value. For numeric, a number 1-99. For glyph, one of the predefined status glyphs (none, activity, alarm, alert, attention, available, away, busy, error, newMessage, paused, playing, unavailable).
+      required:
+      - type
+      - value
+    BadgeNotification:
+      type: object
+      description: A badge notification as defined by the BadgeNotification class
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+        expirationTime:
+          type: string
+          format: date-time
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

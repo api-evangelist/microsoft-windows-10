@@ -1,0 +1,51 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Proximity API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Proximity
+paths:
+  /sensors/proximity/reading:
+    get:
+      operationId: getProximityReading
+      summary: Microsoft Windows 10 Get proximity sensor reading
+      description: Retrieves the current proximity sensor reading using ProximitySensor.GetCurrentReading. Returns whether an object is detected and optionally the distance in millimeters.
+      tags:
+      - Proximity
+      responses:
+        '200':
+          description: Successful reading
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ProximityReading'
+        '404':
+          description: Proximity sensor not available
+components:
+  schemas:
+    ProximityReading:
+      type: object
+      description: Proximity sensor reading data
+      properties:
+        isDetected:
+          type: boolean
+          description: Whether an object is detected
+        distanceInMillimeters:
+          type: integer
+          description: Distance to detected object (nullable)
+        timestamp:
+          type: string
+          format: date-time
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

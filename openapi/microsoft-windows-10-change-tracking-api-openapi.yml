@@ -1,0 +1,75 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Change Tracking API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Change Tracking
+paths:
+  /storage/libraries/{libraryId}/changes:
+    get:
+      operationId: getLibraryChanges
+      summary: Microsoft Windows 10 Get library changes
+      description: Retrieves change records for a storage library using StorageLibraryChangeTracker and StorageLibraryChangeReader. Returns a list of changes including file/folder creation, modification, deletion, and moves.
+      tags:
+      - Change Tracking
+      parameters:
+      - name: libraryId
+        in: path
+        required: true
+        description: Library identifier (Documents, Music, Pictures, Videos)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval of library changes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StorageLibraryChange'
+components:
+  schemas:
+    StorageLibraryChange:
+      type: object
+      description: A change to a library item (StorageLibraryChange class)
+      properties:
+        changeType:
+          type: string
+          enum:
+          - Created
+          - Deleted
+          - MovedOrRenamed
+          - ContentsChanged
+          - MovedOutOfLibrary
+          - MovedIntoLibrary
+          - ContentsReplaced
+          - IndexingStatusChanged
+          - EncryptionChanged
+          - ChangeTrackingLost
+          description: Type of change (StorageLibraryChangeType)
+        path:
+          type: string
+          description: Path of the changed item
+        previousPath:
+          type: string
+          description: Previous path (for moves/renames)
+        isOfType:
+          type: string
+          enum:
+          - File
+          - Folder
+          description: Whether the changed item is a file or folder
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

@@ -1,0 +1,61 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Compass API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Compass
+paths:
+  /sensors/compass/reading:
+    get:
+      operationId: getCompassReading
+      summary: Microsoft Windows 10 Get compass reading
+      description: Retrieves the current compass reading using Compass.GetCurrentReading. Returns heading in degrees relative to magnetic north and optionally true north (if the device has a GPS receiver).
+      tags:
+      - Compass
+      responses:
+        '200':
+          description: Successful reading
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompassReading'
+        '404':
+          description: Compass not available
+components:
+  schemas:
+    CompassReading:
+      type: object
+      description: Compass reading data
+      properties:
+        headingMagneticNorth:
+          type: number
+          format: double
+          description: Heading in degrees relative to magnetic north
+        headingTrueNorth:
+          type: number
+          format: double
+          description: Heading in degrees relative to true north (nullable)
+        headingAccuracy:
+          type: string
+          enum:
+          - Unknown
+          - Unreliable
+          - Approximate
+          - High
+          description: Magnetometer accuracy
+        timestamp:
+          type: string
+          format: date-time
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

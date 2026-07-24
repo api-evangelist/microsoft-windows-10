@@ -1,0 +1,139 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer GATT Operations API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: GATT Operations
+paths:
+  /bluetooth/le/devices/{deviceId}/services/{serviceId}/characteristics/{characteristicId}/value:
+    get:
+      operationId: readGattCharacteristic
+      summary: Microsoft Windows 10 Read a GATT characteristic value
+      description: Reads the value of a GATT characteristic using GattCharacteristic.ReadValueAsync. Returns the raw byte data and the communication status.
+      tags:
+      - GATT Operations
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: serviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: characteristicId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: cacheMode
+        in: query
+        required: false
+        schema:
+          type: string
+          enum:
+          - Cached
+          - Uncached
+          default: Uncached
+      responses:
+        '200':
+          description: Characteristic value read
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GattReadResult'
+        '404':
+          description: Characteristic not found
+    put:
+      operationId: writeGattCharacteristic
+      summary: Microsoft Windows 10 Write a GATT characteristic value
+      description: Writes a value to a GATT characteristic using GattCharacteristic.WriteValueAsync or WriteValueWithResultAsync. Supports WriteWithResponse and WriteWithoutResponse options.
+      tags:
+      - GATT Operations
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: serviceId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: characteristicId
+        in: path
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GattWriteRequest'
+      responses:
+        '200':
+          description: Value written successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GattWriteResult'
+        '404':
+          description: Characteristic not found
+components:
+  schemas:
+    GattWriteResult:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - Success
+          - Unreachable
+          - ProtocolError
+    GattReadResult:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - Success
+          - Unreachable
+          - ProtocolError
+          - InvalidHandle
+          - AccessDenied
+        value:
+          type: string
+          format: byte
+          description: Base64-encoded characteristic value
+    GattWriteRequest:
+      type: object
+      properties:
+        value:
+          type: string
+          format: byte
+          description: Base64-encoded value to write
+        writeOption:
+          type: string
+          enum:
+          - WriteWithResponse
+          - WriteWithoutResponse
+          default: WriteWithResponse
+      required:
+      - value
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

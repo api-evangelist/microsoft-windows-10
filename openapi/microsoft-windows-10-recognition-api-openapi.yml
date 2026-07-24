@@ -1,0 +1,121 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Recognition API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Recognition
+paths:
+  /ink/recognize:
+    post:
+      operationId: recognizeInkStrokes
+      summary: Microsoft Windows 10 Recognize handwriting from ink strokes
+      description: Performs handwriting recognition on ink strokes using InkRecognizerContainer. RecognizeAsync. Returns a list of InkRecognitionResult candidates with recognized text alternatives ranked by confidence.
+      tags:
+      - Recognition
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecognitionRequest'
+      responses:
+        '200':
+          description: Recognition results returned
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InkRecognitionResult'
+        '400':
+          description: No strokes to recognize
+  /ink/recognizers:
+    get:
+      operationId: listInkRecognizers
+      summary: Microsoft Windows 10 List available ink recognizers
+      description: Retrieves the list of installed handwriting recognizers using InkRecognizerContainer.GetRecognizers. Each recognizer supports a specific language and script for handwriting recognition.
+      tags:
+      - Recognition
+      responses:
+        '200':
+          description: Successful retrieval of recognizers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/InkRecognizer'
+components:
+  schemas:
+    BoundingRect:
+      type: object
+      properties:
+        x:
+          type: number
+          format: float
+        y:
+          type: number
+          format: float
+        width:
+          type: number
+          format: float
+        height:
+          type: number
+          format: float
+    InkRecognizer:
+      type: object
+      description: A handwriting recognizer (InkRecognizer class)
+      properties:
+        id:
+          type: string
+          description: Unique recognizer identifier
+        name:
+          type: string
+          description: Recognizer display name
+    InkRecognitionResult:
+      type: object
+      description: Handwriting recognition result (InkRecognitionResult class)
+      properties:
+        boundingRect:
+          $ref: '#/components/schemas/BoundingRect'
+        textCandidates:
+          type: array
+          items:
+            type: string
+          description: Recognized text alternatives ranked by confidence
+        selectedTextIndex:
+          type: integer
+          description: Index of the selected candidate
+        strokeIds:
+          type: array
+          items:
+            type: string
+          description: IDs of strokes that produced this result
+    RecognitionRequest:
+      type: object
+      properties:
+        strokeIds:
+          type: array
+          items:
+            type: string
+          description: IDs of strokes to recognize (empty for all)
+        recognitionTarget:
+          type: string
+          enum:
+          - All
+          - Selected
+          - Recent
+          description: Which strokes to target
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

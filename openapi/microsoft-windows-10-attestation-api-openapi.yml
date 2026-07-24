@@ -1,0 +1,63 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Attestation API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Attestation
+paths:
+  /hello/attestation:
+    get:
+      operationId: getKeyAttestation
+      summary: Microsoft Windows 10 Get key attestation
+      description: Retrieves attestation information for a Windows Hello key credential using KeyCredential.GetAttestationAsync. Returns a KeyCredentialAttestationResult with an attestation buffer and certificate chain that can be sent to a server to verify the key was generated in a secure environment (TPM).
+      tags:
+      - Attestation
+      parameters:
+      - name: accountId
+        in: query
+        required: true
+        description: Account identifier for the credential
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Attestation retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AttestationResult'
+        '404':
+          description: Credential not found
+components:
+  schemas:
+    AttestationResult:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - Success
+          - TemporaryFailure
+          - NotSupported
+          description: Attestation result status
+        attestationBuffer:
+          type: string
+          format: byte
+          description: Base64-encoded attestation data
+        certificateChainBuffer:
+          type: string
+          format: byte
+          description: Base64-encoded certificate chain
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

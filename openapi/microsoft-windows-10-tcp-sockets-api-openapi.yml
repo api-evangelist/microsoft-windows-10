@@ -1,0 +1,86 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer TCP Sockets API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: TCP Sockets
+paths:
+  /networking/sockets/tcp:
+    post:
+      operationId: createTcpSocket
+      summary: Microsoft Windows 10 Create a TCP stream socket
+      description: Creates a StreamSocket for TCP communication. StreamSocket provides reliable, ordered, and error-checked delivery of data between two endpoints. Supports TLS/SSL for secure connections via StreamSocket.UpgradeToSslAsync.
+      tags:
+      - TCP Sockets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateTcpSocketRequest'
+      responses:
+        '201':
+          description: TCP socket created and connected
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StreamSocket'
+        '400':
+          description: Invalid socket configuration
+components:
+  schemas:
+    StreamSocket:
+      type: object
+      description: A TCP stream socket (StreamSocket class)
+      properties:
+        id:
+          type: string
+        localAddress:
+          type: string
+        localPort:
+          type: string
+        remoteAddress:
+          type: string
+        remotePort:
+          type: string
+        protectionLevel:
+          type: string
+    CreateTcpSocketRequest:
+      type: object
+      properties:
+        remoteHostName:
+          type: string
+          description: Remote host name or IP address
+        remoteServiceName:
+          type: string
+          description: Remote port or service name
+        protectionLevel:
+          type: string
+          enum:
+          - PlainSocket
+          - Ssl
+          - SslAllowNullEncryption
+          default: PlainSocket
+        noDelay:
+          type: boolean
+          description: Disable Nagle algorithm
+          default: false
+        keepAlive:
+          type: boolean
+          default: true
+      required:
+      - remoteHostName
+      - remoteServiceName
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

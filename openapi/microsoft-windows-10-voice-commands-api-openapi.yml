@@ -1,0 +1,157 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Voice Commands API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Voice Commands
+paths:
+  /cortana/voice-commands:
+    get:
+      operationId: listVoiceCommandDefinitions
+      summary: Microsoft Windows 10 List voice command definitions
+      description: Retrieves the list of installed Voice Command Definition (VCD) sets. Each VCD set defines a group of voice commands that Cortana can recognize for a specific application, including command names, phrases, and feedback text.
+      tags:
+      - Voice Commands
+      responses:
+        '200':
+          description: Successful retrieval of voice command definitions
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VoiceCommandDefinition'
+    post:
+      operationId: installVoiceCommandDefinition
+      summary: Microsoft Windows 10 Install a voice command definition
+      description: Installs a VCD file using VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync. The VCD file is an XML document that defines the commands, example phrases, and phrase lists that Cortana will recognize for the application.
+      tags:
+      - Voice Commands
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/InstallVCDRequest'
+      responses:
+        '201':
+          description: VCD installed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoiceCommandDefinition'
+        '400':
+          description: Invalid VCD file
+  /cortana/voice-commands/{commandSetName}:
+    get:
+      operationId: getVoiceCommandSet
+      summary: Microsoft Windows 10 Get a voice command set
+      description: Retrieves a specific voice command set by name. The command set contains the language, name, and all defined commands including their phrases and phrase lists.
+      tags:
+      - Voice Commands
+      parameters:
+      - name: commandSetName
+        in: path
+        required: true
+        description: The name of the voice command set
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval of the voice command set
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VoiceCommandSet'
+        '404':
+          description: Command set not found
+components:
+  schemas:
+    VoiceCommandSet:
+      type: object
+      description: A set of voice commands with their definitions
+      properties:
+        name:
+          type: string
+          description: Command set name
+        language:
+          type: string
+          description: Language code
+        commands:
+          type: array
+          items:
+            $ref: '#/components/schemas/VoiceCommand'
+        phraseLists:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhraseList'
+    PhraseList:
+      type: object
+      description: A dynamic phrase list
+      properties:
+        name:
+          type: string
+          description: Phrase list name
+        items:
+          type: array
+          items:
+            type: string
+          description: Current phrases in the list
+    VoiceCommandDefinition:
+      type: object
+      description: A Voice Command Definition set
+      properties:
+        name:
+          type: string
+          description: Name of the VCD set
+        language:
+          type: string
+          description: Language code (e.g., en-us)
+        commandCount:
+          type: integer
+          description: Number of defined commands
+      required:
+      - name
+      - language
+    InstallVCDRequest:
+      type: object
+      properties:
+        vcdFilePath:
+          type: string
+          description: Path to the VCD XML file
+      required:
+      - vcdFilePath
+    VoiceCommand:
+      type: object
+      description: A voice command definition
+      properties:
+        name:
+          type: string
+          description: Command name
+        example:
+          type: string
+          description: Example phrase for the command
+        listenFor:
+          type: array
+          items:
+            type: string
+          description: Phrases that trigger this command
+        feedback:
+          type: string
+          description: Text Cortana displays while processing
+        navigateTo:
+          type: string
+          description: Page to navigate to in the app
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

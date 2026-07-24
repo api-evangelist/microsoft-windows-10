@@ -1,0 +1,92 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Pipeline API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Pipeline
+paths:
+  /directx/pipeline-states:
+    post:
+      operationId: createPipelineState
+      summary: Microsoft Windows 10 Create a graphics pipeline state
+      description: Creates a graphics pipeline state object (ID3D12PipelineState) that defines the complete rendering pipeline configuration including vertex shader, pixel shader, input layout, rasterizer state, blend state, depth stencil state, and render target formats.
+      tags:
+      - Pipeline
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreatePipelineStateRequest'
+      responses:
+        '201':
+          description: Pipeline state created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PipelineState'
+        '400':
+          description: Invalid pipeline configuration
+components:
+  schemas:
+    PipelineState:
+      type: object
+      properties:
+        id:
+          type: string
+        isValid:
+          type: boolean
+    CreatePipelineStateRequest:
+      type: object
+      properties:
+        vertexShader:
+          type: string
+          description: Compiled vertex shader bytecode reference
+        pixelShader:
+          type: string
+          description: Compiled pixel shader bytecode reference
+        inputLayout:
+          type: array
+          items:
+            type: object
+            properties:
+              semanticName:
+                type: string
+              format:
+                type: string
+              inputSlot:
+                type: integer
+        primitiveTopology:
+          type: string
+          enum:
+          - PointList
+          - LineList
+          - LineStrip
+          - TriangleList
+          - TriangleStrip
+          default: TriangleList
+        renderTargetCount:
+          type: integer
+          default: 1
+        renderTargetFormats:
+          type: array
+          items:
+            type: string
+        depthStencilFormat:
+          type: string
+      required:
+      - vertexShader
+      - pixelShader
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

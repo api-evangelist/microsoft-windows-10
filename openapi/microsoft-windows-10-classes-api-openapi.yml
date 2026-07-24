@@ -1,0 +1,178 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Classes API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Classes
+paths:
+  /winrt/namespaces/{namespaceName}/classes:
+    get:
+      operationId: listNamespaceClasses
+      summary: Microsoft Windows 10 List classes in a namespace
+      description: Retrieves the list of classes available within a specified WinRT namespace. Classes include their properties, methods, events, and constructors as documented in the WinRT type system.
+      tags:
+      - Classes
+      parameters:
+      - name: namespaceName
+        in: path
+        required: true
+        description: The fully qualified WinRT namespace name (e.g., Windows.UI.Notifications)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval of classes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WinRTClass'
+        '404':
+          description: Namespace not found
+  /winrt/namespaces/{namespaceName}/classes/{className}:
+    get:
+      operationId: getClassDetails
+      summary: Microsoft Windows 10 Get class details
+      description: Retrieves detailed information about a specific WinRT class, including its properties, methods, events, interfaces implemented, and inheritance hierarchy.
+      tags:
+      - Classes
+      parameters:
+      - name: namespaceName
+        in: path
+        required: true
+        description: The fully qualified WinRT namespace name
+        schema:
+          type: string
+      - name: className
+        in: path
+        required: true
+        description: The class name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval of class details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WinRTClassDetail'
+        '404':
+          description: Class not found
+components:
+  schemas:
+    ClassProperty:
+      type: object
+      properties:
+        name:
+          type: string
+        type:
+          type: string
+        isReadOnly:
+          type: boolean
+        description:
+          type: string
+    WinRTClassDetail:
+      type: object
+      description: Detailed information about a WinRT class
+      properties:
+        name:
+          type: string
+          description: Class name
+        namespace:
+          type: string
+          description: Fully qualified namespace
+        description:
+          type: string
+          description: Detailed class description
+        properties:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassProperty'
+        methods:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassMethod'
+        events:
+          type: array
+          items:
+            $ref: '#/components/schemas/ClassEvent'
+        interfaces:
+          type: array
+          items:
+            type: string
+          description: List of implemented interface names
+      required:
+      - name
+      - namespace
+    ClassMethod:
+      type: object
+      properties:
+        name:
+          type: string
+        returnType:
+          type: string
+        parameters:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+        isStatic:
+          type: boolean
+        description:
+          type: string
+    WinRTClass:
+      type: object
+      description: A WinRT runtime class
+      properties:
+        name:
+          type: string
+          description: Class name
+        namespace:
+          type: string
+          description: Fully qualified namespace
+        description:
+          type: string
+          description: Class description
+        isSealed:
+          type: boolean
+          description: Whether the class is sealed
+        isStatic:
+          type: boolean
+          description: Whether the class is static (no instances)
+        threading:
+          type: string
+          enum:
+          - STA
+          - MTA
+          - Both
+          description: Threading model
+      required:
+      - name
+      - namespace
+    ClassEvent:
+      type: object
+      properties:
+        name:
+          type: string
+        eventArgsType:
+          type: string
+        description:
+          type: string
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

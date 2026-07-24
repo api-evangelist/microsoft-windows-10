@@ -1,0 +1,58 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Pedometer API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Pedometer
+paths:
+  /sensors/pedometer/reading:
+    get:
+      operationId: getPedometerReading
+      summary: Microsoft Windows 10 Get pedometer reading
+      description: Retrieves the current pedometer reading using Pedometer.GetCurrentReadings. Returns step counts categorized by step kind (walking, running, unknown).
+      tags:
+      - Pedometer
+      responses:
+        '200':
+          description: Successful reading
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PedometerReading'
+        '404':
+          description: Pedometer not available
+components:
+  schemas:
+    PedometerReading:
+      type: object
+      description: Pedometer reading data
+      properties:
+        cumulativeSteps:
+          type: integer
+          description: Total step count
+        stepKind:
+          type: string
+          enum:
+          - Unknown
+          - Walking
+          - Running
+          description: Type of step
+        cumulativeStepsDuration:
+          type: string
+          description: Duration of steps
+        timestamp:
+          type: string
+          format: date-time
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

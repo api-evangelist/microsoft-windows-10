@@ -1,0 +1,91 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Tile Notifications API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Tile Notifications
+paths:
+  /notifications/tile:
+    post:
+      operationId: updateTileNotification
+      summary: Microsoft Windows 10 Update a tile notification
+      description: Updates the content of a Start menu tile using the TileUpdateManager and TileUpdater classes. Tile notifications can display text, images, and badges using predefined or adaptive templates.
+      tags:
+      - Tile Notifications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TileNotificationRequest'
+      responses:
+        '200':
+          description: Tile updated successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TileNotification'
+        '400':
+          description: Invalid tile content
+components:
+  schemas:
+    TileNotificationRequest:
+      type: object
+      description: Request to update a tile notification
+      properties:
+        template:
+          type: string
+          description: Tile template type
+          enum:
+          - TileSmall
+          - TileMedium
+          - TileWide
+          - TileLarge
+        texts:
+          type: array
+          items:
+            type: string
+          description: Text content for the tile
+        images:
+          type: array
+          items:
+            type: object
+            properties:
+              src:
+                type: string
+                format: uri
+              alt:
+                type: string
+          description: Image content for the tile
+        tag:
+          type: string
+          description: Tag for the notification
+        expirationTime:
+          type: string
+          format: date-time
+      required:
+      - template
+    TileNotification:
+      type: object
+      description: A tile notification as defined by the TileNotification class
+      properties:
+        tag:
+          type: string
+        expirationTime:
+          type: string
+          format: date-time
+        template:
+          type: string
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

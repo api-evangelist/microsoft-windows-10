@@ -1,0 +1,74 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer BLE Scanning API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: BLE Scanning
+paths:
+  /bluetooth/le/scan:
+    post:
+      operationId: startBLEScan
+      summary: Microsoft Windows 10 Start BLE advertisement scanning
+      description: Starts scanning for BLE advertisements using BluetoothLEAdvertisementWatcher. Discovers nearby BLE devices that are broadcasting advertisement packets. Supports filtering by service UUID, manufacturer data, and signal strength.
+      tags:
+      - BLE Scanning
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BLEScanRequest'
+      responses:
+        '200':
+          description: Scan started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BLEScanSession'
+components:
+  schemas:
+    BLEScanRequest:
+      type: object
+      properties:
+        scanningMode:
+          type: string
+          enum:
+          - Passive
+          - Active
+          default: Active
+        serviceUuidFilter:
+          type: array
+          items:
+            type: string
+          description: Filter by service UUIDs
+        signalStrengthFilter:
+          type: object
+          properties:
+            inRangeThresholdInDBm:
+              type: integer
+            outOfRangeThresholdInDBm:
+              type: integer
+    BLEScanSession:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+          - Started
+          - Stopped
+          - Aborted
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

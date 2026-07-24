@@ -1,0 +1,69 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Messages API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Messages
+paths:
+  /win32/messages:
+    get:
+      operationId: listWindowMessages
+      summary: Microsoft Windows 10 List window messages
+      description: Retrieves the list of Win32 window messages (WM_*) used for inter-window communication. Includes system-defined messages for window management, user input, and application-defined messages.
+      tags:
+      - Messages
+      parameters:
+      - name: prefix
+        in: query
+        required: false
+        description: Filter messages by prefix (e.g., WM_, BM_, CB_)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval of messages
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/WindowMessage'
+components:
+  schemas:
+    WindowMessage:
+      type: object
+      description: A Win32 window message
+      properties:
+        name:
+          type: string
+          description: Message constant name
+          example: WM_CREATE
+        value:
+          type: string
+          description: Numeric value of the message
+          example: '0x0001'
+        description:
+          type: string
+          description: Description of when the message is sent
+        wParam:
+          type: string
+          description: Meaning of the wParam parameter
+        lParam:
+          type: string
+          description: Meaning of the lParam parameter
+      required:
+      - name
+      - value
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

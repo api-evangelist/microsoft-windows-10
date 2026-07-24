@@ -1,0 +1,98 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Access API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Access
+paths:
+  /background-tasks/access:
+    get:
+      operationId: getBackgroundAccessStatus
+      summary: Microsoft Windows 10 Get background access status
+      description: Checks the application's background access status using BackgroundExecutionManager.GetAccessStatus. Returns whether the app is allowed to run background tasks, which may be limited by user settings or battery saver mode.
+      tags:
+      - Access
+      responses:
+        '200':
+          description: Access status retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackgroundAccessStatus'
+    post:
+      operationId: requestBackgroundAccess
+      summary: Microsoft Windows 10 Request background access
+      description: Requests permission for background task execution using BackgroundExecutionManager.RequestAccessAsync. May prompt the user to allow background activity.
+      tags:
+      - Access
+      responses:
+        '200':
+          description: Access request result
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BackgroundAccessStatus'
+  /geolocation/access:
+    get:
+      operationId: getGeolocationAccess
+      summary: Microsoft Windows 10 Check geolocation access status
+      description: Checks the application's permission to access location data using Geolocator.RequestAccessAsync. Returns the current GeolocationAccessStatus indicating whether access is allowed, denied, or unspecified.
+      tags:
+      - Access
+      responses:
+        '200':
+          description: Access status retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeolocationAccessStatus'
+    post:
+      operationId: requestGeolocationAccess
+      summary: Microsoft Windows 10 Request geolocation access
+      description: Requests permission to access the device's location using Geolocator.RequestAccessAsync. Prompts the user to grant or deny location access if not previously configured.
+      tags:
+      - Access
+      responses:
+        '200':
+          description: Access request processed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GeolocationAccessStatus'
+components:
+  schemas:
+    GeolocationAccessStatus:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - Unspecified
+          - Allowed
+          - Denied
+          description: Current geolocation access status
+    BackgroundAccessStatus:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - Unspecified
+          - AllowedSubjectToSystemPolicy
+          - AlwaysAllowed
+          - DeniedBySystemPolicy
+          - DeniedByUser
+          description: Current background access status
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

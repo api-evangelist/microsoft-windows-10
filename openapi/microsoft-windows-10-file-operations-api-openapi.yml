@@ -1,0 +1,120 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer File Operations API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: File Operations
+paths:
+  /storage/files/{fileId}/content:
+    get:
+      operationId: readFileContent
+      summary: Microsoft Windows 10 Read file content
+      description: Reads the content of a file using FileIO helper methods. Supports reading as text (FileIO.ReadTextAsync), binary (FileIO.ReadBufferAsync), or line-by-line (FileIO.ReadLinesAsync).
+      tags:
+      - File Operations
+      parameters:
+      - name: fileId
+        in: path
+        required: true
+        description: Unique file identifier
+        schema:
+          type: string
+      - name: readMode
+        in: query
+        required: false
+        description: How to read the file content
+        schema:
+          type: string
+          enum:
+          - text
+          - buffer
+          - lines
+          default: text
+      responses:
+        '200':
+          description: Successful read of file content
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FileContent'
+        '404':
+          description: File not found
+    put:
+      operationId: writeFileContent
+      summary: Microsoft Windows 10 Write file content
+      description: Writes content to a file using FileIO helper methods. Supports writing text (FileIO.WriteTextAsync), binary (FileIO.WriteBytesAsync), or lines (FileIO.WriteLinesAsync).
+      tags:
+      - File Operations
+      parameters:
+      - name: fileId
+        in: path
+        required: true
+        description: Unique file identifier
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/WriteFileRequest'
+      responses:
+        '200':
+          description: File content written successfully
+        '404':
+          description: File not found
+        '403':
+          description: Access denied
+components:
+  schemas:
+    FileContent:
+      type: object
+      properties:
+        text:
+          type: string
+          description: Text content (when readMode is text)
+        lines:
+          type: array
+          items:
+            type: string
+          description: Lines of text (when readMode is lines)
+        buffer:
+          type: string
+          format: byte
+          description: Base64-encoded binary content (when readMode is buffer)
+        encoding:
+          type: string
+          description: Text encoding used
+          example: UTF-8
+    WriteFileRequest:
+      type: object
+      properties:
+        content:
+          type: string
+          description: Text content to write
+        encoding:
+          type: string
+          description: Text encoding
+          default: UTF-8
+        writeMode:
+          type: string
+          enum:
+          - text
+          - bytes
+          - lines
+          default: text
+      required:
+      - content
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

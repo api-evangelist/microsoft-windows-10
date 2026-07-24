@@ -1,0 +1,114 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Video Recording API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Video Recording
+paths:
+  /media/capture/sessions/{sessionId}/video/start:
+    post:
+      operationId: startVideoRecording
+      summary: Microsoft Windows 10 Start video recording
+      description: Starts video recording using MediaCapture.StartRecordToStorageFileAsync or StartRecordToStreamAsync. The video is encoded using the specified MediaEncodingProfile (MP4, WMV, or AVI with configurable resolution, bitrate, and frame rate).
+      tags:
+      - Video Recording
+      parameters:
+      - name: sessionId
+        in: path
+        required: true
+        description: Capture session identifier
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VideoRecordingRequest'
+      responses:
+        '200':
+          description: Video recording started
+        '404':
+          description: Session not found
+  /media/capture/sessions/{sessionId}/video/stop:
+    post:
+      operationId: stopVideoRecording
+      summary: Microsoft Windows 10 Stop video recording
+      description: Stops an active video recording using MediaCapture.StopRecordAsync. Finalizes the output file or stream and returns information about the recorded media.
+      tags:
+      - Video Recording
+      parameters:
+      - name: sessionId
+        in: path
+        required: true
+        description: Capture session identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Video recording stopped
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecordedMedia'
+        '404':
+          description: Session not found
+components:
+  schemas:
+    RecordedMedia:
+      type: object
+      properties:
+        filePath:
+          type: string
+        durationInSeconds:
+          type: number
+          format: double
+        width:
+          type: integer
+        height:
+          type: integer
+        encodingProfile:
+          type: string
+        sizeInBytes:
+          type: integer
+          format: int64
+    VideoRecordingRequest:
+      type: object
+      properties:
+        encodingProfile:
+          type: string
+          enum:
+          - Mp4
+          - Wmv
+          - Avi
+          default: Mp4
+        quality:
+          type: string
+          enum:
+          - Auto
+          - HD1080p
+          - HD720p
+          - Wvga
+          - Ntsc
+          - Pal
+          - Vga
+          - Qvga
+          default: Auto
+        outputPath:
+          type: string
+          description: File path for the recorded video
+      required:
+      - outputPath
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

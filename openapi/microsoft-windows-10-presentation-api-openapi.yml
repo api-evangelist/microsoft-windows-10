@@ -1,0 +1,85 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Presentation API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Presentation
+paths:
+  /directx/swap-chains:
+    post:
+      operationId: createSwapChain
+      summary: Microsoft Windows 10 Create a swap chain
+      description: Creates a DXGI swap chain (IDXGISwapChain) for presenting rendered frames to a window or output. The swap chain manages the back buffer(s) and handles presentation including v-sync and frame latency.
+      tags:
+      - Presentation
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSwapChainRequest'
+      responses:
+        '201':
+          description: Swap chain created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SwapChain'
+        '400':
+          description: Invalid swap chain configuration
+components:
+  schemas:
+    CreateSwapChainRequest:
+      type: object
+      properties:
+        width:
+          type: integer
+        height:
+          type: integer
+        format:
+          type: string
+          description: Back buffer format
+          default: R8G8B8A8_UNORM
+        bufferCount:
+          type: integer
+          default: 2
+        swapEffect:
+          type: string
+          enum:
+          - Discard
+          - Sequential
+          - FlipSequential
+          - FlipDiscard
+          default: FlipDiscard
+        isWindowed:
+          type: boolean
+          default: true
+      required:
+      - width
+      - height
+    SwapChain:
+      type: object
+      properties:
+        id:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+        format:
+          type: string
+        bufferCount:
+          type: integer
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

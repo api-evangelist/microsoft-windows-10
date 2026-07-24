@@ -1,0 +1,77 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Libraries API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Libraries
+paths:
+  /storage/libraries:
+    get:
+      operationId: listStorageLibraries
+      summary: Microsoft Windows 10 List storage libraries
+      description: Retrieves the list of storage libraries (Documents, Music, Pictures, Videos) using StorageLibrary.GetLibraryAsync. Each library contains a list of included folders and supports change tracking.
+      tags:
+      - Libraries
+      responses:
+        '200':
+          description: Successful retrieval of libraries
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StorageLibrary'
+components:
+  schemas:
+    StorageLibrary:
+      type: object
+      description: A storage library (StorageLibrary class)
+      properties:
+        id:
+          type: string
+          description: Library identifier
+          enum:
+          - Documents
+          - Music
+          - Pictures
+          - Videos
+        folders:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageFolder'
+          description: Folders included in the library
+        saveFolder:
+          $ref: '#/components/schemas/StorageFolder'
+    StorageFolder:
+      type: object
+      description: A storage folder (StorageFolder class)
+      properties:
+        name:
+          type: string
+          description: Folder name
+        path:
+          type: string
+          description: Full folder path
+        dateCreated:
+          type: string
+          format: date-time
+        attributes:
+          type: array
+          items:
+            type: string
+      required:
+      - name
+      - path
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

@@ -1,0 +1,85 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Effects API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Effects
+paths:
+  /composition/effects:
+    post:
+      operationId: createEffect
+      summary: Microsoft Windows 10 Create a composition effect
+      description: Creates a CompositionEffectBrush for applying visual effects such as blur (GaussianBlurEffect), saturation, color adjustments, and compositing. Effects are created via Compositor.CreateEffectFactory and applied to SpriteVisual objects via their Brush property.
+      tags:
+      - Effects
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateEffectRequest'
+      responses:
+        '201':
+          description: Effect created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompositionEffect'
+        '400':
+          description: Invalid effect configuration
+components:
+  schemas:
+    CompositionEffect:
+      type: object
+      properties:
+        id:
+          type: string
+        effectType:
+          type: string
+          enum:
+          - GaussianBlur
+          - Saturation
+          - Grayscale
+          - Invert
+          - Sepia
+          - TemperatureAndTint
+          - Composite
+          description: Type of effect
+    CreateEffectRequest:
+      type: object
+      properties:
+        effectType:
+          type: string
+          enum:
+          - GaussianBlur
+          - Saturation
+          - Grayscale
+          - Invert
+          - Sepia
+          - TemperatureAndTint
+          - Composite
+        properties:
+          type: object
+          additionalProperties:
+            type: number
+          description: Effect-specific properties (e.g., BlurAmount for GaussianBlur)
+        animatableProperties:
+          type: array
+          items:
+            type: string
+          description: Properties that can be animated
+      required:
+      - effectType
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

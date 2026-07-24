@@ -1,0 +1,199 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Scheduled Notifications API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Scheduled Notifications
+paths:
+  /notifications/toast/scheduled:
+    post:
+      operationId: scheduleToastNotification
+      summary: Microsoft Windows 10 Schedule a toast notification
+      description: Schedules a toast notification for future delivery using the ScheduledToastNotification class. The notification will be displayed at the specified delivery time and can optionally recur at a specified interval.
+      tags:
+      - Scheduled Notifications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ScheduledToastNotificationRequest'
+      responses:
+        '201':
+          description: Scheduled notification created
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduledToastNotification'
+        '400':
+          description: Invalid schedule request
+    get:
+      operationId: listScheduledToastNotifications
+      summary: Microsoft Windows 10 List scheduled toast notifications
+      description: Retrieves the list of scheduled toast notifications pending delivery. Uses the ToastNotifier.GetScheduledToastNotifications method.
+      tags:
+      - Scheduled Notifications
+      responses:
+        '200':
+          description: Successful retrieval of scheduled notifications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ScheduledToastNotification'
+components:
+  schemas:
+    ScheduledToastNotification:
+      type: object
+      description: A scheduled toast notification
+      properties:
+        id:
+          type: string
+          description: Unique identifier
+        content:
+          $ref: '#/components/schemas/ToastContent'
+        deliveryTime:
+          type: string
+          format: date-time
+        snoozeInterval:
+          type: string
+        maximumSnoozeCount:
+          type: integer
+        tag:
+          type: string
+        group:
+          type: string
+    ScheduledToastNotificationRequest:
+      type: object
+      description: Request to schedule a toast notification
+      properties:
+        content:
+          $ref: '#/components/schemas/ToastContent'
+        deliveryTime:
+          type: string
+          format: date-time
+          description: The time to deliver the notification
+        snoozeInterval:
+          type: string
+          description: ISO 8601 duration for snooze interval
+        maximumSnoozeCount:
+          type: integer
+          description: Maximum number of times the notification can be snoozed
+          maximum: 5
+        tag:
+          type: string
+          description: Tag identifier
+        group:
+          type: string
+          description: Group identifier
+      required:
+      - content
+      - deliveryTime
+    ToastContent:
+      type: object
+      description: The visual and interactive content of a toast notification
+      properties:
+        visual:
+          type: object
+          properties:
+            binding:
+              type: object
+              properties:
+                template:
+                  type: string
+                  description: Template type (e.g., ToastGeneric)
+                  example: ToastGeneric
+                texts:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      content:
+                        type: string
+                      hintStyle:
+                        type: string
+                  description: Text elements in the notification
+                images:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      src:
+                        type: string
+                        format: uri
+                      placement:
+                        type: string
+                        enum:
+                        - inline
+                        - appLogoOverride
+                        - hero
+                      hintCrop:
+                        type: string
+                        enum:
+                        - none
+                        - circle
+                  description: Image elements in the notification
+                attributionText:
+                  type: string
+                  description: Attribution text shown at the bottom
+        actions:
+          type: object
+          properties:
+            inputs:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  type:
+                    type: string
+                    enum:
+                    - text
+                    - selection
+                  placeHolderContent:
+                    type: string
+              description: Interactive input fields
+            buttons:
+              type: array
+              items:
+                type: object
+                properties:
+                  content:
+                    type: string
+                  arguments:
+                    type: string
+                  activationType:
+                    type: string
+                    enum:
+                    - foreground
+                    - background
+                    - protocol
+                    - system
+              description: Action buttons
+        audio:
+          type: object
+          properties:
+            src:
+              type: string
+              description: Audio source URI
+            loop:
+              type: boolean
+              description: Whether the audio loops
+            silent:
+              type: boolean
+              description: Whether the notification is silent
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

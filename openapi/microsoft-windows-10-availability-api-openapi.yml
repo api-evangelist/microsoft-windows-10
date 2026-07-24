@@ -1,0 +1,51 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Availability API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Availability
+paths:
+  /hello/availability:
+    get:
+      operationId: checkHelloAvailability
+      summary: Microsoft Windows 10 Check Windows Hello availability
+      description: Checks whether Windows Hello is available on the device using KeyCredentialManager.IsSupportedAsync. Returns whether the device supports biometric or PIN-based authentication through Windows Hello.
+      tags:
+      - Availability
+      responses:
+        '200':
+          description: Availability status retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HelloAvailability'
+components:
+  schemas:
+    HelloAvailability:
+      type: object
+      properties:
+        isSupported:
+          type: boolean
+          description: Whether Windows Hello is supported on this device
+        availableMethods:
+          type: array
+          items:
+            type: string
+            enum:
+            - Face
+            - Fingerprint
+            - PIN
+          description: Available authentication methods
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

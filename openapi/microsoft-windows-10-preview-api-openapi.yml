@@ -1,0 +1,58 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Preview API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Preview
+paths:
+  /media/capture/sessions/{sessionId}/preview/start:
+    post:
+      operationId: startPreview
+      summary: Microsoft Windows 10 Start camera preview
+      description: Starts the camera preview stream using MediaCapture.StartPreviewAsync. The preview stream is displayed in a CaptureElement XAML control.
+      tags:
+      - Preview
+      parameters:
+      - name: sessionId
+        in: path
+        required: true
+        description: Capture session identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Preview started
+        '404':
+          description: Session not found
+  /media/capture/sessions/{sessionId}/preview/stop:
+    post:
+      operationId: stopPreview
+      summary: Microsoft Windows 10 Stop camera preview
+      description: Stops the camera preview stream using MediaCapture.StopPreviewAsync.
+      tags:
+      - Preview
+      parameters:
+      - name: sessionId
+        in: path
+        required: true
+        description: Capture session identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Preview stopped
+        '404':
+          description: Session not found
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

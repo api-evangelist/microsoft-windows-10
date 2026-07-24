@@ -1,0 +1,54 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Themes API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Themes
+paths:
+  /winui/themes:
+    get:
+      operationId: listThemes
+      summary: Microsoft Windows 10 List available themes
+      description: Retrieves the list of available application themes. WinUI supports Light, Dark, and HighContrast themes with automatic system theme detection via Application.RequestedTheme.
+      tags:
+      - Themes
+      responses:
+        '200':
+          description: Successful retrieval of themes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Theme'
+components:
+  schemas:
+    Theme:
+      type: object
+      properties:
+        name:
+          type: string
+          enum:
+          - Light
+          - Dark
+          - HighContrast
+        description:
+          type: string
+        systemColors:
+          type: object
+          additionalProperties:
+            type: string
+          description: Key system colors for this theme
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

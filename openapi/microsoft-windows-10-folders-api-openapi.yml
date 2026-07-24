@@ -1,0 +1,106 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Folders API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Folders
+paths:
+  /storage/folders:
+    get:
+      operationId: listStorageFolders
+      summary: Microsoft Windows 10 List storage folders
+      description: Retrieves the list of subfolders in a specified location using StorageFolder.GetFoldersAsync. Includes folder metadata such as name, path, date created, and item counts.
+      tags:
+      - Folders
+      parameters:
+      - name: parentFolderId
+        in: query
+        required: false
+        description: Parent folder identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval of folders
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/StorageFolder'
+    post:
+      operationId: createStorageFolder
+      summary: Microsoft Windows 10 Create a folder
+      description: Creates a new folder using StorageFolder.CreateFolderAsync. Supports collision options to handle existing folders with the same name.
+      tags:
+      - Folders
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateFolderRequest'
+      responses:
+        '201':
+          description: Folder created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StorageFolder'
+        '409':
+          description: Folder already exists
+components:
+  schemas:
+    CreateFolderRequest:
+      type: object
+      properties:
+        parentPath:
+          type: string
+          description: Path of the parent folder
+        name:
+          type: string
+          description: Name for the new folder
+        collisionOption:
+          type: string
+          enum:
+          - GenerateUniqueName
+          - ReplaceExisting
+          - FailIfExists
+          - OpenIfExists
+          description: How to handle name collisions (CreationCollisionOption)
+          default: FailIfExists
+      required:
+      - name
+    StorageFolder:
+      type: object
+      description: A storage folder (StorageFolder class)
+      properties:
+        name:
+          type: string
+          description: Folder name
+        path:
+          type: string
+          description: Full folder path
+        dateCreated:
+          type: string
+          format: date-time
+        attributes:
+          type: array
+          items:
+            type: string
+      required:
+      - name
+      - path
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

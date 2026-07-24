@@ -1,0 +1,53 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Triggers API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Triggers
+paths:
+  /background-tasks/triggers:
+    get:
+      operationId: listTriggerTypes
+      summary: Microsoft Windows 10 List available trigger types
+      description: Retrieves the list of available background task trigger types including SystemTrigger, TimeTrigger, MaintenanceTrigger, PushNotificationTrigger, LocationTrigger, BluetoothLEAdvertisementWatcherTrigger, DeviceUseTrigger, and ActivitySensorTrigger.
+      tags:
+      - Triggers
+      responses:
+        '200':
+          description: Successful retrieval of trigger types
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/TriggerType'
+components:
+  schemas:
+    TriggerType:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Trigger type name
+        description:
+          type: string
+          description: What triggers the background task
+        requiresLockScreen:
+          type: boolean
+          description: Whether the trigger requires lock screen access
+        supportsOneShot:
+          type: boolean
+          description: Whether the trigger supports one-shot mode
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

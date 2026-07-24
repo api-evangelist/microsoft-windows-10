@@ -1,0 +1,62 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Service Connections API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Service Connections
+paths:
+  /cortana/service-connections:
+    post:
+      operationId: createCortanaServiceConnection
+      summary: Microsoft Windows 10 Create a Cortana app service connection
+      description: Establishes a connection to the Cortana app service for handling voice commands in the background. Uses VoiceCommandServiceConnection to receive voice commands, display progress, and return results to Cortana.
+      tags:
+      - Service Connections
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ServiceConnectionRequest'
+      responses:
+        '201':
+          description: Service connection established
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ServiceConnection'
+        '400':
+          description: Invalid connection request
+components:
+  schemas:
+    ServiceConnectionRequest:
+      type: object
+      properties:
+        triggerDetails:
+          type: object
+          description: AppServiceTriggerDetails from the background task
+    ServiceConnection:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Connection identifier
+        language:
+          type: string
+          description: Language of the voice command
+        voiceCommandName:
+          type: string
+          description: Name of the recognized voice command
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

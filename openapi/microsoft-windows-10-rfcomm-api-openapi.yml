@@ -1,0 +1,67 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer RFCOMM API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: RFCOMM
+paths:
+  /bluetooth/rfcomm/connections:
+    post:
+      operationId: createRfcommConnection
+      summary: Microsoft Windows 10 Create an RFCOMM connection
+      description: Establishes a Bluetooth Classic RFCOMM connection to a device using RfcommDeviceService. RFCOMM provides a stream-based connection similar to TCP sockets for serial port emulation.
+      tags:
+      - RFCOMM
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RfcommConnectionRequest'
+      responses:
+        '201':
+          description: RFCOMM connection established
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RfcommConnection'
+        '400':
+          description: Connection failed
+components:
+  schemas:
+    RfcommConnection:
+      type: object
+      properties:
+        id:
+          type: string
+        deviceId:
+          type: string
+        serviceId:
+          type: string
+        maxMessageSize:
+          type: integer
+    RfcommConnectionRequest:
+      type: object
+      properties:
+        deviceId:
+          type: string
+          description: Bluetooth device ID
+        serviceId:
+          type: string
+          description: RFCOMM service UUID (e.g., SerialPort)
+      required:
+      - deviceId
+      - serviceId
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

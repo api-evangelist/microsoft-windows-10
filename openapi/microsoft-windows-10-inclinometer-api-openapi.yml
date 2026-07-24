@@ -1,0 +1,64 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Inclinometer API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Inclinometer
+paths:
+  /sensors/inclinometer/reading:
+    get:
+      operationId: getInclinometerReading
+      summary: Microsoft Windows 10 Get inclinometer reading
+      description: Retrieves the current inclinometer reading using Inclinometer.GetCurrentReading. Returns pitch, roll, and yaw values in degrees corresponding to rotation around the x, y, and z axes.
+      tags:
+      - Inclinometer
+      responses:
+        '200':
+          description: Successful reading
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InclinometerReading'
+        '404':
+          description: Inclinometer not available
+components:
+  schemas:
+    InclinometerReading:
+      type: object
+      description: Inclinometer reading data
+      properties:
+        pitchDegrees:
+          type: number
+          format: double
+          description: Pitch rotation around X axis
+        rollDegrees:
+          type: number
+          format: double
+          description: Roll rotation around Y axis
+        yawDegrees:
+          type: number
+          format: double
+          description: Yaw rotation around Z axis
+        yawAccuracy:
+          type: string
+          enum:
+          - Unknown
+          - Unreliable
+          - Approximate
+          - High
+        timestamp:
+          type: string
+          format: date-time
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

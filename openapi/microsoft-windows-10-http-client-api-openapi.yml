@@ -1,0 +1,88 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer HTTP Client API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: HTTP Client
+paths:
+  /networking/http/requests:
+    post:
+      operationId: sendHttpRequest
+      summary: Microsoft Windows 10 Send an HTTP request
+      description: Sends an HTTP request using the Windows.Web.Http.HttpClient class. Supports GET, POST, PUT, PATCH, DELETE methods with configurable headers, content types, and authentication. Includes built-in cookie management and automatic decompression.
+      tags:
+      - HTTP Client
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/HttpRequest'
+      responses:
+        '200':
+          description: HTTP response received
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HttpResponse'
+        '400':
+          description: Invalid request
+components:
+  schemas:
+    HttpResponse:
+      type: object
+      properties:
+        statusCode:
+          type: integer
+        reasonPhrase:
+          type: string
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+        content:
+          type: string
+        isSuccessStatusCode:
+          type: boolean
+    HttpRequest:
+      type: object
+      properties:
+        method:
+          type: string
+          enum:
+          - GET
+          - POST
+          - PUT
+          - PATCH
+          - DELETE
+          - HEAD
+          - OPTIONS
+        uri:
+          type: string
+          format: uri
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+        content:
+          type: string
+          description: Request body content
+        contentType:
+          type: string
+          description: Content-Type header value
+      required:
+      - method
+      - uri
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

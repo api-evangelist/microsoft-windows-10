@@ -1,0 +1,81 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer App Data API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: App Data
+paths:
+  /storage/app-data/settings:
+    get:
+      operationId: getAppSettings
+      summary: Microsoft Windows 10 Get application settings
+      description: Retrieves application settings from the ApplicationData.LocalSettings or RoamingSettings containers. Settings are stored as key-value pairs in ApplicationDataContainer objects.
+      tags:
+      - App Data
+      parameters:
+      - name: locality
+        in: query
+        required: false
+        description: Settings locality
+        schema:
+          type: string
+          enum:
+          - Local
+          - Roaming
+          default: Local
+      - name: containerName
+        in: query
+        required: false
+        description: Settings container name
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval of settings
+          content:
+            application/json:
+              schema:
+                type: object
+                additionalProperties:
+                  type: string
+    put:
+      operationId: updateAppSettings
+      summary: Microsoft Windows 10 Update application settings
+      description: Updates application settings in the specified ApplicationDataContainer. Supports simple values and composite values (ApplicationDataCompositeValue) for atomic serialization.
+      tags:
+      - App Data
+      parameters:
+      - name: locality
+        in: query
+        required: false
+        description: Settings locality
+        schema:
+          type: string
+          enum:
+          - Local
+          - Roaming
+          default: Local
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties:
+                type: string
+      responses:
+        '200':
+          description: Settings updated successfully
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

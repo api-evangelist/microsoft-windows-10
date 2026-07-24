@@ -1,0 +1,85 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Evaluation API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Evaluation
+paths:
+  /ml/sessions/{sessionId}/evaluate:
+    post:
+      operationId: evaluateMLModel
+      summary: Microsoft Windows 10 Evaluate model with input data
+      description: Evaluates the model with bound input data using LearningModelSession.Evaluate. Input features are bound via a LearningModelBinding, and results are returned as a LearningModelEvaluationResult containing output tensors, maps, sequences, or images.
+      tags:
+      - Evaluation
+      parameters:
+      - name: sessionId
+        in: path
+        required: true
+        description: Unique identifier for the evaluation session
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EvaluationRequest'
+      responses:
+        '200':
+          description: Evaluation completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/EvaluationResult'
+        '400':
+          description: Invalid input bindings
+        '404':
+          description: Session not found
+components:
+  schemas:
+    EvaluationResult:
+      type: object
+      description: Result of a model evaluation (LearningModelEvaluationResult)
+      properties:
+        correlationId:
+          type: string
+          description: Correlation ID from the request
+        succeeded:
+          type: boolean
+          description: Whether evaluation succeeded
+        errorStatus:
+          type: integer
+          description: Error code if evaluation failed
+        outputs:
+          type: object
+          additionalProperties:
+            type: object
+          description: Map of output feature names to their values
+    EvaluationRequest:
+      type: object
+      description: Input bindings for model evaluation
+      properties:
+        correlationId:
+          type: string
+          description: Correlation ID for tracking the evaluation
+        bindings:
+          type: object
+          additionalProperties:
+            type: object
+          description: Map of feature names to their input values
+      required:
+      - bindings
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

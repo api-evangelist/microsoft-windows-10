@@ -1,0 +1,72 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Structures API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Structures
+paths:
+  /win32/structures/{structureName}:
+    get:
+      operationId: getWin32Structure
+      summary: Microsoft Windows 10 Get Win32 structure definition
+      description: Retrieves the definition of a Win32 data structure, including its fields, sizes, alignment requirements, and associated API functions.
+      tags:
+      - Structures
+      parameters:
+      - name: structureName
+        in: path
+        required: true
+        description: The structure name (e.g., WNDCLASSEXW, MSG, RECT)
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval of structure definition
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Win32Structure'
+        '404':
+          description: Structure not found
+components:
+  schemas:
+    Win32Structure:
+      type: object
+      description: A Win32 data structure
+      properties:
+        name:
+          type: string
+          description: Structure name
+        fields:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+              description:
+                type: string
+        sizeInBytes:
+          type: integer
+          description: Size of the structure in bytes
+        header:
+          type: string
+          description: Header file defining the structure
+      required:
+      - name
+      - fields
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

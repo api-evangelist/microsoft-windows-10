@@ -1,0 +1,91 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Collections API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Collections
+paths:
+  /notifications/collections:
+    get:
+      operationId: listToastCollections
+      summary: Microsoft Windows 10 List toast notification collections
+      description: Retrieves the list of toast notification collections for the application. Collections group related notifications using the ToastCollection and ToastCollectionManager classes.
+      tags:
+      - Collections
+      responses:
+        '200':
+          description: Successful retrieval of notification collections
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ToastCollection'
+    post:
+      operationId: createToastCollection
+      summary: Microsoft Windows 10 Create a toast notification collection
+      description: Creates a new toast notification collection for grouping related notifications. Uses the ToastCollectionManager.SaveToastCollectionAsync method.
+      tags:
+      - Collections
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ToastCollectionRequest'
+      responses:
+        '201':
+          description: Collection created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToastCollection'
+        '400':
+          description: Invalid collection request
+components:
+  schemas:
+    ToastCollectionRequest:
+      type: object
+      properties:
+        id:
+          type: string
+        displayName:
+          type: string
+        launchArgs:
+          type: string
+        icon:
+          type: string
+          format: uri
+      required:
+      - id
+      - displayName
+    ToastCollection:
+      type: object
+      description: A collection of related toast notifications
+      properties:
+        id:
+          type: string
+          description: Collection identifier
+        displayName:
+          type: string
+          description: Display name for the collection
+        launchArgs:
+          type: string
+          description: Launch arguments when collection is activated
+        icon:
+          type: string
+          format: uri
+          description: Icon URI for the collection
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

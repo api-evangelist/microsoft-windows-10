@@ -1,0 +1,86 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Tracking API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Tracking
+paths:
+  /geolocation/tracking:
+    post:
+      operationId: startPositionTracking
+      summary: Microsoft Windows 10 Start continuous position tracking
+      description: Starts continuous position tracking by subscribing to the Geolocator.PositionChanged event. Reports position updates based on the configured movement threshold (in meters) and reporting interval.
+      tags:
+      - Tracking
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TrackingRequest'
+      responses:
+        '200':
+          description: Tracking started
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TrackingSession'
+        '403':
+          description: Location access denied
+    delete:
+      operationId: stopPositionTracking
+      summary: Microsoft Windows 10 Stop position tracking
+      description: Stops continuous position tracking by unsubscribing from the Geolocator.PositionChanged event and disposing the Geolocator.
+      tags:
+      - Tracking
+      responses:
+        '204':
+          description: Tracking stopped
+components:
+  schemas:
+    TrackingSession:
+      type: object
+      properties:
+        id:
+          type: string
+        status:
+          type: string
+          enum:
+          - Ready
+          - Initializing
+          - NoData
+          - Disabled
+          - NotInitialized
+          - NotAvailable
+          description: Current Geolocator status (PositionStatus)
+    TrackingRequest:
+      type: object
+      properties:
+        desiredAccuracy:
+          type: string
+          enum:
+          - Default
+          - High
+          default: Default
+        movementThreshold:
+          type: number
+          format: double
+          description: Minimum movement in meters before reporting
+          default: 0
+        reportInterval:
+          type: integer
+          description: Minimum time between reports in milliseconds
+          default: 1000
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

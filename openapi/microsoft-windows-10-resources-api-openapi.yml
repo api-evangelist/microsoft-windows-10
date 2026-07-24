@@ -1,0 +1,114 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Resources API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Resources
+paths:
+  /directx/resources:
+    post:
+      operationId: createDirectXResource
+      summary: Microsoft Windows 10 Create a DirectX resource
+      description: Creates a GPU resource such as a buffer, texture, or render target using ID3D12Device.CreateCommittedResource or similar methods. Resources are allocated in GPU heaps and can be used for vertex buffers, index buffers, constant buffers, textures, and render targets.
+      tags:
+      - Resources
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateResourceRequest'
+      responses:
+        '201':
+          description: Resource created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DirectXResource'
+        '400':
+          description: Invalid resource description
+components:
+  schemas:
+    DirectXResource:
+      type: object
+      description: A GPU resource
+      properties:
+        id:
+          type: string
+        resourceType:
+          type: string
+          enum:
+          - Buffer
+          - Texture1D
+          - Texture2D
+          - Texture3D
+        dimension:
+          type: string
+        width:
+          type: integer
+        height:
+          type: integer
+        depthOrArraySize:
+          type: integer
+        format:
+          type: string
+        heapType:
+          type: string
+          enum:
+          - Default
+          - Upload
+          - Readback
+    CreateResourceRequest:
+      type: object
+      properties:
+        resourceType:
+          type: string
+          enum:
+          - Buffer
+          - Texture1D
+          - Texture2D
+          - Texture3D
+        width:
+          type: integer
+          description: Width in pixels or bytes (for buffers)
+        height:
+          type: integer
+          description: Height in pixels (for textures)
+        depthOrArraySize:
+          type: integer
+          default: 1
+        format:
+          type: string
+          description: DXGI format (e.g., R8G8B8A8_UNORM)
+        heapType:
+          type: string
+          enum:
+          - Default
+          - Upload
+          - Readback
+          default: Default
+        flags:
+          type: array
+          items:
+            type: string
+            enum:
+            - AllowRenderTarget
+            - AllowDepthStencil
+            - AllowUnorderedAccess
+            - DenyShaderResource
+      required:
+      - resourceType
+      - width
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

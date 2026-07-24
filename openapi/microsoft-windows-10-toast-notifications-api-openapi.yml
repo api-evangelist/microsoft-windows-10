@@ -1,0 +1,254 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Toast Notifications API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Toast Notifications
+paths:
+  /notifications/toast:
+    post:
+      operationId: createToastNotification
+      summary: Microsoft Windows 10 Create a toast notification
+      description: Creates and displays a toast notification using the ToastNotificationManager. Toast notifications are pop-up UI elements that appear in the lower right of the screen and can contain text, images, and interactive elements such as buttons and text input fields. The notification content is defined using adaptive notification XML templates.
+      tags:
+      - Toast Notifications
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ToastNotificationRequest'
+      responses:
+        '201':
+          description: Toast notification created and displayed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToastNotification'
+        '400':
+          description: Invalid notification content
+    get:
+      operationId: listToastNotifications
+      summary: Microsoft Windows 10 List active toast notifications
+      description: Retrieves the list of currently active toast notifications for the application. Uses the ToastNotificationHistory class to access notification history and manage displayed notifications.
+      tags:
+      - Toast Notifications
+      responses:
+        '200':
+          description: Successful retrieval of active toast notifications
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ToastNotification'
+  /notifications/toast/{notificationTag}:
+    get:
+      operationId: getToastNotification
+      summary: Microsoft Windows 10 Get a toast notification by tag
+      description: Retrieves a specific toast notification identified by its tag. Tags are used as unique identifiers for notifications, enabling updates and removal of individual notifications.
+      tags:
+      - Toast Notifications
+      parameters:
+      - name: notificationTag
+        in: path
+        required: true
+        description: The notification tag identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval of the toast notification
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ToastNotification'
+        '404':
+          description: Notification not found
+    delete:
+      operationId: removeToastNotification
+      summary: Microsoft Windows 10 Remove a toast notification
+      description: Removes a specific toast notification from the notification center using the ToastNotificationHistory.Remove method. The notification is identified by its tag.
+      tags:
+      - Toast Notifications
+      parameters:
+      - name: notificationTag
+        in: path
+        required: true
+        description: The notification tag identifier
+        schema:
+          type: string
+      responses:
+        '204':
+          description: Notification removed successfully
+        '404':
+          description: Notification not found
+components:
+  schemas:
+    ToastContent:
+      type: object
+      description: The visual and interactive content of a toast notification
+      properties:
+        visual:
+          type: object
+          properties:
+            binding:
+              type: object
+              properties:
+                template:
+                  type: string
+                  description: Template type (e.g., ToastGeneric)
+                  example: ToastGeneric
+                texts:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      content:
+                        type: string
+                      hintStyle:
+                        type: string
+                  description: Text elements in the notification
+                images:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      src:
+                        type: string
+                        format: uri
+                      placement:
+                        type: string
+                        enum:
+                        - inline
+                        - appLogoOverride
+                        - hero
+                      hintCrop:
+                        type: string
+                        enum:
+                        - none
+                        - circle
+                  description: Image elements in the notification
+                attributionText:
+                  type: string
+                  description: Attribution text shown at the bottom
+        actions:
+          type: object
+          properties:
+            inputs:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                  type:
+                    type: string
+                    enum:
+                    - text
+                    - selection
+                  placeHolderContent:
+                    type: string
+              description: Interactive input fields
+            buttons:
+              type: array
+              items:
+                type: object
+                properties:
+                  content:
+                    type: string
+                  arguments:
+                    type: string
+                  activationType:
+                    type: string
+                    enum:
+                    - foreground
+                    - background
+                    - protocol
+                    - system
+              description: Action buttons
+        audio:
+          type: object
+          properties:
+            src:
+              type: string
+              description: Audio source URI
+            loop:
+              type: boolean
+              description: Whether the audio loops
+            silent:
+              type: boolean
+              description: Whether the notification is silent
+    ToastNotificationRequest:
+      type: object
+      description: Request to create a toast notification
+      properties:
+        content:
+          $ref: '#/components/schemas/ToastContent'
+        tag:
+          type: string
+          description: Tag identifier for the notification (max 16 characters)
+        group:
+          type: string
+          description: Group identifier for the notification (max 16 characters)
+        expirationTime:
+          type: string
+          format: date-time
+          description: Time when the notification expires
+        suppressPopup:
+          type: boolean
+          description: Whether to suppress the popup and send directly to action center
+        priority:
+          type: string
+          enum:
+          - Default
+          - High
+          description: Notification priority level
+        notificationMirroring:
+          type: string
+          enum:
+          - Allowed
+          - Disabled
+          description: Whether to allow mirroring to other devices
+      required:
+      - content
+    ToastNotification:
+      type: object
+      description: A toast notification as defined by the ToastNotification class
+      properties:
+        tag:
+          type: string
+          description: Tag identifier
+        group:
+          type: string
+          description: Group identifier
+        content:
+          $ref: '#/components/schemas/ToastContent'
+        expirationTime:
+          type: string
+          format: date-time
+        suppressPopup:
+          type: boolean
+        priority:
+          type: string
+          enum:
+          - Default
+          - High
+        data:
+          type: object
+          description: NotificationData for data binding
+          additionalProperties:
+            type: string
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

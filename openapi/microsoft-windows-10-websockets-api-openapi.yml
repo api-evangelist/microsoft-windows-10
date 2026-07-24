@@ -1,0 +1,90 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer WebSockets API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: WebSockets
+paths:
+  /networking/websockets:
+    post:
+      operationId: createWebSocket
+      summary: Microsoft Windows 10 Create a WebSocket connection
+      description: Creates a MessageWebSocket or StreamWebSocket for real-time bidirectional communication. MessageWebSocket handles discrete messages while StreamWebSocket provides continuous stream-based communication.
+      tags:
+      - WebSockets
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateWebSocketRequest'
+      responses:
+        '201':
+          description: WebSocket connection established
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WebSocket'
+        '400':
+          description: Invalid WebSocket configuration
+components:
+  schemas:
+    WebSocket:
+      type: object
+      description: A WebSocket connection
+      properties:
+        id:
+          type: string
+        uri:
+          type: string
+          format: uri
+        type:
+          type: string
+        state:
+          type: string
+          enum:
+          - Connecting
+          - Connected
+          - Closing
+          - Closed
+    CreateWebSocketRequest:
+      type: object
+      properties:
+        uri:
+          type: string
+          format: uri
+          description: WebSocket server URI (ws:// or wss://)
+        type:
+          type: string
+          enum:
+          - Message
+          - Stream
+          description: MessageWebSocket or StreamWebSocket
+          default: Message
+        messageType:
+          type: string
+          enum:
+          - Binary
+          - Utf8
+          description: Message type (for MessageWebSocket)
+          default: Utf8
+        protocols:
+          type: array
+          items:
+            type: string
+          description: Sub-protocols to request
+      required:
+      - uri
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

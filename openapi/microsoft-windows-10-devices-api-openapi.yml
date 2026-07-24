@@ -1,0 +1,360 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Devices API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Devices
+paths:
+  /bluetooth/devices:
+    get:
+      operationId: listBluetoothDevices
+      summary: Microsoft Windows 10 List paired Bluetooth devices
+      description: Enumerates paired Bluetooth devices using DeviceInformation.FindAllAsync with the BluetoothDevice or BluetoothLEDevice selector. Returns device information including name, address, connection status, and services.
+      tags:
+      - Devices
+      parameters:
+      - name: type
+        in: query
+        required: false
+        description: Filter by Bluetooth type
+        schema:
+          type: string
+          enum:
+          - Classic
+          - LowEnergy
+          - All
+          default: All
+      responses:
+        '200':
+          description: Successful retrieval of Bluetooth devices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BluetoothDevice'
+  /bluetooth/devices/{deviceId}:
+    get:
+      operationId: getBluetoothDevice
+      summary: Microsoft Windows 10 Get Bluetooth device details
+      description: Retrieves detailed information about a Bluetooth device using BluetoothDevice.FromIdAsync or BluetoothLEDevice.FromIdAsync. Includes connection status, paired status, and available services.
+      tags:
+      - Devices
+      parameters:
+      - name: deviceId
+        in: path
+        required: true
+        description: Bluetooth device identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval of device details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BluetoothDeviceDetail'
+        '404':
+          description: Device not found
+  /directx/devices:
+    get:
+      operationId: listDirectXDevices
+      summary: Microsoft Windows 10 List DirectX graphics devices
+      description: Enumerates available DirectX graphics adapters using DXGI (DirectX Graphics Infrastructure). Returns information about each adapter including vendor, device ID, dedicated video memory, shared system memory, and feature level support.
+      tags:
+      - Devices
+      responses:
+        '200':
+          description: Successful retrieval of graphics devices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/GraphicsAdapter'
+  /directx/devices/{adapterId}:
+    get:
+      operationId: getDirectXDevice
+      summary: Microsoft Windows 10 Get graphics device details
+      description: Retrieves detailed information about a specific graphics adapter including supported feature levels, output displays, and hardware capabilities such as shader model support, ray tracing tier, and mesh shader support.
+      tags:
+      - Devices
+      parameters:
+      - name: adapterId
+        in: path
+        required: true
+        description: DXGI adapter identifier
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful retrieval of adapter details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GraphicsAdapterDetail'
+        '404':
+          description: Adapter not found
+  /media/capture/devices:
+    get:
+      operationId: listCaptureDevices
+      summary: Microsoft Windows 10 List media capture devices
+      description: Enumerates available media capture devices (cameras and microphones) using DeviceInformation.FindAllAsync with the appropriate device class filter. Returns device information including ID, name, location, and capabilities.
+      tags:
+      - Devices
+      parameters:
+      - name: deviceClass
+        in: query
+        required: false
+        description: Filter by device class
+        schema:
+          type: string
+          enum:
+          - VideoCapture
+          - AudioCapture
+          - AudioRender
+      responses:
+        '200':
+          description: Successful retrieval of capture devices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CaptureDevice'
+  /ml/devices:
+    get:
+      operationId: listMLDevices
+      summary: Microsoft Windows 10 List available ML devices
+      description: Retrieves the list of available LearningModelDevice options for model evaluation, including CPU, DirectX GPU, and DirectXHighPerformance targets.
+      tags:
+      - Devices
+      responses:
+        '200':
+          description: Successful retrieval of available devices
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/LearningModelDevice'
+components:
+  schemas:
+    BluetoothDeviceDetail:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        bluetoothAddress:
+          type: string
+        type:
+          type: string
+        connectionStatus:
+          type: string
+        isPaired:
+          type: boolean
+        classOfDevice:
+          type: object
+          properties:
+            majorClass:
+              type: string
+            minorClass:
+              type: string
+          description: Bluetooth Class of Device (for Classic)
+        appearance:
+          type: object
+          properties:
+            category:
+              type: string
+            subCategory:
+              type: string
+          description: BLE Appearance (for Low Energy)
+        serviceUuids:
+          type: array
+          items:
+            type: string
+          description: Advertised service UUIDs
+    GraphicsAdapterDetail:
+      type: object
+      description: Detailed graphics adapter information
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        vendorId:
+          type: integer
+        deviceId:
+          type: integer
+        dedicatedVideoMemory:
+          type: integer
+          format: int64
+        sharedSystemMemory:
+          type: integer
+          format: int64
+        maxFeatureLevel:
+          type: string
+          enum:
+          - '11_0'
+          - '11_1'
+          - '12_0'
+          - '12_1'
+          - '12_2'
+          description: Maximum supported Direct3D feature level
+        shaderModel:
+          type: string
+          description: Maximum supported shader model
+        rayTracingTier:
+          type: string
+          enum:
+          - NotSupported
+          - Tier1_0
+          - Tier1_1
+          description: DirectX ray tracing support tier
+        meshShaderTier:
+          type: string
+          enum:
+          - NotSupported
+          - Tier1
+          description: Mesh shader support tier
+        outputs:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              resolution:
+                type: string
+              refreshRate:
+                type: number
+          description: Connected display outputs
+    CaptureDevice:
+      type: object
+      description: A media capture device
+      properties:
+        id:
+          type: string
+          description: Device identifier
+        name:
+          type: string
+          description: Device display name
+        deviceClass:
+          type: string
+          enum:
+          - VideoCapture
+          - AudioCapture
+          - AudioRender
+        enclosureLocation:
+          type: object
+          properties:
+            panel:
+              type: string
+              enum:
+              - Front
+              - Back
+              - Top
+              - Bottom
+              - Left
+              - Right
+              - Unknown
+          description: Physical location on the device
+        isEnabled:
+          type: boolean
+        isDefault:
+          type: boolean
+      required:
+      - id
+      - name
+    BluetoothDevice:
+      type: object
+      description: A Bluetooth device
+      properties:
+        id:
+          type: string
+          description: Device identifier
+        name:
+          type: string
+          description: Device display name
+        bluetoothAddress:
+          type: string
+          description: Bluetooth MAC address
+        type:
+          type: string
+          enum:
+          - Classic
+          - LowEnergy
+        connectionStatus:
+          type: string
+          enum:
+          - Connected
+          - Disconnected
+        isPaired:
+          type: boolean
+      required:
+      - id
+      - name
+    LearningModelDevice:
+      type: object
+      description: A device for model evaluation (LearningModelDevice class)
+      properties:
+        kind:
+          type: string
+          enum:
+          - Default
+          - Cpu
+          - DirectX
+          - DirectXHighPerformance
+          - DirectXMinPower
+          description: Device kind
+        adapterId:
+          type: string
+          description: GPU adapter ID (for DirectX devices)
+        name:
+          type: string
+          description: Device name
+    GraphicsAdapter:
+      type: object
+      description: A DXGI graphics adapter
+      properties:
+        id:
+          type: string
+          description: Adapter LUID
+        description:
+          type: string
+          description: Adapter description string
+        vendorId:
+          type: integer
+          description: Hardware vendor identifier
+        deviceId:
+          type: integer
+          description: Hardware device identifier
+        dedicatedVideoMemory:
+          type: integer
+          format: int64
+          description: Dedicated video memory in bytes
+        sharedSystemMemory:
+          type: integer
+          format: int64
+          description: Shared system memory in bytes
+        isSoftwareAdapter:
+          type: boolean
+          description: Whether this is a software (WARP) adapter
+      required:
+      - id
+      - description
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

@@ -1,0 +1,138 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Visuals API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Visuals
+paths:
+  /composition/visuals:
+    get:
+      operationId: listVisuals
+      summary: Microsoft Windows 10 List composition visuals
+      description: Retrieves the list of visual objects in the composition tree. Visuals are the base building blocks of the visual layer, representing rectangular areas that can have size, position, opacity, clip, and transform properties. Types include SpriteVisual, ContainerVisual, LayerVisual, ShapeVisual, and RedirectVisual.
+      tags:
+      - Visuals
+      responses:
+        '200':
+          description: Successful retrieval of visuals
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/CompositionVisual'
+    post:
+      operationId: createVisual
+      summary: Microsoft Windows 10 Create a composition visual
+      description: Creates a new visual object using the Compositor factory methods such as Compositor.CreateSpriteVisual, CreateContainerVisual, or CreateLayerVisual. The visual must be added to a visual tree to be rendered.
+      tags:
+      - Visuals
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateVisualRequest'
+      responses:
+        '201':
+          description: Visual created successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompositionVisual'
+        '400':
+          description: Invalid visual configuration
+components:
+  schemas:
+    Vector3:
+      type: object
+      properties:
+        x:
+          type: number
+          format: float
+        y:
+          type: number
+          format: float
+        z:
+          type: number
+          format: float
+    CompositionVisual:
+      type: object
+      description: A composition visual object
+      properties:
+        id:
+          type: string
+          description: Visual identifier
+        type:
+          type: string
+          enum:
+          - SpriteVisual
+          - ContainerVisual
+          - LayerVisual
+          - ShapeVisual
+          - RedirectVisual
+          description: Visual type
+        offset:
+          $ref: '#/components/schemas/Vector3'
+        size:
+          $ref: '#/components/schemas/Vector2'
+        opacity:
+          type: number
+          format: float
+          description: Opacity (0.0 to 1.0)
+        rotationAngleInDegrees:
+          type: number
+          format: float
+        scale:
+          $ref: '#/components/schemas/Vector3'
+        isVisible:
+          type: boolean
+        comment:
+          type: string
+          description: Developer comment for debugging
+      required:
+      - id
+      - type
+    Vector2:
+      type: object
+      properties:
+        x:
+          type: number
+          format: float
+        y:
+          type: number
+          format: float
+    CreateVisualRequest:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+          - SpriteVisual
+          - ContainerVisual
+          - LayerVisual
+          - ShapeVisual
+          description: Type of visual to create
+        offset:
+          $ref: '#/components/schemas/Vector3'
+        size:
+          $ref: '#/components/schemas/Vector2'
+        opacity:
+          type: number
+          format: float
+          default: 1.0
+      required:
+      - type
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

@@ -1,0 +1,116 @@
+openapi: 3.1.0
+info:
+  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Authentication API
+  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  version: 1.0.0
+  contact:
+    name: Microsoft Developer Support
+    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  license:
+    name: Microsoft Software License
+    url: https://www.microsoft.com/en-us/legal/terms-of-use
+servers:
+- url: https://api.windows.com
+  description: Windows Platform API
+tags:
+- name: Authentication
+paths:
+  /hello/sign:
+    post:
+      operationId: signWithCredential
+      summary: Microsoft Windows 10 Sign data with a Windows Hello credential
+      description: Signs a challenge buffer using the Windows Hello credential's private key via KeyCredential.RequestSignAsync. The user is prompted for biometric or PIN verification before the signing operation proceeds. Returns the signed data for server-side verification.
+      tags:
+      - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SignRequest'
+      responses:
+        '200':
+          description: Data signed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SignResult'
+        '403':
+          description: User cancelled the consent prompt
+        '404':
+          description: Credential not found
+  /hello/verify-user:
+    post:
+      operationId: verifyUserConsent
+      summary: Microsoft Windows 10 Verify user identity
+      description: Prompts the user to verify their identity using Windows Hello biometrics or PIN via UserConsentVerifier.RequestVerificationAsync. Returns whether the verification succeeded. This can be used for step-up authentication before sensitive operations.
+      tags:
+      - Authentication
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/VerifyUserRequest'
+      responses:
+        '200':
+          description: Verification result returned
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/VerifyUserResult'
+components:
+  schemas:
+    SignResult:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - Success
+          - UserCanceled
+          - NotFound
+          - UserPrefersPassword
+          description: Sign operation status
+        signature:
+          type: string
+          format: byte
+          description: Base64-encoded signed data
+    SignRequest:
+      type: object
+      properties:
+        accountId:
+          type: string
+          description: Account identifier for the credential
+        challenge:
+          type: string
+          format: byte
+          description: Base64-encoded challenge buffer to sign
+      required:
+      - accountId
+      - challenge
+    VerifyUserResult:
+      type: object
+      properties:
+        result:
+          type: string
+          enum:
+          - Verified
+          - DeviceNotPresent
+          - NotConfiguredForUser
+          - DisabledByPolicy
+          - DeviceBusy
+          - RetriesExhausted
+          - Canceled
+          description: Verification result
+    VerifyUserRequest:
+      type: object
+      properties:
+        message:
+          type: string
+          description: Message to display in the verification prompt
+      required:
+      - message
+externalDocs:
+  description: Background Tasks Documentation
+  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
