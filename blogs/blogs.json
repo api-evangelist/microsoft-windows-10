@@ -2,14 +2,10 @@
   "repo": "microsoft-windows-10",
   "feeds": [
     {
-      "source": "https://blogs.windows.com/windowsdeveloper/feed/",
-      "error": "HTTPError"
-    },
-    {
       "source": "https://learn.microsoft.com/en-us/windows/apps/develop/security/windows-hello",
       "error": "HTTPError"
     }
   ],
   "post_count": 12,
-  "fetched": "2026-07-11T11:50:51Z"
+  "fetched": "2026-08-01T15:49:00Z"
 }
