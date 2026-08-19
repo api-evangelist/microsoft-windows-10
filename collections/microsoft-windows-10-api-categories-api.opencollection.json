@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer API Categories API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "API Categories",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List Win32 API categories",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/win32/api-categories"
+          },
+          "docs": "Retrieves the list of major Win32 API categories including User Interface, Windows Environment (Shell), User Input and Messaging, Data Access and Storage, Diagnostics, Graphics and Multimedia, Devices, System Services, Security and Identity, Networking and Internet, and System Administration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

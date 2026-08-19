@@ -1,0 +1,472 @@
+{
+  "item": [
+    {
+      "id": "9232be35-abcb-4845-8d6e-c3f0b7b424b9",
+      "name": "Files",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ec6658f9-15d3-481c-9321-437a59f2af61",
+          "name": "Microsoft Windows 10 List storage files",
+          "request": {
+            "name": "Microsoft Windows 10 List storage files",
+            "description": {
+              "content": "Retrieves files from a specified storage location. Uses StorageFolder.GetFilesAsync to enumerate files with optional query options for filtering by type, date, size, and other properties.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "storage",
+                "files"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "folderId",
+                  "value": "<string>",
+                  "description": "Known folder identifier (Documents, Pictures, Music, Videos)"
+                },
+                {
+                  "disabled": false,
+                  "key": "fileType",
+                  "value": "<string>",
+                  "description": "Filter by file extension (e.g., .jpg, .mp3)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "26f4b4ae-c209-41d2-9e12-8313912839f1",
+              "name": "Successful retrieval of files",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "storage",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "folderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fileType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"path\": \"string\",\n    \"displayName\": \"string\",\n    \"fileType\": \"string\",\n    \"contentType\": \"string\",\n    \"dateCreated\": \"1998-06-12T00:54:14.648Z\",\n    \"isAvailable\": true\n  },\n  {\n    \"name\": \"string\",\n    \"path\": \"string\",\n    \"displayName\": \"string\",\n    \"fileType\": \"string\",\n    \"contentType\": \"string\",\n    \"dateCreated\": \"2015-08-10T22:07:29.633Z\",\n    \"isAvailable\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a8a05947-4dce-400f-b6d8-060138e660a1",
+              "name": "Access denied to the specified location",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "storage",
+                    "files"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "folderId",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fileType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df992d40-3e91-4447-900a-4d9ce3cf650d",
+          "name": "Microsoft Windows 10 Get file details",
+          "request": {
+            "name": "Microsoft Windows 10 Get file details",
+            "description": {
+              "content": "Retrieves detailed information about a specific file using StorageFile properties including name, path, size, date created, date modified, content type, file attributes, and storage provider information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "storage",
+                "files",
+                ":fileId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fileId",
+                  "description": "(Required) Unique file identifier or path"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2ed9eb1b-7b44-44a3-89e3-3333f92ba824",
+              "name": "Successful retrieval of file details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "storage",
+                    "files",
+                    ":fileId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fileId",
+                      "description": "(Required) Unique file identifier or path"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"path\": \"string\",\n  \"displayName\": \"string\",\n  \"fileType\": \"string\",\n  \"contentType\": \"string\",\n  \"dateCreated\": \"1949-01-02T18:32:17.068Z\",\n  \"dateModified\": \"1951-01-04T19:46:51.457Z\",\n  \"size\": 8758,\n  \"attributes\": [\n    \"ReadOnly\",\n    \"Normal\"\n  ],\n  \"provider\": {\n    \"id\": \"string\",\n    \"displayName\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a2ab9ae8-7498-4d7e-99bd-283cfe09396d",
+              "name": "File not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "storage",
+                    "files",
+                    ":fileId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fileId",
+                      "description": "(Required) Unique file identifier or path"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4e521683-6169-4cfa-bec4-37785d2b0212",
+          "name": "Microsoft Windows 10 Delete a file",
+          "request": {
+            "name": "Microsoft Windows 10 Delete a file",
+            "description": {
+              "content": "Deletes a file using StorageFile.DeleteAsync. Supports permanent deletion or moving to the Recycle Bin as specified by the StorageDeleteOption.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "storage",
+                "files",
+                ":fileId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "option",
+                  "value": "<string>",
+                  "description": "Delete option"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "fileId",
+                  "description": "(Required) Unique file identifier"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "56e45871-8197-4263-ab76-37323ceae6f4",
+              "name": "File deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "storage",
+                    "files",
+                    ":fileId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "option",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fileId",
+                      "description": "(Required) Unique file identifier"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5bc1fa64-2836-43d3-bd39-188a8081d6a4",
+              "name": "Access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "storage",
+                    "files",
+                    ":fileId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "option",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fileId",
+                      "description": "(Required) Unique file identifier"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "5d0eac6b-7109-4226-8d13-717ea9e7b60c",
+              "name": "File not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "storage",
+                    "files",
+                    ":fileId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "option",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "fileId",
+                      "description": "(Required) Unique file identifier"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "90d2394e-552c-40c2-98e2-02e726705a6b",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Files API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

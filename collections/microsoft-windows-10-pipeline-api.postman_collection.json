@@ -1,0 +1,163 @@
+{
+  "item": [
+    {
+      "id": "f84c6009-e3e3-4835-b066-c071f1e008b9",
+      "name": "Pipeline",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "339b4ce7-b16b-4ef5-a1b1-e06d8893abeb",
+          "name": "Microsoft Windows 10 Create a graphics pipeline state",
+          "request": {
+            "name": "Microsoft Windows 10 Create a graphics pipeline state",
+            "description": {
+              "content": "Creates a graphics pipeline state object (ID3D12PipelineState) that defines the complete rendering pipeline configuration including vertex shader, pixel shader, input layout, rasterizer state, blend state, depth stencil state, and render target formats.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "directx",
+                "pipeline-states"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"vertexShader\": \"<string>\",\n  \"pixelShader\": \"<string>\",\n  \"inputLayout\": [\n    {\n      \"semanticName\": \"<string>\",\n      \"format\": \"<string>\",\n      \"inputSlot\": \"<integer>\"\n    },\n    {\n      \"semanticName\": \"<string>\",\n      \"format\": \"<string>\",\n      \"inputSlot\": \"<integer>\"\n    }\n  ],\n  \"primitiveTopology\": \"TriangleList\",\n  \"renderTargetCount\": 1,\n  \"renderTargetFormats\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"depthStencilFormat\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e034e756-74ee-4814-b98b-2443d39c2fdd",
+              "name": "Pipeline state created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "directx",
+                    "pipeline-states"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vertexShader\": \"<string>\",\n  \"pixelShader\": \"<string>\",\n  \"inputLayout\": [\n    {\n      \"semanticName\": \"<string>\",\n      \"format\": \"<string>\",\n      \"inputSlot\": \"<integer>\"\n    },\n    {\n      \"semanticName\": \"<string>\",\n      \"format\": \"<string>\",\n      \"inputSlot\": \"<integer>\"\n    }\n  ],\n  \"primitiveTopology\": \"TriangleList\",\n  \"renderTargetCount\": 1,\n  \"renderTargetFormats\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"depthStencilFormat\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"isValid\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d8930956-f809-4a1b-9714-ef6a6b906678",
+              "name": "Invalid pipeline configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "directx",
+                    "pipeline-states"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"vertexShader\": \"<string>\",\n  \"pixelShader\": \"<string>\",\n  \"inputLayout\": [\n    {\n      \"semanticName\": \"<string>\",\n      \"format\": \"<string>\",\n      \"inputSlot\": \"<integer>\"\n    },\n    {\n      \"semanticName\": \"<string>\",\n      \"format\": \"<string>\",\n      \"inputSlot\": \"<integer>\"\n    }\n  ],\n  \"primitiveTopology\": \"TriangleList\",\n  \"renderTargetCount\": 1,\n  \"renderTargetFormats\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"depthStencilFormat\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cfc4da8f-ee4b-40d7-9085-6bef6ee0cca8",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Pipeline API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

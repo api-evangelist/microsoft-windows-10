@@ -1,0 +1,102 @@
+{
+  "item": [
+    {
+      "id": "c49b079a-98be-42f9-9122-1f47b52fb4d6",
+      "name": "Sensors",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f3edd394-3508-4b58-b604-3b5832ce051d",
+          "name": "Microsoft Windows 10 List available sensors",
+          "request": {
+            "name": "Microsoft Windows 10 List available sensors",
+            "description": {
+              "content": "Retrieves the list of available sensors on the device. Each sensor type uses a GetDefault() static method to check availability. Supported types include Accelerometer, Gyrometer, Compass, Inclinometer, LightSensor, Barometer, Altimeter, Magnetometer, OrientationSensor, Pedometer, ProximitySensor, ActivitySensor, HumanPresenceSensor, and HingeAngleSensor.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sensors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f08fe17b-4138-4f1d-ab17-47acf7770194",
+              "name": "Successful retrieval of available sensors",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sensors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"type\": \"Altimeter\",\n    \"deviceId\": \"string\",\n    \"minimumReportInterval\": 9205,\n    \"reportInterval\": 5669\n  },\n  {\n    \"type\": \"SimpleOrientationSensor\",\n    \"deviceId\": \"string\",\n    \"minimumReportInterval\": 9828,\n    \"reportInterval\": 6909\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d5f9e618-5068-4d1f-9aac-88e4ac7da596",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Sensors API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

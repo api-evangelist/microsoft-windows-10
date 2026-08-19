@@ -1,0 +1,245 @@
+{
+  "item": [
+    {
+      "id": "0913d469-6202-44e2-a56f-e09a60542554",
+      "name": "Controls",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0296e63a-c0cd-4a33-8187-1c9646af7e52",
+          "name": "Microsoft Windows 10 List WinUI controls",
+          "request": {
+            "name": "Microsoft Windows 10 List WinUI controls",
+            "description": {
+              "content": "Retrieves the catalog of available WinUI XAML controls organized by category. Includes basic input controls (Button, TextBox, CheckBox), collections (ListView, GridView, TreeView), navigation (NavigationView, TabView, Pivot), status (ProgressBar, ProgressRing, InfoBar), and media controls (MediaPlayerElement, Image).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "winui",
+                "controls"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "category",
+                  "value": "<string>",
+                  "description": "Filter controls by category"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "75450540-6181-4b2f-9e9c-bc7ee9db6073",
+              "name": "Successful retrieval of controls",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "winui",
+                    "controls"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "category",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"NavigationView\",\n    \"namespace\": \"Microsoft.UI.Xaml.Controls\",\n    \"category\": \"string\",\n    \"description\": \"string\",\n    \"isNewInWinUI\": false\n  },\n  {\n    \"name\": \"NavigationView\",\n    \"namespace\": \"Microsoft.UI.Xaml.Controls\",\n    \"category\": \"string\",\n    \"description\": \"string\",\n    \"isNewInWinUI\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "950701f2-740f-4ba7-9ecb-e3c36cfe7756",
+          "name": "Microsoft Windows 10 Get control details",
+          "request": {
+            "name": "Microsoft Windows 10 Get control details",
+            "description": {
+              "content": "Retrieves detailed information about a specific WinUI control including its properties, events, methods, XAML usage examples, and Fluent Design System guidelines.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "winui",
+                "controls",
+                ":controlName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "controlName",
+                  "description": "(Required) Control name (e.g., NavigationView, InfoBar, TreeView)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bbc92604-94fa-43ad-bafb-645fe1d4d9d6",
+              "name": "Successful retrieval of control details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "winui",
+                    "controls",
+                    ":controlName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "controlName",
+                      "description": "(Required) Control name (e.g., NavigationView, InfoBar, TreeView)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"namespace\": \"string\",\n  \"description\": \"string\",\n  \"category\": \"string\",\n  \"baseClass\": \"string\",\n  \"properties\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"defaultValue\": \"string\",\n      \"description\": \"string\",\n      \"isDependencyProperty\": false\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"defaultValue\": \"string\",\n      \"description\": \"string\",\n      \"isDependencyProperty\": false\n    }\n  ],\n  \"events\": [\n    {\n      \"name\": \"string\",\n      \"eventArgsType\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"eventArgsType\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"xamlUsage\": \"string\",\n  \"guidelines\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "bb3761c9-3cc1-4c6f-9d22-b695c22ae434",
+              "name": "Control not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "winui",
+                    "controls",
+                    ":controlName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "controlName",
+                      "description": "(Required) Control name (e.g., NavigationView, InfoBar, TreeView)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fb1ccb77-c679-44eb-8400-38b7c776fc01",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Controls API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

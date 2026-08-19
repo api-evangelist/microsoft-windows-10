@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "db277931-1829-4fb6-b117-2dbe7c4356cc",
+      "name": "Light Sensor",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d846be6f-c4a6-44a2-b5a2-81bfdd719cd7",
+          "name": "Microsoft Windows 10 Get light sensor reading",
+          "request": {
+            "name": "Microsoft Windows 10 Get light sensor reading",
+            "description": {
+              "content": "Retrieves the current ambient light sensor reading using LightSensor.GetCurrentReading. Returns illuminance in lux and optionally chromaticity coordinates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sensors",
+                "light",
+                "reading"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18591b08-abc8-4d2c-9e30-e921db944e46",
+              "name": "Successful reading",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sensors",
+                    "light",
+                    "reading"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"illuminanceInLux\": 9861.668732797807,\n  \"chromaticity\": {\n    \"x\": 5952.206240450566,\n    \"y\": 2217.174329390924\n  },\n  \"timestamp\": \"1969-04-01T11:18:33.941Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24a30598-cea6-463f-9a96-253017114af1",
+              "name": "Light sensor not available",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sensors",
+                    "light",
+                    "reading"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f673acbb-b8bc-46d3-8974-828a7df3a22e",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Light Sensor API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "d5ba1494-fcce-4c99-9c42-cb8ca37e2fbb",
+      "name": "Accelerometer",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2360c03d-a5e3-4bf7-9bca-4453ca3df7f0",
+          "name": "Microsoft Windows 10 Get accelerometer reading",
+          "request": {
+            "name": "Microsoft Windows 10 Get accelerometer reading",
+            "description": {
+              "content": "Retrieves the current accelerometer reading using Accelerometer.GetCurrentReading. Returns G-force values along the x, y, and z axes. The sensor coordinate system is fixed to the device.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sensors",
+                "accelerometer",
+                "reading"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "957ff174-9e60-4aaa-a96e-f58c3b18f084",
+              "name": "Successful reading",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sensors",
+                    "accelerometer",
+                    "reading"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"accelerationX\": 7898.28362980909,\n  \"accelerationY\": 9050.6500526193,\n  \"accelerationZ\": 4302.157822475615,\n  \"timestamp\": \"1967-03-16T03:18:47.532Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4705a773-c2f5-4f15-8788-32fab899b3b9",
+              "name": "Accelerometer not available",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sensors",
+                    "accelerometer",
+                    "reading"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c28b97dd-f2a7-4a01-9ca5-86cb41ab982b",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

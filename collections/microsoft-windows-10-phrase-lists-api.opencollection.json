@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Phrase Lists API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Phrase Lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Update a phrase list",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.windows.com/cortana/voice-commands/:commandSetName/phrase-lists/:phraseListName",
+            "params": [
+              {
+                "name": "commandSetName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the voice command set"
+              },
+              {
+                "name": "phraseListName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the phrase list to update"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates a phrase list within a voice command set using VoiceCommandDefinition.SetPhraseListAsync. Phrase lists are dynamic vocabularies that can be updated at runtime without reinstalling the VCD file."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

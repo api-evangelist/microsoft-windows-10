@@ -1,0 +1,104 @@
+{
+  "item": [
+    {
+      "id": "2f3b3b08-71d3-4bcb-b40b-8ed88e5600f6",
+      "name": "Connectivity",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "75ab5abe-9172-4f41-89d3-3b5a063d95bd",
+          "name": "Microsoft Windows 10 Get network connectivity information",
+          "request": {
+            "name": "Microsoft Windows 10 Get network connectivity information",
+            "description": {
+              "content": "Retrieves current network connectivity information using NetworkInformation.GetInternetConnectionProfile and NetworkInformation.GetConnectionProfiles. Returns details about connection type, signal strength, data plan status, and cost.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "networking",
+                "connectivity"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "17cb13a2-644b-4e07-929f-13087ddf1f4d",
+              "name": "Successful retrieval of connectivity info",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "networking",
+                    "connectivity"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"isConnected\": true,\n  \"connectionType\": \"None\",\n  \"signalStrength\": 9570,\n  \"networkCostType\": \"Fixed\",\n  \"dataPlanStatus\": {\n    \"dataLimitInMegabytes\": 3266,\n    \"megabytesUsed\": 8549.922477196202,\n    \"maxTransferSizeInMegabytes\": 5034\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "20a87332-d8b0-47c4-9c62-a7d8c89c3164",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Connectivity API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

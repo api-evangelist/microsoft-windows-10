@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "cdc37584-af4c-43bd-a9b6-9db715004a46",
+      "name": "Inclinometer",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "55d76567-e096-4644-a3ed-cb92609e3b64",
+          "name": "Microsoft Windows 10 Get inclinometer reading",
+          "request": {
+            "name": "Microsoft Windows 10 Get inclinometer reading",
+            "description": {
+              "content": "Retrieves the current inclinometer reading using Inclinometer.GetCurrentReading. Returns pitch, roll, and yaw values in degrees corresponding to rotation around the x, y, and z axes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sensors",
+                "inclinometer",
+                "reading"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "18e3f592-8bd3-4693-b90d-372732bcc177",
+              "name": "Successful reading",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sensors",
+                    "inclinometer",
+                    "reading"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"pitchDegrees\": 4017.953562233312,\n  \"rollDegrees\": 925.9458420633238,\n  \"yawDegrees\": 1690.197614831971,\n  \"yawAccuracy\": \"Unreliable\",\n  \"timestamp\": \"2015-10-03T06:27:10.449Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ae6181a9-5d1b-4fa6-8f90-18eb0e9fb1a2",
+              "name": "Inclinometer not available",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sensors",
+                    "inclinometer",
+                    "reading"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "68b086f4-34ce-41db-b45d-e995fc90c361",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Inclinometer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,265 @@
+{
+  "item": [
+    {
+      "id": "4b4c2274-1344-4e92-a072-3f442f441838",
+      "name": "Position",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d8c2bb2a-c4ce-428f-97ad-3a9d36ca050d",
+          "name": "Microsoft Windows 10 Get current geographic position",
+          "request": {
+            "name": "Microsoft Windows 10 Get current geographic position",
+            "description": {
+              "content": "Retrieves the current geographic position using Geolocator.GetGeopositionAsync. Returns a Geoposition containing a Geocoordinate with latitude, longitude, altitude, accuracy, heading, speed, and timestamp. Accuracy depends on the position source (GNSS ~10m, Wi-Fi ~30-500m, cellular ~300-3000m, IP ~300-10000m).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geolocation",
+                "position"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "desiredAccuracy",
+                  "value": "Default",
+                  "description": "Desired position accuracy level"
+                },
+                {
+                  "disabled": false,
+                  "key": "maximumAge",
+                  "value": "<integer>",
+                  "description": "Maximum age of cached position in seconds"
+                },
+                {
+                  "disabled": false,
+                  "key": "timeout",
+                  "value": "<integer>",
+                  "description": "Timeout in seconds for obtaining a position"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "15f2a6b2-cba2-4cb6-9bef-74f2e8beef33",
+              "name": "Position retrieved successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "position"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "desiredAccuracy",
+                      "value": "Default"
+                    },
+                    {
+                      "key": "maximumAge",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"coordinate\": {\n    \"latitude\": 8425.48330379086,\n    \"longitude\": 4682.309584059254,\n    \"accuracy\": 7625.3006273771825,\n    \"timestamp\": \"1974-08-06T05:03:53.243Z\",\n    \"altitude\": 6944.168710570067,\n    \"altitudeAccuracy\": 7073.424259068396,\n    \"heading\": 1646.9762627722407,\n    \"speed\": 4269.081139571367,\n    \"positionSource\": \"Cellular\",\n    \"satelliteData\": {\n      \"horizontalDilutionOfPrecision\": 4666.292723620806,\n      \"verticalDilutionOfPrecision\": 6505.874132882263,\n      \"geometricDilutionOfPrecision\": 7080.475141231456\n    }\n  },\n  \"civicAddress\": {\n    \"city\": \"string\",\n    \"country\": \"string\",\n    \"state\": \"string\",\n    \"postalCode\": \"string\"\n  },\n  \"venueData\": {\n    \"id\": \"string\",\n    \"level\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0a845bef-e1da-4e92-8468-68c75554d81c",
+              "name": "Location access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "position"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "desiredAccuracy",
+                      "value": "Default"
+                    },
+                    {
+                      "key": "maximumAge",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "2e97c1cc-a6de-4438-8322-659d6739fc17",
+              "name": "Position request timed out",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "position"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "desiredAccuracy",
+                      "value": "Default"
+                    },
+                    {
+                      "key": "maximumAge",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Request Timeout",
+              "code": 408,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "ebe56544-5ecd-467c-96b4-ed9caab1cb5e",
+              "name": "Location service unavailable",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "position"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "desiredAccuracy",
+                      "value": "Default"
+                    },
+                    {
+                      "key": "maximumAge",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "timeout",
+                      "value": "<integer>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Service Unavailable",
+              "code": 503,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "d69d6cf1-645b-470f-94ea-9d02802d36b2",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Position API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

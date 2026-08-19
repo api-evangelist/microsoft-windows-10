@@ -1,0 +1,88 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Accelerometer Tasks API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tasks",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List registered background tasks",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/background-tasks"
+          },
+          "docs": "Retrieves the list of registered background tasks using BackgroundTaskRegistration.AllTasks. Returns all tasks registered by the current application including their name, trigger type, conditions, and last run status."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Register a background task",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/background-tasks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Registers a new background task using BackgroundTaskBuilder. The task must specify an entry point (IBackgroundTask implementation), a trigger (SystemTrigger, TimeTrigger, MaintenanceTrigger, etc.), and optional conditions (InternetAvailable, UserPresent, etc.)."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get background task details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/background-tasks/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path",
+                "description": "Background task registration ID"
+              }
+            ]
+          },
+          "docs": "Retrieves details about a specific registered background task including its trigger type, conditions, progress, and completion history."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Unregister a background task",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.windows.com/background-tasks/:taskId",
+            "params": [
+              {
+                "name": "taskId",
+                "value": "",
+                "type": "path",
+                "description": "Background task registration ID"
+              },
+              {
+                "name": "cancelRunningTask",
+                "value": "",
+                "type": "query",
+                "description": "Whether to cancel a running instance"
+              }
+            ]
+          },
+          "docs": "Unregisters a background task using BackgroundTaskRegistration.Unregister. Optionally cancels any currently running instance of the task."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

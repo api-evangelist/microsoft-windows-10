@@ -1,0 +1,163 @@
+{
+  "item": [
+    {
+      "id": "74d95789-bdf8-45d6-a665-e96974bd78ff",
+      "name": "Resources",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "0eedfe78-ba28-485c-9696-dbe46e2664a4",
+          "name": "Microsoft Windows 10 Create a DirectX resource",
+          "request": {
+            "name": "Microsoft Windows 10 Create a DirectX resource",
+            "description": {
+              "content": "Creates a GPU resource such as a buffer, texture, or render target using ID3D12Device.CreateCommittedResource or similar methods. Resources are allocated in GPU heaps and can be used for vertex buffers, index buffers, constant buffers, textures, and render targets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "directx",
+                "resources"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"resourceType\": \"<string>\",\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"depthOrArraySize\": 1,\n  \"format\": \"<string>\",\n  \"heapType\": \"Default\",\n  \"flags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c9edbdcc-e9e3-4f4e-8059-ac6496d2f662",
+              "name": "Resource created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "directx",
+                    "resources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceType\": \"<string>\",\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"depthOrArraySize\": 1,\n  \"format\": \"<string>\",\n  \"heapType\": \"Default\",\n  \"flags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"resourceType\": \"Texture1D\",\n  \"dimension\": \"string\",\n  \"width\": 2852,\n  \"height\": 3750,\n  \"depthOrArraySize\": 3637,\n  \"format\": \"string\",\n  \"heapType\": \"Default\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e50cb95-e187-4ff1-b7a5-92a77a516e4a",
+              "name": "Invalid resource description",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "directx",
+                    "resources"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"resourceType\": \"<string>\",\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"depthOrArraySize\": 1,\n  \"format\": \"<string>\",\n  \"heapType\": \"Default\",\n  \"flags\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "68d9a21d-8078-45ab-8e6a-383c2c20bebf",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Resources API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

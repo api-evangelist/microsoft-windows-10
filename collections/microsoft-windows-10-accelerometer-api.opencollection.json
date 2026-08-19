@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Accelerometer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get accelerometer reading",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/sensors/accelerometer/reading"
+          },
+          "docs": "Retrieves the current accelerometer reading using Accelerometer.GetCurrentReading. Returns G-force values along the x, y, and z axes. The sensor coordinate system is fixed to the device."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

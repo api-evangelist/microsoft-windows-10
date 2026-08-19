@@ -1,0 +1,604 @@
+{
+  "item": [
+    {
+      "id": "0fab28ed-1b11-4b79-9471-c859f67f7e11",
+      "name": "Devices",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a2ae1806-5c55-48ea-a3a0-c64c9d35869b",
+          "name": "Microsoft Windows 10 List paired Bluetooth devices",
+          "request": {
+            "name": "Microsoft Windows 10 List paired Bluetooth devices",
+            "description": {
+              "content": "Enumerates paired Bluetooth devices using DeviceInformation.FindAllAsync with the BluetoothDevice or BluetoothLEDevice selector. Returns device information including name, address, connection status, and services.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bluetooth",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "type",
+                  "value": "All",
+                  "description": "Filter by Bluetooth type"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "660a29f2-7bbd-406a-a28c-859a10a5d1d0",
+              "name": "Successful retrieval of Bluetooth devices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bluetooth",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "type",
+                      "value": "All"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"bluetoothAddress\": \"string\",\n    \"type\": \"LowEnergy\",\n    \"connectionStatus\": \"Disconnected\",\n    \"isPaired\": false\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"bluetoothAddress\": \"string\",\n    \"type\": \"LowEnergy\",\n    \"connectionStatus\": \"Connected\",\n    \"isPaired\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2a0b814c-a50b-491f-a5b7-d5c8e119dcf0",
+          "name": "Microsoft Windows 10 Get Bluetooth device details",
+          "request": {
+            "name": "Microsoft Windows 10 Get Bluetooth device details",
+            "description": {
+              "content": "Retrieves detailed information about a Bluetooth device using BluetoothDevice.FromIdAsync or BluetoothLEDevice.FromIdAsync. Includes connection status, paired status, and available services.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bluetooth",
+                "devices",
+                ":deviceId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) Bluetooth device identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4ced07d5-bb72-4b29-8ab8-66daf88363b3",
+              "name": "Successful retrieval of device details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bluetooth",
+                    "devices",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) Bluetooth device identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"bluetoothAddress\": \"string\",\n  \"type\": \"string\",\n  \"connectionStatus\": \"string\",\n  \"isPaired\": true,\n  \"classOfDevice\": {\n    \"majorClass\": \"string\",\n    \"minorClass\": \"string\"\n  },\n  \"appearance\": {\n    \"category\": \"string\",\n    \"subCategory\": \"string\"\n  },\n  \"serviceUuids\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "50a3f4ab-f8cc-4967-acd3-7ef710bdffa2",
+              "name": "Device not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bluetooth",
+                    "devices",
+                    ":deviceId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) Bluetooth device identifier"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "204e036c-3c13-4f12-a270-3ac13214d90c",
+          "name": "Microsoft Windows 10 List DirectX graphics devices",
+          "request": {
+            "name": "Microsoft Windows 10 List DirectX graphics devices",
+            "description": {
+              "content": "Enumerates available DirectX graphics adapters using DXGI (DirectX Graphics Infrastructure). Returns information about each adapter including vendor, device ID, dedicated video memory, shared system memory, and feature level support.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "directx",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab34ec94-d45c-4d06-9c88-8d6200e4b5f7",
+              "name": "Successful retrieval of graphics devices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "directx",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"description\": \"string\",\n    \"vendorId\": 4158,\n    \"deviceId\": 4312,\n    \"dedicatedVideoMemory\": 2573,\n    \"sharedSystemMemory\": 5365,\n    \"isSoftwareAdapter\": true\n  },\n  {\n    \"id\": \"string\",\n    \"description\": \"string\",\n    \"vendorId\": 8501,\n    \"deviceId\": 837,\n    \"dedicatedVideoMemory\": 4361,\n    \"sharedSystemMemory\": 3913,\n    \"isSoftwareAdapter\": false\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b84a44e7-e166-4d07-8e6a-54f520a11d68",
+          "name": "Microsoft Windows 10 Get graphics device details",
+          "request": {
+            "name": "Microsoft Windows 10 Get graphics device details",
+            "description": {
+              "content": "Retrieves detailed information about a specific graphics adapter including supported feature levels, output displays, and hardware capabilities such as shader model support, ray tracing tier, and mesh shader support.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "directx",
+                "devices",
+                ":adapterId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "adapterId",
+                  "description": "(Required) DXGI adapter identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5084b544-5e6d-46c7-8534-4c981ed0923a",
+              "name": "Successful retrieval of adapter details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "directx",
+                    "devices",
+                    ":adapterId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adapterId",
+                      "description": "(Required) DXGI adapter identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"description\": \"string\",\n  \"vendorId\": 3044,\n  \"deviceId\": 2453,\n  \"dedicatedVideoMemory\": 6835,\n  \"sharedSystemMemory\": 4205,\n  \"maxFeatureLevel\": \"11_0\",\n  \"shaderModel\": \"string\",\n  \"rayTracingTier\": \"Tier1_1\",\n  \"meshShaderTier\": \"Tier1\",\n  \"outputs\": [\n    {\n      \"name\": \"string\",\n      \"resolution\": \"string\",\n      \"refreshRate\": 7474.281077632951\n    },\n    {\n      \"name\": \"string\",\n      \"resolution\": \"string\",\n      \"refreshRate\": 7945.436253922683\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "31aaaf6d-eb59-4c0f-950b-0065c6d129f1",
+              "name": "Adapter not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "directx",
+                    "devices",
+                    ":adapterId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "adapterId",
+                      "description": "(Required) DXGI adapter identifier"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "abc253ce-e80f-46bb-a27d-1b00b3a0c1cd",
+          "name": "Microsoft Windows 10 List media capture devices",
+          "request": {
+            "name": "Microsoft Windows 10 List media capture devices",
+            "description": {
+              "content": "Enumerates available media capture devices (cameras and microphones) using DeviceInformation.FindAllAsync with the appropriate device class filter. Returns device information including ID, name, location, and capabilities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "media",
+                "capture",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "deviceClass",
+                  "value": "<string>",
+                  "description": "Filter by device class"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8b6043c1-ee00-4f7d-8d2d-799bd09f8306",
+              "name": "Successful retrieval of capture devices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "deviceClass",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"deviceClass\": \"AudioCapture\",\n    \"enclosureLocation\": {\n      \"panel\": \"Unknown\"\n    },\n    \"isEnabled\": false,\n    \"isDefault\": true\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"deviceClass\": \"AudioRender\",\n    \"enclosureLocation\": {\n      \"panel\": \"Right\"\n    },\n    \"isEnabled\": false,\n    \"isDefault\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "8076e1d2-6e78-4eac-b8cb-2530c76d9c07",
+          "name": "Microsoft Windows 10 List available ML devices",
+          "request": {
+            "name": "Microsoft Windows 10 List available ML devices",
+            "description": {
+              "content": "Retrieves the list of available LearningModelDevice options for model evaluation, including CPU, DirectX GPU, and DirectXHighPerformance targets.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ml",
+                "devices"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cb940e03-23b7-413f-b7d9-cce4498b3f8a",
+              "name": "Successful retrieval of available devices",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ml",
+                    "devices"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"kind\": \"DirectX\",\n    \"adapterId\": \"string\",\n    \"name\": \"string\"\n  },\n  {\n    \"kind\": \"DirectXHighPerformance\",\n    \"adapterId\": \"string\",\n    \"name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1f7e1802-2d64-4b71-83c6-e02f3275d442",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Devices API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

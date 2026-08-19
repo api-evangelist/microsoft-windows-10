@@ -1,0 +1,43 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer GATT Characteristics API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GATT Characteristics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List GATT characteristics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/bluetooth/le/devices/:deviceId/services/:serviceId/characteristics",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "BLE device identifier"
+              },
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path",
+                "description": "GATT service UUID"
+              }
+            ]
+          },
+          "docs": "Retrieves the characteristics of a GATT service using GattDeviceService.GetCharacteristicsAsync. Characteristics contain the actual data values and support read, write, notify, and indicate operations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

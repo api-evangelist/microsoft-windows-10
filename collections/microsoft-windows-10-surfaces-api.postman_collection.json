@@ -1,0 +1,163 @@
+{
+  "item": [
+    {
+      "id": "081b5471-7701-4ca8-9dfe-54d0b6839ca7",
+      "name": "Surfaces",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "05cff6f9-96b3-499d-be25-cb74dd41d63c",
+          "name": "Microsoft Windows 10 Create a composition surface",
+          "request": {
+            "name": "Microsoft Windows 10 Create a composition surface",
+            "description": {
+              "content": "Creates a CompositionDrawingSurface or CompositionVirtualDrawingSurface for rendering content onto visuals. Surfaces can be backed by Direct2D, Win2D, or bitmap images using CompositionGraphicsDevice.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composition",
+                "surfaces"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"pixelFormat\": \"B8G8R8A8UIntNormalized\",\n  \"alphaMode\": \"Premultiplied\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "049abd2f-9fad-40f4-b467-a35a6006c2ff",
+              "name": "Surface created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composition",
+                    "surfaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"pixelFormat\": \"B8G8R8A8UIntNormalized\",\n  \"alphaMode\": \"Premultiplied\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"size\": {\n    \"x\": 2496.422152477992,\n    \"y\": 2879.912324875269\n  },\n  \"pixelFormat\": \"R8G8B8A8UIntNormalized\",\n  \"alphaMode\": \"Straight\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b70a581a-28cb-40cd-8fd0-7a375cf16dd3",
+              "name": "Invalid surface configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composition",
+                    "surfaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"pixelFormat\": \"B8G8R8A8UIntNormalized\",\n  \"alphaMode\": \"Premultiplied\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bea5a52c-ec7d-4089-b4c2-3104f6df6291",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Surfaces API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

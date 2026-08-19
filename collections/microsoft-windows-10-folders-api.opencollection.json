@@ -1,0 +1,52 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Folders API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Folders",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List storage folders",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/storage/folders",
+            "params": [
+              {
+                "name": "parentFolderId",
+                "value": "",
+                "type": "query",
+                "description": "Parent folder identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves the list of subfolders in a specified location using StorageFolder.GetFoldersAsync. Includes folder metadata such as name, path, date created, and item counts."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a folder",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/storage/folders",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new folder using StorageFolder.CreateFolderAsync. Supports collision options to handle existing folders with the same name."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

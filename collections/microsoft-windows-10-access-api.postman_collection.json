@@ -1,0 +1,320 @@
+{
+  "item": [
+    {
+      "id": "644047a0-89c4-4bd9-bc96-e9263101fa92",
+      "name": "Access",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3e4f5068-72df-4075-976d-4a19170331ca",
+          "name": "Microsoft Windows 10 Get background access status",
+          "request": {
+            "name": "Microsoft Windows 10 Get background access status",
+            "description": {
+              "content": "Checks the application's background access status using BackgroundExecutionManager.GetAccessStatus. Returns whether the app is allowed to run background tasks, which may be limited by user settings or battery saver mode.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "background-tasks",
+                "access"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4dc2b9d1-1f62-4cee-aa2d-e0a4fba04caf",
+              "name": "Access status retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "background-tasks",
+                    "access"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"DeniedByUser\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f63b9322-f7d8-44ec-813d-ca544cc2bd5a",
+          "name": "Microsoft Windows 10 Request background access",
+          "request": {
+            "name": "Microsoft Windows 10 Request background access",
+            "description": {
+              "content": "Requests permission for background task execution using BackgroundExecutionManager.RequestAccessAsync. May prompt the user to allow background activity.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "background-tasks",
+                "access"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "95695b9e-0e95-4b99-84de-1ca4b0381423",
+              "name": "Access request result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "background-tasks",
+                    "access"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"DeniedByUser\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "69dab00f-0d04-413d-97e6-ef19a3d05669",
+          "name": "Microsoft Windows 10 Check geolocation access status",
+          "request": {
+            "name": "Microsoft Windows 10 Check geolocation access status",
+            "description": {
+              "content": "Checks the application's permission to access location data using Geolocator.RequestAccessAsync. Returns the current GeolocationAccessStatus indicating whether access is allowed, denied, or unspecified.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geolocation",
+                "access"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6a2d95dc-d097-4b37-92f2-fdad97ef4fa2",
+              "name": "Access status retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "access"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"Denied\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "e54e6036-c803-467d-9254-aaa96f1f6c5c",
+          "name": "Microsoft Windows 10 Request geolocation access",
+          "request": {
+            "name": "Microsoft Windows 10 Request geolocation access",
+            "description": {
+              "content": "Requests permission to access the device's location using Geolocator.RequestAccessAsync. Prompts the user to grant or deny location access if not previously configured.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geolocation",
+                "access"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "418d33bc-4191-49a9-a9d2-82e9288e7e34",
+              "name": "Access request processed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "access"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"Denied\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "63be9642-ba6f-4aa0-878a-4f514020a63b",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Access API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

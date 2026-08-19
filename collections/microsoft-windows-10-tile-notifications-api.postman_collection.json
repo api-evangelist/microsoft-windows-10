@@ -1,0 +1,163 @@
+{
+  "item": [
+    {
+      "id": "f255196d-2297-4c76-a65d-94a5979255dc",
+      "name": "Tile Notifications",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9862d3f9-59c7-4085-a27e-5dae15c860a0",
+          "name": "Microsoft Windows 10 Update a tile notification",
+          "request": {
+            "name": "Microsoft Windows 10 Update a tile notification",
+            "description": {
+              "content": "Updates the content of a Start menu tile using the TileUpdateManager and TileUpdater classes. Tile notifications can display text, images, and badges using predefined or adaptive templates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifications",
+                "tile"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"template\": \"<string>\",\n  \"texts\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"images\": [\n    {\n      \"src\": \"<uri>\",\n      \"alt\": \"<string>\"\n    },\n    {\n      \"src\": \"<uri>\",\n      \"alt\": \"<string>\"\n    }\n  ],\n  \"tag\": \"<string>\",\n  \"expirationTime\": \"<dateTime>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "e1f12c1b-2c0d-4e68-8070-0162d449c72e",
+              "name": "Tile updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "tile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"template\": \"<string>\",\n  \"texts\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"images\": [\n    {\n      \"src\": \"<uri>\",\n      \"alt\": \"<string>\"\n    },\n    {\n      \"src\": \"<uri>\",\n      \"alt\": \"<string>\"\n    }\n  ],\n  \"tag\": \"<string>\",\n  \"expirationTime\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tag\": \"string\",\n  \"expirationTime\": \"1954-05-07T16:24:20.548Z\",\n  \"template\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3fb4a407-35a0-476e-b007-8b92dbff7965",
+              "name": "Invalid tile content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "tile"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"template\": \"<string>\",\n  \"texts\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"images\": [\n    {\n      \"src\": \"<uri>\",\n      \"alt\": \"<string>\"\n    },\n    {\n      \"src\": \"<uri>\",\n      \"alt\": \"<string>\"\n    }\n  ],\n  \"tag\": \"<string>\",\n  \"expirationTime\": \"<dateTime>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "cbf4c773-75ce-4ea3-9f1e-6b0957d1a746",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Tile Notifications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Namespaces API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Namespaces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List WinRT namespaces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/winrt/namespaces"
+          },
+          "docs": "Retrieves the list of available Windows Runtime namespaces, including Windows.UI, Windows.Storage, Windows.Devices, Windows.Media, Windows.Networking, Windows.Security, and Windows.AI. Each namespace contains classes, interfaces, enums, and delegates."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

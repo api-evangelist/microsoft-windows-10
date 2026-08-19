@@ -1,0 +1,327 @@
+{
+  "item": [
+    {
+      "id": "a93e2620-0ad8-47ea-9e97-d62352a0d9b5",
+      "name": "Video Recording",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ab8d4e88-a93e-43b1-a5b1-f837217b5fa3",
+          "name": "Microsoft Windows 10 Start video recording",
+          "request": {
+            "name": "Microsoft Windows 10 Start video recording",
+            "description": {
+              "content": "Starts video recording using MediaCapture.StartRecordToStorageFileAsync or StartRecordToStreamAsync. The video is encoded using the specified MediaEncodingProfile (MP4, WMV, or AVI with configurable resolution, bitrate, and frame rate).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "media",
+                "capture",
+                "sessions",
+                ":sessionId",
+                "video",
+                "start"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sessionId",
+                  "description": "(Required) Capture session identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"outputPath\": \"<string>\",\n  \"encodingProfile\": \"Mp4\",\n  \"quality\": \"Auto\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "816666b4-746d-4e7d-ad29-cc31a79e79ce",
+              "name": "Video recording started",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions",
+                    ":sessionId",
+                    "video",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Capture session identifier"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"outputPath\": \"<string>\",\n  \"encodingProfile\": \"Mp4\",\n  \"quality\": \"Auto\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4e6c8330-d724-4231-b471-671ab0a1056a",
+              "name": "Session not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions",
+                    ":sessionId",
+                    "video",
+                    "start"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Capture session identifier"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"outputPath\": \"<string>\",\n  \"encodingProfile\": \"Mp4\",\n  \"quality\": \"Auto\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "deb53a59-ade4-403c-a07d-ee8f3a920eb2",
+          "name": "Microsoft Windows 10 Stop video recording",
+          "request": {
+            "name": "Microsoft Windows 10 Stop video recording",
+            "description": {
+              "content": "Stops an active video recording using MediaCapture.StopRecordAsync. Finalizes the output file or stream and returns information about the recorded media.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "media",
+                "capture",
+                "sessions",
+                ":sessionId",
+                "video",
+                "stop"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sessionId",
+                  "description": "(Required) Capture session identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a78108e3-12e4-452f-a6a0-02ca692a51f3",
+              "name": "Video recording stopped",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions",
+                    ":sessionId",
+                    "video",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Capture session identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"filePath\": \"string\",\n  \"durationInSeconds\": 7409.566283386858,\n  \"width\": 9301,\n  \"height\": 5045,\n  \"encodingProfile\": \"string\",\n  \"sizeInBytes\": 7539\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7b3a258a-dd69-474f-bf41-c1f653266bfb",
+              "name": "Session not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions",
+                    ":sessionId",
+                    "video",
+                    "stop"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Capture session identifier"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "b6ec03c3-44c8-4ab2-a346-fbc3c3bf3f0b",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Video Recording API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

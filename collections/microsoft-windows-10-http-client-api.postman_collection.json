@@ -1,0 +1,166 @@
+{
+  "item": [
+    {
+      "id": "ad1900ed-1293-46a3-8a24-f888876f9263",
+      "name": "HTTP Client",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "72ce84c3-d745-4b06-8ddd-b3ba73fc10cb",
+          "name": "Microsoft Windows 10 Send an HTTP request",
+          "request": {
+            "name": "Microsoft Windows 10 Send an HTTP request",
+            "description": {
+              "content": "Sends an HTTP request using the Windows.Web.Http.HttpClient class. Supports GET, POST, PUT, PATCH, DELETE methods with configurable headers, content types, and authentication. Includes built-in cookie management and automatic decompression.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "networking",
+                "http",
+                "requests"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"method\": \"<string>\",\n  \"uri\": \"<uri>\",\n  \"headers\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\",\n    \"key_2\": \"<string>\"\n  },\n  \"content\": \"<string>\",\n  \"contentType\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "711809fe-8d3a-4a1f-9ba1-bcc92c4bbb97",
+              "name": "HTTP response received",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "networking",
+                    "http",
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"uri\": \"<uri>\",\n  \"headers\": {\n    \"key_0\": \"<string>\"\n  },\n  \"content\": \"<string>\",\n  \"contentType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"statusCode\": 7575,\n  \"reasonPhrase\": \"string\",\n  \"headers\": {\n    \"key_0\": \"string\"\n  },\n  \"content\": \"string\",\n  \"isSuccessStatusCode\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c8cc70ec-b6c9-4786-8c35-dd45a6e33928",
+              "name": "Invalid request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "networking",
+                    "http",
+                    "requests"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"method\": \"<string>\",\n  \"uri\": \"<uri>\",\n  \"headers\": {\n    \"key_0\": \"<string>\"\n  },\n  \"content\": \"<string>\",\n  \"contentType\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "804bf0d6-af9c-45b8-983e-d45a2eba22d2",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer HTTP Client API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

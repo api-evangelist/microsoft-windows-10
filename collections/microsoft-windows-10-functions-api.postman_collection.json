@@ -1,0 +1,310 @@
+{
+  "item": [
+    {
+      "id": "54731a75-4142-48c9-a588-6362075f98dc",
+      "name": "Functions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3af0a4b0-de54-4ad0-9c99-a17316f7c6d0",
+          "name": "Microsoft Windows 10 List functions in a category",
+          "request": {
+            "name": "Microsoft Windows 10 List functions in a category",
+            "description": {
+              "content": "Retrieves the list of Win32 API functions within a specified category. Each function includes its DLL, parameters, return type, and minimum supported version information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "win32",
+                "api-categories",
+                ":categoryId",
+                "functions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "dll",
+                  "value": "<string>",
+                  "description": "Filter by DLL name (e.g., kernel32.dll, user32.dll)"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "categoryId",
+                  "description": "(Required) The API category identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2d1b4fe4-16c9-4c67-8500-01b49c17c65c",
+              "name": "Successful retrieval of functions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "win32",
+                    "api-categories",
+                    ":categoryId",
+                    "functions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dll",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "categoryId",
+                      "description": "(Required) The API category identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"CreateWindowExW\",\n    \"dll\": \"user32.dll\",\n    \"header\": \"winuser.h\",\n    \"category\": \"string\",\n    \"description\": \"string\",\n    \"minClientVersion\": \"Windows 10\"\n  },\n  {\n    \"name\": \"CreateWindowExW\",\n    \"dll\": \"user32.dll\",\n    \"header\": \"winuser.h\",\n    \"category\": \"string\",\n    \"description\": \"string\",\n    \"minClientVersion\": \"Windows 10\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c2ab2a44-8a16-4922-a411-bb799fb261fd",
+              "name": "Category not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "win32",
+                    "api-categories",
+                    ":categoryId",
+                    "functions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "dll",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "categoryId",
+                      "description": "(Required) The API category identifier"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "96797d1c-88a1-41d3-99c1-135aedea3cab",
+          "name": "Microsoft Windows 10 Get Win32 function details",
+          "request": {
+            "name": "Microsoft Windows 10 Get Win32 function details",
+            "description": {
+              "content": "Retrieves detailed information about a specific Win32 function including its syntax, parameters, return value, remarks, requirements (minimum supported client/server, header, library, DLL), and related functions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "win32",
+                "functions",
+                ":functionName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "functionName",
+                  "description": "(Required) The function name (e.g., CreateWindowExW, SendMessage)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "063c99e0-0427-4d9b-9ffd-52d9093eab6c",
+              "name": "Successful retrieval of function details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "win32",
+                    "functions",
+                    ":functionName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The function name (e.g., CreateWindowExW, SendMessage)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"syntax\": \"string\",\n  \"parameters\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"direction\": \"out\",\n      \"description\": \"string\",\n      \"optional\": true\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"direction\": \"inout\",\n      \"description\": \"string\",\n      \"optional\": false\n    }\n  ],\n  \"returnValue\": {\n    \"type\": \"string\",\n    \"description\": \"string\"\n  },\n  \"remarks\": \"string\",\n  \"requirements\": {\n    \"minimumSupportedClient\": \"Windows 10 [desktop apps only]\",\n    \"minimumSupportedServer\": \"Windows Server 2016\",\n    \"header\": \"winuser.h\",\n    \"library\": \"User32.lib\",\n    \"dll\": \"User32.dll\"\n  },\n  \"relatedFunctions\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4a3ba999-81b3-4b22-9d54-a09820fff326",
+              "name": "Function not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "win32",
+                    "functions",
+                    ":functionName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "functionName",
+                      "description": "(Required) The function name (e.g., CreateWindowExW, SendMessage)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2265fbda-e43e-46e1-829e-72aa467878c4",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Functions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

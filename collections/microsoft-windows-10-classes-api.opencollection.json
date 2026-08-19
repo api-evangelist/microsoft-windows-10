@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Classes API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Classes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List classes in a namespace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/winrt/namespaces/:namespaceName/classes",
+            "params": [
+              {
+                "name": "namespaceName",
+                "value": "",
+                "type": "path",
+                "description": "The fully qualified WinRT namespace name (e.g., Windows.UI.Notifications)"
+              }
+            ]
+          },
+          "docs": "Retrieves the list of classes available within a specified WinRT namespace. Classes include their properties, methods, events, and constructors as documented in the WinRT type system."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get class details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/winrt/namespaces/:namespaceName/classes/:className",
+            "params": [
+              {
+                "name": "namespaceName",
+                "value": "",
+                "type": "path",
+                "description": "The fully qualified WinRT namespace name"
+              },
+              {
+                "name": "className",
+                "value": "",
+                "type": "path",
+                "description": "The class name"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a specific WinRT class, including its properties, methods, events, interfaces implemented, and inheritance hierarchy."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

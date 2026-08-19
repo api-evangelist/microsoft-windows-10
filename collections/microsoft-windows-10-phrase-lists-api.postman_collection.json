@@ -1,0 +1,207 @@
+{
+  "item": [
+    {
+      "id": "d637155f-7c12-403c-ab45-47d83285ee2d",
+      "name": "Phrase Lists",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "917bc983-0cc0-4a3f-ad71-dc87eaae0fec",
+          "name": "Microsoft Windows 10 Update a phrase list",
+          "request": {
+            "name": "Microsoft Windows 10 Update a phrase list",
+            "description": {
+              "content": "Updates a phrase list within a voice command set using VoiceCommandDefinition.SetPhraseListAsync. Phrase lists are dynamic vocabularies that can be updated at runtime without reinstalling the VCD file.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cortana",
+                "voice-commands",
+                ":commandSetName",
+                "phrase-lists",
+                ":phraseListName"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "commandSetName",
+                  "description": "(Required) The name of the voice command set"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "phraseListName",
+                  "description": "(Required) The name of the phrase list to update"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"phrases\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "35efd992-a14e-4c22-bda5-6aedac5ded0f",
+              "name": "Phrase list updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cortana",
+                    "voice-commands",
+                    ":commandSetName",
+                    "phrase-lists",
+                    ":phraseListName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "commandSetName",
+                      "description": "(Required) The name of the voice command set"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "phraseListName",
+                      "description": "(Required) The name of the phrase list to update"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phrases\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "e12c275b-1440-4a29-a050-4ba5a5226d88",
+              "name": "Command set or phrase list not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cortana",
+                    "voice-commands",
+                    ":commandSetName",
+                    "phrase-lists",
+                    ":phraseListName"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "commandSetName",
+                      "description": "(Required) The name of the voice command set"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "phraseListName",
+                      "description": "(Required) The name of the phrase list to update"
+                    }
+                  ]
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"phrases\": [\n    \"<string>\",\n    \"<string>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "047e089f-0f69-48da-a4fe-9047b4eb8b58",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Phrase Lists API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "04e26f16-980e-418e-a636-9d74e9added5",
+      "name": "Orientation",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "338f654d-7df0-490b-94bc-e91b9c384dcf",
+          "name": "Microsoft Windows 10 Get orientation sensor reading",
+          "request": {
+            "name": "Microsoft Windows 10 Get orientation sensor reading",
+            "description": {
+              "content": "Retrieves the current orientation sensor reading using OrientationSensor.GetCurrentReading. Returns a rotation matrix and quaternion representing the device's spatial orientation. The orientation sensor fuses data from accelerometer, compass, and gyrometer for smooth results.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sensors",
+                "orientation",
+                "reading"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "22737a52-30c6-4393-bd02-5258c740abb8",
+              "name": "Successful reading",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sensors",
+                    "orientation",
+                    "reading"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"quaternion\": {\n    \"w\": 1231.3870202017674,\n    \"x\": 2957.9723644660994,\n    \"y\": 9674.722916650151,\n    \"z\": 6017.653500765753\n  },\n  \"rotationMatrix\": {\n    \"m11\": 4169.385713000658,\n    \"m12\": 4403.821223341662,\n    \"m13\": 7542.150170353853,\n    \"m21\": 5858.645996523207,\n    \"m22\": 2850.9131964342705,\n    \"m23\": 4118.708749907921,\n    \"m31\": 2474.5306621273576,\n    \"m32\": 9055.1395344534,\n    \"m33\": 4244.92384927708\n  },\n  \"timestamp\": \"2007-10-25T13:23:05.870Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0dd09d15-bba6-43d8-82cc-d6f264c2f416",
+              "name": "Orientation sensor not available",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sensors",
+                    "orientation",
+                    "reading"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "19eaa1ce-3a25-4793-8d6a-05dc78e2ed3a",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Orientation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

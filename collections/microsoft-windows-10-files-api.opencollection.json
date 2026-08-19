@@ -1,0 +1,87 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Files API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Files",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List storage files",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/storage/files",
+            "params": [
+              {
+                "name": "folderId",
+                "value": "",
+                "type": "query",
+                "description": "Known folder identifier (Documents, Pictures, Music, Videos)"
+              },
+              {
+                "name": "fileType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by file extension (e.g., .jpg, .mp3)"
+              }
+            ]
+          },
+          "docs": "Retrieves files from a specified storage location. Uses StorageFolder.GetFilesAsync to enumerate files with optional query options for filtering by type, date, size, and other properties."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get file details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/storage/files/:fileId",
+            "params": [
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "path",
+                "description": "Unique file identifier or path"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a specific file using StorageFile properties including name, path, size, date created, date modified, content type, file attributes, and storage provider information."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Delete a file",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.windows.com/storage/files/:fileId",
+            "params": [
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "path",
+                "description": "Unique file identifier"
+              },
+              {
+                "name": "option",
+                "value": "",
+                "type": "query",
+                "description": "Delete option"
+              }
+            ]
+          },
+          "docs": "Deletes a file using StorageFile.DeleteAsync. Supports permanent deletion or moving to the Recycle Bin as specified by the StorageDeleteOption."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

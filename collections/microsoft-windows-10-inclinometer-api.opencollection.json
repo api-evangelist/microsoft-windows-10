@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Inclinometer API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Inclinometer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get inclinometer reading",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/sensors/inclinometer/reading"
+          },
+          "docs": "Retrieves the current inclinometer reading using Inclinometer.GetCurrentReading. Returns pitch, roll, and yaw values in degrees corresponding to rotation around the x, y, and z axes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

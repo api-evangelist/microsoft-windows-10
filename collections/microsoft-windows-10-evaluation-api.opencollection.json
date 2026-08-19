@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Evaluation API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Evaluation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Evaluate model with input data",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/ml/sessions/:sessionId/evaluate",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the evaluation session"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Evaluates the model with bound input data using LearningModelSession.Evaluate. Input features are bound via a LearningModelBinding, and results are returned as a LearningModelEvaluationResult containing output tensors, maps, sequences, or images."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

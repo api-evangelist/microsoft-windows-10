@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Pedometer API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pedometer",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get pedometer reading",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/sensors/pedometer/reading"
+          },
+          "docs": "Retrieves the current pedometer reading using Pedometer.GetCurrentReadings. Returns step counts categorized by step kind (walking, running, unknown)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

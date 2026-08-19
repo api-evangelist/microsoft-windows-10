@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Video Recording API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Video Recording",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Start video recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/media/capture/sessions/:sessionId/video/start",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path",
+                "description": "Capture session identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Starts video recording using MediaCapture.StartRecordToStorageFileAsync or StartRecordToStreamAsync. The video is encoded using the specified MediaEncodingProfile (MP4, WMV, or AVI with configurable resolution, bitrate, and frame rate)."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Stop video recording",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/media/capture/sessions/:sessionId/video/stop",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path",
+                "description": "Capture session identifier"
+              }
+            ]
+          },
+          "docs": "Stops an active video recording using MediaCapture.StopRecordAsync. Finalizes the output file or stream and returns information about the recorded media."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,63 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Voice Commands API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Voice Commands",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List voice command definitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/cortana/voice-commands"
+          },
+          "docs": "Retrieves the list of installed Voice Command Definition (VCD) sets. Each VCD set defines a group of voice commands that Cortana can recognize for a specific application, including command names, phrases, and feedback text."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Install a voice command definition",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/cortana/voice-commands",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Installs a VCD file using VoiceCommandDefinitionManager.InstallCommandDefinitionsFromStorageFileAsync. The VCD file is an XML document that defines the commands, example phrases, and phrase lists that Cortana will recognize for the application."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get a voice command set",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/cortana/voice-commands/:commandSetName",
+            "params": [
+              {
+                "name": "commandSetName",
+                "value": "",
+                "type": "path",
+                "description": "The name of the voice command set"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific voice command set by name. The command set contains the language, name, and all defined commands including their phrases and phrase lists."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

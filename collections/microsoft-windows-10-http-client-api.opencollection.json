@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer HTTP Client API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "HTTP Client",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Send an HTTP request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/networking/http/requests",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Sends an HTTP request using the Windows.Web.Http.HttpClient class. Supports GET, POST, PUT, PATCH, DELETE methods with configurable headers, content types, and authentication. Includes built-in cookie management and automatic decompression."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

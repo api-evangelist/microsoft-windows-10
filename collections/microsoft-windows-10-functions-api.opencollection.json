@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Functions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Functions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List functions in a category",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/win32/api-categories/:categoryId/functions",
+            "params": [
+              {
+                "name": "categoryId",
+                "value": "",
+                "type": "path",
+                "description": "The API category identifier"
+              },
+              {
+                "name": "dll",
+                "value": "",
+                "type": "query",
+                "description": "Filter by DLL name (e.g., kernel32.dll, user32.dll)"
+              }
+            ]
+          },
+          "docs": "Retrieves the list of Win32 API functions within a specified category. Each function includes its DLL, parameters, return type, and minimum supported version information."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get Win32 function details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/win32/functions/:functionName",
+            "params": [
+              {
+                "name": "functionName",
+                "value": "",
+                "type": "path",
+                "description": "The function name (e.g., CreateWindowExW, SendMessage)"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a specific Win32 function including its syntax, parameters, return value, remarks, requirements (minimum supported client/server, header, library, DLL), and related functions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

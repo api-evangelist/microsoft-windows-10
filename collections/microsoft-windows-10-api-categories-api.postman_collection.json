@@ -1,0 +1,134 @@
+{
+  "item": [
+    {
+      "id": "cef32c24-cb24-4b2f-b93a-328bee50081e",
+      "name": "API Categories",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7aa33c49-f3df-494e-8910-1e17b1093739",
+          "name": "Microsoft Windows 10 List Win32 API categories",
+          "request": {
+            "name": "Microsoft Windows 10 List Win32 API categories",
+            "description": {
+              "content": "Retrieves the list of major Win32 API categories including User Interface, Windows Environment (Shell), User Input and Messaging, Data Access and Storage, Diagnostics, Graphics and Multimedia, Devices, System Services, Security and Identity, Networking and Internet, and System Administration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "win32",
+                "api-categories"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d9e707e1-a4b2-495c-a00b-518c935d065e",
+              "name": "Successful retrieval of API categories",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "win32",
+                    "api-categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"User Interface\",\n    \"description\": \"string\",\n    \"subcategories\": [\n      {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"referenceUrl\": \"http://wEPpBYcy.hydzqP35Lq\"\n      },\n      {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"referenceUrl\": \"http://bcEppqXOYuZsWfdDvVwugi.ajLGuCIaaQbyMIkIyqmJCu27KbMMrDoyaw5\"\n      }\n    ],\n    \"functionCount\": 7325\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"User Interface\",\n    \"description\": \"string\",\n    \"subcategories\": [\n      {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"referenceUrl\": \"http://dugZtHgMSTMWBvumlcTFbwDwltJZ.rsfimJO.L38cDlSPcdBoXmpq2Sm9k.qT,pKlYibcXKI7oyUb8v\"\n      },\n      {\n        \"name\": \"string\",\n        \"description\": \"string\",\n        \"referenceUrl\": \"http://KAUNbrMYHAnGXuc.gkKT,vjEByb1MrpkVxLpmv8bgcrjdqGwXMRtv1f\"\n      }\n    ],\n    \"functionCount\": 3471\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8e4f4063-3f96-468b-9103-80ed76f4b6cd",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "win32",
+                    "api-categories"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a6d763f3-16c0-465c-af76-a9c492ad8e7b",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer API Categories API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

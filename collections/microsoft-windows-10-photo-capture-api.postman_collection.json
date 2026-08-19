@@ -1,0 +1,196 @@
+{
+  "item": [
+    {
+      "id": "5a244b5f-9631-4a68-97fc-01c845ed42fd",
+      "name": "Photo Capture",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fab8318b-e66c-4dc9-8d8e-769592ce7233",
+          "name": "Microsoft Windows 10 Capture a photo",
+          "request": {
+            "name": "Microsoft Windows 10 Capture a photo",
+            "description": {
+              "content": "Captures a photo using MediaCapture.CapturePhotoToStorageFileAsync or CapturePhotoToStreamAsync. The photo is encoded using the specified ImageEncodingProperties (JPEG, PNG, BMP, or TIFF).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "media",
+                "capture",
+                "sessions",
+                ":sessionId",
+                "photo"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "sessionId",
+                  "description": "(Required) Capture session identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"outputPath\": \"<string>\",\n  \"encodingFormat\": \"Jpeg\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9636c2b1-a972-41e9-ba79-a9bf3251f11e",
+              "name": "Photo captured successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions",
+                    ":sessionId",
+                    "photo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Capture session identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"outputPath\": \"<string>\",\n  \"encodingFormat\": \"Jpeg\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"filePath\": \"string\",\n  \"width\": 6991,\n  \"height\": 854,\n  \"encodingFormat\": \"string\",\n  \"sizeInBytes\": 531\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8d672b59-d398-40c8-ada8-c6ee830801d8",
+              "name": "Session not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions",
+                    ":sessionId",
+                    "photo"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "sessionId",
+                      "description": "(Required) Capture session identifier"
+                    }
+                  ]
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"outputPath\": \"<string>\",\n  \"encodingFormat\": \"Jpeg\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "19d365cf-b27b-4bc4-88c6-e9542d6c9904",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Photo Capture API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

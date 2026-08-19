@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Toast Notifications API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Toast Notifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List active toast notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/notifications/toast"
+          },
+          "docs": "Retrieves the list of currently active toast notifications for the application. Uses the ToastNotificationHistory class to access notification history and manage displayed notifications."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a toast notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/notifications/toast",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates and displays a toast notification using the ToastNotificationManager. Toast notifications are pop-up UI elements that appear in the lower right of the screen and can contain text, images, and interactive elements such as buttons and text input fields. The notification content is defined using adaptive notification XML templates."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get a toast notification by tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/notifications/toast/:notificationTag",
+            "params": [
+              {
+                "name": "notificationTag",
+                "value": "",
+                "type": "path",
+                "description": "The notification tag identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves a specific toast notification identified by its tag. Tags are used as unique identifiers for notifications, enabling updates and removal of individual notifications."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Remove a toast notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.windows.com/notifications/toast/:notificationTag",
+            "params": [
+              {
+                "name": "notificationTag",
+                "value": "",
+                "type": "path",
+                "description": "The notification tag identifier"
+              }
+            ]
+          },
+          "docs": "Removes a specific toast notification from the notification center using the ToastNotificationHistory.Remove method. The notification is identified by its tag."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

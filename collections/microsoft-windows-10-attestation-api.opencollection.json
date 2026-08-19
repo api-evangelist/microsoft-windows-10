@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Attestation API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Attestation",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get key attestation",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/hello/attestation",
+            "params": [
+              {
+                "name": "accountId",
+                "value": "",
+                "type": "query",
+                "description": "Account identifier for the credential"
+              }
+            ]
+          },
+          "docs": "Retrieves attestation information for a Windows Hello key credential using KeyCredential.GetAttestationAsync. Returns a KeyCredentialAttestationResult with an attestation buffer and certificate chain that can be sent to a server to verify the key was generated in a secure environment (TPM)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

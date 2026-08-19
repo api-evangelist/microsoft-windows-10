@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Sessions API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sessions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Initialize a media capture session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/media/capture/sessions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Initializes a MediaCapture session with specified settings using MediaCapture.InitializeAsync. The MediaCaptureInitializationSettings specify the video and audio device, streaming category, and sharing mode."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create an evaluation session",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/ml/sessions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a LearningModelSession for evaluating a loaded model. The session binds the model to a LearningModelDevice (CPU, DirectX, or DirectXHighPerformance) for hardware-accelerated inference."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

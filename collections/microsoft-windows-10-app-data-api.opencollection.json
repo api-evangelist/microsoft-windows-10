@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer App Data API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "App Data",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get application settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/storage/app-data/settings",
+            "params": [
+              {
+                "name": "locality",
+                "value": "",
+                "type": "query",
+                "description": "Settings locality"
+              },
+              {
+                "name": "containerName",
+                "value": "",
+                "type": "query",
+                "description": "Settings container name"
+              }
+            ]
+          },
+          "docs": "Retrieves application settings from the ApplicationData.LocalSettings or RoamingSettings containers. Settings are stored as key-value pairs in ApplicationDataContainer objects."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Update application settings",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.windows.com/storage/app-data/settings",
+            "params": [
+              {
+                "name": "locality",
+                "value": "",
+                "type": "query",
+                "description": "Settings locality"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates application settings in the specified ApplicationDataContainer. Supports simple values and composite values (ApplicationDataCompositeValue) for atomic serialization."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

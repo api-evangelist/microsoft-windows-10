@@ -1,0 +1,116 @@
+{
+  "item": [
+    {
+      "id": "8979c246-4599-463b-8f24-0d82c7f16440",
+      "name": "Messages",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "676813d7-475f-4e3e-ac66-1c15f3a06e2e",
+          "name": "Microsoft Windows 10 List window messages",
+          "request": {
+            "name": "Microsoft Windows 10 List window messages",
+            "description": {
+              "content": "Retrieves the list of Win32 window messages (WM_*) used for inter-window communication. Includes system-defined messages for window management, user input, and application-defined messages.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "win32",
+                "messages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "prefix",
+                  "value": "<string>",
+                  "description": "Filter messages by prefix (e.g., WM_, BM_, CB_)"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "12887c10-04c7-4a83-8e6b-e816805a6e58",
+              "name": "Successful retrieval of messages",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "win32",
+                    "messages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "prefix",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"WM_CREATE\",\n    \"value\": \"0x0001\",\n    \"description\": \"string\",\n    \"wParam\": \"string\",\n    \"lParam\": \"string\"\n  },\n  {\n    \"name\": \"WM_CREATE\",\n    \"value\": \"0x0001\",\n    \"description\": \"string\",\n    \"wParam\": \"string\",\n    \"lParam\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ebf947c7-7496-4364-8ce9-5416603b3306",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Messages API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

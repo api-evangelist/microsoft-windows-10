@@ -1,0 +1,225 @@
+{
+  "item": [
+    {
+      "id": "4afd6e69-db4d-4969-bb00-610a33e700f6",
+      "name": "App Data",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "4a578858-3dd7-437f-b3d0-c71d393c51ba",
+          "name": "Microsoft Windows 10 Get application settings",
+          "request": {
+            "name": "Microsoft Windows 10 Get application settings",
+            "description": {
+              "content": "Retrieves application settings from the ApplicationData.LocalSettings or RoamingSettings containers. Settings are stored as key-value pairs in ApplicationDataContainer objects.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "storage",
+                "app-data",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "locality",
+                  "value": "Local",
+                  "description": "Settings locality"
+                },
+                {
+                  "disabled": false,
+                  "key": "containerName",
+                  "value": "<string>",
+                  "description": "Settings container name"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aab816ef-f904-4af0-9d35-439b1173205c",
+              "name": "Successful retrieval of settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "storage",
+                    "app-data",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locality",
+                      "value": "Local"
+                    },
+                    {
+                      "key": "containerName",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"key_0\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6b417c2a-4042-4518-a03d-d1258aa0849f",
+          "name": "Microsoft Windows 10 Update application settings",
+          "request": {
+            "name": "Microsoft Windows 10 Update application settings",
+            "description": {
+              "content": "Updates application settings in the specified ApplicationDataContainer. Supports simple values and composite values (ApplicationDataCompositeValue) for atomic serialization.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "storage",
+                "app-data",
+                "settings"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "locality",
+                  "value": "Local",
+                  "description": "Settings locality"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"key_0\": \"<string>\",\n  \"key_1\": \"<string>\",\n  \"key_2\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "9f1311b5-8f78-4859-ad28-00c7b8a80da1",
+              "name": "Settings updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "storage",
+                    "app-data",
+                    "settings"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "locality",
+                      "value": "Local"
+                    }
+                  ],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"key_0\": \"<string>\",\n  \"key_1\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9c5855bb-be00-482a-9b16-41384d496e0d",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer App Data API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

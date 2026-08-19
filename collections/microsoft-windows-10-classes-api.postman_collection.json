@@ -1,0 +1,320 @@
+{
+  "item": [
+    {
+      "id": "b23c8278-d39d-4a3c-9e13-7576f05453c0",
+      "name": "Classes",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "27dd2eb2-ba8d-4538-ba9f-3d28e3a26700",
+          "name": "Microsoft Windows 10 List classes in a namespace",
+          "request": {
+            "name": "Microsoft Windows 10 List classes in a namespace",
+            "description": {
+              "content": "Retrieves the list of classes available within a specified WinRT namespace. Classes include their properties, methods, events, and constructors as documented in the WinRT type system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "winrt",
+                "namespaces",
+                ":namespaceName",
+                "classes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespaceName",
+                  "description": "(Required) The fully qualified WinRT namespace name (e.g., Windows.UI.Notifications)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4068df5f-5134-4e58-86f6-bf395d49bd7e",
+              "name": "Successful retrieval of classes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "winrt",
+                    "namespaces",
+                    ":namespaceName",
+                    "classes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespaceName",
+                      "description": "(Required) The fully qualified WinRT namespace name (e.g., Windows.UI.Notifications)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"namespace\": \"string\",\n    \"description\": \"string\",\n    \"isSealed\": false,\n    \"isStatic\": true,\n    \"threading\": \"Both\"\n  },\n  {\n    \"name\": \"string\",\n    \"namespace\": \"string\",\n    \"description\": \"string\",\n    \"isSealed\": false,\n    \"isStatic\": false,\n    \"threading\": \"MTA\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9b88221d-1678-4817-b675-3453bcfa0d38",
+              "name": "Namespace not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "winrt",
+                    "namespaces",
+                    ":namespaceName",
+                    "classes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespaceName",
+                      "description": "(Required) The fully qualified WinRT namespace name (e.g., Windows.UI.Notifications)"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f4590af6-e57b-4fd0-b571-686a9d7c492f",
+          "name": "Microsoft Windows 10 Get class details",
+          "request": {
+            "name": "Microsoft Windows 10 Get class details",
+            "description": {
+              "content": "Retrieves detailed information about a specific WinRT class, including its properties, methods, events, interfaces implemented, and inheritance hierarchy.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "winrt",
+                "namespaces",
+                ":namespaceName",
+                "classes",
+                ":className"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "namespaceName",
+                  "description": "(Required) The fully qualified WinRT namespace name"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "className",
+                  "description": "(Required) The class name"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6ca32f80-b7ce-43e0-810b-1e7f922ffb97",
+              "name": "Successful retrieval of class details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "winrt",
+                    "namespaces",
+                    ":namespaceName",
+                    "classes",
+                    ":className"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespaceName",
+                      "description": "(Required) The fully qualified WinRT namespace name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "className",
+                      "description": "(Required) The class name"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"namespace\": \"string\",\n  \"description\": \"string\",\n  \"properties\": [\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"isReadOnly\": true,\n      \"description\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"isReadOnly\": false,\n      \"description\": \"string\"\n    }\n  ],\n  \"methods\": [\n    {\n      \"name\": \"string\",\n      \"returnType\": \"string\",\n      \"parameters\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      ],\n      \"isStatic\": false,\n      \"description\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"returnType\": \"string\",\n      \"parameters\": [\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        },\n        {\n          \"name\": \"string\",\n          \"type\": \"string\"\n        }\n      ],\n      \"isStatic\": true,\n      \"description\": \"string\"\n    }\n  ],\n  \"events\": [\n    {\n      \"name\": \"string\",\n      \"eventArgsType\": \"string\",\n      \"description\": \"string\"\n    },\n    {\n      \"name\": \"string\",\n      \"eventArgsType\": \"string\",\n      \"description\": \"string\"\n    }\n  ],\n  \"interfaces\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a43326a1-05a4-4485-afb7-6da9b5eb7280",
+              "name": "Class not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "winrt",
+                    "namespaces",
+                    ":namespaceName",
+                    "classes",
+                    ":className"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "namespaceName",
+                      "description": "(Required) The fully qualified WinRT namespace name"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "className",
+                      "description": "(Required) The class name"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "f658b976-42c8-4765-a5cc-7ffaf9edfbc4",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Classes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer GATT Operations API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GATT Operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Read a GATT characteristic value",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/bluetooth/le/devices/:deviceId/services/:serviceId/characteristics/:characteristicId/value",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "characteristicId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "cacheMode",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Reads the value of a GATT characteristic using GattCharacteristic.ReadValueAsync. Returns the raw byte data and the communication status."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Write a GATT characteristic value",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.windows.com/bluetooth/le/devices/:deviceId/services/:serviceId/characteristics/:characteristicId/value",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "serviceId",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "characteristicId",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Writes a value to a GATT characteristic using GattCharacteristic.WriteValueAsync or WriteValueWithResultAsync. Supports WriteWithResponse and WriteWithoutResponse options."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

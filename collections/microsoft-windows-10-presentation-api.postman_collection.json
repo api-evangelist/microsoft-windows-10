@@ -1,0 +1,163 @@
+{
+  "item": [
+    {
+      "id": "2d87dcec-0fd6-4c2e-98d9-e6fe9a19a612",
+      "name": "Presentation",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ad0caf9d-ac7e-4586-9cb9-e58de7d57f5f",
+          "name": "Microsoft Windows 10 Create a swap chain",
+          "request": {
+            "name": "Microsoft Windows 10 Create a swap chain",
+            "description": {
+              "content": "Creates a DXGI swap chain (IDXGISwapChain) for presenting rendered frames to a window or output. The swap chain manages the back buffer(s) and handles presentation including v-sync and frame latency.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "directx",
+                "swap-chains"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"format\": \"R8G8B8A8_UNORM\",\n  \"bufferCount\": 2,\n  \"swapEffect\": \"FlipDiscard\",\n  \"isWindowed\": true\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c3d76d60-ee48-43c2-84ed-3566a6748f91",
+              "name": "Swap chain created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "directx",
+                    "swap-chains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"format\": \"R8G8B8A8_UNORM\",\n  \"bufferCount\": 2,\n  \"swapEffect\": \"FlipDiscard\",\n  \"isWindowed\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"width\": 961,\n  \"height\": 828,\n  \"format\": \"string\",\n  \"bufferCount\": 2056\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "230b6b92-4dc2-4754-911c-9ddb1a936ade",
+              "name": "Invalid swap chain configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "directx",
+                    "swap-chains"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"width\": \"<integer>\",\n  \"height\": \"<integer>\",\n  \"format\": \"R8G8B8A8_UNORM\",\n  \"bufferCount\": 2,\n  \"swapEffect\": \"FlipDiscard\",\n  \"isWindowed\": true\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6b180f83-7914-4a4b-8124-70bde8dc4683",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Presentation API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

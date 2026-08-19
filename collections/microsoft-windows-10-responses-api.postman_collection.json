@@ -1,0 +1,153 @@
+{
+  "item": [
+    {
+      "id": "985206d0-4135-4046-9f3e-883096891ec8",
+      "name": "Responses",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "eb06c208-d4d7-4737-b0f0-9051de6e9c29",
+          "name": "Microsoft Windows 10 Send a response to Cortana",
+          "request": {
+            "name": "Microsoft Windows 10 Send a response to Cortana",
+            "description": {
+              "content": "Sends a VoiceCommandResponse back to Cortana containing content tiles, a message, and an app launch argument. Uses VoiceCommandResponse.CreateResponse to format the response for display in the Cortana canvas.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "cortana",
+                "responses"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"message\": \"<string>\",\n  \"contentTiles\": [\n    {\n      \"title\": \"<string>\",\n      \"textLine1\": \"<string>\",\n      \"textLine2\": \"<string>\",\n      \"textLine3\": \"<string>\",\n      \"imageUri\": \"<uri>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"textLine1\": \"<string>\",\n      \"textLine2\": \"<string>\",\n      \"textLine3\": \"<string>\",\n      \"imageUri\": \"<uri>\"\n    }\n  ],\n  \"appLaunchArgument\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "45b876bc-a22c-42e7-a097-e546cb93a508",
+              "name": "Response sent to Cortana",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cortana",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"contentTiles\": [\n    {\n      \"title\": \"<string>\",\n      \"textLine1\": \"<string>\",\n      \"textLine2\": \"<string>\",\n      \"textLine3\": \"<string>\",\n      \"imageUri\": \"<uri>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"textLine1\": \"<string>\",\n      \"textLine2\": \"<string>\",\n      \"textLine3\": \"<string>\",\n      \"imageUri\": \"<uri>\"\n    }\n  ],\n  \"appLaunchArgument\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "31f802ca-79f4-404b-8b67-149237c8561b",
+              "name": "Invalid response format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "cortana",
+                    "responses"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"message\": \"<string>\",\n  \"contentTiles\": [\n    {\n      \"title\": \"<string>\",\n      \"textLine1\": \"<string>\",\n      \"textLine2\": \"<string>\",\n      \"textLine3\": \"<string>\",\n      \"imageUri\": \"<uri>\"\n    },\n    {\n      \"title\": \"<string>\",\n      \"textLine1\": \"<string>\",\n      \"textLine2\": \"<string>\",\n      \"textLine3\": \"<string>\",\n      \"imageUri\": \"<uri>\"\n    }\n  ],\n  \"appLaunchArgument\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9a397cad-bdb6-4bd2-8ef1-c68ddfeb136b",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Responses API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

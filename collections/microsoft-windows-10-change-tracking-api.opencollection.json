@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Change Tracking API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Change Tracking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get library changes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/storage/libraries/:libraryId/changes",
+            "params": [
+              {
+                "name": "libraryId",
+                "value": "",
+                "type": "path",
+                "description": "Library identifier (Documents, Music, Pictures, Videos)"
+              }
+            ]
+          },
+          "docs": "Retrieves change records for a storage library using StorageLibraryChangeTracker and StorageLibraryChangeReader. Returns a list of changes including file/folder creation, modification, deletion, and moves."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

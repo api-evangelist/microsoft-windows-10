@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Geofencing API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Geofencing",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List active geofences",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/geolocation/geofences"
+          },
+          "docs": "Retrieves the list of active geofences registered with the GeofenceMonitor. Geofences are geographic areas (circles) that trigger events when the device enters, exits, or dwells in the area."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a geofence",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/geolocation/geofences",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new geofence and adds it to the GeofenceMonitor. The geofence is defined by a Geocircle (center point and radius) and monitored states (entered, exited, removed). Supports dwell time, start time, and duration."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

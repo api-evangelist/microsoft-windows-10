@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer BLE Scanning API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "BLE Scanning",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Start BLE advertisement scanning",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/bluetooth/le/scan",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Starts scanning for BLE advertisements using BluetoothLEAdvertisementWatcher. Discovers nearby BLE devices that are broadcasting advertisement packets. Supports filtering by service UUID, manufacturer data, and signal strength."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

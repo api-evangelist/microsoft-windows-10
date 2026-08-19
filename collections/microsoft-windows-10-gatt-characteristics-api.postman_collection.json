@@ -1,0 +1,194 @@
+{
+  "item": [
+    {
+      "id": "6ee60e08-4012-463c-83c1-89addcfa6a11",
+      "name": "GATT Characteristics",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3515bdb7-5d77-4993-9404-37ded1d4abf1",
+          "name": "Microsoft Windows 10 List GATT characteristics",
+          "request": {
+            "name": "Microsoft Windows 10 List GATT characteristics",
+            "description": {
+              "content": "Retrieves the characteristics of a GATT service using GattDeviceService.GetCharacteristicsAsync. Characteristics contain the actual data values and support read, write, notify, and indicate operations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bluetooth",
+                "le",
+                "devices",
+                ":deviceId",
+                "services",
+                ":serviceId",
+                "characteristics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "deviceId",
+                  "description": "(Required) BLE device identifier"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "serviceId",
+                  "description": "(Required) GATT service UUID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6d6d2b4a-e1e7-47cc-b331-4b84f66cbf18",
+              "name": "Successful retrieval of characteristics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bluetooth",
+                    "le",
+                    "devices",
+                    ":deviceId",
+                    "services",
+                    ":serviceId",
+                    "characteristics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) BLE device identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) GATT service UUID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"uuid\": \"string\",\n    \"name\": \"string\",\n    \"properties\": [\n      \"Broadcast\",\n      \"Notify\"\n    ],\n    \"protectionLevel\": \"AuthenticationRequired\"\n  },\n  {\n    \"uuid\": \"string\",\n    \"name\": \"string\",\n    \"properties\": [\n      \"Indicate\",\n      \"Write\"\n    ],\n    \"protectionLevel\": \"EncryptionRequired\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92f0136e-26f1-4f30-888e-4007fbbe132b",
+              "name": "Service not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bluetooth",
+                    "le",
+                    "devices",
+                    ":deviceId",
+                    "services",
+                    ":serviceId",
+                    "characteristics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "deviceId",
+                      "description": "(Required) BLE device identifier"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "serviceId",
+                      "description": "(Required) GATT service UUID"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6048022f-967d-4783-a8f6-b9b4dce61b96",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer GATT Characteristics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

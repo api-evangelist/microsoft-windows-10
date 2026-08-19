@@ -1,0 +1,104 @@
+{
+  "item": [
+    {
+      "id": "cc8336de-ba52-4acd-b4d4-71aee1881502",
+      "name": "Visits",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8f55c35f-e9cd-4c0e-9220-56122fc24578",
+          "name": "Microsoft Windows 10 Get recent location visits",
+          "request": {
+            "name": "Microsoft Windows 10 Get recent location visits",
+            "description": {
+              "content": "Retrieves recent visit records using GeovisitMonitor.GetLastReportAsync. Visits represent significant location stays detected by the system, including arrival/departure times and position data.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geolocation",
+                "visits"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5e584137-99c7-4060-bd57-18ab986edccb",
+              "name": "Successful retrieval of visits",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "visits"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"position\": {\n      \"coordinate\": {\n        \"latitude\": 380.17266447165633,\n        \"longitude\": 5790.410995422282,\n        \"accuracy\": 1332.45083053118,\n        \"timestamp\": \"1980-02-29T14:10:24.283Z\",\n        \"altitude\": 9869.541184356302,\n        \"altitudeAccuracy\": 3838.146832107098,\n        \"heading\": 8832.747104746619,\n        \"speed\": 240.1716388618058,\n        \"positionSource\": \"Cellular\",\n        \"satelliteData\": {\n          \"horizontalDilutionOfPrecision\": 4668.233532637697,\n          \"verticalDilutionOfPrecision\": 5873.39121928491,\n          \"geometricDilutionOfPrecision\": 557.2360059007265\n        }\n      },\n      \"civicAddress\": {\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"state\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"venueData\": {\n        \"id\": \"string\",\n        \"level\": \"string\"\n      }\n    },\n    \"stateChange\": \"TrackingLost\",\n    \"timestamp\": \"1969-09-11T08:40:57.619Z\"\n  },\n  {\n    \"position\": {\n      \"coordinate\": {\n        \"latitude\": 6474.606820120859,\n        \"longitude\": 3993.736972049138,\n        \"accuracy\": 9940.642856955154,\n        \"timestamp\": \"1963-11-19T09:50:09.014Z\",\n        \"altitude\": 6075.9179438829215,\n        \"altitudeAccuracy\": 2336.6703921368303,\n        \"heading\": 2186.744136289972,\n        \"speed\": 6739.427657113277,\n        \"positionSource\": \"Satellite\",\n        \"satelliteData\": {\n          \"horizontalDilutionOfPrecision\": 7478.187075954349,\n          \"verticalDilutionOfPrecision\": 8459.853687827957,\n          \"geometricDilutionOfPrecision\": 5695.519785980233\n        }\n      },\n      \"civicAddress\": {\n        \"city\": \"string\",\n        \"country\": \"string\",\n        \"state\": \"string\",\n        \"postalCode\": \"string\"\n      },\n      \"venueData\": {\n        \"id\": \"string\",\n        \"level\": \"string\"\n      }\n    },\n    \"stateChange\": \"TrackingLost\",\n    \"timestamp\": \"1988-10-09T19:24:49.784Z\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "0aeab70c-db1e-4af2-95b7-387ea669a9a2",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Visits API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "55e76d54-5a9e-4f5d-836d-566bcfc2cae0",
+      "name": "Gyrometer",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "28a26ca9-616a-4073-acdc-a982b46f959f",
+          "name": "Microsoft Windows 10 Get gyrometer reading",
+          "request": {
+            "name": "Microsoft Windows 10 Get gyrometer reading",
+            "description": {
+              "content": "Retrieves the current gyrometer reading using Gyrometer.GetCurrentReading. Returns angular velocity in degrees per second along the x, y, and z axes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sensors",
+                "gyrometer",
+                "reading"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe43c8cc-fcba-499c-ba9e-33c4184641b2",
+              "name": "Successful reading",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sensors",
+                    "gyrometer",
+                    "reading"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"angularVelocityX\": 5140.438846684666,\n  \"angularVelocityY\": 3738.487690696085,\n  \"angularVelocityZ\": 3181.4175356596397,\n  \"timestamp\": \"2019-09-22T14:52:49.052Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9baf9d23-b053-4eef-99df-eda27a675ada",
+              "name": "Gyrometer not available",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sensors",
+                    "gyrometer",
+                    "reading"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "23d1de5e-2996-49dd-ba93-548e380bda81",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Gyrometer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

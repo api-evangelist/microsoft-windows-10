@@ -1,0 +1,116 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Devices API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Devices",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List paired Bluetooth devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/bluetooth/devices",
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "query",
+                "description": "Filter by Bluetooth type"
+              }
+            ]
+          },
+          "docs": "Enumerates paired Bluetooth devices using DeviceInformation.FindAllAsync with the BluetoothDevice or BluetoothLEDevice selector. Returns device information including name, address, connection status, and services."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get Bluetooth device details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/bluetooth/devices/:deviceId",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "Bluetooth device identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a Bluetooth device using BluetoothDevice.FromIdAsync or BluetoothLEDevice.FromIdAsync. Includes connection status, paired status, and available services."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List DirectX graphics devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/directx/devices"
+          },
+          "docs": "Enumerates available DirectX graphics adapters using DXGI (DirectX Graphics Infrastructure). Returns information about each adapter including vendor, device ID, dedicated video memory, shared system memory, and feature level support."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get graphics device details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/directx/devices/:adapterId",
+            "params": [
+              {
+                "name": "adapterId",
+                "value": "",
+                "type": "path",
+                "description": "DXGI adapter identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a specific graphics adapter including supported feature levels, output displays, and hardware capabilities such as shader model support, ray tracing tier, and mesh shader support."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List media capture devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/media/capture/devices",
+            "params": [
+              {
+                "name": "deviceClass",
+                "value": "",
+                "type": "query",
+                "description": "Filter by device class"
+              }
+            ]
+          },
+          "docs": "Enumerates available media capture devices (cameras and microphones) using DeviceInformation.FindAllAsync with the appropriate device class filter. Returns device information including ID, name, location, and capabilities."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List available ML devices",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/ml/devices"
+          },
+          "docs": "Retrieves the list of available LearningModelDevice options for model evaluation, including CPU, DirectX GPU, and DirectXHighPerformance targets."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

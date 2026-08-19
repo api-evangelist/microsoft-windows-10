@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Photo Capture API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Photo Capture",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Capture a photo",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/media/capture/sessions/:sessionId/photo",
+            "params": [
+              {
+                "name": "sessionId",
+                "value": "",
+                "type": "path",
+                "description": "Capture session identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Captures a photo using MediaCapture.CapturePhotoToStorageFileAsync or CapturePhotoToStreamAsync. The photo is encoded using the specified ImageEncodingProperties (JPEG, PNG, BMP, or TIFF)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

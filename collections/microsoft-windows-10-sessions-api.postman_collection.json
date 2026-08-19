@@ -1,0 +1,374 @@
+{
+  "item": [
+    {
+      "id": "ddee58d9-8971-4b9d-87f2-40fc014425f3",
+      "name": "Sessions",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "82e6e3cf-80d7-48b6-a0af-12e5c199893d",
+          "name": "Microsoft Windows 10 Initialize a media capture session",
+          "request": {
+            "name": "Microsoft Windows 10 Initialize a media capture session",
+            "description": {
+              "content": "Initializes a MediaCapture session with specified settings using MediaCapture.InitializeAsync. The MediaCaptureInitializationSettings specify the video and audio device, streaming category, and sharing mode.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "media",
+                "capture",
+                "sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"videoDeviceId\": \"<string>\",\n  \"audioDeviceId\": \"<string>\",\n  \"streamingCaptureMode\": \"AudioAndVideo\",\n  \"sharingMode\": \"ExclusiveControl\",\n  \"photoCaptureSource\": \"Auto\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8fe0a3a7-5193-4def-8eb8-2e44f9258b73",
+              "name": "Capture session initialized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"videoDeviceId\": \"<string>\",\n  \"audioDeviceId\": \"<string>\",\n  \"streamingCaptureMode\": \"AudioAndVideo\",\n  \"sharingMode\": \"ExclusiveControl\",\n  \"photoCaptureSource\": \"Auto\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"state\": \"Paused\",\n  \"videoDeviceId\": \"string\",\n  \"audioDeviceId\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "279b6934-6679-490d-9ecf-b34b8731a420",
+              "name": "Invalid initialization settings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"videoDeviceId\": \"<string>\",\n  \"audioDeviceId\": \"<string>\",\n  \"streamingCaptureMode\": \"AudioAndVideo\",\n  \"sharingMode\": \"ExclusiveControl\",\n  \"photoCaptureSource\": \"Auto\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "d0d13331-aa89-4e6e-94bd-a1fa86d9e4cc",
+              "name": "Camera/microphone access denied",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "media",
+                    "capture",
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"videoDeviceId\": \"<string>\",\n  \"audioDeviceId\": \"<string>\",\n  \"streamingCaptureMode\": \"AudioAndVideo\",\n  \"sharingMode\": \"ExclusiveControl\",\n  \"photoCaptureSource\": \"Auto\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Forbidden",
+              "code": 403,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a82d11ee-60f3-4033-9acf-00b55343f441",
+          "name": "Microsoft Windows 10 Create an evaluation session",
+          "request": {
+            "name": "Microsoft Windows 10 Create an evaluation session",
+            "description": {
+              "content": "Creates a LearningModelSession for evaluating a loaded model. The session binds the model to a LearningModelDevice (CPU, DirectX, or DirectXHighPerformance) for hardware-accelerated inference.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ml",
+                "sessions"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"modelId\": \"<string>\",\n  \"deviceKind\": \"Default\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "8fdd5f94-7ca6-47c0-80e9-bfb7f6128045",
+              "name": "Session created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ml",
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modelId\": \"<string>\",\n  \"deviceKind\": \"Default\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"modelId\": \"string\",\n  \"device\": {\n    \"kind\": \"DirectXHighPerformance\",\n    \"adapterId\": \"string\",\n    \"name\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7282c6ca-b619-4d08-8634-2a40debeb31e",
+              "name": "Invalid session configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ml",
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modelId\": \"<string>\",\n  \"deviceKind\": \"Default\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cc910525-5659-459a-8330-de5ebd73f762",
+              "name": "Model not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ml",
+                    "sessions"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"modelId\": \"<string>\",\n  \"deviceKind\": \"Default\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "93ead64e-2e48-4099-88b9-73ec81f05dd2",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Sessions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

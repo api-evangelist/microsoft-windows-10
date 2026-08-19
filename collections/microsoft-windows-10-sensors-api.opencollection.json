@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Sensors API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Sensors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List available sensors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/sensors"
+          },
+          "docs": "Retrieves the list of available sensors on the device. Each sensor type uses a GetDefault() static method to check availability. Supported types include Accelerometer, Gyrometer, Compass, Inclinometer, LightSensor, Barometer, Altimeter, Magnetometer, OrientationSensor, Pedometer, ProximitySensor, ActivitySensor, HumanPresenceSensor, and HingeAngleSensor."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

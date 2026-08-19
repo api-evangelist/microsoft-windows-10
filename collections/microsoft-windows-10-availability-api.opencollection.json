@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Availability API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Availability",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Check Windows Hello availability",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/hello/availability"
+          },
+          "docs": "Checks whether Windows Hello is available on the device using KeyCredentialManager.IsSupportedAsync. Returns whether the device supports biometric or PIN-based authentication through Windows Hello."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

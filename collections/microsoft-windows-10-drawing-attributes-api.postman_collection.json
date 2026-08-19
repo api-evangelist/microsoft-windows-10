@@ -1,0 +1,187 @@
+{
+  "item": [
+    {
+      "id": "02acdc5c-0736-4ac5-a37f-34035712dd7e",
+      "name": "Drawing Attributes",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "08e3782d-8d0d-404e-8fa4-dd53f02c000e",
+          "name": "Microsoft Windows 10 Get default drawing attributes",
+          "request": {
+            "name": "Microsoft Windows 10 Get default drawing attributes",
+            "description": {
+              "content": "Retrieves the default InkDrawingAttributes used for new strokes, including color, size, pen tip shape, transparency, and fit-to-curve settings.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ink",
+                "drawing-attributes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bb652ccc-50e3-48ec-804e-661db5606b4e",
+              "name": "Successful retrieval of drawing attributes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ink",
+                    "drawing-attributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"color\": \"#FF000000\",\n  \"size\": {\n    \"width\": 7746.02420416182,\n    \"height\": 4564.517082742864\n  },\n  \"penTip\": \"Circle\",\n  \"drawAsHighlighter\": false,\n  \"fitToCurve\": true,\n  \"ignorePressure\": false,\n  \"ignoreTilt\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b0d0f6a4-ecc1-44f4-84ba-6663afa14314",
+          "name": "Microsoft Windows 10 Update default drawing attributes",
+          "request": {
+            "name": "Microsoft Windows 10 Update default drawing attributes",
+            "description": {
+              "content": "Updates the default InkDrawingAttributes for new strokes. Changes affect all subsequently created strokes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ink",
+                "drawing-attributes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"color\": \"<string>\",\n  \"size\": {\n    \"width\": \"<float>\",\n    \"height\": \"<float>\"\n  },\n  \"penTip\": \"<string>\",\n  \"drawAsHighlighter\": \"<boolean>\",\n  \"fitToCurve\": \"<boolean>\",\n  \"ignorePressure\": \"<boolean>\",\n  \"ignoreTilt\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "53b21877-7ca8-4e69-9006-e0868d72d547",
+              "name": "Drawing attributes updated",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ink",
+                    "drawing-attributes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"color\": \"#FF000000\",\n  \"size\": {\n    \"width\": \"<float>\",\n    \"height\": \"<float>\"\n  },\n  \"penTip\": \"<string>\",\n  \"drawAsHighlighter\": \"<boolean>\",\n  \"fitToCurve\": \"<boolean>\",\n  \"ignorePressure\": \"<boolean>\",\n  \"ignoreTilt\": \"<boolean>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "5ec8442a-09d9-42a0-9d57-e43e56139f44",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Drawing Attributes API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

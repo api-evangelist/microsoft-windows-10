@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Icons API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Icons",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List Fluent Design icons",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/winui/icons",
+            "params": [
+              {
+                "name": "search",
+                "value": "",
+                "type": "query",
+                "description": "Search icons by name"
+              }
+            ]
+          },
+          "docs": "Retrieves the catalog of available Segoe Fluent Icons for use with SymbolIcon and FontIcon controls. Includes icon name, unicode code point, and preview information."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

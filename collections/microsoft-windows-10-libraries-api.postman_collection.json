@@ -1,0 +1,104 @@
+{
+  "item": [
+    {
+      "id": "ea54a539-f0b9-4d2e-a606-5c75dd148753",
+      "name": "Libraries",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "dde55c6c-8ff1-4bea-b600-105d73bdc133",
+          "name": "Microsoft Windows 10 List storage libraries",
+          "request": {
+            "name": "Microsoft Windows 10 List storage libraries",
+            "description": {
+              "content": "Retrieves the list of storage libraries (Documents, Music, Pictures, Videos) using StorageLibrary.GetLibraryAsync. Each library contains a list of included folders and supports change tracking.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "storage",
+                "libraries"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cce4ac15-41e5-4c47-a61b-7c26ca90326e",
+              "name": "Successful retrieval of libraries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "storage",
+                    "libraries"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"Documents\",\n    \"folders\": [\n      {\n        \"name\": \"string\",\n        \"path\": \"string\",\n        \"dateCreated\": \"1971-06-11T18:17:48.893Z\",\n        \"attributes\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"path\": \"string\",\n        \"dateCreated\": \"1979-05-13T08:54:36.519Z\",\n        \"attributes\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ],\n    \"saveFolder\": {\n      \"name\": \"string\",\n      \"path\": \"string\",\n      \"dateCreated\": \"1946-12-19T04:32:08.331Z\",\n      \"attributes\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  },\n  {\n    \"id\": \"Music\",\n    \"folders\": [\n      {\n        \"name\": \"string\",\n        \"path\": \"string\",\n        \"dateCreated\": \"1960-08-14T08:53:40.126Z\",\n        \"attributes\": [\n          \"string\",\n          \"string\"\n        ]\n      },\n      {\n        \"name\": \"string\",\n        \"path\": \"string\",\n        \"dateCreated\": \"1974-08-21T10:06:44.900Z\",\n        \"attributes\": [\n          \"string\",\n          \"string\"\n        ]\n      }\n    ],\n    \"saveFolder\": {\n      \"name\": \"string\",\n      \"path\": \"string\",\n      \"dateCreated\": \"2023-11-19T14:51:18.050Z\",\n      \"attributes\": [\n        \"string\",\n        \"string\"\n      ]\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a01edfbd-c733-43ff-8581-fbe377ba45cc",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Libraries API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

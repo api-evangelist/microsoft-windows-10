@@ -1,0 +1,127 @@
+{
+  "item": [
+    {
+      "id": "5d0dfb32-2b35-448a-b82b-ea8bff7115df",
+      "name": "BLE Scanning",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "09e87e0e-3ccb-4344-b128-a8e8a540359d",
+          "name": "Microsoft Windows 10 Start BLE advertisement scanning",
+          "request": {
+            "name": "Microsoft Windows 10 Start BLE advertisement scanning",
+            "description": {
+              "content": "Starts scanning for BLE advertisements using BluetoothLEAdvertisementWatcher. Discovers nearby BLE devices that are broadcasting advertisement packets. Supports filtering by service UUID, manufacturer data, and signal strength.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "bluetooth",
+                "le",
+                "scan"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"scanningMode\": \"Active\",\n  \"serviceUuidFilter\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"signalStrengthFilter\": {\n    \"inRangeThresholdInDBm\": \"<integer>\",\n    \"outOfRangeThresholdInDBm\": \"<integer>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "19bbe31f-bf37-4f9a-8647-a09d0bf3ff78",
+              "name": "Scan started",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "bluetooth",
+                    "le",
+                    "scan"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"scanningMode\": \"Active\",\n  \"serviceUuidFilter\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"signalStrengthFilter\": {\n    \"inRangeThresholdInDBm\": \"<integer>\",\n    \"outOfRangeThresholdInDBm\": \"<integer>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"status\": \"Stopped\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ad45d2f3-a803-4341-94b6-e887c4c36536",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer BLE Scanning API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

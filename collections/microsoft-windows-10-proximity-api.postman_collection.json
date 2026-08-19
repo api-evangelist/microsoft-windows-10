@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "04308d4b-c997-4bf3-b86f-73af69d7093d",
+      "name": "Proximity",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "745bb52d-8cd2-423b-8044-138ddd225f8d",
+          "name": "Microsoft Windows 10 Get proximity sensor reading",
+          "request": {
+            "name": "Microsoft Windows 10 Get proximity sensor reading",
+            "description": {
+              "content": "Retrieves the current proximity sensor reading using ProximitySensor.GetCurrentReading. Returns whether an object is detected and optionally the distance in millimeters.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sensors",
+                "proximity",
+                "reading"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "469029b5-c01d-4687-a30b-bab93d37d7c3",
+              "name": "Successful reading",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sensors",
+                    "proximity",
+                    "reading"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"isDetected\": false,\n  \"distanceInMillimeters\": 2449,\n  \"timestamp\": \"1948-04-18T18:41:09.222Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5fad526b-8a26-458d-b665-2a2d6374d022",
+              "name": "Proximity sensor not available",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sensors",
+                    "proximity",
+                    "reading"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8901665b-7cc6-4817-bbf1-a89e36df6887",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Proximity API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

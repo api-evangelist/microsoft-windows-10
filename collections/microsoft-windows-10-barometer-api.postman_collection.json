@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "3613ddbe-625b-4363-975d-ade95a6e3b50",
+      "name": "Barometer",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "289bf283-8447-40a3-b2bd-a6edc138d20d",
+          "name": "Microsoft Windows 10 Get barometer reading",
+          "request": {
+            "name": "Microsoft Windows 10 Get barometer reading",
+            "description": {
+              "content": "Retrieves the current barometer reading using Barometer.GetCurrentReading. Returns atmospheric pressure in hectopascals (hPa).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sensors",
+                "barometer",
+                "reading"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "097393cc-502c-4e1d-805b-24474f3c8654",
+              "name": "Successful reading",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sensors",
+                    "barometer",
+                    "reading"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"stationPressureInHectopascals\": 7510.93228465309,\n  \"timestamp\": \"2000-07-14T13:41:50.944Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4d7a9f8-d3fb-48bf-a30c-bd18c83cd5b7",
+              "name": "Barometer not available",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sensors",
+                    "barometer",
+                    "reading"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dc482522-352c-47e2-9606-d3e3f48faf8d",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Barometer API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

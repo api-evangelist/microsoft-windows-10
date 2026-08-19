@@ -1,0 +1,235 @@
+{
+  "item": [
+    {
+      "id": "df11ada0-cfd1-4c33-a4cf-179a87fc4e75",
+      "name": "Geofencing",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bd5ae313-7a7a-4c04-917f-33785a70dfcc",
+          "name": "Microsoft Windows 10 List active geofences",
+          "request": {
+            "name": "Microsoft Windows 10 List active geofences",
+            "description": {
+              "content": "Retrieves the list of active geofences registered with the GeofenceMonitor. Geofences are geographic areas (circles) that trigger events when the device enters, exits, or dwells in the area.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geolocation",
+                "geofences"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "76d3858b-4368-4e49-94c8-2a536d191eab",
+              "name": "Successful retrieval of geofences",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "geofences"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"geoshape\": {\n      \"center\": {\n        \"latitude\": 7728.049803741987,\n        \"longitude\": 5002.1498920415115,\n        \"altitude\": 352.0439881199444\n      },\n      \"radiusInMeters\": 7235.514783572146\n    },\n    \"monitoredStates\": [\n      \"Exited\",\n      \"Entered\"\n    ],\n    \"singleUse\": false,\n    \"dwellTime\": \"string\",\n    \"startTime\": \"2015-06-23T05:08:25.995Z\",\n    \"duration\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"geoshape\": {\n      \"center\": {\n        \"latitude\": 2286.6209299643738,\n        \"longitude\": 1268.7438676140794,\n        \"altitude\": 2445.452298174906\n      },\n      \"radiusInMeters\": 9355.059725678319\n    },\n    \"monitoredStates\": [\n      \"Exited\",\n      \"Exited\"\n    ],\n    \"singleUse\": true,\n    \"dwellTime\": \"string\",\n    \"startTime\": \"1958-08-27T15:20:43.120Z\",\n    \"duration\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "34684449-6c5a-47b1-bfb2-8dc2b2b15171",
+          "name": "Microsoft Windows 10 Create a geofence",
+          "request": {
+            "name": "Microsoft Windows 10 Create a geofence",
+            "description": {
+              "content": "Creates a new geofence and adds it to the GeofenceMonitor. The geofence is defined by a Geocircle (center point and radius) and monitored states (entered, exited, removed). Supports dwell time, start time, and duration.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "geolocation",
+                "geofences"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"latitude\": \"<double>\",\n  \"longitude\": \"<double>\",\n  \"radiusInMeters\": \"<double>\",\n  \"monitoredStates\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"singleUse\": false,\n  \"dwellTimeInSeconds\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "39b338f8-9d1d-48ca-8b84-ab0f0695584f",
+              "name": "Geofence created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "geofences"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"latitude\": \"<double>\",\n  \"longitude\": \"<double>\",\n  \"radiusInMeters\": \"<double>\",\n  \"monitoredStates\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"singleUse\": false,\n  \"dwellTimeInSeconds\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"geoshape\": {\n    \"center\": {\n      \"latitude\": 2906.154543863846,\n      \"longitude\": 4784.888139553464,\n      \"altitude\": 7615.479184416042\n    },\n    \"radiusInMeters\": 454.44592146594243\n  },\n  \"monitoredStates\": [\n    \"Exited\",\n    \"Entered\"\n  ],\n  \"singleUse\": false,\n  \"dwellTime\": \"string\",\n  \"startTime\": \"1991-12-16T07:24:32.749Z\",\n  \"duration\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "309f1383-367e-4144-af35-c661fbf3f64b",
+              "name": "Invalid geofence configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "geolocation",
+                    "geofences"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"latitude\": \"<double>\",\n  \"longitude\": \"<double>\",\n  \"radiusInMeters\": \"<double>\",\n  \"monitoredStates\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"singleUse\": false,\n  \"dwellTimeInSeconds\": \"<integer>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "c8da7850-feeb-43fd-ab29-5f7b14d9b8ac",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Geofencing API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

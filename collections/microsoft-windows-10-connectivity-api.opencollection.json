@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Connectivity API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Connectivity",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get network connectivity information",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/networking/connectivity"
+          },
+          "docs": "Retrieves current network connectivity information using NetworkInformation.GetInternetConnectionProfile and NetworkInformation.GetConnectionProfiles. Returns details about connection type, signal strength, data plan status, and cost."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,519 @@
+{
+  "item": [
+    {
+      "id": "e05ba7d0-2287-4c8e-b331-99406c7ba418",
+      "name": "Models",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6198d56f-82a4-4648-ac98-b3dfcef839a2",
+          "name": "Microsoft Windows 10 List loaded ML models",
+          "request": {
+            "name": "Microsoft Windows 10 List loaded ML models",
+            "description": {
+              "content": "Retrieves the list of currently loaded machine learning models. Each model is loaded via the LearningModel class from ONNX format files and provides metadata including the model author, name, domain, description, version, and input/output features.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ml",
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "080dab73-ac20-4fd5-b4a3-289c4c082cd6",
+              "name": "Successful retrieval of loaded models",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ml",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"author\": \"string\",\n    \"domain\": \"string\",\n    \"description\": \"string\",\n    \"version\": 4454,\n    \"inputFeatureCount\": 4384,\n    \"outputFeatureCount\": 9839\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"author\": \"string\",\n    \"domain\": \"string\",\n    \"description\": \"string\",\n    \"version\": 5417,\n    \"inputFeatureCount\": 2343,\n    \"outputFeatureCount\": 245\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c43f776b-0471-4474-96cd-8b78c937acbb",
+          "name": "Microsoft Windows 10 Load a machine learning model",
+          "request": {
+            "name": "Microsoft Windows 10 Load a machine learning model",
+            "description": {
+              "content": "Loads an ONNX machine learning model using LearningModel.LoadFromFilePath or LearningModel.LoadFromStream. The loaded model can then be used to create evaluation sessions. Supports ONNX versions 1.2 and 1.3.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ml",
+                "models"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"filePath\": \"<string>\",\n  \"modelFormat\": \"ONNX\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "71d7782a-236b-465f-82e7-11fe87a987da",
+              "name": "Model loaded successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ml",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filePath\": \"<string>\",\n  \"modelFormat\": \"ONNX\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"author\": \"string\",\n  \"domain\": \"string\",\n  \"description\": \"string\",\n  \"version\": 6855,\n  \"inputFeatureCount\": 6677,\n  \"outputFeatureCount\": 8119\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4e7e45f9-fb8d-41de-a2da-4ca7b53cb006",
+              "name": "Invalid model file or format",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ml",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filePath\": \"<string>\",\n  \"modelFormat\": \"ONNX\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "b4e02c2a-46ad-43af-b89b-22c91d3b5cbd",
+              "name": "Unsupported model format (must be ONNX)",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ml",
+                    "models"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"filePath\": \"<string>\",\n  \"modelFormat\": \"ONNX\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unsupported Media Type",
+              "code": 415,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9ae522ea-290a-41a6-99c0-7c36c14207a6",
+          "name": "Microsoft Windows 10 Get model details",
+          "request": {
+            "name": "Microsoft Windows 10 Get model details",
+            "description": {
+              "content": "Retrieves detailed information about a loaded model including its input features (ILearningModelFeatureDescriptor), output features, metadata properties, and device capabilities.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ml",
+                "models",
+                ":modelId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "modelId",
+                  "description": "(Required) Unique identifier for the loaded model"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bdaf266a-8318-4d18-8d01-a15aef5283a4",
+              "name": "Successful retrieval of model details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ml",
+                    "models",
+                    ":modelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "modelId",
+                      "description": "(Required) Unique identifier for the loaded model"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"author\": \"string\",\n  \"domain\": \"string\",\n  \"description\": \"string\",\n  \"version\": 318,\n  \"inputFeatures\": [\n    {\n      \"name\": \"string\",\n      \"kind\": \"Image\",\n      \"description\": \"string\",\n      \"isRequired\": true,\n      \"shape\": [\n        7359,\n        432\n      ],\n      \"tensorDataType\": \"UInt16\"\n    },\n    {\n      \"name\": \"string\",\n      \"kind\": \"Image\",\n      \"description\": \"string\",\n      \"isRequired\": true,\n      \"shape\": [\n        1856,\n        6385\n      ],\n      \"tensorDataType\": \"Int64\"\n    }\n  ],\n  \"outputFeatures\": [\n    {\n      \"name\": \"string\",\n      \"kind\": \"Map\",\n      \"description\": \"string\",\n      \"isRequired\": true,\n      \"shape\": [\n        3416,\n        948\n      ],\n      \"tensorDataType\": \"Int8\"\n    },\n    {\n      \"name\": \"string\",\n      \"kind\": \"Tensor\",\n      \"description\": \"string\",\n      \"isRequired\": true,\n      \"shape\": [\n        5032,\n        2077\n      ],\n      \"tensorDataType\": \"UInt32\"\n    }\n  ],\n  \"metadata\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "34d3f1e7-dff4-4450-8448-2365b9ca41a7",
+              "name": "Model not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ml",
+                    "models",
+                    ":modelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "modelId",
+                      "description": "(Required) Unique identifier for the loaded model"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a4e45e6b-cfb4-4588-80ce-78b2ccc05963",
+          "name": "Microsoft Windows 10 Unload a machine learning model",
+          "request": {
+            "name": "Microsoft Windows 10 Unload a machine learning model",
+            "description": {
+              "content": "Unloads a machine learning model by calling LearningModel.Close, releasing all associated resources and terminating any active sessions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ml",
+                "models",
+                ":modelId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "modelId",
+                  "description": "(Required) Unique identifier for the model"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "c550093b-065d-4516-bc78-54b82fa45f19",
+              "name": "Model unloaded successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ml",
+                    "models",
+                    ":modelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "modelId",
+                      "description": "(Required) Unique identifier for the model"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "4412c716-ff7e-490b-951c-e84a89ae37c3",
+              "name": "Model not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ml",
+                    "models",
+                    ":modelId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "modelId",
+                      "description": "(Required) Unique identifier for the model"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6f16aa9f-1f83-47ee-ad09-cc8be2d7891d",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Models API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

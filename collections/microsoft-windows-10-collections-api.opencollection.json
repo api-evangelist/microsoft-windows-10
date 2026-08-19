@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Collections API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Collections",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List toast notification collections",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/notifications/collections"
+          },
+          "docs": "Retrieves the list of toast notification collections for the application. Collections group related notifications using the ToastCollection and ToastCollectionManager classes."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a toast notification collection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/notifications/collections",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a new toast notification collection for grouping related notifications. Uses the ToastCollectionManager.SaveToastCollectionAsync method."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

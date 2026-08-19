@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer WebSockets API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "WebSockets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a WebSocket connection",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/networking/websockets",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a MessageWebSocket or StreamWebSocket for real-time bidirectional communication. MessageWebSocket handles discrete messages while StreamWebSocket provides continuous stream-based communication."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

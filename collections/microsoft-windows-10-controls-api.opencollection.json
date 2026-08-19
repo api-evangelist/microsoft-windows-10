@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Controls API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Controls",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List WinUI controls",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/winui/controls",
+            "params": [
+              {
+                "name": "category",
+                "value": "",
+                "type": "query",
+                "description": "Filter controls by category"
+              }
+            ]
+          },
+          "docs": "Retrieves the catalog of available WinUI XAML controls organized by category. Includes basic input controls (Button, TextBox, CheckBox), collections (ListView, GridView, TreeView), navigation (NavigationView, TabView, Pivot), status (ProgressBar, ProgressRing, InfoBar), and media controls (MediaPlayerElement, Image)."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get control details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/winui/controls/:controlName",
+            "params": [
+              {
+                "name": "controlName",
+                "value": "",
+                "type": "path",
+                "description": "Control name (e.g., NavigationView, InfoBar, TreeView)"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a specific WinUI control including its properties, events, methods, XAML usage examples, and Fluent Design System guidelines."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

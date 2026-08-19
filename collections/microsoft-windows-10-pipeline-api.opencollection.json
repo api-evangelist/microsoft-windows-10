@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Pipeline API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pipeline",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a graphics pipeline state",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/directx/pipeline-states",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a graphics pipeline state object (ID3D12PipelineState) that defines the complete rendering pipeline configuration including vertex shader, pixel shader, input layout, rasterizer state, blend state, depth stencil state, and render target formats."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

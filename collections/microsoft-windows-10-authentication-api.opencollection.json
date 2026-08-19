@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Authentication API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Sign data with a Windows Hello credential",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/hello/sign",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Signs a challenge buffer using the Windows Hello credential's private key via KeyCredential.RequestSignAsync. The user is prompted for biometric or PIN verification before the signing operation proceeds. Returns the signed data for server-side verification."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Verify user identity",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/hello/verify-user",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Prompts the user to verify their identity using Windows Hello biometrics or PIN via UserConsentVerifier.RequestVerificationAsync. Returns whether the verification succeeded. This can be used for step-up authentication before sensitive operations."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

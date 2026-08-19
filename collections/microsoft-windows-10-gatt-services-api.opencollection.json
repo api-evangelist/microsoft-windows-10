@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer GATT Services API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "GATT Services",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List GATT services",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/bluetooth/le/devices/:deviceId/services",
+            "params": [
+              {
+                "name": "deviceId",
+                "value": "",
+                "type": "path",
+                "description": "BLE device identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves the list of GATT services on a BLE device using BluetoothLEDevice.GetGattServicesAsync. Each service contains characteristics and descriptors that define the device's capabilities."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

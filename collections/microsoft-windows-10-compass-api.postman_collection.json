@@ -1,0 +1,137 @@
+{
+  "item": [
+    {
+      "id": "25db8863-b66f-4c62-a11f-3446ae470903",
+      "name": "Compass",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2ab62836-1b50-41d3-9e51-5609c539cbb2",
+          "name": "Microsoft Windows 10 Get compass reading",
+          "request": {
+            "name": "Microsoft Windows 10 Get compass reading",
+            "description": {
+              "content": "Retrieves the current compass reading using Compass.GetCurrentReading. Returns heading in degrees relative to magnetic north and optionally true north (if the device has a GPS receiver).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "sensors",
+                "compass",
+                "reading"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1d351563-92aa-4af6-b5d6-a254f887a1f2",
+              "name": "Successful reading",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sensors",
+                    "compass",
+                    "reading"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"headingMagneticNorth\": 4201.311760323078,\n  \"headingTrueNorth\": 1685.1412176956603,\n  \"headingAccuracy\": \"High\",\n  \"timestamp\": \"1998-11-21T11:04:37.886Z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c040bb3b-54df-4348-a746-b7d3020804b4",
+              "name": "Compass not available",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "sensors",
+                    "compass",
+                    "reading"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "aff138c3-53eb-46c1-8246-264e97ee86d7",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Compass API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

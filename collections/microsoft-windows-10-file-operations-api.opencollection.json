@@ -1,0 +1,66 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer File Operations API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "File Operations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Read file content",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/storage/files/:fileId/content",
+            "params": [
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "path",
+                "description": "Unique file identifier"
+              },
+              {
+                "name": "readMode",
+                "value": "",
+                "type": "query",
+                "description": "How to read the file content"
+              }
+            ]
+          },
+          "docs": "Reads the content of a file using FileIO helper methods. Supports reading as text (FileIO.ReadTextAsync), binary (FileIO.ReadBufferAsync), or line-by-line (FileIO.ReadLinesAsync)."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Write file content",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.windows.com/storage/files/:fileId/content",
+            "params": [
+              {
+                "name": "fileId",
+                "value": "",
+                "type": "path",
+                "description": "Unique file identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Writes content to a file using FileIO helper methods. Supports writing text (FileIO.WriteTextAsync), binary (FileIO.WriteBytesAsync), or lines (FileIO.WriteLinesAsync)."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

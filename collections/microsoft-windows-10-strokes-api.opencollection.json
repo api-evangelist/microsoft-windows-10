@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Strokes API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Strokes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List ink strokes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/ink/strokes"
+          },
+          "docs": "Retrieves the list of ink strokes from an InkStrokeContainer. Each InkStroke contains point data, drawing attributes (color, size, pen tip shape), and bounding rectangle information."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Add an ink stroke",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/ink/strokes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Adds a new ink stroke to the InkStrokeContainer using InkStrokeBuilder. The stroke is created from a series of ink points with position, pressure, tilt, and timestamp data, combined with InkDrawingAttributes for visual styling."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get ink stroke details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/ink/strokes/:strokeId",
+            "params": [
+              {
+                "name": "strokeId",
+                "value": "",
+                "type": "path",
+                "description": "Unique stroke identifier"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a specific ink stroke including its points, drawing attributes, and bounding rectangle."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Delete an ink stroke",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.windows.com/ink/strokes/:strokeId",
+            "params": [
+              {
+                "name": "strokeId",
+                "value": "",
+                "type": "path",
+                "description": "Unique stroke identifier"
+              }
+            ]
+          },
+          "docs": "Deletes a specific ink stroke from the container using InkStroke.Selected and InkStrokeContainer.DeleteSelected methods."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

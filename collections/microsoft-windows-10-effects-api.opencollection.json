@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Effects API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Effects",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a composition effect",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/composition/effects",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a CompositionEffectBrush for applying visual effects such as blur (GaussianBlurEffect), saturation, color adjustments, and compositing. Effects are created via Compositor.CreateEffectFactory and applied to SpriteVisual objects via their Brush property."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

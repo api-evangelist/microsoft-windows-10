@@ -1,0 +1,124 @@
+{
+  "item": [
+    {
+      "id": "0f8f98d5-84a1-4388-bc8c-55dc676e3e1d",
+      "name": "Change Tracking",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "20e5be89-b8f1-409b-8a20-489d301c0cb2",
+          "name": "Microsoft Windows 10 Get library changes",
+          "request": {
+            "name": "Microsoft Windows 10 Get library changes",
+            "description": {
+              "content": "Retrieves change records for a storage library using StorageLibraryChangeTracker and StorageLibraryChangeReader. Returns a list of changes including file/folder creation, modification, deletion, and moves.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "storage",
+                "libraries",
+                ":libraryId",
+                "changes"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "libraryId",
+                  "description": "(Required) Library identifier (Documents, Music, Pictures, Videos)"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8ee351f9-71ec-43d7-9553-fa4032406871",
+              "name": "Successful retrieval of library changes",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "storage",
+                    "libraries",
+                    ":libraryId",
+                    "changes"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "libraryId",
+                      "description": "(Required) Library identifier (Documents, Music, Pictures, Videos)"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"changeType\": \"ContentsChanged\",\n    \"path\": \"string\",\n    \"previousPath\": \"string\",\n    \"isOfType\": \"Folder\"\n  },\n  {\n    \"changeType\": \"IndexingStatusChanged\",\n    \"path\": \"string\",\n    \"previousPath\": \"string\",\n    \"isOfType\": \"File\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "208645d0-e8d5-4b40-b1f6-13cf43217e46",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Change Tracking API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

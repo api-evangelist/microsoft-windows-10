@@ -1,0 +1,82 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Models API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Models",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List loaded ML models",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/ml/models"
+          },
+          "docs": "Retrieves the list of currently loaded machine learning models. Each model is loaded via the LearningModel class from ONNX format files and provides metadata including the model author, name, domain, description, version, and input/output features."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Load a machine learning model",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/ml/models",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Loads an ONNX machine learning model using LearningModel.LoadFromFilePath or LearningModel.LoadFromStream. The loaded model can then be used to create evaluation sessions. Supports ONNX versions 1.2 and 1.3."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get model details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/ml/models/:modelId",
+            "params": [
+              {
+                "name": "modelId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the loaded model"
+              }
+            ]
+          },
+          "docs": "Retrieves detailed information about a loaded model including its input features (ILearningModelFeatureDescriptor), output features, metadata properties, and device capabilities."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Unload a machine learning model",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.windows.com/ml/models/:modelId",
+            "params": [
+              {
+                "name": "modelId",
+                "value": "",
+                "type": "path",
+                "description": "Unique identifier for the model"
+              }
+            ]
+          },
+          "docs": "Unloads a machine learning model by calling LearningModel.Close, releasing all associated resources and terminating any active sessions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

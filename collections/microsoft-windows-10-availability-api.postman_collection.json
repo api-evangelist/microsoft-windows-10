@@ -1,0 +1,104 @@
+{
+  "item": [
+    {
+      "id": "103f6c9d-bd5e-45b1-b021-53cd075edba5",
+      "name": "Availability",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "bef4ae46-525a-44e1-be96-88ceec965b5e",
+          "name": "Microsoft Windows 10 Check Windows Hello availability",
+          "request": {
+            "name": "Microsoft Windows 10 Check Windows Hello availability",
+            "description": {
+              "content": "Checks whether Windows Hello is available on the device using KeyCredentialManager.IsSupportedAsync. Returns whether the device supports biometric or PIN-based authentication through Windows Hello.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "hello",
+                "availability"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "59659aee-597a-407d-819a-a24b24c17a6a",
+              "name": "Availability status retrieved",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "hello",
+                    "availability"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"isSupported\": true,\n  \"availableMethods\": [\n    \"Fingerprint\",\n    \"Fingerprint\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ec27cdd5-f375-4eff-8325-e45980576e1c",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Availability API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Visits API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Visits",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get recent location visits",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/geolocation/visits"
+          },
+          "docs": "Retrieves recent visit records using GeovisitMonitor.GetLastReportAsync. Visits represent significant location stays detected by the system, including arrival/departure times and position data."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer TCP Sockets API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "TCP Sockets",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a TCP stream socket",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/networking/sockets/tcp",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a StreamSocket for TCP communication. StreamSocket provides reliable, ordered, and error-checked delivery of data between two endpoints. Supports TLS/SSL for secure connections via StreamSocket.UpgradeToSslAsync."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

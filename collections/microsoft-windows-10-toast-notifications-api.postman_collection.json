@@ -1,0 +1,481 @@
+{
+  "item": [
+    {
+      "id": "a54c6657-f9f4-412e-9a34-0bb8427200e0",
+      "name": "Toast Notifications",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e98eb3ad-0237-4c5f-b978-3bb909d6abf2",
+          "name": "Microsoft Windows 10 Create a toast notification",
+          "request": {
+            "name": "Microsoft Windows 10 Create a toast notification",
+            "description": {
+              "content": "Creates and displays a toast notification using the ToastNotificationManager. Toast notifications are pop-up UI elements that appear in the lower right of the screen and can contain text, images, and interactive elements such as buttons and text input fields. The notification content is defined using adaptive notification XML templates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifications",
+                "toast"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": {\n    \"visual\": {\n      \"binding\": {\n        \"template\": \"<string>\",\n        \"texts\": [\n          {\n            \"content\": \"<string>\",\n            \"hintStyle\": \"<string>\"\n          },\n          {\n            \"content\": \"<string>\",\n            \"hintStyle\": \"<string>\"\n          }\n        ],\n        \"images\": [\n          {\n            \"src\": \"<uri>\",\n            \"placement\": \"<string>\",\n            \"hintCrop\": \"<string>\"\n          },\n          {\n            \"src\": \"<uri>\",\n            \"placement\": \"<string>\",\n            \"hintCrop\": \"<string>\"\n          }\n        ],\n        \"attributionText\": \"<string>\"\n      }\n    },\n    \"actions\": {\n      \"inputs\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"placeHolderContent\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"placeHolderContent\": \"<string>\"\n        }\n      ],\n      \"buttons\": [\n        {\n          \"content\": \"<string>\",\n          \"arguments\": \"<string>\",\n          \"activationType\": \"<string>\"\n        },\n        {\n          \"content\": \"<string>\",\n          \"arguments\": \"<string>\",\n          \"activationType\": \"<string>\"\n        }\n      ]\n    },\n    \"audio\": {\n      \"src\": \"<string>\",\n      \"loop\": \"<boolean>\",\n      \"silent\": \"<boolean>\"\n    }\n  },\n  \"tag\": \"<string>\",\n  \"group\": \"<string>\",\n  \"expirationTime\": \"<dateTime>\",\n  \"suppressPopup\": \"<boolean>\",\n  \"priority\": \"<string>\",\n  \"notificationMirroring\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "66d6014a-23f7-4efb-9066-ed6056da1b7e",
+              "name": "Toast notification created and displayed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "toast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": {\n    \"visual\": {\n      \"binding\": {\n        \"template\": \"ToastGeneric\",\n        \"texts\": [\n          {\n            \"content\": \"string\",\n            \"hintStyle\": \"string\"\n          },\n          {\n            \"content\": \"string\",\n            \"hintStyle\": \"string\"\n          }\n        ],\n        \"images\": [\n          {\n            \"src\": \"http://PQAzYWIpshjpyaUxgEtATtGnkvb.zhojO,REdrLCIDHHPQUCEvw\",\n            \"placement\": \"appLogoOverride\",\n            \"hintCrop\": \"none\"\n          },\n          {\n            \"src\": \"https://FrUmYDrvA.edqgDW5nm0HAuieOV3hU3.1lHQ,mDDZQZ9bjSB9\",\n            \"placement\": \"inline\",\n            \"hintCrop\": \"circle\"\n          }\n        ],\n        \"attributionText\": \"string\"\n      }\n    },\n    \"actions\": {\n      \"inputs\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"text\",\n          \"placeHolderContent\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"selection\",\n          \"placeHolderContent\": \"string\"\n        }\n      ],\n      \"buttons\": [\n        {\n          \"content\": \"string\",\n          \"arguments\": \"string\",\n          \"activationType\": \"system\"\n        },\n        {\n          \"content\": \"string\",\n          \"arguments\": \"string\",\n          \"activationType\": \"foreground\"\n        }\n      ]\n    },\n    \"audio\": {\n      \"src\": \"string\",\n      \"loop\": true,\n      \"silent\": false\n    }\n  },\n  \"tag\": \"<string>\",\n  \"group\": \"<string>\",\n  \"expirationTime\": \"<dateTime>\",\n  \"suppressPopup\": \"<boolean>\",\n  \"priority\": \"<string>\",\n  \"notificationMirroring\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tag\": \"string\",\n  \"group\": \"string\",\n  \"content\": {\n    \"visual\": {\n      \"binding\": {\n        \"template\": \"ToastGeneric\",\n        \"texts\": [\n          {\n            \"content\": \"string\",\n            \"hintStyle\": \"string\"\n          },\n          {\n            \"content\": \"string\",\n            \"hintStyle\": \"string\"\n          }\n        ],\n        \"images\": [\n          {\n            \"src\": \"http://DuDLuEvhrXjBPnLViymnB.ddYQYPpes9cXvpGMa8deviyy-KnIYeVYFbWgQfzuLAG-9bPc+L-L29vJGce\",\n            \"placement\": \"inline\",\n            \"hintCrop\": \"none\"\n          },\n          {\n            \"src\": \"https://JwfffXsrXcPBoGJw.zmpnYVZrFINAMXYaZTb08ze.tO3FJ6sJ\",\n            \"placement\": \"hero\",\n            \"hintCrop\": \"none\"\n          }\n        ],\n        \"attributionText\": \"string\"\n      }\n    },\n    \"actions\": {\n      \"inputs\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"text\",\n          \"placeHolderContent\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"text\",\n          \"placeHolderContent\": \"string\"\n        }\n      ],\n      \"buttons\": [\n        {\n          \"content\": \"string\",\n          \"arguments\": \"string\",\n          \"activationType\": \"system\"\n        },\n        {\n          \"content\": \"string\",\n          \"arguments\": \"string\",\n          \"activationType\": \"system\"\n        }\n      ]\n    },\n    \"audio\": {\n      \"src\": \"string\",\n      \"loop\": true,\n      \"silent\": false\n    }\n  },\n  \"expirationTime\": \"2021-02-03T05:45:35.300Z\",\n  \"suppressPopup\": false,\n  \"priority\": \"High\",\n  \"data\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "da016c3f-207a-43e3-906d-1ed182da2f8e",
+              "name": "Invalid notification content",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "toast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": {\n    \"visual\": {\n      \"binding\": {\n        \"template\": \"ToastGeneric\",\n        \"texts\": [\n          {\n            \"content\": \"string\",\n            \"hintStyle\": \"string\"\n          },\n          {\n            \"content\": \"string\",\n            \"hintStyle\": \"string\"\n          }\n        ],\n        \"images\": [\n          {\n            \"src\": \"http://PQAzYWIpshjpyaUxgEtATtGnkvb.zhojO,REdrLCIDHHPQUCEvw\",\n            \"placement\": \"appLogoOverride\",\n            \"hintCrop\": \"none\"\n          },\n          {\n            \"src\": \"https://FrUmYDrvA.edqgDW5nm0HAuieOV3hU3.1lHQ,mDDZQZ9bjSB9\",\n            \"placement\": \"inline\",\n            \"hintCrop\": \"circle\"\n          }\n        ],\n        \"attributionText\": \"string\"\n      }\n    },\n    \"actions\": {\n      \"inputs\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"text\",\n          \"placeHolderContent\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"selection\",\n          \"placeHolderContent\": \"string\"\n        }\n      ],\n      \"buttons\": [\n        {\n          \"content\": \"string\",\n          \"arguments\": \"string\",\n          \"activationType\": \"system\"\n        },\n        {\n          \"content\": \"string\",\n          \"arguments\": \"string\",\n          \"activationType\": \"foreground\"\n        }\n      ]\n    },\n    \"audio\": {\n      \"src\": \"string\",\n      \"loop\": true,\n      \"silent\": false\n    }\n  },\n  \"tag\": \"<string>\",\n  \"group\": \"<string>\",\n  \"expirationTime\": \"<dateTime>\",\n  \"suppressPopup\": \"<boolean>\",\n  \"priority\": \"<string>\",\n  \"notificationMirroring\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b270d443-0cd8-4b17-917e-8284d19de56b",
+          "name": "Microsoft Windows 10 List active toast notifications",
+          "request": {
+            "name": "Microsoft Windows 10 List active toast notifications",
+            "description": {
+              "content": "Retrieves the list of currently active toast notifications for the application. Uses the ToastNotificationHistory class to access notification history and manage displayed notifications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifications",
+                "toast"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a31379e7-3884-40ff-bd23-8821d583f595",
+              "name": "Successful retrieval of active toast notifications",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "toast"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"tag\": \"string\",\n    \"group\": \"string\",\n    \"content\": {\n      \"visual\": {\n        \"binding\": {\n          \"template\": \"ToastGeneric\",\n          \"texts\": [\n            {\n              \"content\": \"string\",\n              \"hintStyle\": \"string\"\n            },\n            {\n              \"content\": \"string\",\n              \"hintStyle\": \"string\"\n            }\n          ],\n          \"images\": [\n            {\n              \"src\": \"https://vcSpy.vbqmnP,toxPSCkPuyQpU-vbU2Dz0v4.qnAeWsZWsacb.u3RnHstS0dbEebsCp1cdv9mrVy2e7yNcnYN\",\n              \"placement\": \"inline\",\n              \"hintCrop\": \"none\"\n            },\n            {\n              \"src\": \"http://H.qyKzFWYwY1xeY2Jz5cJyJa\",\n              \"placement\": \"hero\",\n              \"hintCrop\": \"none\"\n            }\n          ],\n          \"attributionText\": \"string\"\n        }\n      },\n      \"actions\": {\n        \"inputs\": [\n          {\n            \"id\": \"string\",\n            \"type\": \"text\",\n            \"placeHolderContent\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"type\": \"text\",\n            \"placeHolderContent\": \"string\"\n          }\n        ],\n        \"buttons\": [\n          {\n            \"content\": \"string\",\n            \"arguments\": \"string\",\n            \"activationType\": \"foreground\"\n          },\n          {\n            \"content\": \"string\",\n            \"arguments\": \"string\",\n            \"activationType\": \"background\"\n          }\n        ]\n      },\n      \"audio\": {\n        \"src\": \"string\",\n        \"loop\": false,\n        \"silent\": true\n      }\n    },\n    \"expirationTime\": \"1978-04-21T09:40:16.557Z\",\n    \"suppressPopup\": false,\n    \"priority\": \"Default\",\n    \"data\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\",\n      \"key_3\": \"string\"\n    }\n  },\n  {\n    \"tag\": \"string\",\n    \"group\": \"string\",\n    \"content\": {\n      \"visual\": {\n        \"binding\": {\n          \"template\": \"ToastGeneric\",\n          \"texts\": [\n            {\n              \"content\": \"string\",\n              \"hintStyle\": \"string\"\n            },\n            {\n              \"content\": \"string\",\n              \"hintStyle\": \"string\"\n            }\n          ],\n          \"images\": [\n            {\n              \"src\": \"http://iQwPYYsaqpTmKVzYrcLyXZfG.upeujnp-BROUMKaOeitItC4R7wDY\",\n              \"placement\": \"appLogoOverride\",\n              \"hintCrop\": \"circle\"\n            },\n            {\n              \"src\": \"http://GNeNmlwiXlURnfxDHtjGqxDMOoYgQUSKU.tmrsy,\",\n              \"placement\": \"appLogoOverride\",\n              \"hintCrop\": \"none\"\n            }\n          ],\n          \"attributionText\": \"string\"\n        }\n      },\n      \"actions\": {\n        \"inputs\": [\n          {\n            \"id\": \"string\",\n            \"type\": \"selection\",\n            \"placeHolderContent\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"type\": \"text\",\n            \"placeHolderContent\": \"string\"\n          }\n        ],\n        \"buttons\": [\n          {\n            \"content\": \"string\",\n            \"arguments\": \"string\",\n            \"activationType\": \"system\"\n          },\n          {\n            \"content\": \"string\",\n            \"arguments\": \"string\",\n            \"activationType\": \"protocol\"\n          }\n        ]\n      },\n      \"audio\": {\n        \"src\": \"string\",\n        \"loop\": true,\n        \"silent\": true\n      }\n    },\n    \"expirationTime\": \"1997-09-26T11:14:03.443Z\",\n    \"suppressPopup\": false,\n    \"priority\": \"Default\",\n    \"data\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "34aa07af-4049-476c-8b64-be2be19f063a",
+          "name": "Microsoft Windows 10 Get a toast notification by tag",
+          "request": {
+            "name": "Microsoft Windows 10 Get a toast notification by tag",
+            "description": {
+              "content": "Retrieves a specific toast notification identified by its tag. Tags are used as unique identifiers for notifications, enabling updates and removal of individual notifications.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifications",
+                "toast",
+                ":notificationTag"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "notificationTag",
+                  "description": "(Required) The notification tag identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7e5df354-be8c-49c8-94f9-a112fed3ba3f",
+              "name": "Successful retrieval of the toast notification",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "toast",
+                    ":notificationTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "notificationTag",
+                      "description": "(Required) The notification tag identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"tag\": \"string\",\n  \"group\": \"string\",\n  \"content\": {\n    \"visual\": {\n      \"binding\": {\n        \"template\": \"ToastGeneric\",\n        \"texts\": [\n          {\n            \"content\": \"string\",\n            \"hintStyle\": \"string\"\n          },\n          {\n            \"content\": \"string\",\n            \"hintStyle\": \"string\"\n          }\n        ],\n        \"images\": [\n          {\n            \"src\": \"http://DuDLuEvhrXjBPnLViymnB.ddYQYPpes9cXvpGMa8deviyy-KnIYeVYFbWgQfzuLAG-9bPc+L-L29vJGce\",\n            \"placement\": \"inline\",\n            \"hintCrop\": \"none\"\n          },\n          {\n            \"src\": \"https://JwfffXsrXcPBoGJw.zmpnYVZrFINAMXYaZTb08ze.tO3FJ6sJ\",\n            \"placement\": \"hero\",\n            \"hintCrop\": \"none\"\n          }\n        ],\n        \"attributionText\": \"string\"\n      }\n    },\n    \"actions\": {\n      \"inputs\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"text\",\n          \"placeHolderContent\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"text\",\n          \"placeHolderContent\": \"string\"\n        }\n      ],\n      \"buttons\": [\n        {\n          \"content\": \"string\",\n          \"arguments\": \"string\",\n          \"activationType\": \"system\"\n        },\n        {\n          \"content\": \"string\",\n          \"arguments\": \"string\",\n          \"activationType\": \"system\"\n        }\n      ]\n    },\n    \"audio\": {\n      \"src\": \"string\",\n      \"loop\": true,\n      \"silent\": false\n    }\n  },\n  \"expirationTime\": \"2021-02-03T05:45:35.300Z\",\n  \"suppressPopup\": false,\n  \"priority\": \"High\",\n  \"data\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "ed73a2f1-9d3a-4628-b2ba-359cf81e94b1",
+              "name": "Notification not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "toast",
+                    ":notificationTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "notificationTag",
+                      "description": "(Required) The notification tag identifier"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "78006164-7278-47d6-9775-0b14f28f3763",
+          "name": "Microsoft Windows 10 Remove a toast notification",
+          "request": {
+            "name": "Microsoft Windows 10 Remove a toast notification",
+            "description": {
+              "content": "Removes a specific toast notification from the notification center using the ToastNotificationHistory.Remove method. The notification is identified by its tag.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifications",
+                "toast",
+                ":notificationTag"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "notificationTag",
+                  "description": "(Required) The notification tag identifier"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "be4c8175-b2ce-4dfa-85cf-6e620ad45273",
+              "name": "Notification removed successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "toast",
+                    ":notificationTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "notificationTag",
+                      "description": "(Required) The notification tag identifier"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "8801b526-7a5a-4243-809e-fc146a81d76c",
+              "name": "Notification not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "toast",
+                    ":notificationTag"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "notificationTag",
+                      "description": "(Required) The notification tag identifier"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "71a87045-c6c5-4515-9b83-2fb9d7bd22e2",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Toast Notifications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

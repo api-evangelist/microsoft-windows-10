@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Background Transfers API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Background Transfers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List background downloads",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/networking/background-transfers/downloads"
+          },
+          "docs": "Retrieves the list of active and pending background download operations using BackgroundDownloader.GetCurrentDownloadsAsync."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a background download",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/networking/background-transfers/downloads",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a background download operation using BackgroundDownloader. Background transfers continue even when the app is suspended and support progress tracking, pause/resume, and cost-aware transfers."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

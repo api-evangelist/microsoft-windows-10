@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Styles API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Styles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List built-in styles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/winui/styles",
+            "params": [
+              {
+                "name": "resourceType",
+                "value": "",
+                "type": "query",
+                "description": "Filter by resource type"
+              }
+            ]
+          },
+          "docs": "Retrieves the catalog of built-in WinUI styles and resources including Fluent Design System brushes, typography, corner radius, spacing, and animation definitions from generic.xaml."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

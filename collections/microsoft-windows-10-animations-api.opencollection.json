@@ -1,0 +1,33 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Animations API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Animations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Create a composition animation",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/composition/animations",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Creates a composition animation using Compositor factory methods such as CreateScalarKeyFrameAnimation, CreateVector3KeyFrameAnimation, CreateColorKeyFrameAnimation, or CreateExpressionAnimation. Animations drive property changes on visuals over time with easing functions."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

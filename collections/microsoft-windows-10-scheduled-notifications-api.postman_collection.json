@@ -1,0 +1,240 @@
+{
+  "item": [
+    {
+      "id": "dadc45b5-8ded-4a24-86dc-5cda31d3777a",
+      "name": "Scheduled Notifications",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "d7d61614-11e8-49ef-bdce-2d1bfc2ce7ed",
+          "name": "Microsoft Windows 10 Schedule a toast notification",
+          "request": {
+            "name": "Microsoft Windows 10 Schedule a toast notification",
+            "description": {
+              "content": "Schedules a toast notification for future delivery using the ScheduledToastNotification class. The notification will be displayed at the specified delivery time and can optionally recur at a specified interval.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifications",
+                "toast",
+                "scheduled"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"content\": {\n    \"visual\": {\n      \"binding\": {\n        \"template\": \"<string>\",\n        \"texts\": [\n          {\n            \"content\": \"<string>\",\n            \"hintStyle\": \"<string>\"\n          },\n          {\n            \"content\": \"<string>\",\n            \"hintStyle\": \"<string>\"\n          }\n        ],\n        \"images\": [\n          {\n            \"src\": \"<uri>\",\n            \"placement\": \"<string>\",\n            \"hintCrop\": \"<string>\"\n          },\n          {\n            \"src\": \"<uri>\",\n            \"placement\": \"<string>\",\n            \"hintCrop\": \"<string>\"\n          }\n        ],\n        \"attributionText\": \"<string>\"\n      }\n    },\n    \"actions\": {\n      \"inputs\": [\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"placeHolderContent\": \"<string>\"\n        },\n        {\n          \"id\": \"<string>\",\n          \"type\": \"<string>\",\n          \"placeHolderContent\": \"<string>\"\n        }\n      ],\n      \"buttons\": [\n        {\n          \"content\": \"<string>\",\n          \"arguments\": \"<string>\",\n          \"activationType\": \"<string>\"\n        },\n        {\n          \"content\": \"<string>\",\n          \"arguments\": \"<string>\",\n          \"activationType\": \"<string>\"\n        }\n      ]\n    },\n    \"audio\": {\n      \"src\": \"<string>\",\n      \"loop\": \"<boolean>\",\n      \"silent\": \"<boolean>\"\n    }\n  },\n  \"deliveryTime\": \"<dateTime>\",\n  \"snoozeInterval\": \"<string>\",\n  \"maximumSnoozeCount\": \"<integer>\",\n  \"tag\": \"<string>\",\n  \"group\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "3a01a611-a050-4d66-b70c-48af52534d38",
+              "name": "Scheduled notification created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "toast",
+                    "scheduled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": {\n    \"visual\": {\n      \"binding\": {\n        \"template\": \"ToastGeneric\",\n        \"texts\": [\n          {\n            \"content\": \"string\",\n            \"hintStyle\": \"string\"\n          },\n          {\n            \"content\": \"string\",\n            \"hintStyle\": \"string\"\n          }\n        ],\n        \"images\": [\n          {\n            \"src\": \"http://NsAxBwCLGKqjWiAtqvzzsJxTiUOjGZjrT.koa5tEUVe85L.y7NOpDIe6TyXaWP-Xg0Ws8lpDwoltvO0g2svM.JNcL1ISB7wY\",\n            \"placement\": \"inline\",\n            \"hintCrop\": \"circle\"\n          },\n          {\n            \"src\": \"http://myKeVEyEcKC.jgbMVBSEIeZwuhLlIU+xFNhg\",\n            \"placement\": \"inline\",\n            \"hintCrop\": \"circle\"\n          }\n        ],\n        \"attributionText\": \"string\"\n      }\n    },\n    \"actions\": {\n      \"inputs\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"text\",\n          \"placeHolderContent\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"selection\",\n          \"placeHolderContent\": \"string\"\n        }\n      ],\n      \"buttons\": [\n        {\n          \"content\": \"string\",\n          \"arguments\": \"string\",\n          \"activationType\": \"background\"\n        },\n        {\n          \"content\": \"string\",\n          \"arguments\": \"string\",\n          \"activationType\": \"protocol\"\n        }\n      ]\n    },\n    \"audio\": {\n      \"src\": \"string\",\n      \"loop\": false,\n      \"silent\": true\n    }\n  },\n  \"deliveryTime\": \"<dateTime>\",\n  \"snoozeInterval\": \"<string>\",\n  \"maximumSnoozeCount\": \"<integer>\",\n  \"tag\": \"<string>\",\n  \"group\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"content\": {\n    \"visual\": {\n      \"binding\": {\n        \"template\": \"ToastGeneric\",\n        \"texts\": [\n          {\n            \"content\": \"string\",\n            \"hintStyle\": \"string\"\n          },\n          {\n            \"content\": \"string\",\n            \"hintStyle\": \"string\"\n          }\n        ],\n        \"images\": [\n          {\n            \"src\": \"https://IwWmnsOcgxEZwZsjIvsekiQSypNFfceh.xsbOMjfYS6w2mRFJA3orTRnDji9IVt7rxMN0T-TqSe4L98vo,1.v4lul1\",\n            \"placement\": \"inline\",\n            \"hintCrop\": \"circle\"\n          },\n          {\n            \"src\": \"https://LdxU.mvzAjwEUDBuUEwg\",\n            \"placement\": \"inline\",\n            \"hintCrop\": \"none\"\n          }\n        ],\n        \"attributionText\": \"string\"\n      }\n    },\n    \"actions\": {\n      \"inputs\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"text\",\n          \"placeHolderContent\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"selection\",\n          \"placeHolderContent\": \"string\"\n        }\n      ],\n      \"buttons\": [\n        {\n          \"content\": \"string\",\n          \"arguments\": \"string\",\n          \"activationType\": \"system\"\n        },\n        {\n          \"content\": \"string\",\n          \"arguments\": \"string\",\n          \"activationType\": \"system\"\n        }\n      ]\n    },\n    \"audio\": {\n      \"src\": \"string\",\n      \"loop\": true,\n      \"silent\": true\n    }\n  },\n  \"deliveryTime\": \"1992-03-19T15:29:49.309Z\",\n  \"snoozeInterval\": \"string\",\n  \"maximumSnoozeCount\": 1921,\n  \"tag\": \"string\",\n  \"group\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "320b5bf0-7c1c-46a2-957b-b02724293d0a",
+              "name": "Invalid schedule request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "toast",
+                    "scheduled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"content\": {\n    \"visual\": {\n      \"binding\": {\n        \"template\": \"ToastGeneric\",\n        \"texts\": [\n          {\n            \"content\": \"string\",\n            \"hintStyle\": \"string\"\n          },\n          {\n            \"content\": \"string\",\n            \"hintStyle\": \"string\"\n          }\n        ],\n        \"images\": [\n          {\n            \"src\": \"http://NsAxBwCLGKqjWiAtqvzzsJxTiUOjGZjrT.koa5tEUVe85L.y7NOpDIe6TyXaWP-Xg0Ws8lpDwoltvO0g2svM.JNcL1ISB7wY\",\n            \"placement\": \"inline\",\n            \"hintCrop\": \"circle\"\n          },\n          {\n            \"src\": \"http://myKeVEyEcKC.jgbMVBSEIeZwuhLlIU+xFNhg\",\n            \"placement\": \"inline\",\n            \"hintCrop\": \"circle\"\n          }\n        ],\n        \"attributionText\": \"string\"\n      }\n    },\n    \"actions\": {\n      \"inputs\": [\n        {\n          \"id\": \"string\",\n          \"type\": \"text\",\n          \"placeHolderContent\": \"string\"\n        },\n        {\n          \"id\": \"string\",\n          \"type\": \"selection\",\n          \"placeHolderContent\": \"string\"\n        }\n      ],\n      \"buttons\": [\n        {\n          \"content\": \"string\",\n          \"arguments\": \"string\",\n          \"activationType\": \"background\"\n        },\n        {\n          \"content\": \"string\",\n          \"arguments\": \"string\",\n          \"activationType\": \"protocol\"\n        }\n      ]\n    },\n    \"audio\": {\n      \"src\": \"string\",\n      \"loop\": false,\n      \"silent\": true\n    }\n  },\n  \"deliveryTime\": \"<dateTime>\",\n  \"snoozeInterval\": \"<string>\",\n  \"maximumSnoozeCount\": \"<integer>\",\n  \"tag\": \"<string>\",\n  \"group\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5e86ac6e-7360-44b3-99ea-26c9bb61cc76",
+          "name": "Microsoft Windows 10 List scheduled toast notifications",
+          "request": {
+            "name": "Microsoft Windows 10 List scheduled toast notifications",
+            "description": {
+              "content": "Retrieves the list of scheduled toast notifications pending delivery. Uses the ToastNotifier.GetScheduledToastNotifications method.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifications",
+                "toast",
+                "scheduled"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fe00d7d7-0ba6-4cd3-be63-a8213caeaa3f",
+              "name": "Successful retrieval of scheduled notifications",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "toast",
+                    "scheduled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"content\": {\n      \"visual\": {\n        \"binding\": {\n          \"template\": \"ToastGeneric\",\n          \"texts\": [\n            {\n              \"content\": \"string\",\n              \"hintStyle\": \"string\"\n            },\n            {\n              \"content\": \"string\",\n              \"hintStyle\": \"string\"\n            }\n          ],\n          \"images\": [\n            {\n              \"src\": \"https://kYILoLeBfIXzEaDIahTmKc.baemuWPz-KwB6LGT,Gsek1ZZIBFeoiXOxUZUJYVS3y4-ellV\",\n              \"placement\": \"inline\",\n              \"hintCrop\": \"none\"\n            },\n            {\n              \"src\": \"http://uCWfCggnQvHcmWwWL.htpHqPpWBeeczP5Bgm6Bvja2mKJK-FwDaHvrmbEyp0xbYnrn0d3R.2B1lKCm0cgJ-HcCq0bUmZW\",\n              \"placement\": \"appLogoOverride\",\n              \"hintCrop\": \"circle\"\n            }\n          ],\n          \"attributionText\": \"string\"\n        }\n      },\n      \"actions\": {\n        \"inputs\": [\n          {\n            \"id\": \"string\",\n            \"type\": \"text\",\n            \"placeHolderContent\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"type\": \"text\",\n            \"placeHolderContent\": \"string\"\n          }\n        ],\n        \"buttons\": [\n          {\n            \"content\": \"string\",\n            \"arguments\": \"string\",\n            \"activationType\": \"foreground\"\n          },\n          {\n            \"content\": \"string\",\n            \"arguments\": \"string\",\n            \"activationType\": \"background\"\n          }\n        ]\n      },\n      \"audio\": {\n        \"src\": \"string\",\n        \"loop\": false,\n        \"silent\": false\n      }\n    },\n    \"deliveryTime\": \"1973-08-12T18:53:08.345Z\",\n    \"snoozeInterval\": \"string\",\n    \"maximumSnoozeCount\": 3153,\n    \"tag\": \"string\",\n    \"group\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"content\": {\n      \"visual\": {\n        \"binding\": {\n          \"template\": \"ToastGeneric\",\n          \"texts\": [\n            {\n              \"content\": \"string\",\n              \"hintStyle\": \"string\"\n            },\n            {\n              \"content\": \"string\",\n              \"hintStyle\": \"string\"\n            }\n          ],\n          \"images\": [\n            {\n              \"src\": \"http://bkD.czkeIxUtwqqC,jyEP6q,adzf6aTlyZGTtm\",\n              \"placement\": \"appLogoOverride\",\n              \"hintCrop\": \"none\"\n            },\n            {\n              \"src\": \"http://VhwlDaYsKjvaQVxemxLbYeZhd.tmsD,tL1CDCQsQtJl-GirYu9reoI2GcDmPm+fq30EaXfZyfhsAtT\",\n              \"placement\": \"appLogoOverride\",\n              \"hintCrop\": \"circle\"\n            }\n          ],\n          \"attributionText\": \"string\"\n        }\n      },\n      \"actions\": {\n        \"inputs\": [\n          {\n            \"id\": \"string\",\n            \"type\": \"text\",\n            \"placeHolderContent\": \"string\"\n          },\n          {\n            \"id\": \"string\",\n            \"type\": \"selection\",\n            \"placeHolderContent\": \"string\"\n          }\n        ],\n        \"buttons\": [\n          {\n            \"content\": \"string\",\n            \"arguments\": \"string\",\n            \"activationType\": \"background\"\n          },\n          {\n            \"content\": \"string\",\n            \"arguments\": \"string\",\n            \"activationType\": \"foreground\"\n          }\n        ]\n      },\n      \"audio\": {\n        \"src\": \"string\",\n        \"loop\": false,\n        \"silent\": true\n      }\n    },\n    \"deliveryTime\": \"1966-10-22T12:32:37.952Z\",\n    \"snoozeInterval\": \"string\",\n    \"maximumSnoozeCount\": 7737,\n    \"tag\": \"string\",\n    \"group\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "67cdd4b7-1e6d-4825-95aa-f37fd110a068",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Scheduled Notifications API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

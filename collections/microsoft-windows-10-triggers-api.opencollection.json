@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Triggers API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Triggers",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List available trigger types",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/background-tasks/triggers"
+          },
+          "docs": "Retrieves the list of available background task trigger types including SystemTrigger, TimeTrigger, MaintenanceTrigger, PushNotificationTrigger, LocationTrigger, BluetoothLEAdvertisementWatcherTrigger, DeviceUseTrigger, and ActivitySensorTrigger."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

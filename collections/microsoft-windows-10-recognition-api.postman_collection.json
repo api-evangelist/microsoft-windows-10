@@ -1,0 +1,235 @@
+{
+  "item": [
+    {
+      "id": "119b16af-b0b0-4184-9450-de65a44aa410",
+      "name": "Recognition",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "87e7802a-8baa-4dcb-a19f-b23e57803eaa",
+          "name": "Microsoft Windows 10 Recognize handwriting from ink strokes",
+          "request": {
+            "name": "Microsoft Windows 10 Recognize handwriting from ink strokes",
+            "description": {
+              "content": "Performs handwriting recognition on ink strokes using InkRecognizerContainer. RecognizeAsync. Returns a list of InkRecognitionResult candidates with recognized text alternatives ranked by confidence.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ink",
+                "recognize"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"strokeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"recognitionTarget\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "982115c1-91be-4380-85d0-90feb6ba1189",
+              "name": "Recognition results returned",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ink",
+                    "recognize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"strokeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"recognitionTarget\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"boundingRect\": {\n      \"x\": 707.3322890607259,\n      \"y\": 5612.982152763703,\n      \"width\": 5118.064721475795,\n      \"height\": 463.3506460926029\n    },\n    \"textCandidates\": [\n      \"string\",\n      \"string\"\n    ],\n    \"selectedTextIndex\": 3011,\n    \"strokeIds\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"boundingRect\": {\n      \"x\": 8856.714993108866,\n      \"y\": 1795.5036029053551,\n      \"width\": 1954.751799468295,\n      \"height\": 6082.845573743253\n    },\n    \"textCandidates\": [\n      \"string\",\n      \"string\"\n    ],\n    \"selectedTextIndex\": 8575,\n    \"strokeIds\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "12a5ecea-2232-4d68-a2f8-249157e6ee2a",
+              "name": "No strokes to recognize",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ink",
+                    "recognize"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"strokeIds\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"recognitionTarget\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "94bdf570-c659-4c3f-86f7-6878a1a9beb8",
+          "name": "Microsoft Windows 10 List available ink recognizers",
+          "request": {
+            "name": "Microsoft Windows 10 List available ink recognizers",
+            "description": {
+              "content": "Retrieves the list of installed handwriting recognizers using InkRecognizerContainer.GetRecognizers. Each recognizer supports a specific language and script for handwriting recognition.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "ink",
+                "recognizers"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "23ed03d2-f72a-4bb1-a52a-3763e34472a2",
+              "name": "Successful retrieval of recognizers",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "ink",
+                    "recognizers"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "dda20821-c47e-4abd-b728-d77888c50f4c",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Recognition API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

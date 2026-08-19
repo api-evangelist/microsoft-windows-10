@@ -1,0 +1,235 @@
+{
+  "item": [
+    {
+      "id": "f989dc06-db53-49dd-869e-4328b707221f",
+      "name": "Collections",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "ca5e154e-bd70-4341-9f23-0690828b2427",
+          "name": "Microsoft Windows 10 List toast notification collections",
+          "request": {
+            "name": "Microsoft Windows 10 List toast notification collections",
+            "description": {
+              "content": "Retrieves the list of toast notification collections for the application. Collections group related notifications using the ToastCollection and ToastCollectionManager classes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifications",
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "a17f0d51-5fab-4688-b10d-0fd9d5e23580",
+              "name": "Successful retrieval of notification collections",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"displayName\": \"string\",\n    \"launchArgs\": \"string\",\n    \"icon\": \"http://UnGHoLtldRJgIaO.yyENpo5l7ZUF8E+GpONQlsb1wiAmtQ7bfoqph,b6oifOJlG0paTQvCBTzvLpRIoISZBNtK11zf8xJrzQ0S5\"\n  },\n  {\n    \"id\": \"string\",\n    \"displayName\": \"string\",\n    \"launchArgs\": \"string\",\n    \"icon\": \"http://tNxRnnigzATlZEGLOuxYUKRyAQMevUIs.khpfQABeQegAk\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4534b407-df47-4f44-9d2d-d1df1a0972ec",
+          "name": "Microsoft Windows 10 Create a toast notification collection",
+          "request": {
+            "name": "Microsoft Windows 10 Create a toast notification collection",
+            "description": {
+              "content": "Creates a new toast notification collection for grouping related notifications. Uses the ToastCollectionManager.SaveToastCollectionAsync method.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notifications",
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"launchArgs\": \"<string>\",\n  \"icon\": \"<uri>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7c78acb2-ce80-4c23-aea6-1a0efa086a5c",
+              "name": "Collection created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"launchArgs\": \"<string>\",\n  \"icon\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"displayName\": \"string\",\n  \"launchArgs\": \"string\",\n  \"icon\": \"https://oCmUaQnHxvKRROoRZiZE.xffmyKJn,pm1sW\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "7128f980-e738-4cd8-ac36-f4ed510e1ce5",
+              "name": "Invalid collection request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notifications",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"id\": \"<string>\",\n  \"displayName\": \"<string>\",\n  \"launchArgs\": \"<string>\",\n  \"icon\": \"<uri>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "96d9fe42-03ef-4729-8624-fc2f63857506",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Collections API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,240 @@
+{
+  "item": [
+    {
+      "id": "b48c00b8-bd22-446e-8867-4a8c8b591a77",
+      "name": "Background Transfers",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "78450e27-060e-463e-8320-20ebdc61ac21",
+          "name": "Microsoft Windows 10 Create a background download",
+          "request": {
+            "name": "Microsoft Windows 10 Create a background download",
+            "description": {
+              "content": "Creates a background download operation using BackgroundDownloader. Background transfers continue even when the app is suspended and support progress tracking, pause/resume, and cost-aware transfers.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "networking",
+                "background-transfers",
+                "downloads"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"uri\": \"<uri>\",\n  \"destinationFile\": \"<string>\",\n  \"costPolicy\": \"Default\",\n  \"priority\": \"Default\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "68dfb8c3-1591-4aa5-b48b-9a9d2d6b3c3e",
+              "name": "Background download created",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "networking",
+                    "background-transfers",
+                    "downloads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uri\": \"<uri>\",\n  \"destinationFile\": \"<string>\",\n  \"costPolicy\": \"Default\",\n  \"priority\": \"Default\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"uri\": \"https://qvBeWaAIMqcuPwPuiffHAAqtEBnpFMpdg.wtihAhh6LIWHJtw\",\n  \"destinationFile\": \"string\",\n  \"status\": \"PausedCostedNetwork\",\n  \"progress\": {\n    \"bytesReceived\": 5784,\n    \"totalBytesToReceive\": 8332\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "17b86dac-7a54-4c8c-ab22-8a196a8e13d8",
+              "name": "Invalid download request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "networking",
+                    "background-transfers",
+                    "downloads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"uri\": \"<uri>\",\n  \"destinationFile\": \"<string>\",\n  \"costPolicy\": \"Default\",\n  \"priority\": \"Default\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "c281b447-ef1c-428e-a181-6cb5b6b404ce",
+          "name": "Microsoft Windows 10 List background downloads",
+          "request": {
+            "name": "Microsoft Windows 10 List background downloads",
+            "description": {
+              "content": "Retrieves the list of active and pending background download operations using BackgroundDownloader.GetCurrentDownloadsAsync.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "networking",
+                "background-transfers",
+                "downloads"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f1c477c7-1807-4c0b-aa01-8dd74551de10",
+              "name": "Successful retrieval of downloads",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "networking",
+                    "background-transfers",
+                    "downloads"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"uri\": \"http://vDbiX.okofFhmO,YLuB4XpPjv1K.,1HCSIWd1SbNotVwUAdHcuYihWvkedkFYS1IaeS.zHrcx\",\n    \"destinationFile\": \"string\",\n    \"status\": \"PausedNoNetwork\",\n    \"progress\": {\n      \"bytesReceived\": 609,\n      \"totalBytesToReceive\": 382\n    }\n  },\n  {\n    \"id\": \"string\",\n    \"uri\": \"http://EGdzkjKLlFNmnNHDqEGAUbOOc.ryxos5Q-LgaqDg3j953-NaZa2UkneOwTjPwjpwIp3wvSX.Bi7hBnMme0z4,O2i+\",\n    \"destinationFile\": \"string\",\n    \"status\": \"Error\",\n    \"progress\": {\n      \"bytesReceived\": 6191,\n      \"totalBytesToReceive\": 2807\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "1abded4d-4f04-49e1-8427-4a5b7acd7f62",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Background Transfers API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

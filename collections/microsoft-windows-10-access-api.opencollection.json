@@ -1,0 +1,62 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Access API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Access",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get background access status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/background-tasks/access"
+          },
+          "docs": "Checks the application's background access status using BackgroundExecutionManager.GetAccessStatus. Returns whether the app is allowed to run background tasks, which may be limited by user settings or battery saver mode."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Request background access",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/background-tasks/access"
+          },
+          "docs": "Requests permission for background task execution using BackgroundExecutionManager.RequestAccessAsync. May prompt the user to allow background activity."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Check geolocation access status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/geolocation/access"
+          },
+          "docs": "Checks the application's permission to access location data using Geolocator.RequestAccessAsync. Returns the current GeolocationAccessStatus indicating whether access is allowed, denied, or unspecified."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Request geolocation access",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/geolocation/access"
+          },
+          "docs": "Requests permission to access the device's location using Geolocator.RequestAccessAsync. Prompts the user to grant or deny location access if not previously configured."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

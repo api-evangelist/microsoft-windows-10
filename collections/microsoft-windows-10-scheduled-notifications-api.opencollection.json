@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Scheduled Notifications API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Scheduled Notifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List scheduled toast notifications",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/notifications/toast/scheduled"
+          },
+          "docs": "Retrieves the list of scheduled toast notifications pending delivery. Uses the ToastNotifier.GetScheduledToastNotifications method."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Schedule a toast notification",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/notifications/toast/scheduled",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Schedules a toast notification for future delivery using the ScheduledToastNotification class. The notification will be displayed at the specified delivery time and can optionally recur at a specified interval."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

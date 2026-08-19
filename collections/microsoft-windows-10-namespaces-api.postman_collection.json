@@ -1,0 +1,134 @@
+{
+  "item": [
+    {
+      "id": "cb5c065f-d8b0-418f-a919-d7f0e5f1cb0c",
+      "name": "Namespaces",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a0e0ca57-05d8-443c-a3c6-fb2a9452625b",
+          "name": "Microsoft Windows 10 List WinRT namespaces",
+          "request": {
+            "name": "Microsoft Windows 10 List WinRT namespaces",
+            "description": {
+              "content": "Retrieves the list of available Windows Runtime namespaces, including Windows.UI, Windows.Storage, Windows.Devices, Windows.Media, Windows.Networking, Windows.Security, and Windows.AI. Each namespace contains classes, interfaces, enums, and delegates.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "winrt",
+                "namespaces"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cdd0ff5e-5ab0-4ae4-bd2f-8b6cbb57a07d",
+              "name": "Successful retrieval of WinRT namespaces",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "winrt",
+                    "namespaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"Windows.UI.Notifications\",\n    \"description\": \"string\",\n    \"classCount\": 9908,\n    \"interfaceCount\": 6728,\n    \"enumCount\": 5982,\n    \"delegateCount\": 9198,\n    \"minSupportedVersion\": \"10.0.10240.0\"\n  },\n  {\n    \"name\": \"Windows.UI.Notifications\",\n    \"description\": \"string\",\n    \"classCount\": 4654,\n    \"interfaceCount\": 1995,\n    \"enumCount\": 2240,\n    \"delegateCount\": 6763,\n    \"minSupportedVersion\": \"10.0.10240.0\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c7d44943-e8d4-47ad-ba97-ce1d04a044ef",
+              "name": "Unauthorized",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "winrt",
+                    "namespaces"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "8d03d1ec-c3a0-463e-a35d-9e953adfd1dd",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Namespaces API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

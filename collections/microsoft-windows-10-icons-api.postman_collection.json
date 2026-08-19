@@ -1,0 +1,116 @@
+{
+  "item": [
+    {
+      "id": "718a0957-e673-412d-81be-dba462d4b150",
+      "name": "Icons",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "99c7109e-54e9-449a-ae8e-ba9edc508ca1",
+          "name": "Microsoft Windows 10 List Fluent Design icons",
+          "request": {
+            "name": "Microsoft Windows 10 List Fluent Design icons",
+            "description": {
+              "content": "Retrieves the catalog of available Segoe Fluent Icons for use with SymbolIcon and FontIcon controls. Includes icon name, unicode code point, and preview information.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "winui",
+                "icons"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "search",
+                  "value": "<string>",
+                  "description": "Search icons by name"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d030aefd-6293-4c93-86c8-394a6f101730",
+              "name": "Successful retrieval of icons",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "winui",
+                    "icons"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "search",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"symbol\": \"string\",\n    \"unicodePoint\": \"E700\",\n    \"description\": \"string\"\n  },\n  {\n    \"name\": \"string\",\n    \"symbol\": \"string\",\n    \"unicodePoint\": \"E700\",\n    \"description\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2fb28f56-2e74-4bda-b7f9-08a5cca23f8f",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Icons API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

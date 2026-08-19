@@ -1,0 +1,247 @@
+{
+  "item": [
+    {
+      "id": "de7402ce-8707-4d72-a0d9-966a1b2fc29c",
+      "name": "Folders",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "119e16ba-6c1c-4e85-8d37-8d53d3f3e61f",
+          "name": "Microsoft Windows 10 List storage folders",
+          "request": {
+            "name": "Microsoft Windows 10 List storage folders",
+            "description": {
+              "content": "Retrieves the list of subfolders in a specified location using StorageFolder.GetFoldersAsync. Includes folder metadata such as name, path, date created, and item counts.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "storage",
+                "folders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "parentFolderId",
+                  "value": "<string>",
+                  "description": "Parent folder identifier"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0e60f223-33c3-4880-9a57-710f491f68be",
+              "name": "Successful retrieval of folders",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "storage",
+                    "folders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "parentFolderId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"name\": \"string\",\n    \"path\": \"string\",\n    \"dateCreated\": \"1987-04-05T20:55:59.373Z\",\n    \"attributes\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  {\n    \"name\": \"string\",\n    \"path\": \"string\",\n    \"dateCreated\": \"2002-04-22T10:27:58.513Z\",\n    \"attributes\": [\n      \"string\",\n      \"string\"\n    ]\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "6bb45440-00b7-4fea-b79c-6e5fff2dcacd",
+          "name": "Microsoft Windows 10 Create a folder",
+          "request": {
+            "name": "Microsoft Windows 10 Create a folder",
+            "description": {
+              "content": "Creates a new folder using StorageFolder.CreateFolderAsync. Supports collision options to handle existing folders with the same name.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "storage",
+                "folders"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"parentPath\": \"<string>\",\n  \"collisionOption\": \"FailIfExists\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "208ae8bd-ecc4-4c4a-8557-5cfd32d45e53",
+              "name": "Folder created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "storage",
+                    "folders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"parentPath\": \"<string>\",\n  \"collisionOption\": \"FailIfExists\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"path\": \"string\",\n  \"dateCreated\": \"1992-03-11T15:42:32.594Z\",\n  \"attributes\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "590968e8-4fc7-45ee-a0ec-2f8a462cf066",
+              "name": "Folder already exists",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "storage",
+                    "folders"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"parentPath\": \"<string>\",\n  \"collisionOption\": \"FailIfExists\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "bd9f4564-85c2-48ef-b872-f43deb28139b",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Folders API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

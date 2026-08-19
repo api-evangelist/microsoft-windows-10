@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Drawing Attributes API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Drawing Attributes",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Get default drawing attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/ink/drawing-attributes"
+          },
+          "docs": "Retrieves the default InkDrawingAttributes used for new strokes, including color, size, pen tip shape, transparency, and fit-to-curve settings."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Update default drawing attributes",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.windows.com/ink/drawing-attributes",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Updates the default InkDrawingAttributes for new strokes. Changes affect all subsequently created strokes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,524 @@
+{
+  "item": [
+    {
+      "id": "6601133f-1745-4cab-886e-7914450ab774",
+      "name": "Tasks",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f74ae020-70b4-4d16-8d3f-992df018908b",
+          "name": "Microsoft Windows 10 List registered background tasks",
+          "request": {
+            "name": "Microsoft Windows 10 List registered background tasks",
+            "description": {
+              "content": "Retrieves the list of registered background tasks using BackgroundTaskRegistration.AllTasks. Returns all tasks registered by the current application including their name, trigger type, conditions, and last run status.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "background-tasks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5896b472-bfe2-4e5c-ba4c-5f68924eefa6",
+              "name": "Successful retrieval of background tasks",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "background-tasks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"triggerType\": \"string\",\n    \"isActive\": true\n  },\n  {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"triggerType\": \"string\",\n    \"isActive\": true\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0e6f8f9e-ce13-46a2-b7a0-3d5674b7b5cf",
+          "name": "Microsoft Windows 10 Register a background task",
+          "request": {
+            "name": "Microsoft Windows 10 Register a background task",
+            "description": {
+              "content": "Registers a new background task using BackgroundTaskBuilder. The task must specify an entry point (IBackgroundTask implementation), a trigger (SystemTrigger, TimeTrigger, MaintenanceTrigger, etc.), and optional conditions (InternetAvailable, UserPresent, etc.).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "background-tasks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"entryPoint\": \"<string>\",\n  \"trigger\": {\n    \"type\": \"<string>\",\n    \"systemTriggerType\": \"<string>\",\n    \"freshnessTime\": \"<integer>\",\n    \"oneShot\": \"<boolean>\"\n  },\n  \"conditions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isNetworkRequested\": false\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "cb91a8f5-bb8f-4ed2-9298-2c12aa3e935e",
+              "name": "Background task registered",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "background-tasks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"entryPoint\": \"<string>\",\n  \"trigger\": {\n    \"type\": \"<string>\",\n    \"systemTriggerType\": \"<string>\",\n    \"freshnessTime\": \"<integer>\",\n    \"oneShot\": \"<boolean>\"\n  },\n  \"conditions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isNetworkRequested\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"triggerType\": \"string\",\n  \"isActive\": true\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "83c80612-35ef-4ca6-a38f-426eaf73617a",
+              "name": "Invalid task configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "background-tasks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"entryPoint\": \"<string>\",\n  \"trigger\": {\n    \"type\": \"<string>\",\n    \"systemTriggerType\": \"<string>\",\n    \"freshnessTime\": \"<integer>\",\n    \"oneShot\": \"<boolean>\"\n  },\n  \"conditions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isNetworkRequested\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "cd7f4322-f80a-445e-8be3-ffce187b0613",
+              "name": "Task with same name already registered",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "background-tasks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"entryPoint\": \"<string>\",\n  \"trigger\": {\n    \"type\": \"<string>\",\n    \"systemTriggerType\": \"<string>\",\n    \"freshnessTime\": \"<integer>\",\n    \"oneShot\": \"<boolean>\"\n  },\n  \"conditions\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"isNetworkRequested\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Conflict",
+              "code": 409,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "12742b0a-12a5-4ff3-beb8-574f9e717d06",
+          "name": "Microsoft Windows 10 Get background task details",
+          "request": {
+            "name": "Microsoft Windows 10 Get background task details",
+            "description": {
+              "content": "Retrieves details about a specific registered background task including its trigger type, conditions, progress, and completion history.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "background-tasks",
+                ":taskId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taskId",
+                  "description": "(Required) Background task registration ID"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ab0e20bf-0ac8-4a47-b035-821be48a56dd",
+              "name": "Successful retrieval of task details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "background-tasks",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) Background task registration ID"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"name\": \"string\",\n  \"entryPoint\": \"string\",\n  \"trigger\": {\n    \"type\": \"string\",\n    \"parameters\": {\n      \"key_0\": \"string\",\n      \"key_1\": \"string\",\n      \"key_2\": \"string\",\n      \"key_3\": \"string\"\n    }\n  },\n  \"conditions\": [\n    \"FreeNetworkAvailable\",\n    \"FreeNetworkAvailable\"\n  ],\n  \"progress\": 9931,\n  \"lastCompletedTime\": \"1964-10-29T16:01:23.017Z\",\n  \"lastRunResult\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "63d9c706-cd82-4ec1-a737-54ec7e5011b0",
+              "name": "Task not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "background-tasks",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) Background task registration ID"
+                    }
+                  ]
+                },
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "77b687a5-223a-4c74-a499-6bd099cf8876",
+          "name": "Microsoft Windows 10 Unregister a background task",
+          "request": {
+            "name": "Microsoft Windows 10 Unregister a background task",
+            "description": {
+              "content": "Unregisters a background task using BackgroundTaskRegistration.Unregister. Optionally cancels any currently running instance of the task.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "background-tasks",
+                ":taskId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "cancelRunningTask",
+                  "value": "true",
+                  "description": "Whether to cancel a running instance"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "taskId",
+                  "description": "(Required) Background task registration ID"
+                }
+              ]
+            },
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "37628bf1-3b69-4b5d-8a88-53b9df594f65",
+              "name": "Task unregistered",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "background-tasks",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cancelRunningTask",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) Background task registration ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "No Content",
+              "code": 204,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            },
+            {
+              "id": "3d5c3678-9a67-45f3-89c3-83f8f6d1618f",
+              "name": "Task not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "background-tasks",
+                    ":taskId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "cancelRunningTask",
+                      "value": "true"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "taskId",
+                      "description": "(Required) Background task registration ID"
+                    }
+                  ]
+                },
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "e2e9a2df-5d09-4e0b-8ca8-87ad87ee15bd",
+    "name": "Microsoft Windows 10 Windows Background Accelerometer Tasks API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

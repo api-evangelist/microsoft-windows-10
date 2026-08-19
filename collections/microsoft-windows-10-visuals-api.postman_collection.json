@@ -1,0 +1,235 @@
+{
+  "item": [
+    {
+      "id": "c35bc1db-43d8-49ce-a80b-232d0d44ae8b",
+      "name": "Visuals",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f4db25c6-1b39-416e-af4b-efe293e24a92",
+          "name": "Microsoft Windows 10 List composition visuals",
+          "request": {
+            "name": "Microsoft Windows 10 List composition visuals",
+            "description": {
+              "content": "Retrieves the list of visual objects in the composition tree. Visuals are the base building blocks of the visual layer, representing rectangular areas that can have size, position, opacity, clip, and transform properties. Types include SpriteVisual, ContainerVisual, LayerVisual, ShapeVisual, and RedirectVisual.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composition",
+                "visuals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "eb923091-194b-423b-84f6-70bc9e666fa1",
+              "name": "Successful retrieval of visuals",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composition",
+                    "visuals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"string\",\n    \"type\": \"ContainerVisual\",\n    \"offset\": {\n      \"x\": 297.2510126067485,\n      \"y\": 1429.526903599496,\n      \"z\": 4176.9057473419825\n    },\n    \"size\": {\n      \"x\": 297.13041455080804,\n      \"y\": 9623.359731833287\n    },\n    \"opacity\": 1640.5675499652307,\n    \"rotationAngleInDegrees\": 1342.4085917840555,\n    \"scale\": {\n      \"x\": 6877.664548852566,\n      \"y\": 2931.0479632669394,\n      \"z\": 7859.198436410301\n    },\n    \"isVisible\": true,\n    \"comment\": \"string\"\n  },\n  {\n    \"id\": \"string\",\n    \"type\": \"LayerVisual\",\n    \"offset\": {\n      \"x\": 5982.991246558943,\n      \"y\": 3142.7216741277975,\n      \"z\": 3936.357114844198\n    },\n    \"size\": {\n      \"x\": 4695.991672298212,\n      \"y\": 7115.687987044018\n    },\n    \"opacity\": 7170.039870753284,\n    \"rotationAngleInDegrees\": 6562.756187750027,\n    \"scale\": {\n      \"x\": 8614.642463771617,\n      \"y\": 6860.323854166281,\n      \"z\": 2391.8259834359856\n    },\n    \"isVisible\": true,\n    \"comment\": \"string\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5c178acc-beb4-4d8f-bfc9-5e2a08183f5b",
+          "name": "Microsoft Windows 10 Create a composition visual",
+          "request": {
+            "name": "Microsoft Windows 10 Create a composition visual",
+            "description": {
+              "content": "Creates a new visual object using the Compositor factory methods such as Compositor.CreateSpriteVisual, CreateContainerVisual, or CreateLayerVisual. The visual must be added to a visual tree to be rendered.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composition",
+                "visuals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"offset\": {\n    \"x\": \"<float>\",\n    \"y\": \"<float>\",\n    \"z\": \"<float>\"\n  },\n  \"size\": {\n    \"x\": \"<float>\",\n    \"y\": \"<float>\"\n  },\n  \"opacity\": 1\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c07adade-b1d0-4ca7-90f1-143cbee257e7",
+              "name": "Visual created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composition",
+                    "visuals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"offset\": {\n    \"x\": 3185.28711365175,\n    \"y\": 2231.6730321776035,\n    \"z\": 554.1843781912414\n  },\n  \"size\": {\n    \"x\": 162.37003557771135,\n    \"y\": 6238.7589813053355\n  },\n  \"opacity\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"type\": \"RedirectVisual\",\n  \"offset\": {\n    \"x\": 1880.9976406748985,\n    \"y\": 3484.7782688953166,\n    \"z\": 1858.769243618975\n  },\n  \"size\": {\n    \"x\": 7778.862183528466,\n    \"y\": 1966.2956591523762\n  },\n  \"opacity\": 6905.3693288680915,\n  \"rotationAngleInDegrees\": 8809.55677895488,\n  \"scale\": {\n    \"x\": 2366.735035737374,\n    \"y\": 5399.320342788741,\n    \"z\": 2098.246396470995\n  },\n  \"isVisible\": false,\n  \"comment\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "5eafea75-0225-45e4-a2d5-741f44732485",
+              "name": "Invalid visual configuration",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composition",
+                    "visuals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"offset\": {\n    \"x\": 3185.28711365175,\n    \"y\": 2231.6730321776035,\n    \"z\": 554.1843781912414\n  },\n  \"size\": {\n    \"x\": 162.37003557771135,\n    \"y\": 6238.7589813053355\n  },\n  \"opacity\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "07c4d382-b3f2-4250-a84d-26840a1107f8",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Visuals API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

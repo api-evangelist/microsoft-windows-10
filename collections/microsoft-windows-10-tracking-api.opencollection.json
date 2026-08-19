@@ -1,0 +1,44 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Tracking API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tracking",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Start continuous position tracking",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.windows.com/geolocation/tracking",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Starts continuous position tracking by subscribing to the Geolocator.PositionChanged event. Reports position updates based on the configured movement threshold (in meters) and reporting interval."
+        },
+        {
+          "info": {
+            "name": "Microsoft Windows 10 Stop position tracking",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.windows.com/geolocation/tracking"
+          },
+          "docs": "Stops continuous position tracking by unsubscribing from the Geolocator.PositionChanged event and disposing the Geolocator."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,29 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Libraries API",
+    "version": "1.0.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Libraries",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Microsoft Windows 10 List storage libraries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.windows.com/storage/libraries"
+          },
+          "docs": "Retrieves the list of storage libraries (Documents, Music, Pictures, Videos) using StorageLibrary.GetLibraryAsync. Each library contains a list of included folders and supports change tracking."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,163 @@
+{
+  "item": [
+    {
+      "id": "ec049b2d-7167-4940-adc2-76b919752871",
+      "name": "Animations",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b68a814f-0f3a-4179-a9fb-a3155e9b69c3",
+          "name": "Microsoft Windows 10 Create a composition animation",
+          "request": {
+            "name": "Microsoft Windows 10 Create a composition animation",
+            "description": {
+              "content": "Creates a composition animation using Compositor factory methods such as CreateScalarKeyFrameAnimation, CreateVector3KeyFrameAnimation, CreateColorKeyFrameAnimation, or CreateExpressionAnimation. Animations drive property changes on visuals over time with easing functions.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "composition",
+                "animations"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"targetProperty\": \"<string>\",\n  \"keyFrames\": [\n    {\n      \"normalizedProgressKey\": \"<float>\",\n      \"value\": \"<object>\",\n      \"easingFunction\": \"<string>\"\n    },\n    {\n      \"normalizedProgressKey\": \"<float>\",\n      \"value\": \"<object>\",\n      \"easingFunction\": \"<string>\"\n    }\n  ],\n  \"expression\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4a67d0e1-1f9f-45e1-8cfe-00f6a8c50b15",
+              "name": "Animation created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composition",
+                    "animations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"targetProperty\": \"<string>\",\n  \"keyFrames\": [\n    {\n      \"normalizedProgressKey\": \"<float>\",\n      \"value\": \"<object>\",\n      \"easingFunction\": \"<string>\"\n    },\n    {\n      \"normalizedProgressKey\": \"<float>\",\n      \"value\": \"<object>\",\n      \"easingFunction\": \"<string>\"\n    }\n  ],\n  \"expression\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"string\",\n  \"type\": \"Vector3KeyFrame\",\n  \"duration\": \"string\",\n  \"iterationBehavior\": \"Count\",\n  \"targetProperty\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28b46fbe-50b0-4307-94c3-e4375daf1145",
+              "name": "Invalid animation parameters",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "composition",
+                    "animations"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"type\": \"<string>\",\n  \"duration\": \"<string>\",\n  \"targetProperty\": \"<string>\",\n  \"keyFrames\": [\n    {\n      \"normalizedProgressKey\": \"<float>\",\n      \"value\": \"<object>\",\n      \"easingFunction\": \"<string>\"\n    },\n    {\n      \"normalizedProgressKey\": \"<float>\",\n      \"value\": \"<object>\",\n      \"easingFunction\": \"<string>\"\n    }\n  ],\n  \"expression\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "6914b62d-a693-442c-afca-1df45b355b9c",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Animations API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}

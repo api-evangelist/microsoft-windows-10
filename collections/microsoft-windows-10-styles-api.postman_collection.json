@@ -1,0 +1,116 @@
+{
+  "item": [
+    {
+      "id": "76db099b-96a4-4b8b-8c74-65029fef038c",
+      "name": "Styles",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9b3d47df-9ad0-4302-bd7d-15658d59f392",
+          "name": "Microsoft Windows 10 List built-in styles",
+          "request": {
+            "name": "Microsoft Windows 10 List built-in styles",
+            "description": {
+              "content": "Retrieves the catalog of built-in WinUI styles and resources including Fluent Design System brushes, typography, corner radius, spacing, and animation definitions from generic.xaml.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "winui",
+                "styles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "resourceType",
+                  "value": "<string>",
+                  "description": "Filter by resource type"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc3d9e60-5ddd-4ea1-801b-55a0ec91a987",
+              "name": "Successful retrieval of styles",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "winui",
+                    "styles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "resourceType",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"key\": \"string\",\n    \"type\": \"string\",\n    \"value\": \"string\",\n    \"themeVariants\": {\n      \"light\": \"string\",\n      \"dark\": \"string\",\n      \"highContrast\": \"string\"\n    }\n  },\n  {\n    \"key\": \"string\",\n    \"type\": \"string\",\n    \"value\": \"string\",\n    \"themeVariants\": {\n      \"light\": \"string\",\n      \"dark\": \"string\",\n      \"highContrast\": \"string\"\n    }\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.windows.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "9a479cc7-fae5-4e41-ae84-e40357e1c1e7",
+    "name": "Microsoft Windows 10 Windows Background Tasks Accelerometer Styles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.\n\nContact Support:\n Name: Microsoft Developer Support",
+      "type": "text/plain"
+    }
+  }
+}
