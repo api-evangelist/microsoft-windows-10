@@ -1986,6 +1986,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/windows/uwp/
   baseURL: https://api.windows.com
   tags:
+  - Collection
+  tags_raw:
   - Collections
   properties:
   - type: OpenAPI
@@ -3417,6 +3419,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/windows/uwp/
   baseURL: https://api.windows.com
   tags:
+  - File
+  tags_raw:
   - Files
   properties:
   - type: OpenAPI
@@ -5238,6 +5242,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/windows/uwp/
   baseURL: https://api.windows.com
   tags:
+  - Message
+  tags_raw:
   - Messages
   properties:
   - type: OpenAPI
@@ -8360,6 +8366,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/windows/uwp/
   baseURL: https://api.windows.com
   tags:
+  - Task
+  tags_raw:
   - Tasks
   properties:
   - type: OpenAPI
