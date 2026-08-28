@@ -12,8 +12,14 @@ info:
     description.
   version: 1.0.0
 sourceDescriptions:
-- name: mlApi
-  url: ../openapi/microsoft-windows-10-ml-openapi.yml
+- name: evaluationApi
+  url: ../openapi/microsoft-windows-10-evaluation-api-openapi.yml
+  type: openapi
+- name: modelsApi
+  url: ../openapi/microsoft-windows-10-models-api-openapi.yml
+  type: openapi
+- name: sessionsApi
+  url: ../openapi/microsoft-windows-10-sessions-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: load-and-evaluate-model

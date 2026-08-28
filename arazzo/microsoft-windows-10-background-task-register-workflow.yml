@@ -12,8 +12,11 @@ info:
     its request and documents the response status it keys on.
   version: 1.0.0
 sourceDescriptions:
-- name: backgroundTasksApi
-  url: ../openapi/microsoft-windows-10-background-tasks-openapi.yml
+- name: accessApi
+  url: ../openapi/microsoft-windows-10-access-api-openapi.yml
+  type: openapi
+- name: tasksApi
+  url: ../openapi/microsoft-windows-10-tasks-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: register-background-task

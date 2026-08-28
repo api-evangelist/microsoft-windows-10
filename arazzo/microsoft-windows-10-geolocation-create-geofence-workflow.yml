@@ -11,8 +11,11 @@ info:
     so the flow can be executed without opening the OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: geolocationApi
-  url: ../openapi/microsoft-windows-10-geolocation-openapi.yml
+- name: accessApi
+  url: ../openapi/microsoft-windows-10-access-api-openapi.yml
+  type: openapi
+- name: geofencingApi
+  url: ../openapi/microsoft-windows-10-geofencing-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: create-geofence

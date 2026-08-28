@@ -11,8 +11,11 @@ info:
     keys on so the flow can be executed without opening the OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: geolocationApi
-  url: ../openapi/microsoft-windows-10-geolocation-openapi.yml
+- name: accessApi
+  url: ../openapi/microsoft-windows-10-access-api-openapi.yml
+  type: openapi
+- name: positionApi
+  url: ../openapi/microsoft-windows-10-position-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: get-position-with-access

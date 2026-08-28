@@ -12,8 +12,11 @@ info:
     the status it keys on.
   version: 1.0.0
 sourceDescriptions:
-- name: helloApi
-  url: ../openapi/microsoft-windows-10-hello-openapi.yml
+- name: authenticationApi
+  url: ../openapi/microsoft-windows-10-authentication-api-openapi.yml
+  type: openapi
+- name: credentialsApi
+  url: ../openapi/microsoft-windows-10-credentials-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: stepup-sign-challenge

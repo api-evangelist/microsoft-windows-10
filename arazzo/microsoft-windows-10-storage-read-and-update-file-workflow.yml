@@ -11,8 +11,11 @@ info:
     executed without opening the OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: storageApi
-  url: ../openapi/microsoft-windows-10-storage-openapi.yml
+- name: fileOperationsApi
+  url: ../openapi/microsoft-windows-10-file-operations-api-openapi.yml
+  type: openapi
+- name: filesApi
+  url: ../openapi/microsoft-windows-10-files-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: read-and-update-file

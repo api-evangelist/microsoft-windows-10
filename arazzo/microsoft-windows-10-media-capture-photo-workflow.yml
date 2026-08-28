@@ -11,8 +11,17 @@ info:
     flow can be executed without opening the OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: mediaCaptureApi
-  url: ../openapi/microsoft-windows-10-media-capture-openapi.yml
+- name: devicesApi
+  url: ../openapi/microsoft-windows-10-devices-api-openapi.yml
+  type: openapi
+- name: photoCaptureApi
+  url: ../openapi/microsoft-windows-10-photo-capture-api-openapi.yml
+  type: openapi
+- name: previewApi
+  url: ../openapi/microsoft-windows-10-preview-api-openapi.yml
+  type: openapi
+- name: sessionsApi
+  url: ../openapi/microsoft-windows-10-sessions-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: capture-photo

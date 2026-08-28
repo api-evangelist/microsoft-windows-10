@@ -12,8 +12,17 @@ info:
     OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: bluetoothApi
-  url: ../openapi/microsoft-windows-10-bluetooth-openapi.yml
+- name: devicesApi
+  url: ../openapi/microsoft-windows-10-devices-api-openapi.yml
+  type: openapi
+- name: gattCharacteristicsApi
+  url: ../openapi/microsoft-windows-10-gatt-characteristics-api-openapi.yml
+  type: openapi
+- name: gattOperationsApi
+  url: ../openapi/microsoft-windows-10-gatt-operations-api-openapi.yml
+  type: openapi
+- name: gattServicesApi
+  url: ../openapi/microsoft-windows-10-gatt-services-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: read-gatt-characteristic

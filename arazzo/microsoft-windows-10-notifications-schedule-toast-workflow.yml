@@ -12,8 +12,11 @@ info:
     opening the OpenAPI description.
   version: 1.0.0
 sourceDescriptions:
-- name: notificationsApi
-  url: ../openapi/microsoft-windows-10-notifications-openapi.yml
+- name: collectionsApi
+  url: ../openapi/microsoft-windows-10-collections-api-openapi.yml
+  type: openapi
+- name: scheduledNotificationsApi
+  url: ../openapi/microsoft-windows-10-scheduled-notifications-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: schedule-grouped-toast
