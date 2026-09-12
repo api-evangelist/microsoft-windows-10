@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Microsoft Windows 10 Windows Background Tasks Accelerometer Classes API
   description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
@@ -82,6 +82,64 @@ components:
           type: boolean
         description:
           type: string
+    ClassMethod:
+      type: object
+      properties:
+        name:
+          type: string
+        returnType:
+          type: string
+        parameters:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              type:
+                type: string
+        isStatic:
+          type: boolean
+        description:
+          type: string
+    ClassEvent:
+      type: object
+      properties:
+        name:
+          type: string
+        eventArgsType:
+          type: string
+        description:
+          type: string
+    WinRTClass:
+      type: object
+      description: A WinRT runtime class
+      properties:
+        name:
+          type: string
+          description: Class name
+        namespace:
+          type: string
+          description: Fully qualified namespace
+        description:
+          type: string
+          description: Class description
+        isSealed:
+          type: boolean
+          description: Whether the class is sealed
+        isStatic:
+          type: boolean
+          description: Whether the class is static (no instances)
+        threading:
+          type: string
+          enum:
+          - STA
+          - MTA
+          - Both
+          description: Threading model
+      required:
+      - name
+      - namespace
     WinRTClassDetail:
       type: object
       description: Detailed information about a WinRT class
@@ -115,64 +173,6 @@ components:
       required:
       - name
       - namespace
-    ClassMethod:
-      type: object
-      properties:
-        name:
-          type: string
-        returnType:
-          type: string
-        parameters:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              type:
-                type: string
-        isStatic:
-          type: boolean
-        description:
-          type: string
-    WinRTClass:
-      type: object
-      description: A WinRT runtime class
-      properties:
-        name:
-          type: string
-          description: Class name
-        namespace:
-          type: string
-          description: Fully qualified namespace
-        description:
-          type: string
-          description: Class description
-        isSealed:
-          type: boolean
-          description: Whether the class is sealed
-        isStatic:
-          type: boolean
-          description: Whether the class is static (no instances)
-        threading:
-          type: string
-          enum:
-          - STA
-          - MTA
-          - Both
-          description: Threading model
-      required:
-      - name
-      - namespace
-    ClassEvent:
-      type: object
-      properties:
-        name:
-          type: string
-        eventArgsType:
-          type: string
-        description:
-          type: string
 externalDocs:
   description: Background Tasks Documentation
   url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

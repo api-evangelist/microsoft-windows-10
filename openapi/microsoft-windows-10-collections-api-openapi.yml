@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Microsoft Windows 10 Windows Background Tasks Accelerometer Collections API
   description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
@@ -54,21 +54,6 @@ paths:
           description: Invalid collection request
 components:
   schemas:
-    ToastCollectionRequest:
-      type: object
-      properties:
-        id:
-          type: string
-        displayName:
-          type: string
-        launchArgs:
-          type: string
-        icon:
-          type: string
-          format: uri
-      required:
-      - id
-      - displayName
     ToastCollection:
       type: object
       description: A collection of related toast notifications
@@ -86,6 +71,21 @@ components:
           type: string
           format: uri
           description: Icon URI for the collection
+    ToastCollectionRequest:
+      type: object
+      properties:
+        id:
+          type: string
+        displayName:
+          type: string
+        launchArgs:
+          type: string
+        icon:
+          type: string
+          format: uri
+      required:
+      - id
+      - displayName
 externalDocs:
   description: Background Tasks Documentation
   url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

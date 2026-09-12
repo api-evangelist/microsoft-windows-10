@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Microsoft Windows 10 Windows Background Tasks Accelerometer RFCOMM API
   description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
@@ -39,17 +39,6 @@ paths:
           description: Connection failed
 components:
   schemas:
-    RfcommConnection:
-      type: object
-      properties:
-        id:
-          type: string
-        deviceId:
-          type: string
-        serviceId:
-          type: string
-        maxMessageSize:
-          type: integer
     RfcommConnectionRequest:
       type: object
       properties:
@@ -62,6 +51,17 @@ components:
       required:
       - deviceId
       - serviceId
+    RfcommConnection:
+      type: object
+      properties:
+        id:
+          type: string
+        deviceId:
+          type: string
+        serviceId:
+          type: string
+        maxMessageSize:
+          type: integer
 externalDocs:
   description: Background Tasks Documentation
   url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

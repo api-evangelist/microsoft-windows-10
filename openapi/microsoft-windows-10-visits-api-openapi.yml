@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Microsoft Windows 10 Windows Background Tasks Accelerometer Visits API
   description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
@@ -33,6 +33,50 @@ paths:
                   $ref: '#/components/schemas/Geovisit'
 components:
   schemas:
+    Geoposition:
+      type: object
+      description: A geographic position (Geoposition class)
+      properties:
+        coordinate:
+          $ref: '#/components/schemas/Geocoordinate'
+        civicAddress:
+          type: object
+          properties:
+            city:
+              type: string
+            country:
+              type: string
+            state:
+              type: string
+            postalCode:
+              type: string
+          description: Civic address (if available)
+        venueData:
+          type: object
+          properties:
+            id:
+              type: string
+            level:
+              type: string
+          description: Venue information (if available)
+      required:
+      - coordinate
+    Geovisit:
+      type: object
+      description: A location visit record (Geovisit class)
+      properties:
+        position:
+          $ref: '#/components/schemas/Geoposition'
+        stateChange:
+          type: string
+          enum:
+          - Arrived
+          - Departed
+          - TrackingLost
+          description: Visit state change type
+        timestamp:
+          type: string
+          format: date-time
     Geocoordinate:
       type: object
       description: Geographic coordinate data (Geocoordinate class)
@@ -98,50 +142,6 @@ components:
       - longitude
       - accuracy
       - timestamp
-    Geoposition:
-      type: object
-      description: A geographic position (Geoposition class)
-      properties:
-        coordinate:
-          $ref: '#/components/schemas/Geocoordinate'
-        civicAddress:
-          type: object
-          properties:
-            city:
-              type: string
-            country:
-              type: string
-            state:
-              type: string
-            postalCode:
-              type: string
-          description: Civic address (if available)
-        venueData:
-          type: object
-          properties:
-            id:
-              type: string
-            level:
-              type: string
-          description: Venue information (if available)
-      required:
-      - coordinate
-    Geovisit:
-      type: object
-      description: A location visit record (Geovisit class)
-      properties:
-        position:
-          $ref: '#/components/schemas/Geoposition'
-        stateChange:
-          type: string
-          enum:
-          - Arrived
-          - Departed
-          - TrackingLost
-          description: Visit state change type
-        timestamp:
-          type: string
-          format: date-time
 externalDocs:
   description: Background Tasks Documentation
   url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

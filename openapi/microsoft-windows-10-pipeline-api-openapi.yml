@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Microsoft Windows 10 Windows Background Tasks Accelerometer Pipeline API
   description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
@@ -39,13 +39,6 @@ paths:
           description: Invalid pipeline configuration
 components:
   schemas:
-    PipelineState:
-      type: object
-      properties:
-        id:
-          type: string
-        isValid:
-          type: boolean
     CreatePipelineStateRequest:
       type: object
       properties:
@@ -87,6 +80,13 @@ components:
       required:
       - vertexShader
       - pixelShader
+    PipelineState:
+      type: object
+      properties:
+        id:
+          type: string
+        isValid:
+          type: boolean
 externalDocs:
   description: Background Tasks Documentation
   url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks

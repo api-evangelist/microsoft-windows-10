@@ -1,4 +1,4 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
   title: Microsoft Windows 10 Windows Background Tasks Accelerometer Libraries API
   description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
@@ -33,25 +33,6 @@ paths:
                   $ref: '#/components/schemas/StorageLibrary'
 components:
   schemas:
-    StorageLibrary:
-      type: object
-      description: A storage library (StorageLibrary class)
-      properties:
-        id:
-          type: string
-          description: Library identifier
-          enum:
-          - Documents
-          - Music
-          - Pictures
-          - Videos
-        folders:
-          type: array
-          items:
-            $ref: '#/components/schemas/StorageFolder'
-          description: Folders included in the library
-        saveFolder:
-          $ref: '#/components/schemas/StorageFolder'
     StorageFolder:
       type: object
       description: A storage folder (StorageFolder class)
@@ -72,6 +53,25 @@ components:
       required:
       - name
       - path
+    StorageLibrary:
+      type: object
+      description: A storage library (StorageLibrary class)
+      properties:
+        id:
+          type: string
+          description: Library identifier
+          enum:
+          - Documents
+          - Music
+          - Pictures
+          - Videos
+        folders:
+          type: array
+          items:
+            $ref: '#/components/schemas/StorageFolder'
+          description: Folders included in the library
+        saveFolder:
+          $ref: '#/components/schemas/StorageFolder'
 externalDocs:
   description: Background Tasks Documentation
   url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
