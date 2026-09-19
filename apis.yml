@@ -2520,6 +2520,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/windows/uwp/
   baseURL: https://api.windows.com
   tags:
+  - Control
+  tags_raw:
   - Controls
   properties:
   - type: OpenAPI
@@ -6166,6 +6168,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/windows/uwp/
   baseURL: https://api.windows.com
   tags:
+  - Pipelines
+  tags_raw:
   - Pipeline
   properties:
   - type: OpenAPI
@@ -9942,6 +9946,8 @@ apis:
   humanURL: https://learn.microsoft.com/en-us/windows/uwp/
   baseURL: https://api.windows.com
   tags:
+  - WebSocket
+  tags_raw:
   - WebSockets
   properties:
   - type: OpenAPI
