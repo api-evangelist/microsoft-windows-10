@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Files API
-  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  title: Microsoft Windows 10 Windows Storage Files API
+  description: API for file system access, storage management, and data operations in Windows applications. Based on the Windows.Storage namespace, this API provides classes for reading, writing, and managing files (StorageFile) and folders (StorageFolder) with appropriate access permissions. Also includes ApplicationData for settings and app data management, KnownFolders for library access, and StorageLibrary for library management with change tracking.
   version: 1.0.0
   contact:
     name: Microsoft Developer Support
-    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+    url: https://learn.microsoft.com/en-us/windows/uwp/files/
   license:
     name: Microsoft Software License
     url: https://www.microsoft.com/en-us/legal/terms-of-use
@@ -109,6 +109,34 @@ paths:
           description: Access denied
 components:
   schemas:
+    StorageFile:
+      type: object
+      description: A storage file (StorageFile class)
+      properties:
+        name:
+          type: string
+          description: File name with extension
+        path:
+          type: string
+          description: Full file path
+        displayName:
+          type: string
+          description: File name without extension
+        fileType:
+          type: string
+          description: File extension
+        contentType:
+          type: string
+          description: MIME content type
+        dateCreated:
+          type: string
+          format: date-time
+        isAvailable:
+          type: boolean
+          description: Whether the file content is available locally
+      required:
+      - name
+      - path
     StorageFileDetail:
       type: object
       description: Detailed file information
@@ -153,34 +181,6 @@ components:
             displayName:
               type: string
           description: StorageProvider information
-    StorageFile:
-      type: object
-      description: A storage file (StorageFile class)
-      properties:
-        name:
-          type: string
-          description: File name with extension
-        path:
-          type: string
-          description: Full file path
-        displayName:
-          type: string
-          description: File name without extension
-        fileType:
-          type: string
-          description: File extension
-        contentType:
-          type: string
-          description: MIME content type
-        dateCreated:
-          type: string
-          format: date-time
-        isAvailable:
-          type: boolean
-          description: Whether the file content is available locally
-      required:
-      - name
-      - path
 externalDocs:
-  description: Background Tasks Documentation
-  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  description: Windows.Storage API Reference
+  url: https://learn.microsoft.com/en-us/uwp/api/windows.storage

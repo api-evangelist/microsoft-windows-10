@@ -1,14 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Access API
-  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  title: Microsoft Windows 10 Access API
   version: 1.0.0
-  contact:
-    name: Microsoft Developer Support
-    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
   license:
     name: Microsoft Software License
     url: https://www.microsoft.com/en-us/legal/terms-of-use
+  description: 'Operations tagged Access across 2 of this provider''s published API definitions: microsoft-windows-10-background-tasks-openapi.yml, microsoft-windows-10-geolocation-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.windows.com
   description: Windows Platform API
@@ -42,6 +39,9 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/BackgroundAccessStatus'
+    servers:
+    - url: https://api.windows.com
+      description: Windows Platform API
   /geolocation/access:
     get:
       operationId: getGeolocationAccess
@@ -69,18 +69,11 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/GeolocationAccessStatus'
+    servers:
+    - url: https://api.windows.com
+      description: Windows Platform API
 components:
   schemas:
-    GeolocationAccessStatus:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - Unspecified
-          - Allowed
-          - Denied
-          description: Current geolocation access status
     BackgroundAccessStatus:
       type: object
       properties:
@@ -93,6 +86,16 @@ components:
           - DeniedBySystemPolicy
           - DeniedByUser
           description: Current background access status
-externalDocs:
-  description: Background Tasks Documentation
-  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+    GeolocationAccessStatus:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - Unspecified
+          - Allowed
+          - Denied
+          description: Current geolocation access status
+x-refined-from:
+- microsoft-windows-10-background-tasks-openapi.yml
+- microsoft-windows-10-geolocation-openapi.yml

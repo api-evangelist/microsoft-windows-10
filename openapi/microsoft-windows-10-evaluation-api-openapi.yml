@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Evaluation API
-  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  title: Microsoft Windows 10 Windows ML Evaluation API
+  description: API for integrating trained machine learning models into Windows applications using the ONNX format. Based on the Windows.AI.MachineLearning namespace, Windows ML evaluates models locally on the device using hardware acceleration with DirectX 12. Key classes include LearningModel, LearningModelSession, LearningModelBinding, and LearningModelEvaluationResult.
   version: 1.0.0
   contact:
     name: Microsoft Developer Support
-    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+    url: https://learn.microsoft.com/en-us/windows/ai/windows-ml/
   license:
     name: Microsoft Software License
     url: https://www.microsoft.com/en-us/legal/terms-of-use
@@ -81,5 +81,5 @@ components:
             type: object
           description: Map of output feature names to their values
 externalDocs:
-  description: Background Tasks Documentation
-  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  description: Windows ML API Reference
+  url: https://learn.microsoft.com/en-us/windows/ai/windows-ml/api-reference

@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Themes API
-  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
-  version: 1.0.0
+  title: Microsoft Windows 10 WinUI Themes API
+  description: Modern native UI framework for building Windows desktop applications with the Fluent Design System. Based on the Microsoft.UI.Xaml namespace, WinUI provides XAML-based controls, high-performance rendering, and supports both C# and C++ development. Key areas include controls (NavigationView, TreeView, InfoBar, ProgressRing), layout (Grid, StackPanel, RelativePanel), styling (themes, brushes, animations), and input handling.
+  version: 2.0.0
   contact:
     name: Microsoft Developer Support
-    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+    url: https://learn.microsoft.com/en-us/windows/apps/winui/winui2/
   license:
     name: Microsoft Software License
     url: https://www.microsoft.com/en-us/legal/terms-of-use
@@ -50,5 +50,5 @@ components:
             type: string
           description: Key system colors for this theme
 externalDocs:
-  description: Background Tasks Documentation
-  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  description: WinUI API Reference
+  url: https://learn.microsoft.com/en-us/windows/winui/api/microsoft.ui.xaml.controls

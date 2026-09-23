@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Position API
-  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  title: Microsoft Windows 10 Windows Geolocation Position API
+  description: API for obtaining geographic location data in Windows applications, based on the Windows.Devices.Geolocation namespace. Provides access to latitude, longitude, altitude, heading, and speed from GNSS, Wi-Fi, cellular networks, and IP address sources. Key classes include Geolocator, Geoposition, Geocoordinate, GeocoordinateSatelliteData, Geocircle, GeoboundingBox, and GeovisitMonitor for visit tracking.
   version: 1.0.0
   contact:
     name: Microsoft Developer Support
-    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+    url: https://learn.microsoft.com/en-us/windows/uwp/maps-and-location/
   license:
     name: Microsoft Software License
     url: https://www.microsoft.com/en-us/legal/terms-of-use
@@ -154,5 +154,5 @@ components:
       - accuracy
       - timestamp
 externalDocs:
-  description: Background Tasks Documentation
-  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  description: Windows.Devices.Geolocation API Reference
+  url: https://learn.microsoft.com/en-us/uwp/api/windows.devices.geolocation

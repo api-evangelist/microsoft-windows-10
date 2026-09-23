@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Activation API
-  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  title: Microsoft Windows 10 Windows Runtime (WinRT) Activation API
+  description: Modern API surface for building Universal Windows Platform (UWP) applications that run across all Windows 10 device families. WinRT provides a type system, APIs, and runtime environment for building apps using C#, C++, Visual Basic, and JavaScript. This specification models the key WinRT namespaces and their primary classes as a RESTful interface for documentation purposes.
   version: 1.0.0
   contact:
     name: Microsoft Developer Support
-    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+    url: https://developer.microsoft.com/en-us/windows/
   license:
     name: Microsoft Software License
     url: https://www.microsoft.com/en-us/legal/terms-of-use
@@ -71,5 +71,5 @@ components:
           - failed
           description: Activation result status
 externalDocs:
-  description: Background Tasks Documentation
-  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  description: Windows Runtime API Reference
+  url: https://learn.microsoft.com/en-us/uwp/api/

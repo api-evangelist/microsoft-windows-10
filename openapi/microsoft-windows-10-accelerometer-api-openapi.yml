@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Windows 10 Windows Background Tasks Accelerometer API
-  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  title: Microsoft Windows 10 Windows Sensors Accelerometer API
+  description: API for accessing device sensor data, based on the Windows.Devices.Sensors namespace. Provides a unified interface for reading sensor values and responding to sensor events for accelerometer, gyrometer, compass, inclinometer, light sensor, barometer, altimeter, magnetometer, orientation sensor, pedometer, proximity sensor, activity sensor, and human presence sensor. Sensors must be PC-integrated to be accessible.
   version: 1.0.0
   contact:
     name: Microsoft Developer Support
-    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+    url: https://learn.microsoft.com/en-us/windows/win32/sensorsapi/introduction-to-the-sensor-and-location-platform-in-windows
   license:
     name: Microsoft Software License
     url: https://www.microsoft.com/en-us/legal/terms-of-use
@@ -53,5 +53,5 @@ components:
           type: string
           format: date-time
 externalDocs:
-  description: Background Tasks Documentation
-  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  description: Windows.Devices.Sensors API Reference
+  url: https://learn.microsoft.com/en-us/uwp/api/windows.devices.sensors

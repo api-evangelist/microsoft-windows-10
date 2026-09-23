@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Voice Commands API
-  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  title: Microsoft Windows 10 Windows Cortana Voice Commands API
+  description: API for integrating voice commands and Cortana digital assistant capabilities into Windows applications. Enables voice-activated interactions through Voice Command Definitions (VCD) that specify commands, phrases, and feedback. Applications register VCD files to define custom voice commands that Cortana recognizes and routes to the appropriate app handler.
   version: 1.0.0
   contact:
     name: Microsoft Developer Support
-    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+    url: https://learn.microsoft.com/en-us/cortana/
   license:
     name: Microsoft Software License
     url: https://www.microsoft.com/en-us/legal/terms-of-use
@@ -77,44 +77,6 @@ paths:
           description: Command set not found
 components:
   schemas:
-    InstallVCDRequest:
-      type: object
-      properties:
-        vcdFilePath:
-          type: string
-          description: Path to the VCD XML file
-      required:
-      - vcdFilePath
-    PhraseList:
-      type: object
-      description: A dynamic phrase list
-      properties:
-        name:
-          type: string
-          description: Phrase list name
-        items:
-          type: array
-          items:
-            type: string
-          description: Current phrases in the list
-    VoiceCommandSet:
-      type: object
-      description: A set of voice commands with their definitions
-      properties:
-        name:
-          type: string
-          description: Command set name
-        language:
-          type: string
-          description: Language code
-        commands:
-          type: array
-          items:
-            $ref: '#/components/schemas/VoiceCommand'
-        phraseLists:
-          type: array
-          items:
-            $ref: '#/components/schemas/PhraseList'
     VoiceCommandDefinition:
       type: object
       description: A Voice Command Definition set
@@ -131,6 +93,26 @@ components:
       required:
       - name
       - language
+    PhraseList:
+      type: object
+      description: A dynamic phrase list
+      properties:
+        name:
+          type: string
+          description: Phrase list name
+        items:
+          type: array
+          items:
+            type: string
+          description: Current phrases in the list
+    InstallVCDRequest:
+      type: object
+      properties:
+        vcdFilePath:
+          type: string
+          description: Path to the VCD XML file
+      required:
+      - vcdFilePath
     VoiceCommand:
       type: object
       description: A voice command definition
@@ -152,6 +134,24 @@ components:
         navigateTo:
           type: string
           description: Page to navigate to in the app
+    VoiceCommandSet:
+      type: object
+      description: A set of voice commands with their definitions
+      properties:
+        name:
+          type: string
+          description: Command set name
+        language:
+          type: string
+          description: Language code
+        commands:
+          type: array
+          items:
+            $ref: '#/components/schemas/VoiceCommand'
+        phraseLists:
+          type: array
+          items:
+            $ref: '#/components/schemas/PhraseList'
 externalDocs:
-  description: Background Tasks Documentation
-  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  description: Cortana Voice Commands Documentation
+  url: https://learn.microsoft.com/en-us/cortana/voice-commands/vcd

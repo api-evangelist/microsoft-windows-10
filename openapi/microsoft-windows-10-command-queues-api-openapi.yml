@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Command Queues API
-  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  title: Microsoft Windows 10 DirectX Graphics Command Queues API
+  description: Low-level graphics API for building high-performance 2D and 3D rendering in Windows applications. Includes Direct3D 12 for 3D graphics with explicit GPU control, Direct2D for hardware-accelerated 2D graphics, and DirectWrite for high-quality text rendering. This specification models the key DirectX resource management and rendering pipeline operations.
   version: 1.0.0
   contact:
     name: Microsoft Developer Support
-    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+    url: https://learn.microsoft.com/en-us/windows/win32/directx
   license:
     name: Microsoft Software License
     url: https://www.microsoft.com/en-us/legal/terms-of-use
@@ -39,6 +39,15 @@ paths:
           description: Invalid queue configuration
 components:
   schemas:
+    CommandQueue:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        priority:
+          type: string
     CreateCommandQueueRequest:
       type: object
       properties:
@@ -58,15 +67,6 @@ components:
           default: Normal
       required:
       - type
-    CommandQueue:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-        priority:
-          type: string
 externalDocs:
-  description: Background Tasks Documentation
-  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  description: DirectX Graphics Reference
+  url: https://learn.microsoft.com/en-us/windows/win32/directx

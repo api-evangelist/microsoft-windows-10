@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Windows 10 Windows Background Accelerometer Tasks API
+  title: Microsoft Windows 10 Windows Background Tasks API
   description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
   version: 1.0.0
   contact:
@@ -104,6 +104,25 @@ paths:
           description: Task not found
 components:
   schemas:
+    BackgroundTask:
+      type: object
+      description: A registered background task
+      properties:
+        id:
+          type: string
+          description: Task registration ID
+        name:
+          type: string
+          description: Task name
+        triggerType:
+          type: string
+          description: Type of trigger
+        isActive:
+          type: boolean
+          description: Whether the task is currently active
+      required:
+      - id
+      - name
     BackgroundTaskDetail:
       type: object
       properties:
@@ -145,25 +164,6 @@ components:
         lastRunResult:
           type: string
           description: Result of the last execution
-    BackgroundTask:
-      type: object
-      description: A registered background task
-      properties:
-        id:
-          type: string
-          description: Task registration ID
-        name:
-          type: string
-          description: Task name
-        triggerType:
-          type: string
-          description: Type of trigger
-        isActive:
-          type: boolean
-          description: Whether the task is currently active
-      required:
-      - id
-      - name
     RegisterTaskRequest:
       type: object
       properties:

@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Connectivity API
-  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  title: Microsoft Windows 10 Windows Networking Connectivity API
+  description: API for network communication in Windows applications, based on the Windows.Networking.Sockets and Windows.Web.Http namespaces. Provides support for TCP/UDP sockets (StreamSocket, DatagramSocket), WebSockets (MessageWebSocket, StreamWebSocket), HTTP clients (HttpClient), and background transfers (BackgroundDownloader, BackgroundUploader).
   version: 1.0.0
   contact:
     name: Microsoft Developer Support
-    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+    url: https://learn.microsoft.com/en-us/windows/uwp/networking/
   license:
     name: Microsoft Software License
     url: https://www.microsoft.com/en-us/legal/terms-of-use
@@ -63,5 +63,5 @@ components:
             maxTransferSizeInMegabytes:
               type: integer
 externalDocs:
-  description: Background Tasks Documentation
-  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  description: Windows Networking API Reference
+  url: https://learn.microsoft.com/en-us/uwp/api/windows.networking.sockets

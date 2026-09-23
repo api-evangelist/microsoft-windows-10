@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Strokes API
-  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  title: Microsoft Windows 10 Windows Ink Strokes API
+  description: API for pen and stylus input in Windows applications, based on the Windows.UI.Input.Inking namespace. Provides inking surfaces (InkCanvas, InkPresenter), stroke management (InkStroke, InkStrokeBuilder), ink recognition (InkRecognizer, InkAnalyzer), and handwriting analysis. Supports pressure sensitivity, tilt, and barrel button interactions.
   version: 1.0.0
   contact:
     name: Microsoft Developer Support
-    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+    url: https://learn.microsoft.com/en-us/windows/uwp/design/input/pen-and-stylus-interactions
   license:
     name: Microsoft Software License
     url: https://www.microsoft.com/en-us/legal/terms-of-use
@@ -95,23 +95,6 @@ paths:
           description: Stroke not found
 components:
   schemas:
-    InkStrokeDetail:
-      type: object
-      description: Detailed ink stroke information
-      properties:
-        id:
-          type: string
-        points:
-          type: array
-          items:
-            $ref: '#/components/schemas/InkPoint'
-        boundingRect:
-          $ref: '#/components/schemas/BoundingRect'
-        drawingAttributes:
-          $ref: '#/components/schemas/InkDrawingAttributes'
-        strokeDuration:
-          type: string
-          description: Duration of the stroke
     InkPoint:
       type: object
       description: A point in an ink stroke (InkPoint class)
@@ -144,6 +127,34 @@ components:
       - x
       - y
       - pressure
+    CreateInkStrokeRequest:
+      type: object
+      properties:
+        points:
+          type: array
+          items:
+            $ref: '#/components/schemas/InkPoint'
+          description: Ordered list of ink points
+        drawingAttributes:
+          $ref: '#/components/schemas/InkDrawingAttributes'
+      required:
+      - points
+    InkStroke:
+      type: object
+      description: An ink stroke (InkStroke class)
+      properties:
+        id:
+          type: string
+          description: Unique stroke identifier
+        pointCount:
+          type: integer
+          description: Number of ink points in the stroke
+        boundingRect:
+          $ref: '#/components/schemas/BoundingRect'
+        drawingAttributes:
+          $ref: '#/components/schemas/InkDrawingAttributes'
+      required:
+      - id
     InkDrawingAttributes:
       type: object
       description: Visual attributes for ink rendering (InkDrawingAttributes class)
@@ -195,34 +206,23 @@ components:
         height:
           type: number
           format: float
-    CreateInkStrokeRequest:
+    InkStrokeDetail:
       type: object
+      description: Detailed ink stroke information
       properties:
+        id:
+          type: string
         points:
           type: array
           items:
             $ref: '#/components/schemas/InkPoint'
-          description: Ordered list of ink points
-        drawingAttributes:
-          $ref: '#/components/schemas/InkDrawingAttributes'
-      required:
-      - points
-    InkStroke:
-      type: object
-      description: An ink stroke (InkStroke class)
-      properties:
-        id:
-          type: string
-          description: Unique stroke identifier
-        pointCount:
-          type: integer
-          description: Number of ink points in the stroke
         boundingRect:
           $ref: '#/components/schemas/BoundingRect'
         drawingAttributes:
           $ref: '#/components/schemas/InkDrawingAttributes'
-      required:
-      - id
+        strokeDuration:
+          type: string
+          description: Duration of the stroke
 externalDocs:
-  description: Background Tasks Documentation
-  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  description: Windows.UI.Input.Inking API Reference
+  url: https://learn.microsoft.com/en-us/uwp/api/windows.ui.input.inking

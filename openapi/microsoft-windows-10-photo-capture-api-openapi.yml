@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Photo Capture API
-  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  title: Microsoft Windows 10 Windows Media Capture Photo Capture API
+  description: API for capturing photos, audio, and video from camera and microphone devices in Windows applications. Based on the Windows.Media.Capture namespace, it provides classes for previewing (CaptureElement), recording (MediaCapture), and processing media streams with configurable encoding settings (MediaEncodingProfile). Supports photo capture, video recording, audio recording, and advanced scenarios like HDR and variable photo sequences.
   version: 1.0.0
   contact:
     name: Microsoft Developer Support
-    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+    url: https://learn.microsoft.com/en-us/windows/apps/develop/audio-video-camera
   license:
     name: Microsoft Software License
     url: https://www.microsoft.com/en-us/legal/terms-of-use
@@ -80,5 +80,5 @@ components:
           type: integer
           format: int64
 externalDocs:
-  description: Background Tasks Documentation
-  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  description: Windows.Media.Capture API Reference
+  url: https://learn.microsoft.com/en-us/uwp/api/windows.media.capture

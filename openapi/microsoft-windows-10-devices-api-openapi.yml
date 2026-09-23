@@ -1,14 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Devices API
-  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  title: Microsoft Windows 10 Devices API
   version: 1.0.0
-  contact:
-    name: Microsoft Developer Support
-    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
   license:
     name: Microsoft Software License
     url: https://www.microsoft.com/en-us/legal/terms-of-use
+  description: 'Operations tagged Devices across 4 of this provider''s published API definitions: microsoft-windows-10-bluetooth-openapi.yml, microsoft-windows-10-directx-openapi.yml, microsoft-windows-10-media-capture-openapi.yml, microsoft-windows-10-ml-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.windows.com
   description: Windows Platform API
@@ -43,6 +40,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/BluetoothDevice'
+    servers:
+    - url: https://api.windows.com
+      description: Windows Platform API
   /bluetooth/devices/{deviceId}:
     get:
       operationId: getBluetoothDevice
@@ -66,6 +66,9 @@ paths:
                 $ref: '#/components/schemas/BluetoothDeviceDetail'
         '404':
           description: Device not found
+    servers:
+    - url: https://api.windows.com
+      description: Windows Platform API
   /directx/devices:
     get:
       operationId: listDirectXDevices
@@ -82,6 +85,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/GraphicsAdapter'
+    servers:
+    - url: https://api.windows.com
+      description: Windows Platform API
   /directx/devices/{adapterId}:
     get:
       operationId: getDirectXDevice
@@ -105,6 +111,9 @@ paths:
                 $ref: '#/components/schemas/GraphicsAdapterDetail'
         '404':
           description: Adapter not found
+    servers:
+    - url: https://api.windows.com
+      description: Windows Platform API
   /media/capture/devices:
     get:
       operationId: listCaptureDevices
@@ -132,6 +141,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/CaptureDevice'
+    servers:
+    - url: https://api.windows.com
+      description: Windows Platform API
   /ml/devices:
     get:
       operationId: listMLDevices
@@ -148,6 +160,9 @@ paths:
                 type: array
                 items:
                   $ref: '#/components/schemas/LearningModelDevice'
+    servers:
+    - url: https://api.windows.com
+      description: Windows Platform API
 components:
   schemas:
     BluetoothDevice:
@@ -178,25 +193,6 @@ components:
       required:
       - id
       - name
-    LearningModelDevice:
-      type: object
-      description: A device for model evaluation (LearningModelDevice class)
-      properties:
-        kind:
-          type: string
-          enum:
-          - Default
-          - Cpu
-          - DirectX
-          - DirectXHighPerformance
-          - DirectXMinPower
-          description: Device kind
-        adapterId:
-          type: string
-          description: GPU adapter ID (for DirectX devices)
-        name:
-          type: string
-          description: Device name
     BluetoothDeviceDetail:
       type: object
       properties:
@@ -233,6 +229,61 @@ components:
           items:
             type: string
           description: Advertised service UUIDs
+    GraphicsAdapterDetail:
+      type: object
+      description: Detailed graphics adapter information
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        vendorId:
+          type: integer
+        deviceId:
+          type: integer
+        dedicatedVideoMemory:
+          type: integer
+          format: int64
+        sharedSystemMemory:
+          type: integer
+          format: int64
+        maxFeatureLevel:
+          type: string
+          enum:
+          - '11_0'
+          - '11_1'
+          - '12_0'
+          - '12_1'
+          - '12_2'
+          description: Maximum supported Direct3D feature level
+        shaderModel:
+          type: string
+          description: Maximum supported shader model
+        rayTracingTier:
+          type: string
+          enum:
+          - NotSupported
+          - Tier1_0
+          - Tier1_1
+          description: DirectX ray tracing support tier
+        meshShaderTier:
+          type: string
+          enum:
+          - NotSupported
+          - Tier1
+          description: Mesh shader support tier
+        outputs:
+          type: array
+          items:
+            type: object
+            properties:
+              name:
+                type: string
+              resolution:
+                type: string
+              refreshRate:
+                type: number
+          description: Connected display outputs
     GraphicsAdapter:
       type: object
       description: A DXGI graphics adapter
@@ -300,61 +351,27 @@ components:
       required:
       - id
       - name
-    GraphicsAdapterDetail:
+    LearningModelDevice:
       type: object
-      description: Detailed graphics adapter information
+      description: A device for model evaluation (LearningModelDevice class)
       properties:
-        id:
-          type: string
-        description:
-          type: string
-        vendorId:
-          type: integer
-        deviceId:
-          type: integer
-        dedicatedVideoMemory:
-          type: integer
-          format: int64
-        sharedSystemMemory:
-          type: integer
-          format: int64
-        maxFeatureLevel:
+        kind:
           type: string
           enum:
-          - '11_0'
-          - '11_1'
-          - '12_0'
-          - '12_1'
-          - '12_2'
-          description: Maximum supported Direct3D feature level
-        shaderModel:
+          - Default
+          - Cpu
+          - DirectX
+          - DirectXHighPerformance
+          - DirectXMinPower
+          description: Device kind
+        adapterId:
           type: string
-          description: Maximum supported shader model
-        rayTracingTier:
+          description: GPU adapter ID (for DirectX devices)
+        name:
           type: string
-          enum:
-          - NotSupported
-          - Tier1_0
-          - Tier1_1
-          description: DirectX ray tracing support tier
-        meshShaderTier:
-          type: string
-          enum:
-          - NotSupported
-          - Tier1
-          description: Mesh shader support tier
-        outputs:
-          type: array
-          items:
-            type: object
-            properties:
-              name:
-                type: string
-              resolution:
-                type: string
-              refreshRate:
-                type: number
-          description: Connected display outputs
-externalDocs:
-  description: Background Tasks Documentation
-  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+          description: Device name
+x-refined-from:
+- microsoft-windows-10-bluetooth-openapi.yml
+- microsoft-windows-10-directx-openapi.yml
+- microsoft-windows-10-media-capture-openapi.yml
+- microsoft-windows-10-ml-openapi.yml

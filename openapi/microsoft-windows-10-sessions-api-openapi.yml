@@ -1,14 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Sessions API
-  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  title: Microsoft Windows 10 Sessions API
   version: 1.0.0
-  contact:
-    name: Microsoft Developer Support
-    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
   license:
     name: Microsoft Software License
     url: https://www.microsoft.com/en-us/legal/terms-of-use
+  description: 'Operations tagged Sessions across 2 of this provider''s published API definitions: microsoft-windows-10-media-capture-openapi.yml, microsoft-windows-10-ml-openapi.yml. Each path carries the servers of the definition it was published in.'
 servers:
 - url: https://api.windows.com
   description: Windows Platform API
@@ -39,6 +36,9 @@ paths:
           description: Invalid initialization settings
         '403':
           description: Camera/microphone access denied
+    servers:
+    - url: https://api.windows.com
+      description: Windows Platform API
   /ml/sessions:
     post:
       operationId: createMLSession
@@ -63,27 +63,11 @@ paths:
           description: Invalid session configuration
         '404':
           description: Model not found
+    servers:
+    - url: https://api.windows.com
+      description: Windows Platform API
 components:
   schemas:
-    LearningModelDevice:
-      type: object
-      description: A device for model evaluation (LearningModelDevice class)
-      properties:
-        kind:
-          type: string
-          enum:
-          - Default
-          - Cpu
-          - DirectX
-          - DirectXHighPerformance
-          - DirectXMinPower
-          description: Device kind
-        adapterId:
-          type: string
-          description: GPU adapter ID (for DirectX devices)
-        name:
-          type: string
-          description: Device name
     InitializeCaptureRequest:
       type: object
       properties:
@@ -113,18 +97,6 @@ components:
           - VideoPreview
           - Photo
           default: Auto
-    LearningModelSession:
-      type: object
-      description: An evaluation session (LearningModelSession class)
-      properties:
-        id:
-          type: string
-          description: Session identifier
-        modelId:
-          type: string
-          description: Associated model identifier
-        device:
-          $ref: '#/components/schemas/LearningModelDevice'
     CaptureSession:
       type: object
       description: An initialized media capture session
@@ -143,6 +115,25 @@ components:
           type: string
         audioDeviceId:
           type: string
+    LearningModelDevice:
+      type: object
+      description: A device for model evaluation (LearningModelDevice class)
+      properties:
+        kind:
+          type: string
+          enum:
+          - Default
+          - Cpu
+          - DirectX
+          - DirectXHighPerformance
+          - DirectXMinPower
+          description: Device kind
+        adapterId:
+          type: string
+          description: GPU adapter ID (for DirectX devices)
+        name:
+          type: string
+          description: Device name
     CreateSessionRequest:
       type: object
       properties:
@@ -161,6 +152,18 @@ components:
           default: Default
       required:
       - modelId
-externalDocs:
-  description: Background Tasks Documentation
-  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+    LearningModelSession:
+      type: object
+      description: An evaluation session (LearningModelSession class)
+      properties:
+        id:
+          type: string
+          description: Session identifier
+        modelId:
+          type: string
+          description: Associated model identifier
+        device:
+          $ref: '#/components/schemas/LearningModelDevice'
+x-refined-from:
+- microsoft-windows-10-media-capture-openapi.yml
+- microsoft-windows-10-ml-openapi.yml

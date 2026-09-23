@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Video Recording API
-  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  title: Microsoft Windows 10 Windows Media Capture Video Recording…
+  description: API for capturing photos, audio, and video from camera and microphone devices in Windows applications. Based on the Windows.Media.Capture namespace, it provides classes for previewing (CaptureElement), recording (MediaCapture), and processing media streams with configurable encoding settings (MediaEncodingProfile). Supports photo capture, video recording, audio recording, and advanced scenarios like HDR and variable photo sequences.
   version: 1.0.0
   contact:
     name: Microsoft Developer Support
-    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+    url: https://learn.microsoft.com/en-us/windows/apps/develop/audio-video-camera
   license:
     name: Microsoft Software License
     url: https://www.microsoft.com/en-us/legal/terms-of-use
@@ -65,23 +65,6 @@ paths:
           description: Session not found
 components:
   schemas:
-    RecordedMedia:
-      type: object
-      properties:
-        filePath:
-          type: string
-        durationInSeconds:
-          type: number
-          format: double
-        width:
-          type: integer
-        height:
-          type: integer
-        encodingProfile:
-          type: string
-        sizeInBytes:
-          type: integer
-          format: int64
     VideoRecordingRequest:
       type: object
       properties:
@@ -109,6 +92,23 @@ components:
           description: File path for the recorded video
       required:
       - outputPath
+    RecordedMedia:
+      type: object
+      properties:
+        filePath:
+          type: string
+        durationInSeconds:
+          type: number
+          format: double
+        width:
+          type: integer
+        height:
+          type: integer
+        encodingProfile:
+          type: string
+        sizeInBytes:
+          type: integer
+          format: int64
 externalDocs:
-  description: Background Tasks Documentation
-  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  description: Windows.Media.Capture API Reference
+  url: https://learn.microsoft.com/en-us/uwp/api/windows.media.capture

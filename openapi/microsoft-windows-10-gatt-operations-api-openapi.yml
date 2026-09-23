@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Windows 10 Windows Background Tasks Accelerometer GATT Operations API
-  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  title: Microsoft Windows 10 Windows Bluetooth GATT Operations API
+  description: API for Bluetooth communication in Windows applications, based on the Windows.Devices.Bluetooth namespace. Supports Bluetooth Classic (RFCOMM) for stream-based communication and Bluetooth Low Energy (GATT) for attribute-based communication with BLE peripherals. Key classes include BluetoothDevice, BluetoothLEDevice, RfcommDeviceService, GattDeviceService, GattCharacteristic, and BluetoothLEAdvertisementWatcher.
   version: 1.0.0
   contact:
     name: Microsoft Developer Support
-    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+    url: https://learn.microsoft.com/en-us/windows/uwp/devices-sensors/bluetooth
   license:
     name: Microsoft Software License
     url: https://www.microsoft.com/en-us/legal/terms-of-use
@@ -95,6 +95,15 @@ paths:
           description: Characteristic not found
 components:
   schemas:
+    GattWriteResult:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - Success
+          - Unreachable
+          - ProtocolError
     GattWriteRequest:
       type: object
       properties:
@@ -125,15 +134,6 @@ components:
           type: string
           format: byte
           description: Base64-encoded characteristic value
-    GattWriteResult:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - Success
-          - Unreachable
-          - ProtocolError
 externalDocs:
-  description: Background Tasks Documentation
-  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  description: Windows Bluetooth API Reference
+  url: https://learn.microsoft.com/en-us/windows/win32/api/_bluetooth/

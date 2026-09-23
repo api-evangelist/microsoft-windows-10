@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Animations API
-  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  title: Microsoft Windows 10 Windows Composition Animations API
+  description: The Windows.UI.Composition API provides access to the visual layer between the XAML framework and the DirectX graphics layer. Based on the Windows.UI.Composition namespace, it enables high-performance retained-mode graphics, effects, and animations. Key classes include Compositor, Visual, SpriteVisual, ContainerVisual, CompositionAnimation, CompositionEffectBrush, and CompositionSurfaceBrush.
   version: 1.0.0
   contact:
     name: Microsoft Developer Support
-    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+    url: https://learn.microsoft.com/en-us/windows/uwp/composition/visual-layer
   license:
     name: Microsoft Software License
     url: https://www.microsoft.com/en-us/legal/terms-of-use
@@ -108,5 +108,5 @@ components:
           type: string
           description: Property being animated
 externalDocs:
-  description: Background Tasks Documentation
-  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  description: Windows.UI.Composition API Reference
+  url: https://learn.microsoft.com/en-us/uwp/api/windows.ui.composition

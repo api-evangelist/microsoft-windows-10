@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Drawing Attributes API
-  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  title: Microsoft Windows 10 Windows Ink Drawing Attributes API
+  description: API for pen and stylus input in Windows applications, based on the Windows.UI.Input.Inking namespace. Provides inking surfaces (InkCanvas, InkPresenter), stroke management (InkStroke, InkStrokeBuilder), ink recognition (InkRecognizer, InkAnalyzer), and handwriting analysis. Supports pressure sensitivity, tilt, and barrel button interactions.
   version: 1.0.0
   contact:
     name: Microsoft Developer Support
-    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+    url: https://learn.microsoft.com/en-us/windows/uwp/design/input/pen-and-stylus-interactions
   license:
     name: Microsoft Software License
     url: https://www.microsoft.com/en-us/legal/terms-of-use
@@ -83,5 +83,5 @@ components:
           type: boolean
           description: Whether to ignore tilt data
 externalDocs:
-  description: Background Tasks Documentation
-  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  description: Windows.UI.Input.Inking API Reference
+  url: https://learn.microsoft.com/en-us/uwp/api/windows.ui.input.inking

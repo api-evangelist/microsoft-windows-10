@@ -1,11 +1,11 @@
 openapi: 3.2.0
 info:
-  title: Microsoft Windows 10 Windows Background Tasks Accelerometer Badge Notifications API
-  description: API for running code in the background when an application is suspended or not running. Based on the Windows.ApplicationModel.Background namespace, it supports time-triggered, system-triggered, and maintenance-triggered background tasks. Key classes include BackgroundTaskBuilder, BackgroundTaskRegistration, SystemTrigger, TimeTrigger, and BackgroundTaskCompletedEventArgs.
+  title: Microsoft Windows 10 Windows Notifications Badge…
+  description: API for sending and managing toast notifications, tile notifications, and badge updates in Windows 10 applications. Based on the Windows.UI.Notifications namespace, this API supports adaptive and interactive notifications with custom layouts, actions, and scheduling. Key classes include ToastNotificationManager, TileUpdateManager, BadgeUpdateManager, and their associated notification types.
   version: 1.0.0
   contact:
     name: Microsoft Developer Support
-    url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+    url: https://learn.microsoft.com/en-us/windows/uwp/design/shell/tiles-and-notifications/
   license:
     name: Microsoft Software License
     url: https://www.microsoft.com/en-us/legal/terms-of-use
@@ -39,17 +39,6 @@ paths:
           description: Invalid badge content
 components:
   schemas:
-    BadgeNotification:
-      type: object
-      description: A badge notification as defined by the BadgeNotification class
-      properties:
-        type:
-          type: string
-        value:
-          type: string
-        expirationTime:
-          type: string
-          format: date-time
     BadgeNotificationRequest:
       type: object
       description: Request to update a badge
@@ -66,6 +55,17 @@ components:
       required:
       - type
       - value
+    BadgeNotification:
+      type: object
+      description: A badge notification as defined by the BadgeNotification class
+      properties:
+        type:
+          type: string
+        value:
+          type: string
+        expirationTime:
+          type: string
+          format: date-time
 externalDocs:
-  description: Background Tasks Documentation
-  url: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/applifecycle/background-tasks
+  description: Windows.UI.Notifications API Reference
+  url: https://learn.microsoft.com/en-us/uwp/api/windows.ui.notifications
